@@ -1,0 +1,173 @@
+#Makefile
+include FromCubeMX.mk
+include Setup.mk
+include KechkinTurboMake.mk
+
+
+#Makefile name
+MAKE_FILE_NAME=$(firstword $(makefile_name))
+
+######################################
+# target
+######################################
+TARGET = $(project_folder)
+
+
+#----------------------------------------------------- C
+C_SOURCES = \
+${CUBE_C_FILES} \
+${MODBUS_MODULE_SRC}
+
+C_INCLUDES = \
+${CUBE_C_INCLUDES} \
+${MODBUS_MODULE_INC}
+
+#----------------------------------------------------- ALL INCLUDES
+ALL_INCLUDES = \
+$(C_INCLUDES) \
+$(AS_INCLUDES)
+
+
+######################################
+# sources
+######################################
+#----------------------------------------------------- Modules C++
+USER_MODULES_CPP = $(call rwildcard, $(USER_MODULES_CPP_PATH), *.cpp)
+USER_MODULES_CPP_INC = $(addprefix "-I", $(shell find $(USER_MODULES_CPP_PATH) -type d -iname "*inc*"))
+
+
+#######################################
+# OBJECTS
+#######################################
+OBJECTS_C=$(addprefix $(BUILD_DIR)/,$(notdir $(C_SOURCES:.c=.o)))
+vpath %.c $(sort $(dir $(C_SOURCES)))
+
+OBJECTS_ASM=$(addprefix $(BUILD_DIR)/,$(notdir $(ASM_SOURCES:.s=.o)))
+vpath %.s $(sort $(dir $(ASM_SOURCES)))
+
+
+
+#######################################
+# tools
+#######################################
+PREFIX = arm-none-eabi-
+#it can be added to the PATH environment variable.
+GCC = $(PREFIX)gcc
+ASM = $(PREFIX)gcc
+LD = $(PREFIX)gcc
+CP = $(PREFIX)objcopy
+SZ = $(PREFIX)size
+# Получение листинга из объектного файла
+OBJDUMP = $(PREFIX)objdump
+
+
+
+.PHONY: all clean dbgMsg1 dbgEnd debug_echo_path buildAll
+
+# default action: build all
+#Главная цель - собрать файлы elf hex bin
+# all: $(BUILD_DIR)/$(TARGET).elf #$(BUILD_DIR)/$(TARGET).hex $(BUILD_DIR)/$(TARGET).bin debug_inc_paths
+# 	@echo "\n"
+# 	@echo "END"
+#all: debug_echo_modules debug_echo_path
+
+all: $(BUILD_DIR)/$(TARGET).elf
+	$(call dbgMsg1)
+
+dbgMsg1=\
+echo ------------------------------------------------- dbgMsg1 -------------------------------------------------;\
+echo Work with makefile: $(MAKE_FILE_NAME);\
+echo Target is: $(TARGET);\
+echo "";
+
+dbgEchoFlags:
+	echo ------------------ FLAGS ------------------;
+	echo ASM Flags:;
+	$(call listEcho, $(ASM_FLAGS))
+	echo "";
+	echo C Flags:;
+	$(call listEcho, $(C_FLAGS))
+	echo "";
+	echo CPP Flags:;
+	$(call listEcho, $(CPP_FLAGS))
+	echo "";
+
+# Линкуем все объекты и генерим ELF
+# Затем выводим размрер прошивки
+$(BUILD_DIR)/$(TARGET).elf: $(OBJECTS_C) $(OBJECTS_ASM) $(OBJECTS_CPP) Makefile
+	$(LD) $(OBJECTS_ASM) $(OBJECTS_C) $(OBJECTS_CPP) $(LDFLAGS) -o $@
+	$(SZ) $@ --format=berkeley --totals
+
+$(BUILD_DIR)/%.o: %.c Makefile | $(BUILD_DIR)
+	echo "    C    " $@
+	$(GCC) -c $(C_FLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.c=.lst)) $< -o $@ -c
+
+$(BUILD_DIR)/%.o: %.s Makefile | $(BUILD_DIR)
+	echo "   ASM   " $@
+	$(GCC) -c $(ASM_FLAGS) $< -o $@
+
+
+ #  $@ - имя цели
+$(BUILD_DIR):
+	mkdir $@
+
+
+dbgEnd:
+	echo ------------------------------------------------- END -------------------------------------------------
+	echo ""
+
+
+#######################################
+# clean up
+#######################################
+clean:
+	-rm -fR $(BUILD_DIR)
+
+debug_echo_modules:
+	echo ---------------------------debug_echo_modules----------------------------------;\
+	echo cpp files count: $(words $(C_SOURCES));\
+	echo source_files: $(C_SOURCES);\
+	echo ---------------------------debug_echo_modules END----------------------------------;\
+	echo ;
+
+debug_inc_paths:
+	echo ---------------------------debug_inc_paths----------------------------------;\
+	echo inc files count: $(words $(USER_MODULES_CPP));\
+	echo source_files: $(USER_MODULES_CPP);\
+	echo ---------------------------debug_inc_paths END----------------------------------;\
+	echo ;
+
+
+debug_echo_path:
+	echo ---------------------------debug_echo_path----------------------------------;\
+	echo makefile_name:.............$(makefile_name);\
+	echo makefile_path:.............$(makefile_path);\
+	echo -------------------------------------------------------------;\
+	echo application_path:..........$(application_path);\
+	echo makefile_name_relative:....$(makefile_name_relative);\
+	echo project_folder:............$(project_folder);\
+	echo ---------------------------debug_echo_path END----------------------------------; \
+	echo ;
+
+
+#######################################
+# dependencies
+#######################################
+-include $(wildcard $(BUILD_DIR)/*.d)
+
+# ----------------- Дополнительные команды make от Алексея Олеговича-----------------#
+#######################################
+# flash
+#######################################
+flash:
+	openocd -f ./openocd.cfg -c "program $(BUILD_DIR)/$(TARGET).elf verify reset exit"
+ 
+#######################################
+# erase
+#######################################
+erase:
+	openocd -f ./openocd.cfg -c "init; reset halt; stm32g4x mass_erase 0; exit"
+
+# *** EOF ***
+
+

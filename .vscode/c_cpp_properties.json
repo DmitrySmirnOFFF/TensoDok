@@ -1,0 +1,26 @@
+{
+    "configurations": [
+        {
+            "name": "STM32",
+            "includePath": [
+                "Core/Inc",
+                "${workspaceFolder}/Drivers/STM32G4xx_HAL_Driver/Inc",
+                "${workspaceFolder}/Drivers/CMSIS/Device/ST/STM32G4xx/Include",
+                "${workspaceFolder}/Drivers/CMSIS/Include",
+                // "C:/Program Files/Microsoft VS Code/STMtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/arm-none-eabi/include/sys",
+                "${workspaceFolder}/PWM"
+            ],
+            "defines": [
+                "STM32G474xx",
+                "USE_HAL_DRIVER"
+            ],
+            "compilerPath": "${execPath}\\..\\..\\VsCodeStmTools\\arm-none-eabi-gcc\\12.2.1-1.2.1\\.content\\bin\\ARM-NONE-EABI-GCC.EXE",
+            // "compilerArgs": [
+            //     "--target=arm-arm-none-eabi",
+            //     "-mcpu=Cortex-M4"
+            // ],
+            "intelliSenseMode": "gcc-arm"
+        }
+    ],
+    "version": 4
+}
