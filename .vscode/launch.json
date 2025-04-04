@@ -7,7 +7,7 @@
         {
             "name": "OpenOCD",
             "cwd": "${workspaceFolder}",
-            "executable": "${workspaceFolder}/build/${workspaceFolderBasename}.elf",
+            "executable": "${workspaceFolder}/build/TensoDok.elf",
             "svdFile": "${workspaceFolder}/STM32G474xx.svd",
             "request": "launch",
             "type": "cortex-debug",

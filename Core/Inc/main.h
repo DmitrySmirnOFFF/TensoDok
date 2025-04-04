@@ -31,7 +31,6 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -56,28 +55,30 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define BUZZ_Pin GPIO_PIN_0
-#define BUZZ_GPIO_Port GPIOC
-#define LED0_MC_Pin GPIO_PIN_1
-#define LED0_MC_GPIO_Port GPIOC
-#define LED1_MC_Pin GPIO_PIN_2
-#define LED1_MC_GPIO_Port GPIOC
-#define LED2_MC_Pin GPIO_PIN_3
-#define LED2_MC_GPIO_Port GPIOC
-#define AI1_MesU_MK_Pin GPIO_PIN_0
-#define AI1_MesU_MK_GPIO_Port GPIOA
-#define PWM_chA_Pin GPIO_PIN_4
-#define PWM_chA_GPIO_Port GPIOB
-#define But2_Fall_Pin GPIO_PIN_5
-#define But2_Fall_GPIO_Port GPIOB
-#define PWM_chB_Pin GPIO_PIN_6
-#define PWM_chB_GPIO_Port GPIOB
-#define But1_Rise_Pin GPIO_PIN_7
-#define But1_Rise_GPIO_Port GPIOB
+#define TIM7_Presc (168-1)
+#define DO_LED_1_Pin GPIO_PIN_1
+#define DO_LED_1_GPIO_Port GPIOC
+#define DO_LED_2_Pin GPIO_PIN_2
+#define DO_LED_2_GPIO_Port GPIOC
+#define AI_T_Pin GPIO_PIN_0
+#define AI_T_GPIO_Port GPIOA
+#define DO_REL_1_Pin GPIO_PIN_3
+#define DO_REL_1_GPIO_Port GPIOA
+#define DO_REL_2_Pin GPIO_PIN_4
+#define DO_REL_2_GPIO_Port GPIOA
+#define DO_REL_3_Pin GPIO_PIN_5
+#define DO_REL_3_GPIO_Port GPIOA
+#define DO_REL_4_Pin GPIO_PIN_6
+#define DO_REL_4_GPIO_Port GPIOA
+#define AI_R_Pin GPIO_PIN_5
+#define AI_R_GPIO_Port GPIOC
+#define DO_LED_3_Pin GPIO_PIN_10
+#define DO_LED_3_GPIO_Port GPIOA
+#define DO_LED_4_Pin GPIO_PIN_11
+#define DO_LED_4_GPIO_Port GPIOA
 
 /* USER CODE BEGIN Private defines */
 
-void shift_fim(uint16_t GPIO_Pin);
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

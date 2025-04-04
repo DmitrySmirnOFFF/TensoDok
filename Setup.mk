@@ -8,12 +8,13 @@ BUILD_DIR = build
 # Modules
 ######################################
 MODBUS_MODULE_SRC = \
-# PWM/PWM.c			\
+App/App.c			\
+Modbus/Modbus.c		\
 
 
 MODBUS_MODULE_INC = \
-# -IPWM				\
-
+-IApp				\
+-IModbus			\
 
 
 #$(patsubst %,-I%,$(include_paths))

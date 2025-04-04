@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\T1\AppData\Local\Temp\ccvihzR2.s 			page 1
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccRDtXZG.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -27,7 +27,7 @@ ARM GAS  C:\Users\T1\AppData\Local\Temp\ccvihzR2.s 			page 1
   24              		.thumb
   25              		.thumb_func
   27              	HAL_MspInit:
-  28              	.LFB361:
+  28              	.LFB329:
    1:Core/Src/stm32g4xx_hal_msp.c **** /* USER CODE BEGIN Header */
    2:Core/Src/stm32g4xx_hal_msp.c **** /**
    3:Core/Src/stm32g4xx_hal_msp.c ****   ******************************************************************************
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\T1\AppData\Local\Temp\ccvihzR2.s 			page 1
   28:Core/Src/stm32g4xx_hal_msp.c **** /* Private typedef -----------------------------------------------------------*/
   29:Core/Src/stm32g4xx_hal_msp.c **** /* USER CODE BEGIN TD */
   30:Core/Src/stm32g4xx_hal_msp.c **** 
-ARM GAS  C:\Users\T1\AppData\Local\Temp\ccvihzR2.s 			page 2
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccRDtXZG.s 			page 2
 
 
   31:Core/Src/stm32g4xx_hal_msp.c **** /* USER CODE END TD */
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\T1\AppData\Local\Temp\ccvihzR2.s 			page 1
   43              		.loc 1 70 3 view .LVU3
   44 0004 0B4B     		ldr	r3, .L3
   45 0006 1A6E     		ldr	r2, [r3, #96]
-ARM GAS  C:\Users\T1\AppData\Local\Temp\ccvihzR2.s 			page 3
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccRDtXZG.s 			page 3
 
 
   46 0008 42F00102 		orr	r2, r2, #1
@@ -172,24 +172,24 @@ ARM GAS  C:\Users\T1\AppData\Local\Temp\ccvihzR2.s 			page 1
   82              	.L3:
   83 0034 00100240 		.word	1073876992
   84              		.cfi_endproc
-  85              	.LFE361:
+  85              	.LFE329:
   87              		.text
   88              	.Letext0:
-  89              		.file 2 "c:\\program files\\vs_code\\vscodestmtools\\arm-none-eabi-gcc\\12.2.1-1.2.1\\.content\\ar
-  90              		.file 3 "c:\\program files\\vs_code\\vscodestmtools\\arm-none-eabi-gcc\\12.2.1-1.2.1\\.content\\ar
+  89              		.file 2 "c:\\program files\\vscodestmtools\\arm-none-eabi-gcc\\12.2.1-1.2.1\\.content\\arm-none-ea
+  90              		.file 3 "c:\\program files\\vscodestmtools\\arm-none-eabi-gcc\\12.2.1-1.2.1\\.content\\arm-none-ea
   91              		.file 4 "Drivers/CMSIS/Device/ST/STM32G4xx/Include/stm32g474xx.h"
-ARM GAS  C:\Users\T1\AppData\Local\Temp\ccvihzR2.s 			page 4
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccRDtXZG.s 			page 4
 
 
   92              		.file 5 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_pwr_ex.h"
-ARM GAS  C:\Users\T1\AppData\Local\Temp\ccvihzR2.s 			page 5
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccRDtXZG.s 			page 5
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 stm32g4xx_hal_msp.c
-C:\Users\T1\AppData\Local\Temp\ccvihzR2.s:21     .text.HAL_MspInit:0000000000000000 $t
-C:\Users\T1\AppData\Local\Temp\ccvihzR2.s:27     .text.HAL_MspInit:0000000000000000 HAL_MspInit
-C:\Users\T1\AppData\Local\Temp\ccvihzR2.s:83     .text.HAL_MspInit:0000000000000034 $d
+C:\Users\sr1\AppData\Local\Temp\ccRDtXZG.s:21     .text.HAL_MspInit:0000000000000000 $t
+C:\Users\sr1\AppData\Local\Temp\ccRDtXZG.s:27     .text.HAL_MspInit:0000000000000000 HAL_MspInit
+C:\Users\sr1\AppData\Local\Temp\ccRDtXZG.s:83     .text.HAL_MspInit:0000000000000034 $d
 
 UNDEFINED SYMBOLS
 HAL_PWREx_DisableUCPDDeadBattery

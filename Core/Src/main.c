@@ -19,14 +19,14 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "adc.h"
-#include "comp.h"
-#include "dac.h"
 #include "fdcan.h"
+#include "spi.h"
 #include "tim.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "App.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -47,19 +47,11 @@
 
 /* USER CODE BEGIN PV */
 
-int16_t shift = 0;
-int16_t low_shift = 5;
-int16_t high_shift= 995;
-uint8_t upDown = 0; // 0 - Up, 1 - Down
-
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
-
-
-
 
 /* USER CODE END PFP */
 
@@ -95,47 +87,18 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_ADC1_Init();
-  MX_FDCAN1_Init();
-  MX_COMP2_Init();
-  MX_DAC2_Init();
+  MX_SPI2_Init();
   MX_TIM1_Init();
+  MX_ADC2_Init();
+  MX_FDCAN3_Init();
   /* USER CODE BEGIN 2 */
-
-  HAL_TIM_OC_Start_IT(&htim1, TIM_CHANNEL_1);
-  HAL_TIM_OC_Start_IT(&htim1, TIM_CHANNEL_2);
-  TIM1->CCR1 = 995;
-  shift = TIM1->CCR1;
+  app_main();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    HAL_GPIO_WritePin(BUZZ_GPIO_Port, BUZZ_Pin, GPIO_PIN_RESET);
-    if (HAL_GPIO_ReadPin(But2_Fall_GPIO_Port,But2_Fall_Pin) == GPIO_PIN_RESET)
-    {
-      //HAL_GPIO_WritePin(BUZZ_GPIO_Port, BUZZ_Pin, GPIO_PIN_SET);
-      shift_fim(But2_Fall_Pin);      
-    }
-    // else
-    // {
-    //   HAL_GPIO_WritePin(BUZZ_GPIO_Port, BUZZ_Pin, GPIO_PIN_RESET);
-    // }
-
-    if (HAL_GPIO_ReadPin(But1_Rise_GPIO_Port,But1_Rise_Pin) == GPIO_PIN_RESET)
-    {
-      //HAL_GPIO_WritePin(BUZZ_GPIO_Port, BUZZ_Pin, GPIO_PIN_SET);
-      shift_fim(But1_Rise_Pin);
-    }
-    // else
-    // {
-    //   HAL_GPIO_WritePin(BUZZ_GPIO_Port, BUZZ_Pin, GPIO_PIN_RESET);
-    // }
-
-  HAL_Delay(100);
-
-
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -190,106 +153,13 @@ void SystemClock_Config(void)
 
 /* USER CODE BEGIN 4 */
 
-
-void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim)
-{
-  if (htim->Instance == TIM1)
-  {
-    if (htim->Channel == HAL_TIM_ACTIVE_CHANNEL_1)
-    {
-      HAL_GPIO_TogglePin(PWM_chA_GPIO_Port, PWM_chA_Pin);
-      //HAL_GPIO_TogglePin(BUZZ_GPIO_Port, BUZZ_Pin);
-    }
-    else if (htim->Channel == HAL_TIM_ACTIVE_CHANNEL_2)
-    {
-      HAL_GPIO_TogglePin(PWM_chB_GPIO_Port, PWM_chB_Pin);
-    }
-  }
-}
-
-// void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+// void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 // {
-//   if (GPIO_Pin == But2_Fall_Pin)
+//   if (htim == &htim7)
 //   {
-//     if (shift > low_shift)
-//     {
-//       shift--;
-//       TIM1->CCR1--;
-//     }
-//   }
-//   else if (GPIO_Pin == But1_Rise_Pin)
-//   {
-//     if (shift < high_shift)
-//      {
-//       shift++;
-//       TIM1->CCR1++;
-//      }
+//     tim7_1k_callback();
 //   }
 // }
-
-void shift_fim(uint16_t GPIO_Pin)
-{
-  HAL_GPIO_WritePin(BUZZ_GPIO_Port, BUZZ_Pin, GPIO_PIN_SET);
-  if (GPIO_Pin == But2_Fall_Pin)
-  {
-    if (shift > low_shift)
-    {
-      shift -= 1;
-      if (shift <= low_shift)
-      {
-        shift = low_shift;
-      }
-      TIM1->CCR1 = shift;
-    }
-  }
-  else if (GPIO_Pin == But1_Rise_Pin)
-  {
-    if (shift < high_shift)
-     {
-      if (shift >= high_shift)
-      {
-        shift = high_shift;
-      }
-      shift += 1;
-      TIM1->CCR1 = shift;
-     }
-  }
-}
-/*void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
-{
-  static uint16_t a = 20;
-  if (htim->Instance == TIM4)
-  {
-  if (a++ % 10 == 0)
-  {
-    if (upDown == 0)
-    {
-      if ((shift >= -400) || (shift < 400))
-      {
-        TIM4->ARR += 100;
-        shift += 100;
-      } 
-      else if (shift ==400)
-      {
-        upDown = 1;
-      }
-    }
-    else
-    {
-      if ((shift > -400) || (shift <= 400))
-      {
-        TIM4->ARR -= 100;
-        shift -= 100;
-      } 
-      else if (shift == 400)
-      {
-        upDown = 0;
-      }  
-    }
-  }
-  }
-}
- */
 
 /* USER CODE END 4 */
 

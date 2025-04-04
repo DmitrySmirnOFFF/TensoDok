@@ -30,12 +30,6 @@ LDSCRIPT = STM32G474RETx_FLASH.ld
 # libraries
 CUBE_C_FILES = \
 Core/Src/main.c \
-Core/Src/gpio.c \
-Core/Src/adc.c \
-Core/Src/comp.c \
-Core/Src/dac.c \
-Core/Src/fdcan.c \
-Core/Src/tim.c \
 Core/Src/stm32g4xx_it.c \
 Core/Src/stm32g4xx_hal_msp.c \
 Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.c \
@@ -54,13 +48,20 @@ Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_dma_ex.c \
 Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pwr.c \
 Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_pwr_ex.c \
 Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_cortex.c \
-Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_comp.c \
-Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_dac.c \
-Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_dac_ex.c \
 Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_fdcan.c \
 Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim.c \
 Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_tim_ex.c \
-Core/Src/system_stm32g4xx.c
+Core/Src/system_stm32g4xx.c \
+Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_spi.c \
+Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_spi_ex.c \
+Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart.c \
+Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_uart_ex.c \
+Core/Src/gpio.c \
+Core/Src/adc.c \
+Core/Src/fdcan.c \
+Core/Src/spi.c \
+Core/Src/tim.c \
+Core/Src/usart.c
 # ASM sources
 CUBE_C_INCLUDES = \
 -ICore/Inc \
