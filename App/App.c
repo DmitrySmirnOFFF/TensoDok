@@ -30,7 +30,6 @@ void app_tim7_1k_start()
 void app_tim7_1k_callback()
 {
   app_Mdb_Update_Data_AI();
-
 }
 
 void TIM7_DAC_IRQHandler(void)
@@ -51,3 +50,7 @@ void app_Mdb_Update_Data_AI()
 
 }
 
+void app_parce_Mdb_AO()
+{
+  ;
+}

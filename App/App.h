@@ -55,7 +55,6 @@ void app_tim7_1k_start();
 void app_tim7_1k_callback();
 
 void app_parce_Mdb_AO();
-
 void app_Mdb_Update_Data_AI();
 
 //---------------------------- FUNCTION END ----------------------------//
