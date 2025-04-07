@@ -4,8 +4,9 @@
 #include "main.h"
 #include "modbus.h"
 #include "tim.h"
+#include "spi.h"
 
-//-------------------------------- LED --------------------------------//
+//------------------------------ DEFINE ------------------------------//
 #define APP_LED_1               DO_LED_1_GPIO_Port, DO_LED_1_Pin
 #define APP_LED_2               DO_LED_2_GPIO_Port, DO_LED_2_Pin
 #define APP_LED_3               DO_LED_3_GPIO_Port, DO_LED_3_Pin
@@ -14,10 +15,7 @@
 #define APP_LED_ON(LED)			HAL_GPIO_WritePin(LED, GPIO_PIN_SET)
 #define APP_LED_OFF(LED)		HAL_GPIO_WritePin(LED, GPIO_PIN_RESET)
 #define APP_LED_TOGGLE(LED)		HAL_GPIO_TogglePin(LED)
-//------------------------------ LED END ------------------------------//
 
-
-//-------------------------------- REL --------------------------------//
 #define APP_REL_1               DO_REL_1_GPIO_Port, DO_REL_1_Pin
 #define APP_REL_2               DO_REL_2_GPIO_Port, DO_REL_2_Pin
 #define APP_REL_3               DO_REL_3_GPIO_Port, DO_REL_3_Pin
@@ -26,8 +24,28 @@
 #define APP_REL_ON(REL)			HAL_GPIO_WritePin(REL, GPIO_PIN_SET)
 #define APP_REL_OFF(REL)		HAL_GPIO_WritePin(REL, GPIO_PIN_RESET)
 #define APP_REL_TOGGLE(REL)		HAL_GPIO_TogglePin(REL)
-//------------------------------ REL END ------------------------------//
 
+#define APP_GET_BIT(REG, BIT)   (REG & (1 << BIT))
+#define APP_SET_BIT(REG, BIT)   (REG |= (1 << BIT))
+#define APP_RESET_BIT(REG, BIT) (REG &= ~(1 << BIT))
+
+
+
+//---------------------------- DEFINE END ----------------------------//
+
+//------------------------------- ENUM -------------------------------//
+typedef enum
+{
+    LED_1 = 0,
+    LED_2,
+    LED_3,
+    LED_4,
+    REL_1,
+    REL_2,
+    REL_3,
+    REL_4
+}LED_REL_ENUM;
+//----------------------------- ENUM END -----------------------------//
 
 //------------------------------- STRUCT -------------------------------//
 typedef struct 
@@ -55,8 +73,14 @@ void app_tim7_1k_start();
 void app_tim7_1k_callback();
 
 void app_parce_Mdb_AO();
-void app_Mdb_Update_Data_AI();
+void app_update_Mdb_Data_AI();
+void get_data_spi();
+
+uint32_t app_tim1_get_cnt();
+void app_tim1_clear_cnt();
+
 
 //---------------------------- FUNCTION END ----------------------------//
+
 
 #endif

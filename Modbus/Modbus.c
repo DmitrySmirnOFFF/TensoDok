@@ -32,8 +32,8 @@ void ModbusRTU_UART_Init()
 
 void ModbusRTU_Init() 
 {
-	//ModbusRTU_Init_AO();
-	//ModbusRTU_Init_AI();
+	ModbusRTU_Init_AO();
+	ModbusRTU_Init_AI();
 	ModbusRTU_UART_Init();
 	MODBUS_FAULT = 0;
 	UART_ERR = 0;
