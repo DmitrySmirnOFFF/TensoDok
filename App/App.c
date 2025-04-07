@@ -37,8 +37,8 @@ void app_init()
   app_tim7_1k_start();
 
   // HAL_TIM_OC_Start(&htim1, TIM_CHANNEL_1);
-  HAL_TIM_Base_Start_IT(&htim1);
-  HAL_TIM_OC_Start_IT(&htim1, TIM_CHANNEL_1);
+  //HAL_TIM_Base_Start_IT(&htim1);
+  //HAL_TIM_OC_Start_IT(&htim1, TIM_CHANNEL_1);
   ModbusRTU_Init();
 }
 
@@ -257,6 +257,62 @@ void app_parce_Mdb_AO()
 
 void get_data_spi()
 {
+  // while(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) == GPIO_PIN_SET)
+  // {
+  //   ;
+  // }
+  // while(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) == GPIO_PIN_RESET)
+  // {
+  //   ;
+  // }
+  // app_tim1_clear_cnt();
+  // while((HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) == GPIO_PIN_SET))
+  // {
+  //   ;
+  // }
+  // if (app_tim1_get_cnt() > 20)
+  // {
+  //   while(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) == GPIO_PIN_RESET)
+  //   {
+  //     ;
+  //   }
+  //   while(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) == GPIO_PIN_SET)
+  //   {
+  //     ;
+  //   }
+  //   HAL_SPI_Receive(&hspi2, data_rx, 3, 100);
+  // }
+  // else
+  // {
+  //   while(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) == GPIO_PIN_SET)
+  //   {
+  //     ;
+  //   }
+  //   while(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) == GPIO_PIN_RESET)
+  //   {
+  //     ;
+  //   }
+  //   app_tim1_clear_cnt();
+  //   while((HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) == GPIO_PIN_SET))
+  //   {
+  //     ;
+  //   }
+  //   while(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) == GPIO_PIN_RESET)
+  //   {
+  //     ;
+  //   }
+  //   while(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) == GPIO_PIN_SET)
+  //   {
+  //     ;
+  //   }
+  //   HAL_SPI_Receive(&hspi2, data_rx, 3, 100);
+  // }
+
+  HAL_TIM_OC_Start_IT(&htim1, TIM_CHANNEL_1);
+  while(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) == GPIO_PIN_RESET)
+  {
+    ;
+  }
   while(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) == GPIO_PIN_SET)
   {
     ;
@@ -265,50 +321,16 @@ void get_data_spi()
   {
     ;
   }
-  app_tim1_clear_cnt();
-  while((HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) == GPIO_PIN_SET))
+  while(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) == GPIO_PIN_SET)
   {
     ;
   }
-  if (app_tim1_get_cnt() > 20)
-  {
-    while(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) == GPIO_PIN_RESET)
-    {
-      ;
-    }
-    while(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) == GPIO_PIN_SET)
-    {
-      ;
-    }
-    HAL_SPI_Receive(&hspi2, data_rx, 3, 100);
-  }
-  else
-  {
-    while(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) == GPIO_PIN_SET)
-    {
-      ;
-    }
-    while(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) == GPIO_PIN_RESET)
-    {
-      ;
-    }
-    app_tim1_clear_cnt();
-    while((HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) == GPIO_PIN_SET))
-    {
-      ;
-    }
-    while(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) == GPIO_PIN_RESET)
-    {
-      ;
-    }
-    while(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) == GPIO_PIN_SET)
-    {
-      ;
-    }
-    HAL_SPI_Receive(&hspi2, data_rx, 3, 100);
-  }
+  //HAL_Delay(1);
+  HAL_SPI_Receive(&hspi2, data_rx, 3, 100);
+  HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_1);
 //
   asm ("nop");
+  ADC_DATA_RAW = 0;
   ADC_DATA_RAW |= ((uint32_t)SPI_DATA_RX[0] << 16);
   ADC_DATA_RAW |= ((uint32_t)SPI_DATA_RX[1] << 8);
   ADC_DATA_RAW |= ((uint32_t)SPI_DATA_RX[2] << 0);
