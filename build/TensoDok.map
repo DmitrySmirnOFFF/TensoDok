@@ -1510,8 +1510,6 @@ Discarded input sections
  .text          0x0000000000000000        0x0 build/ModbusSS.o
  .data          0x0000000000000000        0x0 build/ModbusSS.o
  .bss           0x0000000000000000        0x0 build/ModbusSS.o
- .text.ModbusSS_GetWord
-                0x0000000000000000        0xe build/ModbusSS.o
  .text          0x0000000000000000        0x0 build/BSP.o
  .data          0x0000000000000000        0x0 build/BSP.o
  .bss           0x0000000000000000        0x0 build/BSP.o
@@ -1974,7 +1972,7 @@ LOAD c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin
                 0x0000000008000000                g_pfnVectors
                 0x00000000080001d8                . = ALIGN (0x4)
 
-.text           0x00000000080001d8     0x5078
+.text           0x00000000080001d8     0x508c
                 0x00000000080001d8                . = ALIGN (0x4)
  *(.text)
  .text          0x00000000080001d8       0x30 c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
@@ -2425,129 +2423,131 @@ LOAD c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin
  .text.ModbusSS_ParseRxData
                 0x0000000008004ab2      0x194 build/ModbusSS.o
                 0x0000000008004ab2                ModbusSS_ParseRxData
+ .text.ModbusSS_GetWord
+                0x0000000008004c46        0xe build/ModbusSS.o
+                0x0000000008004c46                ModbusSS_GetWord
  .text.ModbusSS_SetWord
-                0x0000000008004c46        0xc build/ModbusSS.o
-                0x0000000008004c46                ModbusSS_SetWord
- *fill*         0x0000000008004c52        0x2 
+                0x0000000008004c54        0xc build/ModbusSS.o
+                0x0000000008004c54                ModbusSS_SetWord
  .text.__NVIC_SystemReset
-                0x0000000008004c54       0x24 build/BSP.o
+                0x0000000008004c60       0x24 build/BSP.o
  .text.bsp_rs485_setPortToModbusRtu
-                0x0000000008004c78       0x64 build/BSP.o
-                0x0000000008004c78                bsp_rs485_setPortToModbusRtu
+                0x0000000008004c84       0x64 build/BSP.o
+                0x0000000008004c84                bsp_rs485_setPortToModbusRtu
  .text.bsp_rs485_sendBlock
-                0x0000000008004cdc       0x38 build/BSP.o
-                0x0000000008004cdc                bsp_rs485_sendBlock
+                0x0000000008004ce8       0x38 build/BSP.o
+                0x0000000008004ce8                bsp_rs485_sendBlock
  .text.USART1_IRQHandler
-                0x0000000008004d14       0x94 build/BSP.o
-                0x0000000008004d14                USART1_IRQHandler
+                0x0000000008004d20       0x94 build/BSP.o
+                0x0000000008004d20                USART1_IRQHandler
  .text.app_tim7_1ms_start
-                0x0000000008004da8       0x10 build/BSP.o
-                0x0000000008004da8                app_tim7_1ms_start
+                0x0000000008004db4       0x10 build/BSP.o
+                0x0000000008004db4                app_tim7_1ms_start
  .text.TIM7_DAC_IRQHandler
-                0x0000000008004db8       0x28 build/BSP.o
-                0x0000000008004db8                TIM7_DAC_IRQHandler
+                0x0000000008004dc4       0x28 build/BSP.o
+                0x0000000008004dc4                TIM7_DAC_IRQHandler
  .text.get_data_spi
-                0x0000000008004de0       0x84 build/BSP.o
-                0x0000000008004de0                get_data_spi
+                0x0000000008004dec       0x84 build/BSP.o
+                0x0000000008004dec                get_data_spi
  .text.protocolMbRtuSlaveCtrl_callback_H_WRITE
-                0x0000000008004e64       0x20 build/ProtocolMbRtuSlaveCtrl.o
-                0x0000000008004e64                protocolMbRtuSlaveCtrl_callback_H_WRITE
+                0x0000000008004e70       0x28 build/ProtocolMbRtuSlaveCtrl.o
+                0x0000000008004e70                protocolMbRtuSlaveCtrl_callback_H_WRITE
  .text.protocolMbRtuSlaveCtrl_init
-                0x0000000008004e84       0x1c build/ProtocolMbRtuSlaveCtrl.o
-                0x0000000008004e84                protocolMbRtuSlaveCtrl_init
+                0x0000000008004e98       0x1c build/ProtocolMbRtuSlaveCtrl.o
+                0x0000000008004e98                protocolMbRtuSlaveCtrl_init
  .text.protocolMbRtuSlaveCtrl_update_tables
-                0x0000000008004ea0       0x58 build/ProtocolMbRtuSlaveCtrl.o
-                0x0000000008004ea0                protocolMbRtuSlaveCtrl_update_tables
+                0x0000000008004eb4       0x58 build/ProtocolMbRtuSlaveCtrl.o
+                0x0000000008004eb4                protocolMbRtuSlaveCtrl_update_tables
  .text.bsp_rs485_callback_rxBlockReady
-                0x0000000008004ef8       0x2c build/ProtocolMbRtuSlaveCtrl.o
-                0x0000000008004ef8                bsp_rs485_callback_rxBlockReady
+                0x0000000008004f0c       0x2c build/ProtocolMbRtuSlaveCtrl.o
+                0x0000000008004f0c                bsp_rs485_callback_rxBlockReady
  .text.__udivmoddi4
-                0x0000000008004f24      0x2bc c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
-                0x0000000008004f24                __udivmoddi4
- .text.memset   0x00000000080051e0       0x10 c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
-                0x00000000080051e0                memset
+                0x0000000008004f38      0x2bc c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+                0x0000000008004f38                __udivmoddi4
+ .text.memset   0x00000000080051f4       0x10 c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
+                0x00000000080051f4                memset
  .text.__libc_init_array
-                0x00000000080051f0       0x48 c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
-                0x00000000080051f0                __libc_init_array
+                0x0000000008005204       0x48 c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
+                0x0000000008005204                __libc_init_array
  *(.glue_7)
- .glue_7        0x0000000008005238        0x0 linker stubs
+ .glue_7        0x000000000800524c        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x0000000008005238        0x0 linker stubs
+ .glue_7t       0x000000000800524c        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x0000000008005238        0x0 c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard/crtbegin.o
+ .eh_frame      0x000000000800524c        0x0 c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard/crtbegin.o
  *(.init)
- .init          0x0000000008005238        0x4 c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard/crti.o
-                0x0000000008005238                _init
- .init          0x000000000800523c        0x8 c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard/crtn.o
+ .init          0x000000000800524c        0x4 c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard/crti.o
+                0x000000000800524c                _init
+ .init          0x0000000008005250        0x8 c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard/crtn.o
  *(.fini)
- .fini          0x0000000008005244        0x4 c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard/crti.o
-                0x0000000008005244                _fini
- .fini          0x0000000008005248        0x8 c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard/crtn.o
-                0x0000000008005250                . = ALIGN (0x4)
-                0x0000000008005250                _etext = .
+ .fini          0x0000000008005258        0x4 c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard/crti.o
+                0x0000000008005258                _fini
+ .fini          0x000000000800525c        0x8 c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard/crtn.o
+                0x0000000008005264                . = ALIGN (0x4)
+                0x0000000008005264                _etext = .
 
-.vfp11_veneer   0x0000000008005250        0x0
- .vfp11_veneer  0x0000000008005250        0x0 linker stubs
+.vfp11_veneer   0x0000000008005264        0x0
+ .vfp11_veneer  0x0000000008005264        0x0 linker stubs
 
-.v4_bx          0x0000000008005250        0x0
- .v4_bx         0x0000000008005250        0x0 linker stubs
+.v4_bx          0x0000000008005264        0x0
+ .v4_bx         0x0000000008005264        0x0 linker stubs
 
-.iplt           0x0000000008005250        0x0
- .iplt          0x0000000008005250        0x0 c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard/crtbegin.o
+.iplt           0x0000000008005264        0x0
+ .iplt          0x0000000008005264        0x0 c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard/crtbegin.o
 
-.rodata         0x0000000008005250       0x40
-                0x0000000008005250                . = ALIGN (0x4)
+.rodata         0x0000000008005264       0x40
+                0x0000000008005264                . = ALIGN (0x4)
  *(.rodata)
  *(.rodata*)
  .rodata.APBPrescTable
-                0x0000000008005250        0x8 build/system_stm32g4xx.o
-                0x0000000008005250                APBPrescTable
+                0x0000000008005264        0x8 build/system_stm32g4xx.o
+                0x0000000008005264                APBPrescTable
  .rodata.AHBPrescTable
-                0x0000000008005258       0x10 build/system_stm32g4xx.o
-                0x0000000008005258                AHBPrescTable
+                0x000000000800526c       0x10 build/system_stm32g4xx.o
+                0x000000000800526c                AHBPrescTable
  .rodata.UARTPrescTable
-                0x0000000008005268       0x18 build/stm32g4xx_hal_uart.o
-                0x0000000008005268                UARTPrescTable
+                0x000000000800527c       0x18 build/stm32g4xx_hal_uart.o
+                0x000000000800527c                UARTPrescTable
  .rodata.denominator.0
-                0x0000000008005280        0x8 build/stm32g4xx_hal_uart_ex.o
+                0x0000000008005294        0x8 build/stm32g4xx_hal_uart_ex.o
  .rodata.numerator.1
-                0x0000000008005288        0x8 build/stm32g4xx_hal_uart_ex.o
-                0x0000000008005290                . = ALIGN (0x4)
+                0x000000000800529c        0x8 build/stm32g4xx_hal_uart_ex.o
+                0x00000000080052a4                . = ALIGN (0x4)
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM            0x0000000008005290        0x8
-                0x0000000008005290                __exidx_start = .
+.ARM            0x00000000080052a4        0x8
+                0x00000000080052a4                __exidx_start = .
  *(.ARM.exidx*)
  .ARM.exidx.text.__udivmoddi4
-                0x0000000008005290        0x8 c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
-                0x0000000008005298                __exidx_end = .
+                0x00000000080052a4        0x8 c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+                0x00000000080052ac                __exidx_end = .
 
-.rel.dyn        0x0000000008005298        0x0
- .rel.iplt      0x0000000008005298        0x0 c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard/crtbegin.o
+.rel.dyn        0x00000000080052ac        0x0
+ .rel.iplt      0x00000000080052ac        0x0 c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard/crtbegin.o
 
-.preinit_array  0x0000000008005298        0x0
-                0x0000000008005298                PROVIDE (__preinit_array_start = .)
+.preinit_array  0x00000000080052ac        0x0
+                0x00000000080052ac                PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x0000000008005298                PROVIDE (__preinit_array_end = .)
+                0x00000000080052ac                PROVIDE (__preinit_array_end = .)
 
-.init_array     0x0000000008005298        0x4
-                0x0000000008005298                PROVIDE (__init_array_start = .)
+.init_array     0x00000000080052ac        0x4
+                0x00000000080052ac                PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array*)
- .init_array    0x0000000008005298        0x4 c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard/crtbegin.o
-                0x000000000800529c                PROVIDE (__init_array_end = .)
+ .init_array    0x00000000080052ac        0x4 c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard/crtbegin.o
+                0x00000000080052b0                PROVIDE (__init_array_end = .)
 
-.fini_array     0x000000000800529c        0x4
-                0x000000000800529c                PROVIDE (__fini_array_start = .)
+.fini_array     0x00000000080052b0        0x4
+                0x00000000080052b0                PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x000000000800529c        0x4 c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard/crtbegin.o
-                0x00000000080052a0                PROVIDE (__fini_array_end = .)
-                0x00000000080052a0                _sidata = LOADADDR (.data)
+ .fini_array    0x00000000080052b0        0x4 c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard/crtbegin.o
+                0x00000000080052b4                PROVIDE (__fini_array_end = .)
+                0x00000000080052b4                _sidata = LOADADDR (.data)
 
-.data           0x0000000020000000       0x38 load address 0x00000000080052a0
+.data           0x0000000020000000       0x38 load address 0x00000000080052b4
                 0x0000000020000000                . = ALIGN (0x4)
                 0x0000000020000000                _sdata = .
  *(.data)
@@ -2573,11 +2573,11 @@ LOAD c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin
                 0x0000000020000038                . = ALIGN (0x4)
                 0x0000000020000038                _edata = .
 
-.igot.plt       0x0000000020000038        0x0 load address 0x00000000080052d8
+.igot.plt       0x0000000020000038        0x0 load address 0x00000000080052ec
  .igot.plt      0x0000000020000038        0x0 c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard/crtbegin.o
                 0x0000000020000038                . = ALIGN (0x4)
 
-.bss            0x0000000020000038      0x4e0 load address 0x00000000080052d8
+.bss            0x0000000020000038      0x4e0 load address 0x00000000080052ec
                 0x0000000020000038                _sbss = .
                 0x0000000020000038                __bss_start__ = _sbss
  *(.bss)
@@ -2630,7 +2630,7 @@ LOAD c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin
                 0x0000000020000518                __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x0000000020000518     0x6000 load address 0x00000000080052d8
+                0x0000000020000518     0x6000 load address 0x00000000080052ec
                 0x0000000020000518                . = ALIGN (0x8)
                 0x0000000020000518                PROVIDE (end = .)
                 [!provide]                        PROVIDE (_end = .)
@@ -2766,7 +2766,7 @@ LOAD c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin
  .comment       0x0000000000000039       0x3a c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-memset.o)
  .comment       0x0000000000000039       0x3a c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/../../../../arm-none-eabi/lib/thumb/v7e-m+fp/hard\libc_nano.a(libc_a-init.o)
 
-.debug_info     0x0000000000000000    0x26f86
+.debug_info     0x0000000000000000    0x26fd0
  .debug_info    0x0000000000000000      0x471 build/main.o
  .debug_info    0x0000000000000471      0x59a build/stm32g4xx_it.o
  .debug_info    0x0000000000000a0b      0x39a build/stm32g4xx_hal_msp.o
@@ -2795,10 +2795,10 @@ LOAD c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin
  .debug_info    0x000000000002390d      0x8cb build/App.o
  .debug_info    0x00000000000241d8      0x672 build/ModbusSS.o
  .debug_info    0x000000000002484a     0x1832 build/BSP.o
- .debug_info    0x000000000002607c      0x7b0 build/ProtocolMbRtuSlaveCtrl.o
- .debug_info    0x000000000002682c       0x24 c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
- .debug_info    0x0000000000026850      0x6fd c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
- .debug_info    0x0000000000026f4d       0x39 c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
+ .debug_info    0x000000000002607c      0x7fa build/ProtocolMbRtuSlaveCtrl.o
+ .debug_info    0x0000000000026876       0x24 c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
+ .debug_info    0x000000000002689a      0x6fd c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+ .debug_info    0x0000000000026f97       0x39 c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
 
 .debug_abbrev   0x0000000000000000     0x450d
  .debug_abbrev  0x0000000000000000      0x1b3 build/main.o
@@ -2834,7 +2834,7 @@ LOAD c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin
  .debug_abbrev  0x0000000000004384      0x16a c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
  .debug_abbrev  0x00000000000044ee       0x1f c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
 
-.debug_loc      0x0000000000000000    0x1c6e1
+.debug_loc      0x0000000000000000    0x1c6dc
  .debug_loc     0x0000000000000000       0x66 build/main.o
  .debug_loc     0x0000000000000066       0x60 build/stm32g4xx_it.o
  .debug_loc     0x00000000000000c6       0x38 build/stm32g4xx_hal_msp.o
@@ -2860,10 +2860,10 @@ LOAD c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin
  .debug_loc     0x000000000001b65a      0x1f8 build/tim.o
  .debug_loc     0x000000000001b852       0xda build/usart.o
  .debug_loc     0x000000000001b92c       0x38 build/dma.o
- .debug_loc     0x000000000001b964      0x289 build/App.o
- .debug_loc     0x000000000001bbed      0x656 build/ModbusSS.o
- .debug_loc     0x000000000001c243      0x2de build/BSP.o
- .debug_loc     0x000000000001c521      0x1c0 build/ProtocolMbRtuSlaveCtrl.o
+ .debug_loc     0x000000000001b964      0x2ab build/App.o
+ .debug_loc     0x000000000001bc0f      0x656 build/ModbusSS.o
+ .debug_loc     0x000000000001c265      0x2de build/BSP.o
+ .debug_loc     0x000000000001c543      0x199 build/ProtocolMbRtuSlaveCtrl.o
 
 .debug_aranges  0x0000000000000000     0x1748
  .debug_aranges
@@ -2962,7 +2962,7 @@ LOAD c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin
  .debug_ranges  0x0000000000001690       0x58 build/BSP.o
  .debug_ranges  0x00000000000016e8       0x30 build/ProtocolMbRtuSlaveCtrl.o
 
-.debug_line     0x0000000000000000    0x1dad1
+.debug_line     0x0000000000000000    0x1dae2
  .debug_line    0x0000000000000000      0x339 build/main.o
  .debug_line    0x0000000000000339      0x2fb build/stm32g4xx_it.o
  .debug_line    0x0000000000000634      0x1c1 build/stm32g4xx_hal_msp.o
@@ -2988,13 +2988,13 @@ LOAD c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin
  .debug_line    0x000000000001b752      0x503 build/tim.o
  .debug_line    0x000000000001bc55      0x467 build/usart.o
  .debug_line    0x000000000001c0bc      0x1b5 build/dma.o
- .debug_line    0x000000000001c271      0x507 build/App.o
- .debug_line    0x000000000001c778      0x510 build/ModbusSS.o
- .debug_line    0x000000000001cc88      0x596 build/BSP.o
- .debug_line    0x000000000001d21e      0x266 build/ProtocolMbRtuSlaveCtrl.o
- .debug_line    0x000000000001d484       0x4e c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
- .debug_line    0x000000000001d4d2      0x5b5 c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
- .debug_line    0x000000000001da87       0x4a c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
+ .debug_line    0x000000000001c271      0x50d build/App.o
+ .debug_line    0x000000000001c77e      0x510 build/ModbusSS.o
+ .debug_line    0x000000000001cc8e      0x596 build/BSP.o
+ .debug_line    0x000000000001d224      0x271 build/ProtocolMbRtuSlaveCtrl.o
+ .debug_line    0x000000000001d495       0x4e c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
+ .debug_line    0x000000000001d4e3      0x5b5 c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
+ .debug_line    0x000000000001da98       0x4a c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_dvmd_tls.o)
 
 .debug_str      0x0000000000000000     0x84f5
  .debug_str     0x0000000000000000      0x37b build/main.o
@@ -3054,7 +3054,7 @@ LOAD c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin
  .debug_str     0x00000000000079b9       0xfa build/BSP.o
                                         0xe65 (size before relaxing)
  .debug_str     0x0000000000007ab3      0x2c4 build/ProtocolMbRtuSlaveCtrl.o
-                                        0x6db (size before relaxing)
+                                        0x6ec (size before relaxing)
  .debug_str     0x0000000000007d77      0x120 c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_aeabi_uldivmod.o)
  .debug_str     0x0000000000007e97      0x5d3 c:/program files/vscodestmtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/bin/../lib/gcc/arm-none-eabi/12.2.1/thumb/v7e-m+fp/hard\libgcc.a(_udivmoddi4.o)
                                         0x72a (size before relaxing)
@@ -3920,6 +3920,7 @@ MX_USART1_UART_Init                               build/usart.o
 MemManage_Handler                                 build/stm32g4xx_it.o
                                                   build/startup_stm32g474xx.o
 ModbusSS_GetWord                                  build/ModbusSS.o
+                                                  build/ProtocolMbRtuSlaveCtrl.o
 ModbusSS_ParseRxData                              build/ModbusSS.o
                                                   build/ProtocolMbRtuSlaveCtrl.o
 ModbusSS_SetWord                                  build/ModbusSS.o

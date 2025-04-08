@@ -64,7 +64,7 @@ __INLINE void protocolMbRtuSlaveCtrl_update_tables()
 {
   // --- BSP -----------------------------//
   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_state_led_rele,    App.Mdb_data_AO.state_led_rele);
-  ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_control_led_rele,  0);
+  ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_control_led_rele,  App.Mdb_data_AO.control_led_rele);
   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_spi_buf_0,         App.Mdb_data_AO.spi_buf_0[0]);
   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_spi_buf_1,         App.Mdb_data_AO.spi_buf_0[1]);
   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_spi_buf_2,         App.Mdb_data_AO.spi_buf_0[2]);
@@ -82,17 +82,18 @@ __weak void protocolMbRtuSlaveCtrl_callback_H_WRITE(ModbusSS_table_t *table, uin
   // float analog_kMul = 0.000001;
   // float kMul = 0.001f;
   // float kMulBms = 0.1f;
-  // float value = 0.0f;
+  uint16_t value = 0.0f;
   // uint8_t idx = 0;
   // int16_t sign_val = 0;
   asm("NOP");
 
   if (table == &mdb_table_bsp) // Диапазон BSP
   {
+    value = ModbusSS_GetWord(&mdb_table_bsp, reg);
     switch (reg)
     {
     case tab_bsp_control_led_rele:
-      control_led_rele(reg);
+      control_led_rele(value);
       break;
     default:
       break;
