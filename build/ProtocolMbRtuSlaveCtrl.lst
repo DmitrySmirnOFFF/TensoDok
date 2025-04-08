@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s 			page 1
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,579 +58,575 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s 			page 1
   27:App/ProtocolMbRtuSlaveCtrl.c ****     .quantity = MDB_BSP_BUF_COUNT,
   28:App/ProtocolMbRtuSlaveCtrl.c ****     .regNo = MDB_TABLE_BSP_REG_NO,
   29:App/ProtocolMbRtuSlaveCtrl.c ****     .type = ModbusSS_Holding};
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s 			page 2
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s 			page 2
 
 
   30:App/ProtocolMbRtuSlaveCtrl.c **** 
-  31:App/ProtocolMbRtuSlaveCtrl.c **** 
-  32:App/ProtocolMbRtuSlaveCtrl.c **** //-----------------BMS END-----------------//
-  33:App/ProtocolMbRtuSlaveCtrl.c **** 
-  34:App/ProtocolMbRtuSlaveCtrl.c **** //--------------------  PROTOCOL END---------------------//
-  35:App/ProtocolMbRtuSlaveCtrl.c **** 
-  36:App/ProtocolMbRtuSlaveCtrl.c **** //--------------------  TABLES ARRAY ---------------------//
-  37:App/ProtocolMbRtuSlaveCtrl.c **** ModbusSS_table_t *modbusTables[] = {
-  38:App/ProtocolMbRtuSlaveCtrl.c ****     &mdb_table_bsp
-  39:App/ProtocolMbRtuSlaveCtrl.c **** };
-  40:App/ProtocolMbRtuSlaveCtrl.c **** //--------------------  TABLES ARRAY END---------------------//
-  41:App/ProtocolMbRtuSlaveCtrl.c **** 
-  42:App/ProtocolMbRtuSlaveCtrl.c **** //--------------------  MODBUS STRUCT ---------------------//
-  43:App/ProtocolMbRtuSlaveCtrl.c **** ModbusSS_t modbusSS_rtu_rs485 = {
-  44:App/ProtocolMbRtuSlaveCtrl.c ****     .cbHoldingUpdate = protocolMbRtuSlaveCtrl_callback_H_WRITE,
-  45:App/ProtocolMbRtuSlaveCtrl.c ****     .cbHoldingRequest = NULL, // protocolMbRtuSlaveCtrl_callback_H_REQ, //modbusHoldingReq,
-  46:App/ProtocolMbRtuSlaveCtrl.c ****     .rtuTcp = MODBUS_SS_RTU,
-  47:App/ProtocolMbRtuSlaveCtrl.c ****     .bufRxTx = modbusBufRxTxRtu485,
-  48:App/ProtocolMbRtuSlaveCtrl.c ****     .slaveId = 1,
-  49:App/ProtocolMbRtuSlaveCtrl.c ****     .tables = modbusTables,
-  50:App/ProtocolMbRtuSlaveCtrl.c ****     .tablesCount = 1
-  51:App/ProtocolMbRtuSlaveCtrl.c **** };
-  52:App/ProtocolMbRtuSlaveCtrl.c **** 
-  53:App/ProtocolMbRtuSlaveCtrl.c **** protocolMbRtuSlaveCtrl_typedef modbusRtu_ctrlStruct; // protocol control struct
-  54:App/ProtocolMbRtuSlaveCtrl.c **** //--------------------  MODBUS STRUCT END---------------------//
+  31:App/ProtocolMbRtuSlaveCtrl.c **** //--------------------  PROTOCOL END---------------------//
+  32:App/ProtocolMbRtuSlaveCtrl.c **** 
+  33:App/ProtocolMbRtuSlaveCtrl.c **** //--------------------  TABLES ARRAY ---------------------//
+  34:App/ProtocolMbRtuSlaveCtrl.c **** ModbusSS_table_t *modbusTables[] = {
+  35:App/ProtocolMbRtuSlaveCtrl.c ****     &mdb_table_bsp
+  36:App/ProtocolMbRtuSlaveCtrl.c **** };
+  37:App/ProtocolMbRtuSlaveCtrl.c **** //--------------------  TABLES ARRAY END---------------------//
+  38:App/ProtocolMbRtuSlaveCtrl.c **** 
+  39:App/ProtocolMbRtuSlaveCtrl.c **** //--------------------  MODBUS STRUCT ---------------------//
+  40:App/ProtocolMbRtuSlaveCtrl.c **** ModbusSS_t modbusSS_rtu_rs485 = {
+  41:App/ProtocolMbRtuSlaveCtrl.c ****     .cbHoldingUpdate = protocolMbRtuSlaveCtrl_callback_H_WRITE,
+  42:App/ProtocolMbRtuSlaveCtrl.c ****     .cbHoldingRequest = NULL, // protocolMbRtuSlaveCtrl_callback_H_REQ, //modbusHoldingReq,
+  43:App/ProtocolMbRtuSlaveCtrl.c ****     .rtuTcp = MODBUS_SS_RTU,
+  44:App/ProtocolMbRtuSlaveCtrl.c ****     .bufRxTx = modbusBufRxTxRtu485,
+  45:App/ProtocolMbRtuSlaveCtrl.c ****     .slaveId = 1,
+  46:App/ProtocolMbRtuSlaveCtrl.c ****     .tables = modbusTables,
+  47:App/ProtocolMbRtuSlaveCtrl.c ****     .tablesCount = 1
+  48:App/ProtocolMbRtuSlaveCtrl.c **** };
+  49:App/ProtocolMbRtuSlaveCtrl.c **** protocolMbRtuSlaveCtrl_typedef modbusRtu_ctrlStruct; // protocol control struct
+  50:App/ProtocolMbRtuSlaveCtrl.c **** //--------------------  MODBUS STRUCT END---------------------//
+  51:App/ProtocolMbRtuSlaveCtrl.c **** 
+  52:App/ProtocolMbRtuSlaveCtrl.c **** //------------------------ EXTERN ------------------------
+  53:App/ProtocolMbRtuSlaveCtrl.c **** extern App_struct App;
+  54:App/ProtocolMbRtuSlaveCtrl.c **** //---------------------- EXTERN END-----------------------
   55:App/ProtocolMbRtuSlaveCtrl.c **** 
-  56:App/ProtocolMbRtuSlaveCtrl.c **** //------------------------ EXTERN ------------------------
-  57:App/ProtocolMbRtuSlaveCtrl.c **** extern App_struct App;
-  58:App/ProtocolMbRtuSlaveCtrl.c **** //---------------------- EXTERN END-----------------------
-  59:App/ProtocolMbRtuSlaveCtrl.c **** 
-  60:App/ProtocolMbRtuSlaveCtrl.c **** //------------------------ REGULAR FCN ------------------------
-  61:App/ProtocolMbRtuSlaveCtrl.c **** void protocolMbRtuSlaveCtrl_init(uint8_t portNo)
-  62:App/ProtocolMbRtuSlaveCtrl.c **** {
-  63:App/ProtocolMbRtuSlaveCtrl.c ****   HAL_Delay(100);
-  64:App/ProtocolMbRtuSlaveCtrl.c ****   bsp_rs485_setPortToModbusRtu(portNo, modbusBufRxTxRtu485, MODBUS_SS_BUF_CNT);
-  65:App/ProtocolMbRtuSlaveCtrl.c **** }
-  66:App/ProtocolMbRtuSlaveCtrl.c **** 
-  67:App/ProtocolMbRtuSlaveCtrl.c **** __INLINE void protocolMbRtuSlaveCtrl_update_tables()
-  68:App/ProtocolMbRtuSlaveCtrl.c **** {
-  69:App/ProtocolMbRtuSlaveCtrl.c ****   // --- BSP -----------------------------//
-  70:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_state_led_rele,    App.Mdb_data_AO.state_led_rele);
-  71:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_control_led_rele,  0);
-  72:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_spi_buf_0,         App.Mdb_data_AO.spi_buf_0[0]);
-  73:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_spi_buf_1,         App.Mdb_data_AO.spi_buf_0[1]);
-  74:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_spi_buf_2,         App.Mdb_data_AO.spi_buf_0[2]);
-  75:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_ADC_data,          App.Mdb_data_AO.ADC_data);
-  76:App/ProtocolMbRtuSlaveCtrl.c **** }
-  77:App/ProtocolMbRtuSlaveCtrl.c **** //------------------------ REGULAR FCN END------------------------
-  78:App/ProtocolMbRtuSlaveCtrl.c **** 
-  79:App/ProtocolMbRtuSlaveCtrl.c **** //------------------------------- MODBUS CALLBACKS -------------------------------------------//
-  80:App/ProtocolMbRtuSlaveCtrl.c **** #define PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK (0xAAAA)
-  81:App/ProtocolMbRtuSlaveCtrl.c **** #define PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_FAIL (0xF00F)
-  82:App/ProtocolMbRtuSlaveCtrl.c **** __weak void protocolMbRtuSlaveCtrl_callback_H_WRITE(ModbusSS_table_t *table, uint16_t reg, uint16_t
-  83:App/ProtocolMbRtuSlaveCtrl.c **** {
-  30              		.loc 1 83 1 view -0
+  56:App/ProtocolMbRtuSlaveCtrl.c **** //------------------------ REGULAR FCN ------------------------
+  57:App/ProtocolMbRtuSlaveCtrl.c **** void protocolMbRtuSlaveCtrl_init(uint8_t portNo)
+  58:App/ProtocolMbRtuSlaveCtrl.c **** {
+  59:App/ProtocolMbRtuSlaveCtrl.c ****   HAL_Delay(100);
+  60:App/ProtocolMbRtuSlaveCtrl.c ****   bsp_rs485_setPortToModbusRtu(portNo, modbusBufRxTxRtu485, MODBUS_SS_BUF_CNT);
+  61:App/ProtocolMbRtuSlaveCtrl.c **** }
+  62:App/ProtocolMbRtuSlaveCtrl.c **** 
+  63:App/ProtocolMbRtuSlaveCtrl.c **** __INLINE void protocolMbRtuSlaveCtrl_update_tables()
+  64:App/ProtocolMbRtuSlaveCtrl.c **** {
+  65:App/ProtocolMbRtuSlaveCtrl.c ****   // --- BSP -----------------------------//
+  66:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_state_led_rele,    App.Mdb_data_AO.state_led_rele);
+  67:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_control_led_rele,  0);
+  68:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_spi_buf_0,         App.Mdb_data_AO.spi_buf_0[0]);
+  69:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_spi_buf_1,         App.Mdb_data_AO.spi_buf_0[1]);
+  70:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_spi_buf_2,         App.Mdb_data_AO.spi_buf_0[2]);
+  71:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_ADC_data,          App.Mdb_data_AO.ADC_data);
+  72:App/ProtocolMbRtuSlaveCtrl.c **** }
+  73:App/ProtocolMbRtuSlaveCtrl.c **** //------------------------ REGULAR FCN END------------------------
+  74:App/ProtocolMbRtuSlaveCtrl.c **** 
+  75:App/ProtocolMbRtuSlaveCtrl.c **** //------------------------------- MODBUS CALLBACKS -------------------------------------------//
+  76:App/ProtocolMbRtuSlaveCtrl.c **** #define PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK (0xAAAA)
+  77:App/ProtocolMbRtuSlaveCtrl.c **** #define PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_FAIL (0xF00F)
+  78:App/ProtocolMbRtuSlaveCtrl.c **** __weak void protocolMbRtuSlaveCtrl_callback_H_WRITE(ModbusSS_table_t *table, uint16_t reg, uint16_t
+  79:App/ProtocolMbRtuSlaveCtrl.c **** {
+  30              		.loc 1 79 1 view -0
   31              		.cfi_startproc
   32              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s 			page 3
-
-
   33              		@ frame_needed = 0, uses_anonymous_args = 0
   34              		@ link register save eliminated.
-  84:App/ProtocolMbRtuSlaveCtrl.c ****   // uint16_t response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_FAIL;
-  85:App/ProtocolMbRtuSlaveCtrl.c ****   // uint16_t param = 0;
-  86:App/ProtocolMbRtuSlaveCtrl.c ****   // float analog_kMul = 0.000001;
-  87:App/ProtocolMbRtuSlaveCtrl.c ****   // float kMul = 0.001f;
-  88:App/ProtocolMbRtuSlaveCtrl.c ****   // float kMulBms = 0.1f;
-  89:App/ProtocolMbRtuSlaveCtrl.c ****   // float value = 0.0f;
-  90:App/ProtocolMbRtuSlaveCtrl.c ****   // uint8_t idx = 0;
-  91:App/ProtocolMbRtuSlaveCtrl.c ****   // int16_t sign_val = 0;
-  92:App/ProtocolMbRtuSlaveCtrl.c ****   // asm("NOP");
-  93:App/ProtocolMbRtuSlaveCtrl.c **** 
-  94:App/ProtocolMbRtuSlaveCtrl.c ****   // if (table == &mdb_table_program) // Диапазон PROGRAM
-  95:App/ProtocolMbRtuSlaveCtrl.c ****   // {
-  96:App/ProtocolMbRtuSlaveCtrl.c ****   //   switch (reg)
-  97:App/ProtocolMbRtuSlaveCtrl.c ****   //   {
-  98:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_prg_cmd:
-  99:App/ProtocolMbRtuSlaveCtrl.c ****   //     modbusRtu_ctrlStruct.cmd = ModbusSS_GetWord(&mdb_table_program, reg);
- 100:App/ProtocolMbRtuSlaveCtrl.c ****   //     switch (modbusRtu_ctrlStruct.cmd)
- 101:App/ProtocolMbRtuSlaveCtrl.c ****   //     {
- 102:App/ProtocolMbRtuSlaveCtrl.c ****   //     case protocol_cmd_debug:
- 103:App/ProtocolMbRtuSlaveCtrl.c ****   //       /* code */
- 104:App/ProtocolMbRtuSlaveCtrl.c ****   //       if (Program_GoDebug())
- 105:App/ProtocolMbRtuSlaveCtrl.c ****   //       {
- 106:App/ProtocolMbRtuSlaveCtrl.c ****   //         response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
- 107:App/ProtocolMbRtuSlaveCtrl.c ****   //       }
- 108:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
- 109:App/ProtocolMbRtuSlaveCtrl.c ****   //     case protocol_cmd_save_param:
- 110:App/ProtocolMbRtuSlaveCtrl.c ****   //       if (Program_ParamSave())
- 111:App/ProtocolMbRtuSlaveCtrl.c ****   //       {
- 112:App/ProtocolMbRtuSlaveCtrl.c ****   //         response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
- 113:App/ProtocolMbRtuSlaveCtrl.c ****   //       }
- 114:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
- 115:App/ProtocolMbRtuSlaveCtrl.c ****   //     case protocol_cmd_reset:
- 116:App/ProtocolMbRtuSlaveCtrl.c ****   //       if (Program_GoReset())
- 117:App/ProtocolMbRtuSlaveCtrl.c ****   //       {
- 118:App/ProtocolMbRtuSlaveCtrl.c ****   //         response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
- 119:App/ProtocolMbRtuSlaveCtrl.c ****   //       }
- 120:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
- 121:App/ProtocolMbRtuSlaveCtrl.c ****   //     case protocol_cmd_pwmOuts123:
- 122:App/ProtocolMbRtuSlaveCtrl.c ****   //     case protocol_cmd_pwmOuts456:
- 123:App/ProtocolMbRtuSlaveCtrl.c ****   //       param = ModbusSS_GetWord(&mdb_table_program, tab_prg_param);
- 124:App/ProtocolMbRtuSlaveCtrl.c ****   //       if (Program_set_pwmOuts_debug(modbusRtu_ctrlStruct.cmd - protocol_cmd_pwmOuts123, param)
- 125:App/ProtocolMbRtuSlaveCtrl.c ****   //       {
- 126:App/ProtocolMbRtuSlaveCtrl.c ****   //         response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
- 127:App/ProtocolMbRtuSlaveCtrl.c ****   //       }
- 128:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
- 129:App/ProtocolMbRtuSlaveCtrl.c ****   //     case protocol_cmd_startStopVodorod:
- 130:App/ProtocolMbRtuSlaveCtrl.c ****   //       param = ModbusSS_GetWord(&mdb_table_program, tab_prg_param);
- 131:App/ProtocolMbRtuSlaveCtrl.c ****   //       if (Program_StartStopVodorod(param))
- 132:App/ProtocolMbRtuSlaveCtrl.c ****   //       {
- 133:App/ProtocolMbRtuSlaveCtrl.c ****   //         response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
- 134:App/ProtocolMbRtuSlaveCtrl.c ****   //       }
- 135:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
- 136:App/ProtocolMbRtuSlaveCtrl.c ****   //     case protocol_cmd_startStopZU:
- 137:App/ProtocolMbRtuSlaveCtrl.c ****   //       param = ModbusSS_GetWord(&mdb_table_program, tab_prg_param);
- 138:App/ProtocolMbRtuSlaveCtrl.c ****   //       if (Program_StartStopZU(param))
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s 			page 4
+  80:App/ProtocolMbRtuSlaveCtrl.c ****   // uint16_t response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_FAIL;
+  81:App/ProtocolMbRtuSlaveCtrl.c ****   // uint16_t param = 0;
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s 			page 3
 
 
- 139:App/ProtocolMbRtuSlaveCtrl.c ****   //       {
- 140:App/ProtocolMbRtuSlaveCtrl.c ****   //         response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
- 141:App/ProtocolMbRtuSlaveCtrl.c ****   //       }
- 142:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
- 143:App/ProtocolMbRtuSlaveCtrl.c ****   //     case protocol_cmd_loadDefaultParam:
- 144:App/ProtocolMbRtuSlaveCtrl.c ****   //       if (Program_LoadDefaultParam_debug())
- 145:App/ProtocolMbRtuSlaveCtrl.c ****   //       {
- 146:App/ProtocolMbRtuSlaveCtrl.c ****   //         response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
- 147:App/ProtocolMbRtuSlaveCtrl.c ****   //       }
- 148:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
- 149:App/ProtocolMbRtuSlaveCtrl.c ****   //     case protocol_cmd_startStopBAT:
- 150:App/ProtocolMbRtuSlaveCtrl.c ****   //       param = ModbusSS_GetWord(&mdb_table_program, tab_prg_param);
- 151:App/ProtocolMbRtuSlaveCtrl.c ****   //       if (Program_StartStopBAT(param))
- 152:App/ProtocolMbRtuSlaveCtrl.c ****   //       {
- 153:App/ProtocolMbRtuSlaveCtrl.c ****   //         response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
- 154:App/ProtocolMbRtuSlaveCtrl.c ****   //       }
- 155:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
- 156:App/ProtocolMbRtuSlaveCtrl.c ****   //     case protocol_cmd_ZU_set_voltage:
- 157:App/ProtocolMbRtuSlaveCtrl.c ****   //       param = ModbusSS_GetWord(&mdb_table_program, tab_prg_param);
- 158:App/ProtocolMbRtuSlaveCtrl.c ****   //       Program_ZU_setVoltage(param);
- 159:App/ProtocolMbRtuSlaveCtrl.c ****   //       response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
- 160:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
- 161:App/ProtocolMbRtuSlaveCtrl.c ****   //     case protocol_cmd_ZU_set_current:
- 162:App/ProtocolMbRtuSlaveCtrl.c ****   //       param = ModbusSS_GetWord(&mdb_table_program, tab_prg_param);
- 163:App/ProtocolMbRtuSlaveCtrl.c ****   //       Program_ZU_setCurrent(param);
- 164:App/ProtocolMbRtuSlaveCtrl.c ****   //       response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
- 165:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
- 166:App/ProtocolMbRtuSlaveCtrl.c ****   //     default:
- 167:App/ProtocolMbRtuSlaveCtrl.c ****   //       response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_FAIL;
- 168:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
- 169:App/ProtocolMbRtuSlaveCtrl.c ****   //     }
- 170:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 171:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_prg_analogVal_vodorod_i_SUI1 ... tab_prg_analogVal_zu_u_CH:
- 172:App/ProtocolMbRtuSlaveCtrl.c ****   //     idx = reg - tab_prg_analogVal_vodorod_i_SUI1;
- 173:App/ProtocolMbRtuSlaveCtrl.c ****   //     float value = ModbusSS_GetWord(&mdb_table_program, reg);
- 174:App/ProtocolMbRtuSlaveCtrl.c ****   //     if (value == 0.0f)
- 175:App/ProtocolMbRtuSlaveCtrl.c ****   //     {
- 176:App/ProtocolMbRtuSlaveCtrl.c ****   //       if (Program_analogSetZero(idx))
- 177:App/ProtocolMbRtuSlaveCtrl.c ****   //       {
- 178:App/ProtocolMbRtuSlaveCtrl.c ****   //         response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
- 179:App/ProtocolMbRtuSlaveCtrl.c ****   //       }
- 180:App/ProtocolMbRtuSlaveCtrl.c ****   //     }
- 181:App/ProtocolMbRtuSlaveCtrl.c ****   //     else
- 182:App/ProtocolMbRtuSlaveCtrl.c ****   //     {
- 183:App/ProtocolMbRtuSlaveCtrl.c ****   //       if (Program_analogCalibKMul(idx, value))
- 184:App/ProtocolMbRtuSlaveCtrl.c ****   //       {
- 185:App/ProtocolMbRtuSlaveCtrl.c ****   //         response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
- 186:App/ProtocolMbRtuSlaveCtrl.c ****   //       }
- 187:App/ProtocolMbRtuSlaveCtrl.c ****   //     }
- 188:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 189:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_prg_pwm1:
- 190:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_prg_pwm1 + 1:
- 191:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_prg_pwm1 + 2:
- 192:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_prg_pwm1 + 3:
- 193:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_prg_pwm1 + 4:
- 194:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_prg_pwm1 + 5:
- 195:App/ProtocolMbRtuSlaveCtrl.c **** 
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s 			page 5
+  82:App/ProtocolMbRtuSlaveCtrl.c ****   // float analog_kMul = 0.000001;
+  83:App/ProtocolMbRtuSlaveCtrl.c ****   // float kMul = 0.001f;
+  84:App/ProtocolMbRtuSlaveCtrl.c ****   // float kMulBms = 0.1f;
+  85:App/ProtocolMbRtuSlaveCtrl.c ****   // float value = 0.0f;
+  86:App/ProtocolMbRtuSlaveCtrl.c ****   // uint8_t idx = 0;
+  87:App/ProtocolMbRtuSlaveCtrl.c ****   // int16_t sign_val = 0;
+  88:App/ProtocolMbRtuSlaveCtrl.c ****   // asm("NOP");
+  89:App/ProtocolMbRtuSlaveCtrl.c **** 
+  90:App/ProtocolMbRtuSlaveCtrl.c ****   // if (table == &mdb_table_program) // Диапазон PROGRAM
+  91:App/ProtocolMbRtuSlaveCtrl.c ****   // {
+  92:App/ProtocolMbRtuSlaveCtrl.c ****   //   switch (reg)
+  93:App/ProtocolMbRtuSlaveCtrl.c ****   //   {
+  94:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_prg_cmd:
+  95:App/ProtocolMbRtuSlaveCtrl.c ****   //     modbusRtu_ctrlStruct.cmd = ModbusSS_GetWord(&mdb_table_program, reg);
+  96:App/ProtocolMbRtuSlaveCtrl.c ****   //     switch (modbusRtu_ctrlStruct.cmd)
+  97:App/ProtocolMbRtuSlaveCtrl.c ****   //     {
+  98:App/ProtocolMbRtuSlaveCtrl.c ****   //     case protocol_cmd_debug:
+  99:App/ProtocolMbRtuSlaveCtrl.c ****   //       /* code */
+ 100:App/ProtocolMbRtuSlaveCtrl.c ****   //       if (Program_GoDebug())
+ 101:App/ProtocolMbRtuSlaveCtrl.c ****   //       {
+ 102:App/ProtocolMbRtuSlaveCtrl.c ****   //         response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
+ 103:App/ProtocolMbRtuSlaveCtrl.c ****   //       }
+ 104:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
+ 105:App/ProtocolMbRtuSlaveCtrl.c ****   //     case protocol_cmd_save_param:
+ 106:App/ProtocolMbRtuSlaveCtrl.c ****   //       if (Program_ParamSave())
+ 107:App/ProtocolMbRtuSlaveCtrl.c ****   //       {
+ 108:App/ProtocolMbRtuSlaveCtrl.c ****   //         response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
+ 109:App/ProtocolMbRtuSlaveCtrl.c ****   //       }
+ 110:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
+ 111:App/ProtocolMbRtuSlaveCtrl.c ****   //     case protocol_cmd_reset:
+ 112:App/ProtocolMbRtuSlaveCtrl.c ****   //       if (Program_GoReset())
+ 113:App/ProtocolMbRtuSlaveCtrl.c ****   //       {
+ 114:App/ProtocolMbRtuSlaveCtrl.c ****   //         response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
+ 115:App/ProtocolMbRtuSlaveCtrl.c ****   //       }
+ 116:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
+ 117:App/ProtocolMbRtuSlaveCtrl.c ****   //     case protocol_cmd_pwmOuts123:
+ 118:App/ProtocolMbRtuSlaveCtrl.c ****   //     case protocol_cmd_pwmOuts456:
+ 119:App/ProtocolMbRtuSlaveCtrl.c ****   //       param = ModbusSS_GetWord(&mdb_table_program, tab_prg_param);
+ 120:App/ProtocolMbRtuSlaveCtrl.c ****   //       if (Program_set_pwmOuts_debug(modbusRtu_ctrlStruct.cmd - protocol_cmd_pwmOuts123, param)
+ 121:App/ProtocolMbRtuSlaveCtrl.c ****   //       {
+ 122:App/ProtocolMbRtuSlaveCtrl.c ****   //         response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
+ 123:App/ProtocolMbRtuSlaveCtrl.c ****   //       }
+ 124:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
+ 125:App/ProtocolMbRtuSlaveCtrl.c ****   //     case protocol_cmd_startStopVodorod:
+ 126:App/ProtocolMbRtuSlaveCtrl.c ****   //       param = ModbusSS_GetWord(&mdb_table_program, tab_prg_param);
+ 127:App/ProtocolMbRtuSlaveCtrl.c ****   //       if (Program_StartStopVodorod(param))
+ 128:App/ProtocolMbRtuSlaveCtrl.c ****   //       {
+ 129:App/ProtocolMbRtuSlaveCtrl.c ****   //         response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
+ 130:App/ProtocolMbRtuSlaveCtrl.c ****   //       }
+ 131:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
+ 132:App/ProtocolMbRtuSlaveCtrl.c ****   //     case protocol_cmd_startStopZU:
+ 133:App/ProtocolMbRtuSlaveCtrl.c ****   //       param = ModbusSS_GetWord(&mdb_table_program, tab_prg_param);
+ 134:App/ProtocolMbRtuSlaveCtrl.c ****   //       if (Program_StartStopZU(param))
+ 135:App/ProtocolMbRtuSlaveCtrl.c ****   //       {
+ 136:App/ProtocolMbRtuSlaveCtrl.c ****   //         response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
+ 137:App/ProtocolMbRtuSlaveCtrl.c ****   //       }
+ 138:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s 			page 4
 
 
- 196:App/ProtocolMbRtuSlaveCtrl.c ****   //     if (Program_set_pwm_debug(reg - tab_prg_pwm1, ModbusSS_GetWord(&mdb_table_program, reg)))
- 197:App/ProtocolMbRtuSlaveCtrl.c ****   //     {
- 198:App/ProtocolMbRtuSlaveCtrl.c ****   //       response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
- 199:App/ProtocolMbRtuSlaveCtrl.c ****   //     }
- 200:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 201:App/ProtocolMbRtuSlaveCtrl.c ****   //   default:
- 202:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_FAIL;
- 203:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 204:App/ProtocolMbRtuSlaveCtrl.c ****   //   }
- 205:App/ProtocolMbRtuSlaveCtrl.c ****   // }
- 206:App/ProtocolMbRtuSlaveCtrl.c ****   // else if (table == &mdb_table_bsp) // Диапазон BSP
- 207:App/ProtocolMbRtuSlaveCtrl.c ****   // {
- 208:App/ProtocolMbRtuSlaveCtrl.c ****   //   switch (reg)
- 209:App/ProtocolMbRtuSlaveCtrl.c ****   //   {
- 210:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_bsp_dout:
- 211:App/ProtocolMbRtuSlaveCtrl.c ****   //     if (Program_set_dout_debug(ModbusSS_GetWord(&mdb_table_bsp, reg)))
- 212:App/ProtocolMbRtuSlaveCtrl.c ****   //     {
- 213:App/ProtocolMbRtuSlaveCtrl.c ****   //       response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
- 214:App/ProtocolMbRtuSlaveCtrl.c ****   //     }
- 215:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 216:App/ProtocolMbRtuSlaveCtrl.c ****   //   default:
- 217:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_FAIL;
- 218:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 219:App/ProtocolMbRtuSlaveCtrl.c ****   //   }
- 220:App/ProtocolMbRtuSlaveCtrl.c ****   // }
- 221:App/ProtocolMbRtuSlaveCtrl.c ****   // else if (table == &mdb_table_regul)
- 222:App/ProtocolMbRtuSlaveCtrl.c ****   // {
- 223:App/ProtocolMbRtuSlaveCtrl.c ****   //   value = ModbusSS_GetWord(&mdb_table_regul, reg);
- 224:App/ProtocolMbRtuSlaveCtrl.c ****   //   switch (reg)
- 225:App/ProtocolMbRtuSlaveCtrl.c ****   //   {
- 226:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_regul_vodorod_u_kP:
- 227:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_RegU_kp = value * kMul;
+ 139:App/ProtocolMbRtuSlaveCtrl.c ****   //     case protocol_cmd_loadDefaultParam:
+ 140:App/ProtocolMbRtuSlaveCtrl.c ****   //       if (Program_LoadDefaultParam_debug())
+ 141:App/ProtocolMbRtuSlaveCtrl.c ****   //       {
+ 142:App/ProtocolMbRtuSlaveCtrl.c ****   //         response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
+ 143:App/ProtocolMbRtuSlaveCtrl.c ****   //       }
+ 144:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
+ 145:App/ProtocolMbRtuSlaveCtrl.c ****   //     case protocol_cmd_startStopBAT:
+ 146:App/ProtocolMbRtuSlaveCtrl.c ****   //       param = ModbusSS_GetWord(&mdb_table_program, tab_prg_param);
+ 147:App/ProtocolMbRtuSlaveCtrl.c ****   //       if (Program_StartStopBAT(param))
+ 148:App/ProtocolMbRtuSlaveCtrl.c ****   //       {
+ 149:App/ProtocolMbRtuSlaveCtrl.c ****   //         response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
+ 150:App/ProtocolMbRtuSlaveCtrl.c ****   //       }
+ 151:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
+ 152:App/ProtocolMbRtuSlaveCtrl.c ****   //     case protocol_cmd_ZU_set_voltage:
+ 153:App/ProtocolMbRtuSlaveCtrl.c ****   //       param = ModbusSS_GetWord(&mdb_table_program, tab_prg_param);
+ 154:App/ProtocolMbRtuSlaveCtrl.c ****   //       Program_ZU_setVoltage(param);
+ 155:App/ProtocolMbRtuSlaveCtrl.c ****   //       response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
+ 156:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
+ 157:App/ProtocolMbRtuSlaveCtrl.c ****   //     case protocol_cmd_ZU_set_current:
+ 158:App/ProtocolMbRtuSlaveCtrl.c ****   //       param = ModbusSS_GetWord(&mdb_table_program, tab_prg_param);
+ 159:App/ProtocolMbRtuSlaveCtrl.c ****   //       Program_ZU_setCurrent(param);
+ 160:App/ProtocolMbRtuSlaveCtrl.c ****   //       response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
+ 161:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
+ 162:App/ProtocolMbRtuSlaveCtrl.c ****   //     default:
+ 163:App/ProtocolMbRtuSlaveCtrl.c ****   //       response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_FAIL;
+ 164:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
+ 165:App/ProtocolMbRtuSlaveCtrl.c ****   //     }
+ 166:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
+ 167:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_prg_analogVal_vodorod_i_SUI1 ... tab_prg_analogVal_zu_u_CH:
+ 168:App/ProtocolMbRtuSlaveCtrl.c ****   //     idx = reg - tab_prg_analogVal_vodorod_i_SUI1;
+ 169:App/ProtocolMbRtuSlaveCtrl.c ****   //     float value = ModbusSS_GetWord(&mdb_table_program, reg);
+ 170:App/ProtocolMbRtuSlaveCtrl.c ****   //     if (value == 0.0f)
+ 171:App/ProtocolMbRtuSlaveCtrl.c ****   //     {
+ 172:App/ProtocolMbRtuSlaveCtrl.c ****   //       if (Program_analogSetZero(idx))
+ 173:App/ProtocolMbRtuSlaveCtrl.c ****   //       {
+ 174:App/ProtocolMbRtuSlaveCtrl.c ****   //         response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
+ 175:App/ProtocolMbRtuSlaveCtrl.c ****   //       }
+ 176:App/ProtocolMbRtuSlaveCtrl.c ****   //     }
+ 177:App/ProtocolMbRtuSlaveCtrl.c ****   //     else
+ 178:App/ProtocolMbRtuSlaveCtrl.c ****   //     {
+ 179:App/ProtocolMbRtuSlaveCtrl.c ****   //       if (Program_analogCalibKMul(idx, value))
+ 180:App/ProtocolMbRtuSlaveCtrl.c ****   //       {
+ 181:App/ProtocolMbRtuSlaveCtrl.c ****   //         response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
+ 182:App/ProtocolMbRtuSlaveCtrl.c ****   //       }
+ 183:App/ProtocolMbRtuSlaveCtrl.c ****   //     }
+ 184:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
+ 185:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_prg_pwm1:
+ 186:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_prg_pwm1 + 1:
+ 187:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_prg_pwm1 + 2:
+ 188:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_prg_pwm1 + 3:
+ 189:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_prg_pwm1 + 4:
+ 190:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_prg_pwm1 + 5:
+ 191:App/ProtocolMbRtuSlaveCtrl.c **** 
+ 192:App/ProtocolMbRtuSlaveCtrl.c ****   //     if (Program_set_pwm_debug(reg - tab_prg_pwm1, ModbusSS_GetWord(&mdb_table_program, reg)))
+ 193:App/ProtocolMbRtuSlaveCtrl.c ****   //     {
+ 194:App/ProtocolMbRtuSlaveCtrl.c ****   //       response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
+ 195:App/ProtocolMbRtuSlaveCtrl.c ****   //     }
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s 			page 5
+
+
+ 196:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
+ 197:App/ProtocolMbRtuSlaveCtrl.c ****   //   default:
+ 198:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_FAIL;
+ 199:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
+ 200:App/ProtocolMbRtuSlaveCtrl.c ****   //   }
+ 201:App/ProtocolMbRtuSlaveCtrl.c ****   // }
+ 202:App/ProtocolMbRtuSlaveCtrl.c ****   // else if (table == &mdb_table_bsp) // Диапазон BSP
+ 203:App/ProtocolMbRtuSlaveCtrl.c ****   // {
+ 204:App/ProtocolMbRtuSlaveCtrl.c ****   //   switch (reg)
+ 205:App/ProtocolMbRtuSlaveCtrl.c ****   //   {
+ 206:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_bsp_dout:
+ 207:App/ProtocolMbRtuSlaveCtrl.c ****   //     if (Program_set_dout_debug(ModbusSS_GetWord(&mdb_table_bsp, reg)))
+ 208:App/ProtocolMbRtuSlaveCtrl.c ****   //     {
+ 209:App/ProtocolMbRtuSlaveCtrl.c ****   //       response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
+ 210:App/ProtocolMbRtuSlaveCtrl.c ****   //     }
+ 211:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
+ 212:App/ProtocolMbRtuSlaveCtrl.c ****   //   default:
+ 213:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_FAIL;
+ 214:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
+ 215:App/ProtocolMbRtuSlaveCtrl.c ****   //   }
+ 216:App/ProtocolMbRtuSlaveCtrl.c ****   // }
+ 217:App/ProtocolMbRtuSlaveCtrl.c ****   // else if (table == &mdb_table_regul)
+ 218:App/ProtocolMbRtuSlaveCtrl.c ****   // {
+ 219:App/ProtocolMbRtuSlaveCtrl.c ****   //   value = ModbusSS_GetWord(&mdb_table_regul, reg);
+ 220:App/ProtocolMbRtuSlaveCtrl.c ****   //   switch (reg)
+ 221:App/ProtocolMbRtuSlaveCtrl.c ****   //   {
+ 222:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_regul_vodorod_u_kP:
+ 223:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_RegU_kp = value * kMul;
+ 224:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
+ 225:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
+ 226:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_regul_vodorod_u_kI:
+ 227:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_RegU_ki = value * kMul;
  228:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  229:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 230:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_regul_vodorod_u_kI:
- 231:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_RegU_ki = value * kMul;
+ 230:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_regul_vodorod_u_outMax:
+ 231:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_RegU_MAX = value;
  232:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  233:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 234:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_regul_vodorod_u_outMax:
- 235:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_RegU_MAX = value;
+ 234:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_regul_vodorod_i_kP:
+ 235:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_RegI_kp = value * kMul;
  236:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  237:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 238:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_regul_vodorod_i_kP:
- 239:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_RegI_kp = value * kMul;
+ 238:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_regul_vodorod_i_kI:
+ 239:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_RegI_ki = value * kMul;
  240:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  241:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 242:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_regul_vodorod_i_kI:
- 243:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_RegI_ki = value * kMul;
+ 242:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_regul_vodorod_i_outMax:
+ 243:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_RegI_MAX = value;
  244:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  245:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 246:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_regul_vodorod_i_outMax:
- 247:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_RegI_MAX = value;
- 248:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
- 249:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 250:App/ProtocolMbRtuSlaveCtrl.c ****   //     //--------------------- ZU ---------------------------------//
- 251:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_regul_ZU_u_in:
- 252:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.ZU_RegU_in = value;
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s 			page 6
+ 246:App/ProtocolMbRtuSlaveCtrl.c ****   //     //--------------------- ZU ---------------------------------//
+ 247:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_regul_ZU_u_in:
+ 248:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.ZU_RegU_in = value;
+ 249:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
+ 250:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
+ 251:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_regul_ZU_u_kP:
+ 252:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.ZU_RegU_kp = value * kMul;
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s 			page 6
 
 
  253:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  254:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 255:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_regul_ZU_u_kP:
- 256:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.ZU_RegU_kp = value * kMul;
+ 255:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_regul_ZU_u_kI:
+ 256:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.ZU_RegU_ki = value * kMul;
  257:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  258:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 259:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_regul_ZU_u_kI:
- 260:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.ZU_RegU_ki = value * kMul;
+ 259:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_regul_ZU_u_outMax:
+ 260:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.ZU_RegU_MAX = value;
  261:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  262:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 263:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_regul_ZU_u_outMax:
- 264:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.ZU_RegU_MAX = value;
+ 263:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_regul_ZU_i_kP:
+ 264:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.ZU_RegI_kp = value * kMul;
  265:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  266:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 267:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_regul_ZU_i_kP:
- 268:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.ZU_RegI_kp = value * kMul;
+ 267:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_regul_ZU_i_kI:
+ 268:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.ZU_RegI_ki = value * kMul;
  269:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  270:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 271:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_regul_ZU_i_kI:
- 272:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.ZU_RegI_ki = value * kMul;
+ 271:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_regul_ZU_i_outMax:
+ 272:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.ZU_RegI_MAX = value;
  273:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  274:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 275:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_regul_ZU_i_outMax:
- 276:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.ZU_RegI_MAX = value;
- 277:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
+ 275:App/ProtocolMbRtuSlaveCtrl.c ****   //     //--------------------- ZU END---------------------------------//
+ 276:App/ProtocolMbRtuSlaveCtrl.c ****   //   default:
+ 277:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_FAIL;
  278:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 279:App/ProtocolMbRtuSlaveCtrl.c ****   //     //--------------------- ZU END---------------------------------//
- 280:App/ProtocolMbRtuSlaveCtrl.c ****   //   default:
- 281:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_FAIL;
- 282:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 283:App/ProtocolMbRtuSlaveCtrl.c ****   //   }
- 284:App/ProtocolMbRtuSlaveCtrl.c ****   // }
- 285:App/ProtocolMbRtuSlaveCtrl.c ****   // else if (table == &mdb_table_param)
- 286:App/ProtocolMbRtuSlaveCtrl.c ****   // {
- 287:App/ProtocolMbRtuSlaveCtrl.c ****   //   value = ModbusSS_GetWord(&mdb_table_param, reg);
- 288:App/ProtocolMbRtuSlaveCtrl.c ****   //       switch (reg)
- 289:App/ProtocolMbRtuSlaveCtrl.c ****   //   {
- 290:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_analog_shift_1_11 ... tab_param_analog_shift_1_11 + PRG_ANALOG_COUNT - 1:
- 291:App/ProtocolMbRtuSlaveCtrl.c ****   //     idx = reg - tab_param_analog_shift_1_11;
- 292:App/ProtocolMbRtuSlaveCtrl.c ****   //     if(Program_analogSetShift(idx, value)){
- 293:App/ProtocolMbRtuSlaveCtrl.c ****   //       response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
- 294:App/ProtocolMbRtuSlaveCtrl.c ****   //     }
- 295:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 296:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_analog_kMul_1_11 ... tab_param_analog_kMul_1_11 + PRG_ANALOG_COUNT - 1:
- 297:App/ProtocolMbRtuSlaveCtrl.c ****   //     idx = reg - tab_param_analog_kMul_1_11;
- 298:App/ProtocolMbRtuSlaveCtrl.c ****   //     sign_val = value;
- 299:App/ProtocolMbRtuSlaveCtrl.c ****   //     if(Program_analogSetKMul(idx, sign_val * analog_kMul)){
- 300:App/ProtocolMbRtuSlaveCtrl.c ****   //       response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
- 301:App/ProtocolMbRtuSlaveCtrl.c ****   //     }
- 302:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 303:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_analog_av_order_1_11 ... tab_param_analog_av_order_1_11 + PRG_ANALOG_COUNT - 
- 304:App/ProtocolMbRtuSlaveCtrl.c ****   //     idx = reg - tab_param_analog_av_order_1_11;
- 305:App/ProtocolMbRtuSlaveCtrl.c ****   //     if(Program_analogSetAvOrder(idx, value)){
- 306:App/ProtocolMbRtuSlaveCtrl.c ****   //       response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
- 307:App/ProtocolMbRtuSlaveCtrl.c ****   //     }
- 308:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 309:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_analog_filter_N_1_11 ... tab_param_analog_filter_N_1_11 + PRG_ANALOG_COUNT - 
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s 			page 7
+ 279:App/ProtocolMbRtuSlaveCtrl.c ****   //   }
+ 280:App/ProtocolMbRtuSlaveCtrl.c ****   // }
+ 281:App/ProtocolMbRtuSlaveCtrl.c ****   // else if (table == &mdb_table_param)
+ 282:App/ProtocolMbRtuSlaveCtrl.c ****   // {
+ 283:App/ProtocolMbRtuSlaveCtrl.c ****   //   value = ModbusSS_GetWord(&mdb_table_param, reg);
+ 284:App/ProtocolMbRtuSlaveCtrl.c ****   //       switch (reg)
+ 285:App/ProtocolMbRtuSlaveCtrl.c ****   //   {
+ 286:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_analog_shift_1_11 ... tab_param_analog_shift_1_11 + PRG_ANALOG_COUNT - 1:
+ 287:App/ProtocolMbRtuSlaveCtrl.c ****   //     idx = reg - tab_param_analog_shift_1_11;
+ 288:App/ProtocolMbRtuSlaveCtrl.c ****   //     if(Program_analogSetShift(idx, value)){
+ 289:App/ProtocolMbRtuSlaveCtrl.c ****   //       response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
+ 290:App/ProtocolMbRtuSlaveCtrl.c ****   //     }
+ 291:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
+ 292:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_analog_kMul_1_11 ... tab_param_analog_kMul_1_11 + PRG_ANALOG_COUNT - 1:
+ 293:App/ProtocolMbRtuSlaveCtrl.c ****   //     idx = reg - tab_param_analog_kMul_1_11;
+ 294:App/ProtocolMbRtuSlaveCtrl.c ****   //     sign_val = value;
+ 295:App/ProtocolMbRtuSlaveCtrl.c ****   //     if(Program_analogSetKMul(idx, sign_val * analog_kMul)){
+ 296:App/ProtocolMbRtuSlaveCtrl.c ****   //       response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
+ 297:App/ProtocolMbRtuSlaveCtrl.c ****   //     }
+ 298:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
+ 299:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_analog_av_order_1_11 ... tab_param_analog_av_order_1_11 + PRG_ANALOG_COUNT - 
+ 300:App/ProtocolMbRtuSlaveCtrl.c ****   //     idx = reg - tab_param_analog_av_order_1_11;
+ 301:App/ProtocolMbRtuSlaveCtrl.c ****   //     if(Program_analogSetAvOrder(idx, value)){
+ 302:App/ProtocolMbRtuSlaveCtrl.c ****   //       response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
+ 303:App/ProtocolMbRtuSlaveCtrl.c ****   //     }
+ 304:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
+ 305:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_analog_filter_N_1_11 ... tab_param_analog_filter_N_1_11 + PRG_ANALOG_COUNT - 
+ 306:App/ProtocolMbRtuSlaveCtrl.c ****   //     idx = reg - tab_param_analog_filter_N_1_11;
+ 307:App/ProtocolMbRtuSlaveCtrl.c ****   //     if(Program_analogSetFilterN(idx, value)){
+ 308:App/ProtocolMbRtuSlaveCtrl.c ****   //       response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
+ 309:App/ProtocolMbRtuSlaveCtrl.c ****   //     }
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s 			page 7
 
 
- 310:App/ProtocolMbRtuSlaveCtrl.c ****   //     idx = reg - tab_param_analog_filter_N_1_11;
- 311:App/ProtocolMbRtuSlaveCtrl.c ****   //     if(Program_analogSetFilterN(idx, value)){
- 312:App/ProtocolMbRtuSlaveCtrl.c ****   //       response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
- 313:App/ProtocolMbRtuSlaveCtrl.c ****   //     }
- 314:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 315:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_protect_control_B_1:
- 316:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.protect_control &= 0xFFFFFFFFFFFF0000;
- 317:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.protect_control |= (uint64_t)value;
- 318:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
- 319:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 320:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_protect_control_B_2:
- 321:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.protect_control &= 0xFFFFFFFF0000FFFF;
- 322:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.protect_control |= ((uint64_t)value << 16);
- 323:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
- 324:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 325:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_protect_control_B_3:
- 326:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.protect_control &= 0xFFFF0000FFFFFFFF;
- 327:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.protect_control |= ((uint64_t)value << 32);
- 328:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
- 329:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 330:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_protect_control_B_4:
- 331:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.protect_control &= 0x0000FFFFFFFFFFFF;
- 332:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.protect_control |= ((uint64_t)value << 48);
+ 310:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
+ 311:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_protect_control_B_1:
+ 312:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.protect_control &= 0xFFFFFFFFFFFF0000;
+ 313:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.protect_control |= (uint64_t)value;
+ 314:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
+ 315:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
+ 316:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_protect_control_B_2:
+ 317:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.protect_control &= 0xFFFFFFFF0000FFFF;
+ 318:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.protect_control |= ((uint64_t)value << 16);
+ 319:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
+ 320:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
+ 321:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_protect_control_B_3:
+ 322:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.protect_control &= 0xFFFF0000FFFFFFFF;
+ 323:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.protect_control |= ((uint64_t)value << 32);
+ 324:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
+ 325:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
+ 326:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_protect_control_B_4:
+ 327:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.protect_control &= 0x0000FFFFFFFFFFFF;
+ 328:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.protect_control |= ((uint64_t)value << 48);
+ 329:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
+ 330:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
+ 331:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_reg_u_in:
+ 332:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_RegU_in = value;
  333:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  334:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 335:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_reg_u_in:
- 336:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_RegU_in = value;
+ 335:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_reg_u_kp:
+ 336:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_RegU_kp = value * kMul;
  337:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
- 338:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 339:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_reg_u_kp:
- 340:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_RegU_kp = value * kMul;
+ 338:App/ProtocolMbRtuSlaveCtrl.c ****   //     break; 
+ 339:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_reg_u_ki:
+ 340:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_RegU_ki = value * kMul;
  341:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  342:App/ProtocolMbRtuSlaveCtrl.c ****   //     break; 
- 343:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_reg_u_ki:
- 344:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_RegU_ki = value * kMul;
+ 343:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_reg_u_max:
+ 344:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_RegU_MAX = value;
  345:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  346:App/ProtocolMbRtuSlaveCtrl.c ****   //     break; 
- 347:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_reg_u_max:
- 348:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_RegU_MAX = value;
+ 347:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_reg_i_in_max:
+ 348:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_RegI_in_MAX = value;
  349:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
- 350:App/ProtocolMbRtuSlaveCtrl.c ****   //     break; 
- 351:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_reg_i_in_max:
- 352:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_RegI_in_MAX = value;
+ 350:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
+ 351:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_reg_i_kp:
+ 352:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_RegI_kp = value * kMul;
  353:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  354:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 355:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_reg_i_kp:
- 356:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_RegI_kp = value * kMul;
+ 355:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_reg_i_ki:
+ 356:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_RegI_ki = value * kMul;
  357:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  358:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 359:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_reg_i_ki:
- 360:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_RegI_ki = value * kMul;
+ 359:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_reg_i_max:
+ 360:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_RegI_MAX = value;
  361:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  362:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 363:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_reg_i_max:
- 364:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_RegI_MAX = value;
+ 363:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_zi:
+ 364:App/ProtocolMbRtuSlaveCtrl.c ****   //     Program_Vodorod_setZI(value);
  365:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  366:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s 			page 8
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s 			page 8
 
 
- 367:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_zi:
- 368:App/ProtocolMbRtuSlaveCtrl.c ****   //     Program_Vodorod_setZI(value);
+ 367:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_ZU_reg_u_in:
+ 368:App/ProtocolMbRtuSlaveCtrl.c ****   //     Program_ZU_setVoltage(value);
  369:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  370:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 371:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_ZU_reg_u_in:
- 372:App/ProtocolMbRtuSlaveCtrl.c ****   //     Program_ZU_setVoltage(value);
+ 371:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_ZU_reg_u_kp:
+ 372:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.ZU_RegU_kp = value * kMul;
  373:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  374:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 375:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_ZU_reg_u_kp:
- 376:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.ZU_RegU_kp = value * kMul;
+ 375:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_ZU_reg_u_ki:
+ 376:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.ZU_RegU_ki = value * kMul;
  377:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  378:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 379:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_ZU_reg_u_ki:
- 380:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.ZU_RegU_ki = value * kMul;
+ 379:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_ZU_reg_u_max:
+ 380:App/ProtocolMbRtuSlaveCtrl.c ****   //     Program_ZU_setCurrent(value);
  381:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  382:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 383:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_ZU_reg_u_max:
- 384:App/ProtocolMbRtuSlaveCtrl.c ****   //     Program_ZU_setCurrent(value);
+ 383:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_ZU_reg_i_kp:
+ 384:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.ZU_RegI_kp = value * kMul;
  385:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  386:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 387:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_ZU_reg_i_kp:
- 388:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.ZU_RegI_kp = value * kMul;
+ 387:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_ZU_reg_i_ki:
+ 388:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.ZU_RegI_ki = value * kMul;
  389:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  390:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 391:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_ZU_reg_i_ki:
- 392:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.ZU_RegI_ki = value * kMul;
+ 391:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_ZU_reg_i_max:
+ 392:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.ZU_RegI_MAX = value;
  393:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  394:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 395:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_ZU_reg_i_max:
- 396:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.ZU_RegI_MAX = value;
+ 395:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_ZU_check_u_CH:
+ 396:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.ZU_check_u_CH = value;
  397:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  398:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 399:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_ZU_check_u_CH:
- 400:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.ZU_check_u_CH = value;
+ 399:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_ZU_check_u_CHO_bat_connect:
+ 400:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.ZU_check_u_CHO_bat_connect = value;
  401:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  402:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 403:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_ZU_check_u_CHO_bat_connect:
- 404:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.ZU_check_u_CHO_bat_connect = value;
+ 403:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_BAT_check_min_voltage:
+ 404:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.BAT_check_min_voltage = value;
  405:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  406:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 407:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_BAT_check_min_voltage:
- 408:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.BAT_check_min_voltage = value;
+ 407:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_check_uIn_min:
+ 408:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_check_uIn_min = value;
  409:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  410:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 411:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_check_uIn_min:
- 412:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_check_uIn_min = value;
+ 411:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_check_uIn_max:
+ 412:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_check_uIn_max = value;
  413:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  414:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 415:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_check_uIn_max:
- 416:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_check_uIn_max = value;
+ 415:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_check_uOut_max:
+ 416:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_check_uOut_max = value;
  417:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  418:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 419:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_check_uOut_max:
- 420:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_check_uOut_max = value;
+ 419:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_check_iIn_max:
+ 420:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_check_iIn_max = value;
  421:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  422:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 423:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_check_iIn_max:
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s 			page 9
+ 423:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_check_iOut_max:
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s 			page 9
 
 
- 424:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_check_iIn_max = value;
+ 424:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_check_iOut_max = value;
  425:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  426:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 427:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_check_iOut_max:
- 428:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_check_iOut_max = value;
+ 427:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_ZU_ptotect_MaxU_CHO:
+ 428:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.ZU_ptotect_MaxU_CHO = value;
  429:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  430:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 431:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_ZU_ptotect_MaxU_CHO:
- 432:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.ZU_ptotect_MaxU_CHO = value;
+ 431:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_ZU_ptotect_MaxI_CHO:
+ 432:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.ZU_ptotect_MaxI_CHO = value;
  433:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  434:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 435:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_ZU_ptotect_MaxI_CHO:
- 436:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.ZU_ptotect_MaxI_CHO = value;
+ 435:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_check_uOut_min:
+ 436:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_check_uOut_min = value;
  437:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  438:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 439:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_check_uOut_min:
- 440:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_check_uOut_min = value;
+ 439:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_i_comp_onOff:
+ 440:App/ProtocolMbRtuSlaveCtrl.c ****   //     Program_Vodorod_set_i_comp_onOff(value);
  441:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  442:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 443:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_i_comp_onOff:
- 444:App/ProtocolMbRtuSlaveCtrl.c ****   //     Program_Vodorod_set_i_comp_onOff(value);
+ 443:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_i_charge_bat:
+ 444:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_i_charge_bat = value;
  445:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  446:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 447:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_i_charge_bat:
- 448:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_i_charge_bat = value;
+ 447:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_check_bat_cell_Umin:
+ 448:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.check_bat_cell_Umin = value * kMul;
  449:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  450:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 451:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_check_bat_cell_Umin:
- 452:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.check_bat_cell_Umin = value * kMul;
+ 451:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_check_bat_cell_Umax:
+ 452:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.check_bat_cell_Umax = value * kMul;
  453:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  454:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 455:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_check_bat_cell_Umax:
- 456:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.check_bat_cell_Umax = value * kMul;
+ 455:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_check_bat_cell_Tmax_charge:
+ 456:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.check_bat_cell_Tmax_charge = value;
  457:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  458:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 459:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_check_bat_cell_Tmax_charge:
- 460:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.check_bat_cell_Tmax_charge = value;
- 461:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
- 462:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 463:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_check_bat_cell_Tmin_charge:
- 464:App/ProtocolMbRtuSlaveCtrl.c ****   //     sign_val = value;
- 465:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.check_bat_cell_Tmin_charge = sign_val;
+ 459:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_check_bat_cell_Tmin_charge:
+ 460:App/ProtocolMbRtuSlaveCtrl.c ****   //     sign_val = value;
+ 461:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.check_bat_cell_Tmin_charge = sign_val;
+ 462:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
+ 463:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
+ 464:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_check_bat_cell_Tmax_disch:
+ 465:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.check_bat_cell_Tmax_disch = value;
  466:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
- 467:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 468:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_check_bat_cell_Tmax_disch:
- 469:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.check_bat_cell_Tmax_disch = value;
- 470:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
- 471:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;     
- 472:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_check_bat_cell_Tmin_disch:
- 473:App/ProtocolMbRtuSlaveCtrl.c ****   //     sign_val = value;
- 474:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.check_bat_cell_Tmin_disch = sign_val;
+ 467:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;     
+ 468:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_check_bat_cell_Tmin_disch:
+ 469:App/ProtocolMbRtuSlaveCtrl.c ****   //     sign_val = value;
+ 470:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.check_bat_cell_Tmin_disch = sign_val;
+ 471:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
+ 472:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;  
+ 473:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_ZU_i_charge_off:
+ 474:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.ZU_i_charge_off = value;
  475:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
- 476:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;  
- 477:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_ZU_i_charge_off:
- 478:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.ZU_i_charge_off = value;
+ 476:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
+ 477:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_ZU_time_wait_charge_off:
+ 478:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.ZU_time_wait_charge_off = value;
  479:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
- 480:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s 			page 10
+ 480:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;    
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s 			page 10
 
 
- 481:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_ZU_time_wait_charge_off:
- 482:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.ZU_time_wait_charge_off = value;
+ 481:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_timeout_mdb_pan:
+ 482:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.timeout_mdb_pan = value;
  483:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  484:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;    
- 485:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_timeout_mdb_pan:
- 486:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.timeout_mdb_pan = value;
+ 485:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_timeout_BNE_KM_OFF:
+ 486:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.timeout_BNE_KM_OFF = value;
  487:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
- 488:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;    
- 489:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_timeout_BNE_KM_OFF:
- 490:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.timeout_BNE_KM_OFF = value;
+ 488:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
+ 489:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_Umin_cell_on_precharge:
+ 490:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_Umin_cell_on_precharge = value * kMul;
  491:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  492:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 493:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_Umin_cell_on_precharge:
- 494:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_Umin_cell_on_precharge = value * kMul;
+ 493:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_Uout_off_precharge:
+ 494:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_Uout_off_precharge = value * kMul;
  495:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  496:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 497:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_Uout_off_precharge:
- 498:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.vodorod_Uout_off_precharge = value * kMul;
+ 497:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_check_bat_logic_Tmax:
+ 498:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.check_bat_logic_Tmax = value;
  499:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
- 500:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 501:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_check_bat_logic_Tmax:
- 502:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.check_bat_logic_Tmax = value;
+ 500:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;      
+ 501:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_check_Tmax_radiator:
+ 502:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.check_Tmax_radiator = value;
  503:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
- 504:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;      
- 505:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_check_Tmax_radiator:
- 506:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.check_Tmax_radiator = value;
+ 504:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
+ 505:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_timeout_vodorod_wait_udc:
+ 506:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.timeout_vodorod_wait_udc = value;
  507:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  508:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 509:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_timeout_vodorod_wait_udc:
- 510:App/ProtocolMbRtuSlaveCtrl.c ****   //     programStruct.setupParam.timeout_vodorod_wait_udc = value;
+ 509:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_Pin_limit:
+ 510:App/ProtocolMbRtuSlaveCtrl.c ****   //     Program_Vodorod_set_Pin_limit(value);
  511:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
  512:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 513:App/ProtocolMbRtuSlaveCtrl.c ****   //   case tab_param_vodorod_Pin_limit:
- 514:App/ProtocolMbRtuSlaveCtrl.c ****   //     Program_Vodorod_set_Pin_limit(value);
- 515:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK;
- 516:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 517:App/ProtocolMbRtuSlaveCtrl.c ****   //   default:
- 518:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_FAIL;
- 519:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
- 520:App/ProtocolMbRtuSlaveCtrl.c ****   //   }
- 521:App/ProtocolMbRtuSlaveCtrl.c ****   // }
- 522:App/ProtocolMbRtuSlaveCtrl.c ****   // //-----------------------BMS----------------------//
- 523:App/ProtocolMbRtuSlaveCtrl.c ****   // else if (table == &mdb_table_bms)
- 524:App/ProtocolMbRtuSlaveCtrl.c ****   // {
- 525:App/ProtocolMbRtuSlaveCtrl.c ****   //   value = ModbusSS_GetWord(&mdb_table_bms, reg);
- 526:App/ProtocolMbRtuSlaveCtrl.c ****   //   switch (reg) 
- 527:App/ProtocolMbRtuSlaveCtrl.c ****   //   {
- 528:App/ProtocolMbRtuSlaveCtrl.c ****   //     case tab_param_bms_mdb_state:
- 529:App/ProtocolMbRtuSlaveCtrl.c ****   //       programStruct.BmsParam.mdb_state = (uint8_t)value;
+ 513:App/ProtocolMbRtuSlaveCtrl.c ****   //   default:
+ 514:App/ProtocolMbRtuSlaveCtrl.c ****   //     response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_FAIL;
+ 515:App/ProtocolMbRtuSlaveCtrl.c ****   //     break;
+ 516:App/ProtocolMbRtuSlaveCtrl.c ****   //   }
+ 517:App/ProtocolMbRtuSlaveCtrl.c ****   // }
+ 518:App/ProtocolMbRtuSlaveCtrl.c ****   // //-----------------------BMS----------------------//
+ 519:App/ProtocolMbRtuSlaveCtrl.c ****   // else if (table == &mdb_table_bms)
+ 520:App/ProtocolMbRtuSlaveCtrl.c ****   // {
+ 521:App/ProtocolMbRtuSlaveCtrl.c ****   //   value = ModbusSS_GetWord(&mdb_table_bms, reg);
+ 522:App/ProtocolMbRtuSlaveCtrl.c ****   //   switch (reg) 
+ 523:App/ProtocolMbRtuSlaveCtrl.c ****   //   {
+ 524:App/ProtocolMbRtuSlaveCtrl.c ****   //     case tab_param_bms_mdb_state:
+ 525:App/ProtocolMbRtuSlaveCtrl.c ****   //       programStruct.BmsParam.mdb_state = (uint8_t)value;
+ 526:App/ProtocolMbRtuSlaveCtrl.c ****   //       programStruct.PanParam.mdb_rx = PAN_MDB_STATE_OK;
+ 527:App/ProtocolMbRtuSlaveCtrl.c ****   //       break; 
+ 528:App/ProtocolMbRtuSlaveCtrl.c ****   //     case tab_param_bms_bat_cell_Umin:
+ 529:App/ProtocolMbRtuSlaveCtrl.c ****   //       programStruct.BmsParam.bat_cell_Umin = value*kMul;
  530:App/ProtocolMbRtuSlaveCtrl.c ****   //       programStruct.PanParam.mdb_rx = PAN_MDB_STATE_OK;
- 531:App/ProtocolMbRtuSlaveCtrl.c ****   //       break; 
- 532:App/ProtocolMbRtuSlaveCtrl.c ****   //     case tab_param_bms_bat_cell_Umin:
- 533:App/ProtocolMbRtuSlaveCtrl.c ****   //       programStruct.BmsParam.bat_cell_Umin = value*kMul;
+ 531:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
+ 532:App/ProtocolMbRtuSlaveCtrl.c ****   //     case tab_param_bms_bat_cell_Umax:
+ 533:App/ProtocolMbRtuSlaveCtrl.c ****   //       programStruct.BmsParam.bat_cell_Umax = value*kMul;
  534:App/ProtocolMbRtuSlaveCtrl.c ****   //       programStruct.PanParam.mdb_rx = PAN_MDB_STATE_OK;
  535:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
- 536:App/ProtocolMbRtuSlaveCtrl.c ****   //     case tab_param_bms_bat_cell_Umax:
- 537:App/ProtocolMbRtuSlaveCtrl.c ****   //       programStruct.BmsParam.bat_cell_Umax = value*kMul;
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s 			page 11
+ 536:App/ProtocolMbRtuSlaveCtrl.c ****   //     case tab_param_bms_bat_cell_Tmin:
+ 537:App/ProtocolMbRtuSlaveCtrl.c ****   //       sign_val = ModbusSS_GetWord(&mdb_table_bms, reg);
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s 			page 11
 
 
- 538:App/ProtocolMbRtuSlaveCtrl.c ****   //       programStruct.PanParam.mdb_rx = PAN_MDB_STATE_OK;
- 539:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
- 540:App/ProtocolMbRtuSlaveCtrl.c ****   //     case tab_param_bms_bat_cell_Tmin:
- 541:App/ProtocolMbRtuSlaveCtrl.c ****   //       sign_val = ModbusSS_GetWord(&mdb_table_bms, reg);
- 542:App/ProtocolMbRtuSlaveCtrl.c ****   //       programStruct.BmsParam.bat_cell_Tmin = sign_val*kMul;
+ 538:App/ProtocolMbRtuSlaveCtrl.c ****   //       programStruct.BmsParam.bat_cell_Tmin = sign_val*kMul;
+ 539:App/ProtocolMbRtuSlaveCtrl.c ****   //       programStruct.PanParam.mdb_rx = PAN_MDB_STATE_OK;
+ 540:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
+ 541:App/ProtocolMbRtuSlaveCtrl.c ****   //     case tab_param_bms_bat_cell_Tmax:
+ 542:App/ProtocolMbRtuSlaveCtrl.c ****   //       programStruct.BmsParam.bat_cell_Tmax = value*kMul;
  543:App/ProtocolMbRtuSlaveCtrl.c ****   //       programStruct.PanParam.mdb_rx = PAN_MDB_STATE_OK;
  544:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
- 545:App/ProtocolMbRtuSlaveCtrl.c ****   //     case tab_param_bms_bat_cell_Tmax:
- 546:App/ProtocolMbRtuSlaveCtrl.c ****   //       programStruct.BmsParam.bat_cell_Tmax = value*kMul;
+ 545:App/ProtocolMbRtuSlaveCtrl.c ****   //     case tab_param_bms_logic_Tmax:
+ 546:App/ProtocolMbRtuSlaveCtrl.c ****   //       programStruct.BmsParam.logic_Tmax = value*kMulBms;
  547:App/ProtocolMbRtuSlaveCtrl.c ****   //       programStruct.PanParam.mdb_rx = PAN_MDB_STATE_OK;
  548:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
- 549:App/ProtocolMbRtuSlaveCtrl.c ****   //     case tab_param_bms_logic_Tmax:
- 550:App/ProtocolMbRtuSlaveCtrl.c ****   //       programStruct.BmsParam.logic_Tmax = value*kMulBms;
+ 549:App/ProtocolMbRtuSlaveCtrl.c ****   //     case tab_param_bms_rellay_state:
+ 550:App/ProtocolMbRtuSlaveCtrl.c ****   //       programStruct.BmsParam.rellay_state = (uint8_t)value;
  551:App/ProtocolMbRtuSlaveCtrl.c ****   //       programStruct.PanParam.mdb_rx = PAN_MDB_STATE_OK;
  552:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
- 553:App/ProtocolMbRtuSlaveCtrl.c ****   //     case tab_param_bms_rellay_state:
- 554:App/ProtocolMbRtuSlaveCtrl.c ****   //       programStruct.BmsParam.rellay_state = (uint8_t)value;
- 555:App/ProtocolMbRtuSlaveCtrl.c ****   //       programStruct.PanParam.mdb_rx = PAN_MDB_STATE_OK;
- 556:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
- 557:App/ProtocolMbRtuSlaveCtrl.c ****   //   }
- 558:App/ProtocolMbRtuSlaveCtrl.c ****   // }
- 559:App/ProtocolMbRtuSlaveCtrl.c ****   // //---------------------BMS END---------------------//
- 560:App/ProtocolMbRtuSlaveCtrl.c ****   // else // Вне диапазона
- 561:App/ProtocolMbRtuSlaveCtrl.c ****   // {
- 562:App/ProtocolMbRtuSlaveCtrl.c ****   //   response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_FAIL;
- 563:App/ProtocolMbRtuSlaveCtrl.c ****   // }
- 564:App/ProtocolMbRtuSlaveCtrl.c **** 
- 565:App/ProtocolMbRtuSlaveCtrl.c ****   // ModbusSS_SetWord(&mdb_table_program, tab_prg_cmd, response);
- 566:App/ProtocolMbRtuSlaveCtrl.c **** }
-  35              		.loc 1 566 1 view .LVU1
+ 553:App/ProtocolMbRtuSlaveCtrl.c ****   //   }
+ 554:App/ProtocolMbRtuSlaveCtrl.c ****   // }
+ 555:App/ProtocolMbRtuSlaveCtrl.c ****   // //---------------------BMS END---------------------//
+ 556:App/ProtocolMbRtuSlaveCtrl.c ****   // else // Вне диапазона
+ 557:App/ProtocolMbRtuSlaveCtrl.c ****   // {
+ 558:App/ProtocolMbRtuSlaveCtrl.c ****   //   response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_FAIL;
+ 559:App/ProtocolMbRtuSlaveCtrl.c ****   // }
+ 560:App/ProtocolMbRtuSlaveCtrl.c **** 
+ 561:App/ProtocolMbRtuSlaveCtrl.c ****   // ModbusSS_SetWord(&mdb_table_program, tab_prg_cmd, response);
+ 562:App/ProtocolMbRtuSlaveCtrl.c **** }
+  35              		.loc 1 562 1 view .LVU1
   36 0000 7047     		bx	lr
   37              		.cfi_endproc
   38              	.LFE331:
@@ -643,39 +639,39 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s 			page 1
   47              	protocolMbRtuSlaveCtrl_init:
   48              	.LVL1:
   49              	.LFB329:
-  62:App/ProtocolMbRtuSlaveCtrl.c ****   HAL_Delay(100);
-  50              		.loc 1 62 1 view -0
+  58:App/ProtocolMbRtuSlaveCtrl.c ****   HAL_Delay(100);
+  50              		.loc 1 58 1 view -0
   51              		.cfi_startproc
   52              		@ args = 0, pretend = 0, frame = 0
   53              		@ frame_needed = 0, uses_anonymous_args = 0
-  62:App/ProtocolMbRtuSlaveCtrl.c ****   HAL_Delay(100);
-  54              		.loc 1 62 1 is_stmt 0 view .LVU3
+  58:App/ProtocolMbRtuSlaveCtrl.c ****   HAL_Delay(100);
+  54              		.loc 1 58 1 is_stmt 0 view .LVU3
   55 0000 10B5     		push	{r4, lr}
   56              	.LCFI0:
   57              		.cfi_def_cfa_offset 8
   58              		.cfi_offset 4, -8
   59              		.cfi_offset 14, -4
   60 0002 0446     		mov	r4, r0
-  63:App/ProtocolMbRtuSlaveCtrl.c ****   bsp_rs485_setPortToModbusRtu(portNo, modbusBufRxTxRtu485, MODBUS_SS_BUF_CNT);
-  61              		.loc 1 63 3 is_stmt 1 view .LVU4
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s 			page 12
-
-
+  59:App/ProtocolMbRtuSlaveCtrl.c ****   bsp_rs485_setPortToModbusRtu(portNo, modbusBufRxTxRtu485, MODBUS_SS_BUF_CNT);
+  61              		.loc 1 59 3 is_stmt 1 view .LVU4
   62 0004 6420     		movs	r0, #100
   63              	.LVL2:
-  63:App/ProtocolMbRtuSlaveCtrl.c ****   bsp_rs485_setPortToModbusRtu(portNo, modbusBufRxTxRtu485, MODBUS_SS_BUF_CNT);
-  64              		.loc 1 63 3 is_stmt 0 view .LVU5
+  59:App/ProtocolMbRtuSlaveCtrl.c ****   bsp_rs485_setPortToModbusRtu(portNo, modbusBufRxTxRtu485, MODBUS_SS_BUF_CNT);
+  64              		.loc 1 59 3 is_stmt 0 view .LVU5
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s 			page 12
+
+
   65 0006 FFF7FEFF 		bl	HAL_Delay
   66              	.LVL3:
-  64:App/ProtocolMbRtuSlaveCtrl.c **** }
-  67              		.loc 1 64 3 is_stmt 1 view .LVU6
+  60:App/ProtocolMbRtuSlaveCtrl.c **** }
+  67              		.loc 1 60 3 is_stmt 1 view .LVU6
   68 000a 4FF48272 		mov	r2, #260
   69 000e 0249     		ldr	r1, .L4
   70 0010 2046     		mov	r0, r4
   71 0012 FFF7FEFF 		bl	bsp_rs485_setPortToModbusRtu
   72              	.LVL4:
-  65:App/ProtocolMbRtuSlaveCtrl.c **** 
-  73              		.loc 1 65 1 is_stmt 0 view .LVU7
+  61:App/ProtocolMbRtuSlaveCtrl.c **** 
+  73              		.loc 1 61 1 is_stmt 0 view .LVU7
   74 0016 10BD     		pop	{r4, pc}
   75              	.L5:
   76              		.align	2
@@ -691,8 +687,8 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s 			page 1
   87              		.thumb_func
   89              	protocolMbRtuSlaveCtrl_update_tables:
   90              	.LFB330:
-  68:App/ProtocolMbRtuSlaveCtrl.c ****   // --- BSP -----------------------------//
-  91              		.loc 1 68 1 is_stmt 1 view -0
+  64:App/ProtocolMbRtuSlaveCtrl.c ****   // --- BSP -----------------------------//
+  91              		.loc 1 64 1 is_stmt 1 view -0
   92              		.cfi_startproc
   93              		@ args = 0, pretend = 0, frame = 0
   94              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -703,8 +699,8 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s 			page 1
   99              		.cfi_offset 4, -12
  100              		.cfi_offset 5, -8
  101              		.cfi_offset 14, -4
-  70:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_control_led_rele,  0);
- 102              		.loc 1 70 3 view .LVU9
+  66:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_control_led_rele,  0);
+ 102              		.loc 1 66 3 view .LVU9
  103 0002 134D     		ldr	r5, .L8
  104 0004 134C     		ldr	r4, .L8+4
  105 0006 2A88     		ldrh	r2, [r5]
@@ -712,46 +708,46 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s 			page 1
  107 000c 2046     		mov	r0, r4
  108 000e FFF7FEFF 		bl	ModbusSS_SetWord
  109              	.LVL5:
-  71:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_spi_buf_0,         App.Mdb_data_AO.spi_buf_0[0]);
- 110              		.loc 1 71 3 view .LVU10
+  67:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_spi_buf_0,         App.Mdb_data_AO.spi_buf_0[0]);
+ 110              		.loc 1 67 3 view .LVU10
  111 0012 0022     		movs	r2, #0
  112 0014 40F2E931 		movw	r1, #1001
  113 0018 2046     		mov	r0, r4
  114 001a FFF7FEFF 		bl	ModbusSS_SetWord
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s 			page 13
-
-
  115              	.LVL6:
-  72:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_spi_buf_1,         App.Mdb_data_AO.spi_buf_0[1]);
- 116              		.loc 1 72 3 view .LVU11
+  68:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_spi_buf_1,         App.Mdb_data_AO.spi_buf_0[1]);
+ 116              		.loc 1 68 3 view .LVU11
  117 001e AA88     		ldrh	r2, [r5, #4]
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s 			page 13
+
+
  118 0020 40F2EA31 		movw	r1, #1002
  119 0024 2046     		mov	r0, r4
  120 0026 FFF7FEFF 		bl	ModbusSS_SetWord
  121              	.LVL7:
-  73:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_spi_buf_2,         App.Mdb_data_AO.spi_buf_0[2]);
- 122              		.loc 1 73 3 view .LVU12
+  69:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_spi_buf_2,         App.Mdb_data_AO.spi_buf_0[2]);
+ 122              		.loc 1 69 3 view .LVU12
  123 002a EA88     		ldrh	r2, [r5, #6]
  124 002c 40F2EB31 		movw	r1, #1003
  125 0030 2046     		mov	r0, r4
  126 0032 FFF7FEFF 		bl	ModbusSS_SetWord
  127              	.LVL8:
-  74:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_ADC_data,          App.Mdb_data_AO.ADC_data);
- 128              		.loc 1 74 3 view .LVU13
+  70:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_ADC_data,          App.Mdb_data_AO.ADC_data);
+ 128              		.loc 1 70 3 view .LVU13
  129 0036 2A89     		ldrh	r2, [r5, #8]
  130 0038 4FF47B71 		mov	r1, #1004
  131 003c 2046     		mov	r0, r4
  132 003e FFF7FEFF 		bl	ModbusSS_SetWord
  133              	.LVL9:
-  75:App/ProtocolMbRtuSlaveCtrl.c **** }
- 134              		.loc 1 75 3 view .LVU14
+  71:App/ProtocolMbRtuSlaveCtrl.c **** }
+ 134              		.loc 1 71 3 view .LVU14
  135 0042 6A89     		ldrh	r2, [r5, #10]
  136 0044 40F2ED31 		movw	r1, #1005
  137 0048 2046     		mov	r0, r4
  138 004a FFF7FEFF 		bl	ModbusSS_SetWord
  139              	.LVL10:
-  76:App/ProtocolMbRtuSlaveCtrl.c **** //------------------------ REGULAR FCN END------------------------
- 140              		.loc 1 76 1 is_stmt 0 view .LVU15
+  72:App/ProtocolMbRtuSlaveCtrl.c **** //------------------------ REGULAR FCN END------------------------
+ 140              		.loc 1 72 1 is_stmt 0 view .LVU15
  141 004e 38BD     		pop	{r3, r4, r5, pc}
  142              	.L9:
  143              		.align	2
@@ -769,50 +765,50 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s 			page 1
  157              	protocolMbRtuSlaveCtrl_callback_H_READ:
  158              	.LVL11:
  159              	.LFB332:
- 567:App/ProtocolMbRtuSlaveCtrl.c **** 
- 568:App/ProtocolMbRtuSlaveCtrl.c **** __weak void protocolMbRtuSlaveCtrl_callback_H_READ(ModbusSS_table_t *table, uint16_t reg, uint16_t 
- 569:App/ProtocolMbRtuSlaveCtrl.c **** {
- 160              		.loc 1 569 1 is_stmt 1 view -0
+ 563:App/ProtocolMbRtuSlaveCtrl.c **** 
+ 564:App/ProtocolMbRtuSlaveCtrl.c **** __weak void protocolMbRtuSlaveCtrl_callback_H_READ(ModbusSS_table_t *table, uint16_t reg, uint16_t 
+ 565:App/ProtocolMbRtuSlaveCtrl.c **** {
+ 160              		.loc 1 565 1 is_stmt 1 view -0
  161              		.cfi_startproc
  162              		@ args = 0, pretend = 0, frame = 0
  163              		@ frame_needed = 0, uses_anonymous_args = 0
  164              		@ link register save eliminated.
- 570:App/ProtocolMbRtuSlaveCtrl.c **** 
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s 			page 14
-
-
- 571:App/ProtocolMbRtuSlaveCtrl.c ****   asm("NOP");
- 165              		.loc 1 571 3 view .LVU17
+ 566:App/ProtocolMbRtuSlaveCtrl.c **** 
+ 567:App/ProtocolMbRtuSlaveCtrl.c ****   asm("NOP");
+ 165              		.loc 1 567 3 view .LVU17
  166              		.syntax unified
- 167              	@ 571 "App/ProtocolMbRtuSlaveCtrl.c" 1
+ 167              	@ 567 "App/ProtocolMbRtuSlaveCtrl.c" 1
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s 			page 14
+
+
  168 0000 00BF     		NOP
  169              	@ 0 "" 2
- 572:App/ProtocolMbRtuSlaveCtrl.c ****   //             if (table == &modbusTableHolding1)
- 573:App/ProtocolMbRtuSlaveCtrl.c ****   // {
- 574:App/ProtocolMbRtuSlaveCtrl.c ****   //   for (int r = reg; r < reg + quantity; r++)
- 575:App/ProtocolMbRtuSlaveCtrl.c ****   //   {
- 576:App/ProtocolMbRtuSlaveCtrl.c ****   //     asm("NOP");
- 577:App/ProtocolMbRtuSlaveCtrl.c ****   //     switch (r)
- 578:App/ProtocolMbRtuSlaveCtrl.c ****   //     {
- 579:App/ProtocolMbRtuSlaveCtrl.c ****   //     case MBP_AI1_X:
- 580:App/ProtocolMbRtuSlaveCtrl.c ****   //       ModbusSS_SetWord(table, r, bsp_ai_read_cache(BSP_AI1));
+ 568:App/ProtocolMbRtuSlaveCtrl.c ****   //             if (table == &modbusTableHolding1)
+ 569:App/ProtocolMbRtuSlaveCtrl.c ****   // {
+ 570:App/ProtocolMbRtuSlaveCtrl.c ****   //   for (int r = reg; r < reg + quantity; r++)
+ 571:App/ProtocolMbRtuSlaveCtrl.c ****   //   {
+ 572:App/ProtocolMbRtuSlaveCtrl.c ****   //     asm("NOP");
+ 573:App/ProtocolMbRtuSlaveCtrl.c ****   //     switch (r)
+ 574:App/ProtocolMbRtuSlaveCtrl.c ****   //     {
+ 575:App/ProtocolMbRtuSlaveCtrl.c ****   //     case MBP_AI1_X:
+ 576:App/ProtocolMbRtuSlaveCtrl.c ****   //       ModbusSS_SetWord(table, r, bsp_ai_read_cache(BSP_AI1));
+ 577:App/ProtocolMbRtuSlaveCtrl.c ****   //       asm("NOP");
+ 578:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
+ 579:App/ProtocolMbRtuSlaveCtrl.c ****   //     case MBP_AI2_Y:
+ 580:App/ProtocolMbRtuSlaveCtrl.c ****   //       ModbusSS_SetWord(table, r, bsp_ai_read_cache(BSP_AI2));
  581:App/ProtocolMbRtuSlaveCtrl.c ****   //       asm("NOP");
  582:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
- 583:App/ProtocolMbRtuSlaveCtrl.c ****   //     case MBP_AI2_Y:
- 584:App/ProtocolMbRtuSlaveCtrl.c ****   //       ModbusSS_SetWord(table, r, bsp_ai_read_cache(BSP_AI2));
+ 583:App/ProtocolMbRtuSlaveCtrl.c ****   //     case MBP_DI_STATE:
+ 584:App/ProtocolMbRtuSlaveCtrl.c ****   //       ModbusSS_SetWord(table, r, bsp_di_get_cache_pack16());
  585:App/ProtocolMbRtuSlaveCtrl.c ****   //       asm("NOP");
  586:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
- 587:App/ProtocolMbRtuSlaveCtrl.c ****   //     case MBP_DI_STATE:
- 588:App/ProtocolMbRtuSlaveCtrl.c ****   //       ModbusSS_SetWord(table, r, bsp_di_get_cache_pack16());
- 589:App/ProtocolMbRtuSlaveCtrl.c ****   //       asm("NOP");
- 590:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
- 591:App/ProtocolMbRtuSlaveCtrl.c ****   //     default:
- 592:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
- 593:App/ProtocolMbRtuSlaveCtrl.c ****   //     }
- 594:App/ProtocolMbRtuSlaveCtrl.c ****   //   }
- 595:App/ProtocolMbRtuSlaveCtrl.c ****   // }
- 596:App/ProtocolMbRtuSlaveCtrl.c **** }
- 170              		.loc 1 596 1 is_stmt 0 view .LVU18
+ 587:App/ProtocolMbRtuSlaveCtrl.c ****   //     default:
+ 588:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
+ 589:App/ProtocolMbRtuSlaveCtrl.c ****   //     }
+ 590:App/ProtocolMbRtuSlaveCtrl.c ****   //   }
+ 591:App/ProtocolMbRtuSlaveCtrl.c ****   // }
+ 592:App/ProtocolMbRtuSlaveCtrl.c **** }
+ 170              		.loc 1 592 1 is_stmt 0 view .LVU18
  171              		.thumb
  172              		.syntax unified
  173 0002 7047     		bx	lr
@@ -827,98 +823,98 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s 			page 1
  184              	bsp_rs485_callback_rxBlockReady:
  185              	.LVL12:
  186              	.LFB333:
- 597:App/ProtocolMbRtuSlaveCtrl.c **** //------------------------------- MODBUS CALLBACKS END-------------------------------------------//
- 598:App/ProtocolMbRtuSlaveCtrl.c **** 
- 599:App/ProtocolMbRtuSlaveCtrl.c **** //------------------------------- HW CALLBACK -------------------------------------------//
- 600:App/ProtocolMbRtuSlaveCtrl.c **** void bsp_rs485_callback_rxBlockReady(uint8_t portNo)
- 601:App/ProtocolMbRtuSlaveCtrl.c **** {
- 187              		.loc 1 601 1 is_stmt 1 view -0
+ 593:App/ProtocolMbRtuSlaveCtrl.c **** //------------------------------- MODBUS CALLBACKS END-------------------------------------------//
+ 594:App/ProtocolMbRtuSlaveCtrl.c **** 
+ 595:App/ProtocolMbRtuSlaveCtrl.c **** //------------------------------- HW CALLBACK -------------------------------------------//
+ 596:App/ProtocolMbRtuSlaveCtrl.c **** void bsp_rs485_callback_rxBlockReady(uint8_t portNo)
+ 597:App/ProtocolMbRtuSlaveCtrl.c **** {
+ 187              		.loc 1 597 1 is_stmt 1 view -0
  188              		.cfi_startproc
  189              		@ args = 0, pretend = 0, frame = 0
  190              		@ frame_needed = 0, uses_anonymous_args = 0
- 191              		.loc 1 601 1 is_stmt 0 view .LVU20
+ 191              		.loc 1 597 1 is_stmt 0 view .LVU20
  192 0000 10B5     		push	{r4, lr}
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s 			page 15
-
-
  193              	.LCFI2:
  194              		.cfi_def_cfa_offset 8
  195              		.cfi_offset 4, -8
  196              		.cfi_offset 14, -4
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s 			page 15
+
+
  197 0002 0446     		mov	r4, r0
- 602:App/ProtocolMbRtuSlaveCtrl.c **** 
- 603:App/ProtocolMbRtuSlaveCtrl.c ****   int32_t blockSizeByte = 0;
- 198              		.loc 1 603 3 is_stmt 1 view .LVU21
+ 598:App/ProtocolMbRtuSlaveCtrl.c **** 
+ 599:App/ProtocolMbRtuSlaveCtrl.c ****   int32_t blockSizeByte = 0;
+ 198              		.loc 1 599 3 is_stmt 1 view .LVU21
  199              	.LVL13:
- 604:App/ProtocolMbRtuSlaveCtrl.c ****   if ((blockSizeByte = ModbusSS_ParseRxData(&modbusSS_rtu_rs485)) == 0)
- 200              		.loc 1 604 3 view .LVU22
- 201              		.loc 1 604 24 is_stmt 0 view .LVU23
+ 600:App/ProtocolMbRtuSlaveCtrl.c ****   if ((blockSizeByte = ModbusSS_ParseRxData(&modbusSS_rtu_rs485)) == 0)
+ 200              		.loc 1 600 3 view .LVU22
+ 201              		.loc 1 600 24 is_stmt 0 view .LVU23
  202 0004 0848     		ldr	r0, .L15
  203              	.LVL14:
- 204              		.loc 1 604 24 view .LVU24
+ 204              		.loc 1 600 24 view .LVU24
  205 0006 FFF7FEFF 		bl	ModbusSS_ParseRxData
  206              	.LVL15:
- 207              		.loc 1 604 6 view .LVU25
+ 207              		.loc 1 600 6 view .LVU25
  208 000a 08B9     		cbnz	r0, .L12
- 605:App/ProtocolMbRtuSlaveCtrl.c ****   {
- 606:App/ProtocolMbRtuSlaveCtrl.c ****     // bug with reset modbus!!!
- 607:App/ProtocolMbRtuSlaveCtrl.c ****     asm("NOP");
- 209              		.loc 1 607 5 is_stmt 1 view .LVU26
+ 601:App/ProtocolMbRtuSlaveCtrl.c ****   {
+ 602:App/ProtocolMbRtuSlaveCtrl.c ****     // bug with reset modbus!!!
+ 603:App/ProtocolMbRtuSlaveCtrl.c ****     asm("NOP");
+ 209              		.loc 1 603 5 is_stmt 1 view .LVU26
  210              		.syntax unified
- 211              	@ 607 "App/ProtocolMbRtuSlaveCtrl.c" 1
+ 211              	@ 603 "App/ProtocolMbRtuSlaveCtrl.c" 1
  212 000c 00BF     		NOP
  213              	@ 0 "" 2
  214              	.LVL16:
  215              		.thumb
  216              		.syntax unified
  217              	.L11:
- 608:App/ProtocolMbRtuSlaveCtrl.c ****   }
- 609:App/ProtocolMbRtuSlaveCtrl.c ****   else if (blockSizeByte != -1)
- 610:App/ProtocolMbRtuSlaveCtrl.c ****   {
- 611:App/ProtocolMbRtuSlaveCtrl.c ****     asm("NOP");
- 612:App/ProtocolMbRtuSlaveCtrl.c ****     bsp_rs485_sendBlock(portNo, modbusSS_rtu_rs485.bufRxTx, blockSizeByte);
- 613:App/ProtocolMbRtuSlaveCtrl.c ****     asm("NOP");
- 614:App/ProtocolMbRtuSlaveCtrl.c ****   }
- 615:App/ProtocolMbRtuSlaveCtrl.c **** }
- 218              		.loc 1 615 1 is_stmt 0 view .LVU27
+ 604:App/ProtocolMbRtuSlaveCtrl.c ****   }
+ 605:App/ProtocolMbRtuSlaveCtrl.c ****   else if (blockSizeByte != -1)
+ 606:App/ProtocolMbRtuSlaveCtrl.c ****   {
+ 607:App/ProtocolMbRtuSlaveCtrl.c ****     asm("NOP");
+ 608:App/ProtocolMbRtuSlaveCtrl.c ****     bsp_rs485_sendBlock(portNo, modbusSS_rtu_rs485.bufRxTx, blockSizeByte);
+ 609:App/ProtocolMbRtuSlaveCtrl.c ****     asm("NOP");
+ 610:App/ProtocolMbRtuSlaveCtrl.c ****   }
+ 611:App/ProtocolMbRtuSlaveCtrl.c **** }
+ 218              		.loc 1 611 1 is_stmt 0 view .LVU27
  219 000e 10BD     		pop	{r4, pc}
  220              	.LVL17:
  221              	.L12:
- 609:App/ProtocolMbRtuSlaveCtrl.c ****   {
- 222              		.loc 1 609 8 is_stmt 1 view .LVU28
- 609:App/ProtocolMbRtuSlaveCtrl.c ****   {
- 223              		.loc 1 609 11 is_stmt 0 view .LVU29
+ 605:App/ProtocolMbRtuSlaveCtrl.c ****   {
+ 222              		.loc 1 605 8 is_stmt 1 view .LVU28
+ 605:App/ProtocolMbRtuSlaveCtrl.c ****   {
+ 223              		.loc 1 605 11 is_stmt 0 view .LVU29
  224 0010 B0F1FF3F 		cmp	r0, #-1
  225 0014 FBD0     		beq	.L11
- 611:App/ProtocolMbRtuSlaveCtrl.c ****     bsp_rs485_sendBlock(portNo, modbusSS_rtu_rs485.bufRxTx, blockSizeByte);
- 226              		.loc 1 611 5 is_stmt 1 view .LVU30
+ 607:App/ProtocolMbRtuSlaveCtrl.c ****     bsp_rs485_sendBlock(portNo, modbusSS_rtu_rs485.bufRxTx, blockSizeByte);
+ 226              		.loc 1 607 5 is_stmt 1 view .LVU30
  227              		.syntax unified
- 228              	@ 611 "App/ProtocolMbRtuSlaveCtrl.c" 1
+ 228              	@ 607 "App/ProtocolMbRtuSlaveCtrl.c" 1
  229 0016 00BF     		NOP
  230              	@ 0 "" 2
- 612:App/ProtocolMbRtuSlaveCtrl.c ****     asm("NOP");
- 231              		.loc 1 612 5 view .LVU31
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s 			page 16
-
-
+ 608:App/ProtocolMbRtuSlaveCtrl.c ****     asm("NOP");
+ 231              		.loc 1 608 5 view .LVU31
  232              		.thumb
  233              		.syntax unified
  234 0018 C2B2     		uxtb	r2, r0
  235 001a 034B     		ldr	r3, .L15
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s 			page 16
+
+
  236 001c 1969     		ldr	r1, [r3, #16]
  237 001e 2046     		mov	r0, r4
  238              	.LVL18:
- 612:App/ProtocolMbRtuSlaveCtrl.c ****     asm("NOP");
- 239              		.loc 1 612 5 is_stmt 0 view .LVU32
+ 608:App/ProtocolMbRtuSlaveCtrl.c ****     asm("NOP");
+ 239              		.loc 1 608 5 is_stmt 0 view .LVU32
  240 0020 FFF7FEFF 		bl	bsp_rs485_sendBlock
  241              	.LVL19:
- 613:App/ProtocolMbRtuSlaveCtrl.c ****   }
- 242              		.loc 1 613 5 is_stmt 1 view .LVU33
+ 609:App/ProtocolMbRtuSlaveCtrl.c ****   }
+ 242              		.loc 1 609 5 is_stmt 1 view .LVU33
  243              		.syntax unified
- 244              	@ 613 "App/ProtocolMbRtuSlaveCtrl.c" 1
+ 244              	@ 609 "App/ProtocolMbRtuSlaveCtrl.c" 1
  245 0024 00BF     		NOP
  246              	@ 0 "" 2
- 247              		.loc 1 615 1 is_stmt 0 view .LVU34
+ 247              		.loc 1 611 1 is_stmt 0 view .LVU34
  248              		.thumb
  249              		.syntax unified
  250 0026 F2E7     		b	.L11
@@ -958,13 +954,13 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s 			page 1
  293              	mdb_table_bsp:
  294 0000 E803     		.short	1000
  295 0002 0700     		.short	7
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s 			page 17
-
-
  296 0004 00       		.byte	0
  297 0005 000000   		.space	3
  298 0008 00000000 		.word	mdb_bsp_buf
  299              		.global	mdb_bsp_buf
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s 			page 17
+
+
  300              		.section	.bss.mdb_bsp_buf,"aw",%nobits
  301              		.align	2
  304              	mdb_bsp_buf:
@@ -990,36 +986,36 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s 			page 1
  319              		.file 6 "App/App.h"
  320              		.file 7 "BSP/BSP.h"
  321              		.file 8 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h"
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s 			page 18
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s 			page 18
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 ProtocolMbRtuSlaveCtrl.c
-C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s:21     .text.protocolMbRtuSlaveCtrl_callback_H_WRITE:0000000000000000 $t
-C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s:27     .text.protocolMbRtuSlaveCtrl_callback_H_WRITE:0000000000000000 protocolMbRtuSlaveCtrl_callback_H_WRITE
-C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s:41     .text.protocolMbRtuSlaveCtrl_init:0000000000000000 $t
-C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s:47     .text.protocolMbRtuSlaveCtrl_init:0000000000000000 protocolMbRtuSlaveCtrl_init
-C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s:78     .text.protocolMbRtuSlaveCtrl_init:0000000000000018 $d
-C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s:311    .bss.modbusBufRxTxRtu485:0000000000000000 modbusBufRxTxRtu485
-C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s:83     .text.protocolMbRtuSlaveCtrl_update_tables:0000000000000000 $t
-C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s:89     .text.protocolMbRtuSlaveCtrl_update_tables:0000000000000000 protocolMbRtuSlaveCtrl_update_tables
-C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s:145    .text.protocolMbRtuSlaveCtrl_update_tables:0000000000000050 $d
-C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s:293    .data.mdb_table_bsp:0000000000000000 mdb_table_bsp
-C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s:151    .text.protocolMbRtuSlaveCtrl_callback_H_READ:0000000000000000 $t
-C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s:157    .text.protocolMbRtuSlaveCtrl_callback_H_READ:0000000000000000 protocolMbRtuSlaveCtrl_callback_H_READ
-C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s:178    .text.bsp_rs485_callback_rxBlockReady:0000000000000000 $t
-C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s:184    .text.bsp_rs485_callback_rxBlockReady:0000000000000000 bsp_rs485_callback_rxBlockReady
-C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s:254    .text.bsp_rs485_callback_rxBlockReady:0000000000000028 $d
-C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s:270    .data.modbusSS_rtu_rs485:0000000000000000 modbusSS_rtu_rs485
-C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s:263    .bss.modbusRtu_ctrlStruct:0000000000000000 modbusRtu_ctrlStruct
-C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s:260    .bss.modbusRtu_ctrlStruct:0000000000000000 $d
-C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s:267    .data.modbusSS_rtu_rs485:0000000000000000 $d
-C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s:286    .data.modbusTables:0000000000000000 modbusTables
-C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s:283    .data.modbusTables:0000000000000000 $d
-C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s:290    .data.mdb_table_bsp:0000000000000000 $d
-C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s:304    .bss.mdb_bsp_buf:0000000000000000 mdb_bsp_buf
-C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s:301    .bss.mdb_bsp_buf:0000000000000000 $d
-C:\Users\sr1\AppData\Local\Temp\ccbFQcdk.s:308    .bss.modbusBufRxTxRtu485:0000000000000000 $d
+C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s:21     .text.protocolMbRtuSlaveCtrl_callback_H_WRITE:0000000000000000 $t
+C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s:27     .text.protocolMbRtuSlaveCtrl_callback_H_WRITE:0000000000000000 protocolMbRtuSlaveCtrl_callback_H_WRITE
+C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s:41     .text.protocolMbRtuSlaveCtrl_init:0000000000000000 $t
+C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s:47     .text.protocolMbRtuSlaveCtrl_init:0000000000000000 protocolMbRtuSlaveCtrl_init
+C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s:78     .text.protocolMbRtuSlaveCtrl_init:0000000000000018 $d
+C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s:311    .bss.modbusBufRxTxRtu485:0000000000000000 modbusBufRxTxRtu485
+C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s:83     .text.protocolMbRtuSlaveCtrl_update_tables:0000000000000000 $t
+C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s:89     .text.protocolMbRtuSlaveCtrl_update_tables:0000000000000000 protocolMbRtuSlaveCtrl_update_tables
+C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s:145    .text.protocolMbRtuSlaveCtrl_update_tables:0000000000000050 $d
+C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s:293    .data.mdb_table_bsp:0000000000000000 mdb_table_bsp
+C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s:151    .text.protocolMbRtuSlaveCtrl_callback_H_READ:0000000000000000 $t
+C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s:157    .text.protocolMbRtuSlaveCtrl_callback_H_READ:0000000000000000 protocolMbRtuSlaveCtrl_callback_H_READ
+C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s:178    .text.bsp_rs485_callback_rxBlockReady:0000000000000000 $t
+C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s:184    .text.bsp_rs485_callback_rxBlockReady:0000000000000000 bsp_rs485_callback_rxBlockReady
+C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s:254    .text.bsp_rs485_callback_rxBlockReady:0000000000000028 $d
+C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s:270    .data.modbusSS_rtu_rs485:0000000000000000 modbusSS_rtu_rs485
+C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s:263    .bss.modbusRtu_ctrlStruct:0000000000000000 modbusRtu_ctrlStruct
+C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s:260    .bss.modbusRtu_ctrlStruct:0000000000000000 $d
+C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s:267    .data.modbusSS_rtu_rs485:0000000000000000 $d
+C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s:286    .data.modbusTables:0000000000000000 modbusTables
+C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s:283    .data.modbusTables:0000000000000000 $d
+C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s:290    .data.mdb_table_bsp:0000000000000000 $d
+C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s:304    .bss.mdb_bsp_buf:0000000000000000 mdb_bsp_buf
+C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s:301    .bss.mdb_bsp_buf:0000000000000000 $d
+C:\Users\sr1\AppData\Local\Temp\ccwFSSOK.s:308    .bss.modbusBufRxTxRtu485:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 HAL_Delay

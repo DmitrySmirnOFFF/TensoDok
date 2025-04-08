@@ -28,9 +28,6 @@ ModbusSS_table_t mdb_table_bsp = {
     .regNo = MDB_TABLE_BSP_REG_NO,
     .type = ModbusSS_Holding};
 
-
-//-----------------BMS END-----------------//
-
 //--------------------  PROTOCOL END---------------------//
 
 //--------------------  TABLES ARRAY ---------------------//
@@ -49,7 +46,6 @@ ModbusSS_t modbusSS_rtu_rs485 = {
     .tables = modbusTables,
     .tablesCount = 1
 };
-
 protocolMbRtuSlaveCtrl_typedef modbusRtu_ctrlStruct; // protocol control struct
 //--------------------  MODBUS STRUCT END---------------------//
 

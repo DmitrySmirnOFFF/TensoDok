@@ -3,12 +3,15 @@
 
 #include "usart.h"
 
+uint8_t SPI_DATA_RX[8];
 
 // ------------------------------ RS485 ------------------------------
 #define BSP_RS485_1 huart1
-//#define BSP_RS485_2 huart3
+
 #define BSP_RS_485_RX_TIMEOUT (2000)
+
 static uint16_t timer_rs485_timeout[2] = {BSP_RS_485_RX_TIMEOUT, BSP_RS_485_RX_TIMEOUT};
+
 void bsp_rs485_setPortToModbusRtu(uint8_t portNo, uint8_t *bufRxTX, uint16_t bufSizeByte)
 {
 
@@ -30,6 +33,7 @@ void bsp_rs485_setPortToModbusRtu(uint8_t portNo, uint8_t *bufRxTX, uint16_t buf
   HAL_DMA_Start(port->hdmarx, (uint32_t)&port->Instance->RDR, (uint32_t)bufRxTX, bufSizeByte);
   port->Instance->CR3 |= USART_CR3_DMAR;
 }
+
 void bsp_rs485_sendBlock(uint8_t portNo, uint8_t *buf, uint8_t bufSizeByte)
 {
   UART_HandleTypeDef *port = NULL;
@@ -44,11 +48,13 @@ void bsp_rs485_sendBlock(uint8_t portNo, uint8_t *buf, uint8_t bufSizeByte)
   HAL_DMA_Start(port->hdmatx, (uint32_t)buf, (uint32_t)&port->Instance->TDR, bufSizeByte);
   port->Instance->CR3 |= USART_CR3_DMAT;
 }
+
 void bsp_rs485_sendTestBlock(uint8_t portNo)
 {
   static uint8_t testBuf[5] = {0xAA, 1, 2, 3, 4};
   bsp_rs485_sendBlock(portNo, testBuf, 5);
 }
+
 __weak void bsp_rs485_callback_rxBlockReady(uint8_t portNo)
 {
   /* Prevent unused argument(s) compilation warning */
@@ -61,9 +67,11 @@ __weak void bsp_rs485_callback_rxBlockReady(uint8_t portNo)
       Удалять функцию не надо.
   */
 }
+
 __weak void bsp_rs485_callback_rxTimeout(uint8_t portNo)
 {
 }
+
 void BSP_RS485_1_IRQ_HANDLER_RTOF(void)
 {
   // BLOCK RX READY
@@ -105,3 +113,63 @@ void BSP_RS485_1_IRQ_HANDLER_RTOF(void)
   }
 }
 // ------------------------------ RS485 END ------------------------------
+
+// ------------------------------ TIM ------------------------------------
+void app_tim7_1ms_start()
+{
+  HAL_TIM_Base_Start_IT(&htim7);
+}
+
+void TIM7_DAC_IRQHandler(void)
+{
+  if (__HAL_TIM_GET_FLAG(&htim7, TIM_FLAG_UPDATE) != RESET)
+  {
+    if (__HAL_TIM_GET_IT_SOURCE(&htim7, TIM_IT_UPDATE) != RESET)
+    {
+      __HAL_TIM_CLEAR_IT(&htim7, TIM_IT_UPDATE);
+      app_tim7_1ms_callback();
+    }
+  }
+  return;
+}
+__weak void app_tim7_1ms_callback();
+// ---------------------------- TIM END ----------------------------------
+
+// ------------------------------ SPI ------------------------------------
+uint32_t get_data_spi()
+{
+  uint32_t ADC_DATA_RAW = 0;
+  HAL_TIM_OC_Start_IT(&htim1, TIM_CHANNEL_1);
+  while(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) == GPIO_PIN_RESET)
+  {
+    ;
+  }
+  while(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) == GPIO_PIN_SET)
+  {
+    ;
+  }
+  while(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) == GPIO_PIN_RESET)
+  {
+    ;
+  }
+  while(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) == GPIO_PIN_SET)
+  {
+    ;
+  }
+  for (uint8_t i = 0; i < 30; i++)
+  {
+    ;
+  }
+  HAL_SPI_Receive(&hspi2, &SPI_DATA_RX[0], 3, 1);
+  HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_1);
+
+  ADC_DATA_RAW |= ((uint32_t)SPI_DATA_RX[0] << 16);
+  ADC_DATA_RAW |= ((uint32_t)SPI_DATA_RX[1] << 8);
+  ADC_DATA_RAW |= ((uint32_t)SPI_DATA_RX[2] << 0);
+  return ADC_DATA_RAW;
+
+  // ADC_DATA_FLOAT = (float)(ADC_DATA_RAW);
+  // ADC_DATA = (uint16_t)((ADC_DATA_FLOAT/ADC_MAX_VALUE)*ADC_REF_VOLT*1000.0f);
+  
+}
+// ---------------------------- SPI END ----------------------------------

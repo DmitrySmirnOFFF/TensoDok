@@ -31,8 +31,8 @@ build/BSP.o: BSP/BSP.c BSP/BSP.h Core/Inc/main.h \
  Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim.h \
  Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim_ex.h \
  Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart.h \
- Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart_ex.h \
- Core/Inc/usart.h Core/Inc/main.h
+ Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart_ex.h Core/Inc/tim.h \
+ Core/Inc/main.h Core/Inc/spi.h Core/Inc/usart.h
 BSP/BSP.h:
 Core/Inc/main.h:
 Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h:
@@ -70,5 +70,7 @@ Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim.h:
 Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim_ex.h:
 Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart.h:
 Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart_ex.h:
-Core/Inc/usart.h:
+Core/Inc/tim.h:
 Core/Inc/main.h:
+Core/Inc/spi.h:
+Core/Inc/usart.h:
