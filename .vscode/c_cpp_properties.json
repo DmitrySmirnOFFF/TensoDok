@@ -8,7 +8,7 @@
                 "${workspaceFolder}/Drivers/CMSIS/Device/ST/STM32G4xx/Include",
                 "${workspaceFolder}/Drivers/CMSIS/Include",
                 "${workspaceFolder}/App",
-                "${workspaceFolder}/Modbus"
+                "${workspaceFolder}/BSP"
                 // "C:/Program Files/Microsoft VS Code/STMtools/arm-none-eabi-gcc/12.2.1-1.2.1/.content/arm-none-eabi/include/sys",
                 //"${workspaceFolder}/TensoDok"
             ],

@@ -2,7 +2,7 @@
 #define __APP__H__
 
 #include "main.h"
-#include "modbus.h"
+// #include "modbus.h"
 #include "tim.h"
 #include "spi.h"
 
@@ -48,14 +48,13 @@ typedef enum
 //----------------------------- ENUM END -----------------------------//
 
 //------------------------------- STRUCT -------------------------------//
-typedef struct 
-{
-    uint16_t State_led_rel; // AI[0]
-} Mdb_data_AI_struct;
 
 typedef struct 
 {
-    uint16_t Control_led_rel; // AO[0]
+    uint16_t state_led_rele;
+    uint16_t control_led_rele; 
+    uint16_t spi_buf_0[3];
+    uint16_t ADC_data;
 } Mdb_data_AO_struct;
 
 typedef struct {
@@ -70,7 +69,6 @@ typedef struct {
 
 typedef struct 
 {
-    Mdb_data_AI_struct Mdb_data_AI;
     Mdb_data_AO_struct Mdb_data_AO;
     ADC_filter_typedef adc_filter;
 } App_struct;
@@ -81,8 +79,8 @@ void app_main();
 void app_init();
 void app_tim7_10ms_start();
 void app_tim7_10ms_callback();
-void app_parce_Mdb_AO();
-void app_update_Mdb_Data_AI();
+// void app_parce_Mdb_AO();
+void app_update_reg();
 uint32_t get_data_spi();
 void adc_data_filter(uint32_t ADC_Buf_raw);
 

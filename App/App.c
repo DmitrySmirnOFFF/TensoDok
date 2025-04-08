@@ -1,4 +1,6 @@
 #include "App.h"
+#include "BSP.h"
+#include "ProtocolMbRtuSlaveCtrl.h"
 
 App_struct App;
 
@@ -10,7 +12,6 @@ void app_main(void)
 {
   app_init();
 
-  
   while (1) // основной цикл
   {
   asm ("nop");
@@ -26,7 +27,7 @@ void app_init()
   
   app_tim7_10ms_start();
 
-  ModbusRTU_Init();
+  protocolMbRtuSlaveCtrl_init(1);
 
   adc_filter_init();
 
@@ -56,14 +57,15 @@ void app_tim7_10ms_start()
 void app_tim7_10ms_callback()
 {
   static uint8_t i = 0;
-    if (i++ == 5)
-    {
-      adc_data_filter(get_data_spi());
-      app_update_Mdb_Data_AI();
-      app_parce_Mdb_AO();
-      i = 0;
-    }
-    return;
+
+  app_update_reg();
+  if (i++ == 5)
+  {
+    adc_data_filter(get_data_spi());
+    protocolMbRtuSlaveCtrl_update_tables();
+    i = 0;
+  }
+  return;
 }
 
 void TIM7_DAC_IRQHandler(void)
@@ -79,186 +81,184 @@ void TIM7_DAC_IRQHandler(void)
   return;
 }
 
-void app_update_Mdb_Data_AI()
+void app_update_reg()
 {
   //LED1
   if (HAL_GPIO_ReadPin(APP_LED_1) == GPIO_PIN_SET)
   {
-    APP_SET_BIT(App.Mdb_data_AI.State_led_rel, LED_1);
+    APP_SET_BIT(App.Mdb_data_AO.state_led_rele, LED_1);
   }
   else
   {
-    APP_RESET_BIT(App.Mdb_data_AI.State_led_rel, LED_1);
+    APP_RESET_BIT(App.Mdb_data_AO.state_led_rele, LED_1);
   }
 
   //LED2
   if (HAL_GPIO_ReadPin(APP_LED_2) == GPIO_PIN_SET)
   {
-    APP_SET_BIT(App.Mdb_data_AI.State_led_rel, LED_2);
+    APP_SET_BIT(App.Mdb_data_AO.state_led_rele, LED_2);
   }
   else
   {
-    APP_RESET_BIT(App.Mdb_data_AI.State_led_rel, LED_2);
+    APP_RESET_BIT(App.Mdb_data_AO.state_led_rele, LED_2);
   }
 
   //LED3
   if (HAL_GPIO_ReadPin(APP_LED_3) == GPIO_PIN_SET)
   {
-    APP_SET_BIT(App.Mdb_data_AI.State_led_rel, LED_3);
+    APP_SET_BIT(App.Mdb_data_AO.state_led_rele, LED_3);
   }
   else
   {
-    APP_RESET_BIT(App.Mdb_data_AI.State_led_rel, LED_3);
+    APP_RESET_BIT(App.Mdb_data_AO.state_led_rele, LED_3);
   }
 
   //LED4
   if (HAL_GPIO_ReadPin(APP_LED_4) == GPIO_PIN_SET)
   {
-    APP_SET_BIT(App.Mdb_data_AI.State_led_rel, LED_4);
+    APP_SET_BIT(App.Mdb_data_AO.state_led_rele, LED_4);
   }
   else
   {
-    APP_RESET_BIT(App.Mdb_data_AI.State_led_rel, LED_4);
+    APP_RESET_BIT(App.Mdb_data_AO.state_led_rele, LED_4);
   }
 
   //REL1
   if (HAL_GPIO_ReadPin(APP_REL_1) == GPIO_PIN_SET)
   {
-    APP_SET_BIT(App.Mdb_data_AI.State_led_rel, REL_1);
+    APP_SET_BIT(App.Mdb_data_AO.state_led_rele, REL_1);
   }
   else
   {
-    APP_RESET_BIT(App.Mdb_data_AI.State_led_rel, REL_1);
+    APP_RESET_BIT(App.Mdb_data_AO.state_led_rele, REL_1);
   }
 
   //REL2
   if (HAL_GPIO_ReadPin(APP_REL_2) == GPIO_PIN_SET)
   {
-    APP_SET_BIT(App.Mdb_data_AI.State_led_rel, REL_2);
+    APP_SET_BIT(App.Mdb_data_AO.state_led_rele, REL_2);
   }
   else
   {
-    APP_RESET_BIT(App.Mdb_data_AI.State_led_rel, REL_2);
+    APP_RESET_BIT(App.Mdb_data_AO.state_led_rele, REL_2);
   }
 
   //REL3
   if (HAL_GPIO_ReadPin(APP_REL_3) == GPIO_PIN_SET)
   {
-    APP_SET_BIT(App.Mdb_data_AI.State_led_rel, REL_3);
+    APP_SET_BIT(App.Mdb_data_AO.state_led_rele, REL_3);
   }
   else
   {
-    APP_RESET_BIT(App.Mdb_data_AI.State_led_rel, REL_3);
+    APP_RESET_BIT(App.Mdb_data_AO.state_led_rele, REL_3);
   }
 
   //REL4
   if (HAL_GPIO_ReadPin(APP_REL_4) == GPIO_PIN_SET)
   {
-    APP_SET_BIT(App.Mdb_data_AI.State_led_rel, REL_4);
+    APP_SET_BIT(App.Mdb_data_AO.state_led_rele, REL_4);
   }
   else
   {
-    APP_RESET_BIT(App.Mdb_data_AI.State_led_rel, REL_4);
+    APP_RESET_BIT(App.Mdb_data_AO.state_led_rele, REL_4);
   }
   
-  BUF_DATA_AI[0] = App.Mdb_data_AI.State_led_rel;
-  App.Mdb_data_AO.Control_led_rel = App.Mdb_data_AI.State_led_rel;
-  BUF_DATA_AI[1] = SPI_DATA_RX[0];
-  BUF_DATA_AI[2] = SPI_DATA_RX[1];
-  BUF_DATA_AI[3] = SPI_DATA_RX[2];
-  BUF_DATA_AI[4] = ADC_DATA;
+  App.Mdb_data_AO.spi_buf_0[0] = SPI_DATA_RX[0];
+  App.Mdb_data_AO.spi_buf_0[1] = SPI_DATA_RX[1];
+  App.Mdb_data_AO.spi_buf_0[2] = SPI_DATA_RX[2];
+  App.Mdb_data_AO.ADC_data     = ADC_DATA;
   return;
 }
 
-void app_parce_Mdb_AO()
-{
-  // parce BUF_DATA_AO[0]
-  if (App.Mdb_data_AO.Control_led_rel != BUF_DATA_AO[0])
-  {
-    App.Mdb_data_AO.Control_led_rel = BUF_DATA_AO[0];
+// void app_parce_Mdb_AO()
+// {
+//   // parce BUF_DATA_AO[0]
+//   if (App.Mdb_data_AO.Control_led_rel != BUF_DATA_AO[0])
+//   {
+//     App.Mdb_data_AO.Control_led_rel = BUF_DATA_AO[0];
 
-    // LED1
-    if(APP_GET_BIT(App.Mdb_data_AO.Control_led_rel, LED_1))
-    {
-      APP_LED_ON(APP_LED_1);
-    }
-    else
-    {
-      APP_LED_OFF(APP_LED_1);
-    }
+//     // LED1
+//     if(APP_GET_BIT(App.Mdb_data_AO.Control_led_rel, LED_1))
+//     {
+//       APP_LED_ON(APP_LED_1);
+//     }
+//     else
+//     {
+//       APP_LED_OFF(APP_LED_1);
+//     }
 
-    // LED2
-    if(APP_GET_BIT(App.Mdb_data_AO.Control_led_rel, LED_2))
-    {
-      APP_LED_ON(APP_LED_2);
-    }
-    else
-    {
-      APP_LED_OFF(APP_LED_2);
-    }
+//     // LED2
+//     if(APP_GET_BIT(App.Mdb_data_AO.Control_led_rel, LED_2))
+//     {
+//       APP_LED_ON(APP_LED_2);
+//     }
+//     else
+//     {
+//       APP_LED_OFF(APP_LED_2);
+//     }
 
-    // LED3
-    if(APP_GET_BIT(App.Mdb_data_AO.Control_led_rel, LED_3))
-    {
-      APP_LED_ON(APP_LED_3);
-    }
-    else
-    {
-      APP_LED_OFF(APP_LED_3);
-    }
+//     // LED3
+//     if(APP_GET_BIT(App.Mdb_data_AO.Control_led_rel, LED_3))
+//     {
+//       APP_LED_ON(APP_LED_3);
+//     }
+//     else
+//     {
+//       APP_LED_OFF(APP_LED_3);
+//     }
 
-    // LED4
-    if(APP_GET_BIT(App.Mdb_data_AO.Control_led_rel, LED_4))
-    {
-      APP_LED_ON(APP_LED_4);
-    }
-    else
-    {
-      APP_LED_OFF(APP_LED_4);
-    }
+//     // LED4
+//     if(APP_GET_BIT(App.Mdb_data_AO.Control_led_rel, LED_4))
+//     {
+//       APP_LED_ON(APP_LED_4);
+//     }
+//     else
+//     {
+//       APP_LED_OFF(APP_LED_4);
+//     }
 
-    // REL_1
-    if(APP_GET_BIT(App.Mdb_data_AO.Control_led_rel, REL_1))
-    {
-      APP_REL_ON(APP_REL_1);
-    }
-    else
-    {
-      APP_REL_OFF(APP_REL_1);
-    }
+//     // REL_1
+//     if(APP_GET_BIT(App.Mdb_data_AO.Control_led_rel, REL_1))
+//     {
+//       APP_REL_ON(APP_REL_1);
+//     }
+//     else
+//     {
+//       APP_REL_OFF(APP_REL_1);
+//     }
 
-    // REL_2
-    if(APP_GET_BIT(App.Mdb_data_AO.Control_led_rel, REL_2))
-    {
-      APP_REL_ON(APP_REL_2);
-    }
-    else
-    {
-      APP_REL_OFF(APP_REL_2);
-    }
+//     // REL_2
+//     if(APP_GET_BIT(App.Mdb_data_AO.Control_led_rel, REL_2))
+//     {
+//       APP_REL_ON(APP_REL_2);
+//     }
+//     else
+//     {
+//       APP_REL_OFF(APP_REL_2);
+//     }
 
-    // REL_3
-    if(APP_GET_BIT(App.Mdb_data_AO.Control_led_rel, REL_3))
-    {
-      APP_REL_ON(APP_REL_3);
-    }
-    else
-    {
-      APP_REL_OFF(APP_REL_3);
-    }
+//     // REL_3
+//     if(APP_GET_BIT(App.Mdb_data_AO.Control_led_rel, REL_3))
+//     {
+//       APP_REL_ON(APP_REL_3);
+//     }
+//     else
+//     {
+//       APP_REL_OFF(APP_REL_3);
+//     }
 
-    // REL_4
-    if(APP_GET_BIT(App.Mdb_data_AO.Control_led_rel, REL_4))
-    {
-      APP_REL_ON(APP_REL_4);
-    }
-    else
-    {
-      APP_REL_OFF(APP_REL_4);
-    }
-    //App.Mdb_data_AO.Control_led_rel = BUF_DATA_AO[0] = 0;
-  }
-}
+//     // REL_4
+//     if(APP_GET_BIT(App.Mdb_data_AO.Control_led_rel, REL_4))
+//     {
+//       APP_REL_ON(APP_REL_4);
+//     }
+//     else
+//     {
+//       APP_REL_OFF(APP_REL_4);
+//     }
+//     //App.Mdb_data_AO.Control_led_rel = BUF_DATA_AO[0] = 0;
+//   }
+// }
 
 
 uint32_t get_data_spi()

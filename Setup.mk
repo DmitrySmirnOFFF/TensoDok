@@ -7,14 +7,20 @@ BUILD_DIR = build
 ######################################
 # Modules
 ######################################
-MODBUS_MODULE_SRC = \
-App/App.c			\
-Modbus/Modbus.c		\
+MODBUS_MODULE_SRC = 					\
+App/App.c								\
+BSP/ModbusSS.c							\
+BSP/BSP.c							\
+App/ProtocolMbRtuSlaveCtrl.c			\
 
 
-MODBUS_MODULE_INC = \
--IApp				\
--IModbus			\
+
+MODBUS_MODULE_INC = 					\
+-IApp									\
+-IModbusSS								\
+-IBSP									\
+-IProtocolMbRtuSlaveCtrl				\
+
 
 
 #$(patsubst %,-I%,$(include_paths))

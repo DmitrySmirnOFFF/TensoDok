@@ -61,7 +61,8 @@ Core/Src/adc.c \
 Core/Src/fdcan.c \
 Core/Src/spi.c \
 Core/Src/tim.c \
-Core/Src/usart.c
+Core/Src/usart.c \
+Core/Src/dma.c
 # ASM sources
 CUBE_C_INCLUDES = \
 -ICore/Inc \
