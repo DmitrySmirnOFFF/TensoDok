@@ -180,96 +180,87 @@ void adc_data_filter(uint32_t ADC_Buf_raw)
   ADC_DATA = value;
 }
 
+void control_led_rele(uint16_t control_led_rele)
+{
+    // LED1
+    if(APP_GET_BIT(App.Mdb_data_AO.control_led_rele, LED_1))
+    {
+      APP_LED_ON(APP_LED_1);
+    }
+    else
+    {
+      APP_LED_OFF(APP_LED_1);
+    }
 
-// void app_parce_Mdb_AO()
-// {
-//   // parce BUF_DATA_AO[0]
-//   if (App.Mdb_data_AO.Control_led_rel != BUF_DATA_AO[0])
-//   {
-//     App.Mdb_data_AO.Control_led_rel = BUF_DATA_AO[0];
+    // LED2
+    if(APP_GET_BIT(App.Mdb_data_AO.control_led_rele, LED_2))
+    {
+      APP_LED_ON(APP_LED_2);
+    }
+    else
+    {
+      APP_LED_OFF(APP_LED_2);
+    }
 
-//     // LED1
-//     if(APP_GET_BIT(App.Mdb_data_AO.Control_led_rel, LED_1))
-//     {
-//       APP_LED_ON(APP_LED_1);
-//     }
-//     else
-//     {
-//       APP_LED_OFF(APP_LED_1);
-//     }
+    // LED3
+    if(APP_GET_BIT(App.Mdb_data_AO.control_led_rele, LED_3))
+    {
+      APP_LED_ON(APP_LED_3);
+    }
+    else
+    {
+      APP_LED_OFF(APP_LED_3);
+    }
 
-//     // LED2
-//     if(APP_GET_BIT(App.Mdb_data_AO.Control_led_rel, LED_2))
-//     {
-//       APP_LED_ON(APP_LED_2);
-//     }
-//     else
-//     {
-//       APP_LED_OFF(APP_LED_2);
-//     }
+    // LED4
+    if(APP_GET_BIT(App.Mdb_data_AO.control_led_rele, LED_4))
+    {
+      APP_LED_ON(APP_LED_4);
+    }
+    else
+    {
+      APP_LED_OFF(APP_LED_4);
+    }
 
-//     // LED3
-//     if(APP_GET_BIT(App.Mdb_data_AO.Control_led_rel, LED_3))
-//     {
-//       APP_LED_ON(APP_LED_3);
-//     }
-//     else
-//     {
-//       APP_LED_OFF(APP_LED_3);
-//     }
+    // REL_1
+    if(APP_GET_BIT(App.Mdb_data_AO.control_led_rele, REL_1))
+    {
+      APP_REL_ON(APP_REL_1);
+    }
+    else
+    {
+      APP_REL_OFF(APP_REL_1);
+    }
 
-//     // LED4
-//     if(APP_GET_BIT(App.Mdb_data_AO.Control_led_rel, LED_4))
-//     {
-//       APP_LED_ON(APP_LED_4);
-//     }
-//     else
-//     {
-//       APP_LED_OFF(APP_LED_4);
-//     }
+    // REL_2
+    if(APP_GET_BIT(App.Mdb_data_AO.control_led_rele, REL_2))
+    {
+      APP_REL_ON(APP_REL_2);
+    }
+    else
+    {
+      APP_REL_OFF(APP_REL_2);
+    }
 
-//     // REL_1
-//     if(APP_GET_BIT(App.Mdb_data_AO.Control_led_rel, REL_1))
-//     {
-//       APP_REL_ON(APP_REL_1);
-//     }
-//     else
-//     {
-//       APP_REL_OFF(APP_REL_1);
-//     }
+    // REL_3
+    if(APP_GET_BIT(App.Mdb_data_AO.control_led_rele, REL_3))
+    {
+      APP_REL_ON(APP_REL_3);
+    }
+    else
+    {
+      APP_REL_OFF(APP_REL_3);
+    }
 
-//     // REL_2
-//     if(APP_GET_BIT(App.Mdb_data_AO.Control_led_rel, REL_2))
-//     {
-//       APP_REL_ON(APP_REL_2);
-//     }
-//     else
-//     {
-//       APP_REL_OFF(APP_REL_2);
-//     }
-
-//     // REL_3
-//     if(APP_GET_BIT(App.Mdb_data_AO.Control_led_rel, REL_3))
-//     {
-//       APP_REL_ON(APP_REL_3);
-//     }
-//     else
-//     {
-//       APP_REL_OFF(APP_REL_3);
-//     }
-
-//     // REL_4
-//     if(APP_GET_BIT(App.Mdb_data_AO.Control_led_rel, REL_4))
-//     {
-//       APP_REL_ON(APP_REL_4);
-//     }
-//     else
-//     {
-//       APP_REL_OFF(APP_REL_4);
-//     }
-//     //App.Mdb_data_AO.Control_led_rel = BUF_DATA_AO[0] = 0;
-//   }
-// }
-
+    // REL_4
+    if(APP_GET_BIT(App.Mdb_data_AO.control_led_rele, REL_3))
+    {
+      APP_REL_ON(APP_REL_3);
+    }
+    else
+    {
+      APP_REL_OFF(APP_REL_3);
+    }
+}
 
 

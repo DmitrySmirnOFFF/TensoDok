@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccYRS3NF.s 			page 1
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\cctc3keK.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccYRS3NF.s 			page 1
   28:Core/Src/main.c **** 
   29:Core/Src/main.c **** /* Private includes ----------------------------------------------------------*/
   30:Core/Src/main.c **** /* USER CODE BEGIN Includes */
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccYRS3NF.s 			page 2
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\cctc3keK.s 			page 2
 
 
   31:Core/Src/main.c **** #include "App.h"
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccYRS3NF.s 			page 1
   85:Core/Src/main.c **** 
   86:Core/Src/main.c ****   /* USER CODE BEGIN SysInit */
   87:Core/Src/main.c **** 
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccYRS3NF.s 			page 3
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\cctc3keK.s 			page 3
 
 
   88:Core/Src/main.c ****   /* USER CODE END SysInit */
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccYRS3NF.s 			page 1
  142:Core/Src/main.c **** 
  143:Core/Src/main.c ****   /** Initializes the CPU, AHB and APB buses clocks
  144:Core/Src/main.c ****   */
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccYRS3NF.s 			page 4
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\cctc3keK.s 			page 4
 
 
  145:Core/Src/main.c ****   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccYRS3NF.s 			page 1
   11:Drivers/CMSIS/Include/cmsis_gcc.h ****  *
   12:Drivers/CMSIS/Include/cmsis_gcc.h ****  * Licensed under the Apache License, Version 2.0 (the License); you may
   13:Drivers/CMSIS/Include/cmsis_gcc.h ****  * not use this file except in compliance with the License.
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccYRS3NF.s 			page 5
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\cctc3keK.s 			page 5
 
 
   14:Drivers/CMSIS/Include/cmsis_gcc.h ****  * You may obtain a copy of the License at
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccYRS3NF.s 			page 1
   68:Drivers/CMSIS/Include/cmsis_gcc.h ****   #define __PACKED_UNION                         union __attribute__((packed, aligned(1)))
   69:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
   70:Drivers/CMSIS/Include/cmsis_gcc.h **** #ifndef   __UNALIGNED_UINT32        /* deprecated */
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccYRS3NF.s 			page 6
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\cctc3keK.s 			page 6
 
 
   71:Drivers/CMSIS/Include/cmsis_gcc.h ****   #pragma GCC diagnostic push
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccYRS3NF.s 			page 1
  125:Drivers/CMSIS/Include/cmsis_gcc.h ****   \brief   Initializes data and bss sections
  126:Drivers/CMSIS/Include/cmsis_gcc.h ****   \details This default implementations initialized all data and additional bss
  127:Drivers/CMSIS/Include/cmsis_gcc.h ****            sections relying on .copy.table and .zero.table specified properly
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccYRS3NF.s 			page 7
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\cctc3keK.s 			page 7
 
 
  128:Drivers/CMSIS/Include/cmsis_gcc.h ****            in the used linker script.
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccYRS3NF.s 			page 1
  182:Drivers/CMSIS/Include/cmsis_gcc.h **** #define __VECTOR_TABLE_ATTRIBUTE  __attribute((used, section(".vectors")))
  183:Drivers/CMSIS/Include/cmsis_gcc.h **** #endif
  184:Drivers/CMSIS/Include/cmsis_gcc.h **** 
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccYRS3NF.s 			page 8
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\cctc3keK.s 			page 8
 
 
  185:Drivers/CMSIS/Include/cmsis_gcc.h **** /* ###########################  Core Function Access  ########################### */
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccYRS3NF.s 			page 1
   66              	.LFB330:
  118:Core/Src/main.c ****   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   67              		.loc 1 118 1 view -0
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccYRS3NF.s 			page 9
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\cctc3keK.s 			page 9
 
 
   68              		.cfi_startproc
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccYRS3NF.s 			page 1
  109              		.loc 1 132 35 is_stmt 0 view .LVU20
  110 002c 0322     		movs	r2, #3
  111 002e 0E92     		str	r2, [sp, #56]
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccYRS3NF.s 			page 10
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\cctc3keK.s 			page 10
 
 
  133:Core/Src/main.c ****   RCC_OscInitStruct.PLL.PLLN = 84;
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccYRS3NF.s 			page 1
  149:Core/Src/main.c ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
  147              		.loc 1 149 3 is_stmt 1 view .LVU40
  149:Core/Src/main.c ****   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccYRS3NF.s 			page 11
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\cctc3keK.s 			page 11
 
 
  148              		.loc 1 149 36 is_stmt 0 view .LVU41
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccYRS3NF.s 			page 1
  195              		@ frame_needed = 0, uses_anonymous_args = 0
  196 0000 08B5     		push	{r3, lr}
  197              	.LCFI4:
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccYRS3NF.s 			page 12
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\cctc3keK.s 			page 12
 
 
  198              		.cfi_def_cfa_offset 8
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccYRS3NF.s 			page 1
  240              	.Letext0:
  241              		.file 3 "c:\\program files\\vscodestmtools\\arm-none-eabi-gcc\\12.2.1-1.2.1\\.content\\arm-none-ea
  242              		.file 4 "c:\\program files\\vscodestmtools\\arm-none-eabi-gcc\\12.2.1-1.2.1\\.content\\arm-none-ea
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccYRS3NF.s 			page 13
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\cctc3keK.s 			page 13
 
 
  243              		.file 5 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_def.h"
@@ -734,17 +734,17 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccYRS3NF.s 			page 1
  253              		.file 15 "App/App.h"
  254              		.file 16 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h"
  255              		.file 17 "<built-in>"
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccYRS3NF.s 			page 14
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\cctc3keK.s 			page 14
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 main.c
-C:\Users\sr1\AppData\Local\Temp\ccYRS3NF.s:21     .text.Error_Handler:0000000000000000 $t
-C:\Users\sr1\AppData\Local\Temp\ccYRS3NF.s:27     .text.Error_Handler:0000000000000000 Error_Handler
-C:\Users\sr1\AppData\Local\Temp\ccYRS3NF.s:59     .text.SystemClock_Config:0000000000000000 $t
-C:\Users\sr1\AppData\Local\Temp\ccYRS3NF.s:65     .text.SystemClock_Config:0000000000000000 SystemClock_Config
-C:\Users\sr1\AppData\Local\Temp\ccYRS3NF.s:183    .text.main:0000000000000000 $t
-C:\Users\sr1\AppData\Local\Temp\ccYRS3NF.s:189    .text.main:0000000000000000 main
+C:\Users\sr1\AppData\Local\Temp\cctc3keK.s:21     .text.Error_Handler:0000000000000000 $t
+C:\Users\sr1\AppData\Local\Temp\cctc3keK.s:27     .text.Error_Handler:0000000000000000 Error_Handler
+C:\Users\sr1\AppData\Local\Temp\cctc3keK.s:59     .text.SystemClock_Config:0000000000000000 $t
+C:\Users\sr1\AppData\Local\Temp\cctc3keK.s:65     .text.SystemClock_Config:0000000000000000 SystemClock_Config
+C:\Users\sr1\AppData\Local\Temp\cctc3keK.s:183    .text.main:0000000000000000 $t
+C:\Users\sr1\AppData\Local\Temp\cctc3keK.s:189    .text.main:0000000000000000 main
 
 UNDEFINED SYMBOLS
 memset

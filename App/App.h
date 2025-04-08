@@ -38,6 +38,8 @@ void app_update_reg();
 void adc_data_filter(uint32_t ADC_Buf_raw);
 void adc_filter_init();
 
+void control_led_rele(uint16_t control_led_rele);
+
 //---------------------------- FUNCTION END ----------------------------//
 
 
