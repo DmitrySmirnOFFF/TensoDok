@@ -29,7 +29,7 @@
 #define APP_SET_BIT(REG, BIT)   (REG |= (1 << BIT))
 #define APP_RESET_BIT(REG, BIT) (REG &= ~(1 << BIT))
 
-
+#define PROGRAM_ADC_MAX_FILTER_ORDER         (16)
 
 //---------------------------- DEFINE END ----------------------------//
 
@@ -58,26 +58,36 @@ typedef struct
     uint16_t Control_led_rel; // AO[0]
 } Mdb_data_AO_struct;
 
+typedef struct {
+    float value;
+    float value_last;
+    float valueRaw;
+    float buf[PROGRAM_ADC_MAX_FILTER_ORDER];
+    uint8_t bufIdx;
+    uint8_t filter_N;
+    float order;
+}ADC_filter_typedef;
+
 typedef struct 
 {
     Mdb_data_AI_struct Mdb_data_AI;
     Mdb_data_AO_struct Mdb_data_AO;
+    ADC_filter_typedef adc_filter;
 } App_struct;
 //----------------------------- STRUCT END -----------------------------//
 
 //------------------------------ FUNCTION ------------------------------//
 void app_main();
 void app_init();
-
-void app_tim7_1k_start();
-void app_tim7_1k_callback();
-
+void app_tim7_10ms_start();
+void app_tim7_10ms_callback();
 void app_parce_Mdb_AO();
 void app_update_Mdb_Data_AI();
-void get_data_spi();
+uint32_t get_data_spi();
+void adc_data_filter(uint32_t ADC_Buf_raw);
 
-uint32_t app_tim1_get_cnt();
-void app_tim1_clear_cnt();
+void adc_filter_init();
+
 
 
 //---------------------------- FUNCTION END ----------------------------//

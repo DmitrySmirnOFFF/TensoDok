@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccBWiiMG.s 			page 1
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccQtCtdV.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccBWiiMG.s 			page 1
   28:Core/Src/spi.c **** 
   29:Core/Src/spi.c **** /* SPI2 init function */
   30:Core/Src/spi.c **** void MX_SPI2_Init(void)
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccBWiiMG.s 			page 2
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccQtCtdV.s 			page 2
 
 
   31:Core/Src/spi.c **** {
@@ -115,13 +115,13 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccBWiiMG.s 			page 1
   64              		.loc 1 46 18 is_stmt 0 view .LVU14
   65 0022 4FF40072 		mov	r2, #512
   66 0026 8261     		str	r2, [r0, #24]
-  47:Core/Src/spi.c ****   hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_256;
+  47:Core/Src/spi.c ****   hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_64;
   67              		.loc 1 47 3 is_stmt 1 view .LVU15
   68              		.loc 1 47 32 is_stmt 0 view .LVU16
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccBWiiMG.s 			page 3
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccQtCtdV.s 			page 3
 
 
-  69 0028 3822     		movs	r2, #56
+  69 0028 2822     		movs	r2, #40
   70 002a C261     		str	r2, [r0, #28]
   48:Core/Src/spi.c ****   hspi2.Init.FirstBit = SPI_FIRSTBIT_MSB;
   71              		.loc 1 48 3 is_stmt 1 view .LVU17
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccBWiiMG.s 			page 1
  107 004a 00BF     		.align	2
  108              	.L5:
  109 004c 00000000 		.word	hspi2
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccBWiiMG.s 			page 4
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccQtCtdV.s 			page 4
 
 
  110 0050 00380040 		.word	1073756160
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccBWiiMG.s 			page 1
   76:Core/Src/spi.c ****     __HAL_RCC_GPIOB_CLK_ENABLE();
   77:Core/Src/spi.c ****     /**SPI2 GPIO Configuration
   78:Core/Src/spi.c ****     PB13     ------> SPI2_SCK
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccBWiiMG.s 			page 5
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccQtCtdV.s 			page 5
 
 
   79:Core/Src/spi.c ****     PB14     ------> SPI2_MISO
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccBWiiMG.s 			page 1
  184 0034 DA6C     		ldr	r2, [r3, #76]
  185 0036 42F00202 		orr	r2, r2, #2
  186 003a DA64     		str	r2, [r3, #76]
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccBWiiMG.s 			page 6
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccQtCtdV.s 			page 6
 
 
   76:Core/Src/spi.c ****     /**SPI2 GPIO Configuration
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccBWiiMG.s 			page 1
  229              		.syntax unified
  230              		.thumb
  231              		.thumb_func
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccBWiiMG.s 			page 7
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccQtCtdV.s 			page 7
 
 
  233              	HAL_SPI_MspDeInit:
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccBWiiMG.s 			page 1
  263 0014 9365     		str	r3, [r2, #88]
  109:Core/Src/spi.c **** 
  264              		.loc 1 109 5 view .LVU73
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccBWiiMG.s 			page 8
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccQtCtdV.s 			page 8
 
 
  265 0016 4FF4C041 		mov	r1, #24576
@@ -458,22 +458,22 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccBWiiMG.s 			page 1
  297              		.file 8 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_spi.h"
  298              		.file 9 "Core/Inc/spi.h"
  299              		.file 10 "Core/Inc/main.h"
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccBWiiMG.s 			page 9
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccQtCtdV.s 			page 9
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 spi.c
-C:\Users\sr1\AppData\Local\Temp\ccBWiiMG.s:21     .text.MX_SPI2_Init:0000000000000000 $t
-C:\Users\sr1\AppData\Local\Temp\ccBWiiMG.s:27     .text.MX_SPI2_Init:0000000000000000 MX_SPI2_Init
-C:\Users\sr1\AppData\Local\Temp\ccBWiiMG.s:109    .text.MX_SPI2_Init:000000000000004c $d
-C:\Users\sr1\AppData\Local\Temp\ccBWiiMG.s:287    .bss.hspi2:0000000000000000 hspi2
-C:\Users\sr1\AppData\Local\Temp\ccBWiiMG.s:115    .text.HAL_SPI_MspInit:0000000000000000 $t
-C:\Users\sr1\AppData\Local\Temp\ccBWiiMG.s:121    .text.HAL_SPI_MspInit:0000000000000000 HAL_SPI_MspInit
-C:\Users\sr1\AppData\Local\Temp\ccBWiiMG.s:221    .text.HAL_SPI_MspInit:0000000000000060 $d
-C:\Users\sr1\AppData\Local\Temp\ccBWiiMG.s:227    .text.HAL_SPI_MspDeInit:0000000000000000 $t
-C:\Users\sr1\AppData\Local\Temp\ccBWiiMG.s:233    .text.HAL_SPI_MspDeInit:0000000000000000 HAL_SPI_MspDeInit
-C:\Users\sr1\AppData\Local\Temp\ccBWiiMG.s:276    .text.HAL_SPI_MspDeInit:0000000000000024 $d
-C:\Users\sr1\AppData\Local\Temp\ccBWiiMG.s:284    .bss.hspi2:0000000000000000 $d
+C:\Users\sr1\AppData\Local\Temp\ccQtCtdV.s:21     .text.MX_SPI2_Init:0000000000000000 $t
+C:\Users\sr1\AppData\Local\Temp\ccQtCtdV.s:27     .text.MX_SPI2_Init:0000000000000000 MX_SPI2_Init
+C:\Users\sr1\AppData\Local\Temp\ccQtCtdV.s:109    .text.MX_SPI2_Init:000000000000004c $d
+C:\Users\sr1\AppData\Local\Temp\ccQtCtdV.s:287    .bss.hspi2:0000000000000000 hspi2
+C:\Users\sr1\AppData\Local\Temp\ccQtCtdV.s:115    .text.HAL_SPI_MspInit:0000000000000000 $t
+C:\Users\sr1\AppData\Local\Temp\ccQtCtdV.s:121    .text.HAL_SPI_MspInit:0000000000000000 HAL_SPI_MspInit
+C:\Users\sr1\AppData\Local\Temp\ccQtCtdV.s:221    .text.HAL_SPI_MspInit:0000000000000060 $d
+C:\Users\sr1\AppData\Local\Temp\ccQtCtdV.s:227    .text.HAL_SPI_MspDeInit:0000000000000000 $t
+C:\Users\sr1\AppData\Local\Temp\ccQtCtdV.s:233    .text.HAL_SPI_MspDeInit:0000000000000000 HAL_SPI_MspDeInit
+C:\Users\sr1\AppData\Local\Temp\ccQtCtdV.s:276    .text.HAL_SPI_MspDeInit:0000000000000024 $d
+C:\Users\sr1\AppData\Local\Temp\ccQtCtdV.s:284    .bss.hspi2:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 HAL_SPI_Init

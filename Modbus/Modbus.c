@@ -38,7 +38,12 @@ void ModbusRTU_Init()
 	MODBUS_FAULT = 0;
 	UART_ERR = 0;
 	//HAL_GPIO_WritePin(UART_DIR_PORT, UART_DIR_PIN, 0);
-	__HAL_UART_ENABLE_IT(&UART_MODBUS, UART_IT_IDLE);
+
+	huart1.Instance->RTOR |= 0xfff << USART_RTOR_RTO_Pos;
+	huart1.Instance->CR1 |= USART_CR1_RTOIE;
+	huart1.Instance->CR2 |= USART_CR2_RTOEN;
+
+	// __HAL_UART_ENABLE_IT(&UART_MODBUS, UART_IT_RTO);
 	HAL_UART_Receive_IT(&UART_MODBUS, (uint8_t*) buff_rx, Num_Data_buf);
 
 	//HAL_UART_Receive_IT(&UART_MODBUS, buff_rx, Num_Data_buf);
@@ -55,12 +60,13 @@ void ModbusRTU_Deinit()
 
 void ModbusRTU_Handler()
 {
-	if (RESET != __HAL_UART_GET_FLAG(&UART_MODBUS, UART_FLAG_IDLE)) {
-		__HAL_UART_DISABLE_IT(&UART_MODBUS, UART_IT_IDLE);
-		__HAL_UART_CLEAR_IDLEFLAG(&UART_MODBUS); //Clear idle interrupt sign (otherwise it will continue to enter interrupt)
+	if (RESET != __HAL_UART_GET_FLAG(&UART_MODBUS, UART_FLAG_RTOF)) {
+		__HAL_UART_DISABLE_IT(&UART_MODBUS, UART_FLAG_RTOF);
+		__HAL_UART_CLEAR_FLAG(&UART_MODBUS, UART_CLEAR_RTOF);
+		//__HAL_UART_CLEAR_IDLEFLAG(&UART_MODBUS); //Clear idle interrupt sign (otherwise it will continue to enter interrupt)
 		ModbusRTU_Receive();
 		ModbusRTU_Transmit();
-		__HAL_UART_ENABLE_IT(&UART_MODBUS, UART_IT_IDLE);
+		__HAL_UART_ENABLE_IT(&UART_MODBUS, UART_IT_RTO);
 	}
 }
 
