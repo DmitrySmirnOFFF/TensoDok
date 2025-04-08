@@ -6,6 +6,8 @@ App_struct App;
 
 uint16_t ADC_DATA = 0;
 
+extern ADC_HandleTypeDef hadc2;
+
 void app_main(void)
 {
   app_init();
@@ -49,8 +51,17 @@ void adc_filter_init()
 void app_tim7_1ms_callback()
 {
   static uint8_t i = 0;
+
+  if(i == 0)
+  {
+    HAL_ADCEx_InjectedStart(&hadc2);
+  }
+
   if (i++ >= 25)
   {
+    App.Mdb_data_AO.ADC_CPU_data = (uint16_t)((float)HAL_ADCEx_InjectedGetValue(&hadc2, ADC_INJECTED_RANK_2) * 3.3f / 4096 * 1000);
+    App.Mdb_data_AO.ADC_T_data   = (uint16_t)HAL_ADCEx_InjectedGetValue(&hadc2, ADC_INJECTED_RANK_1);
+    HAL_ADCEx_InjectedStop(&hadc2);
     adc_data_filter(get_data_spi());
     app_update_reg();
     protocolMbRtuSlaveCtrl_update_tables();

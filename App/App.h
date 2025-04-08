@@ -12,6 +12,8 @@ typedef struct
     uint16_t control_led_rele; 
     uint16_t spi_buf_0[3];
     uint16_t ADC_data;
+    uint16_t ADC_CPU_data;
+    uint16_t ADC_T_data;
 } Mdb_data_AO_struct;
 
 typedef struct {

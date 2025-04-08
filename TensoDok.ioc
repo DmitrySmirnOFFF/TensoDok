@@ -1,11 +1,19 @@
 #MicroXplorer Configuration settings - do not modify
-ADC2.Channel-0\#ChannelRegularConversion=ADC_CHANNEL_11
 ADC2.CommonPathInternal=null|null|null|null
-ADC2.IPParameters=Rank-0\#ChannelRegularConversion,Channel-0\#ChannelRegularConversion,SamplingTime-0\#ChannelRegularConversion,OffsetNumber-0\#ChannelRegularConversion,NbrOfConversionFlag,CommonPathInternal
-ADC2.NbrOfConversionFlag=1
-ADC2.OffsetNumber-0\#ChannelRegularConversion=ADC_OFFSET_NONE
-ADC2.Rank-0\#ChannelRegularConversion=1
-ADC2.SamplingTime-0\#ChannelRegularConversion=ADC_SAMPLETIME_2CYCLES_5
+ADC2.EnableInjectedConversion=ENABLE
+ADC2.EnableRegularConversion=DISABLE
+ADC2.IPParameters=EnableInjectedConversion,Rank1_Channel,Rank2_Channel,EnableRegularConversion,InjectedRank-3\#ChannelInjectedConversion,InjectedChannel-3\#ChannelInjectedConversion,InjectedSamplingTime-3\#ChannelInjectedConversion,InjectedOffsetNumber-3\#ChannelInjectedConversion,InjNumberOfConversion,InjectedRank-5\#ChannelInjectedConversion,InjectedChannel-5\#ChannelInjectedConversion,InjectedSamplingTime-5\#ChannelInjectedConversion,InjectedOffsetNumber-5\#ChannelInjectedConversion,CommonPathInternal
+ADC2.InjNumberOfConversion=2
+ADC2.InjectedChannel-3\#ChannelInjectedConversion=ADC_CHANNEL_1
+ADC2.InjectedChannel-5\#ChannelInjectedConversion=ADC_CHANNEL_11
+ADC2.InjectedOffsetNumber-3\#ChannelInjectedConversion=ADC_OFFSET_NONE
+ADC2.InjectedOffsetNumber-5\#ChannelInjectedConversion=ADC_OFFSET_NONE
+ADC2.InjectedRank-3\#ChannelInjectedConversion=1
+ADC2.InjectedRank-5\#ChannelInjectedConversion=2
+ADC2.InjectedSamplingTime-3\#ChannelInjectedConversion=ADC_SAMPLETIME_12CYCLES_5
+ADC2.InjectedSamplingTime-5\#ChannelInjectedConversion=ADC_SAMPLETIME_12CYCLES_5
+ADC2.Rank1_Channel=ADC_CHANNEL_1
+ADC2.Rank2_Channel=ADC_CHANNEL_11
 CAD.formats=
 CAD.pinconfig=
 CAD.provider=

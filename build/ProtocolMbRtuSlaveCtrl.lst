@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s 			page 1
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccv4NzFi.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -48,95 +48,98 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s 			page 1
   17:App/ProtocolMbRtuSlaveCtrl.c ****   tab_bsp_spi_buf_1,
   18:App/ProtocolMbRtuSlaveCtrl.c ****   tab_bsp_spi_buf_2,
   19:App/ProtocolMbRtuSlaveCtrl.c ****   tab_bsp_ADC_data,
-  20:App/ProtocolMbRtuSlaveCtrl.c ****   tab_bsp_ADC_CPU_data
-  21:App/ProtocolMbRtuSlaveCtrl.c **** };
-  22:App/ProtocolMbRtuSlaveCtrl.c **** #define MDB_BSP_BUF_COUNT (tab_bsp_ADC_CPU_data - MDB_TABLE_BSP_REG_NO + 1)
-  23:App/ProtocolMbRtuSlaveCtrl.c **** uint16_t mdb_bsp_buf[MDB_BSP_BUF_COUNT];
-  24:App/ProtocolMbRtuSlaveCtrl.c **** 
-  25:App/ProtocolMbRtuSlaveCtrl.c **** ModbusSS_table_t mdb_table_bsp = {
-  26:App/ProtocolMbRtuSlaveCtrl.c ****     .buf = (uint8_t *)mdb_bsp_buf,
-  27:App/ProtocolMbRtuSlaveCtrl.c ****     .quantity = MDB_BSP_BUF_COUNT,
-  28:App/ProtocolMbRtuSlaveCtrl.c ****     .regNo = MDB_TABLE_BSP_REG_NO,
-  29:App/ProtocolMbRtuSlaveCtrl.c ****     .type = ModbusSS_Holding};
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s 			page 2
+  20:App/ProtocolMbRtuSlaveCtrl.c ****   tab_bsp_ADC_CPU_data,
+  21:App/ProtocolMbRtuSlaveCtrl.c ****   tab_bsp_ADC_T_data
+  22:App/ProtocolMbRtuSlaveCtrl.c **** };
+  23:App/ProtocolMbRtuSlaveCtrl.c **** #define MDB_BSP_BUF_COUNT (tab_bsp_ADC_T_data - MDB_TABLE_BSP_REG_NO + 1)
+  24:App/ProtocolMbRtuSlaveCtrl.c **** uint16_t mdb_bsp_buf[MDB_BSP_BUF_COUNT];
+  25:App/ProtocolMbRtuSlaveCtrl.c **** 
+  26:App/ProtocolMbRtuSlaveCtrl.c **** ModbusSS_table_t mdb_table_bsp = {
+  27:App/ProtocolMbRtuSlaveCtrl.c ****     .buf = (uint8_t *)mdb_bsp_buf,
+  28:App/ProtocolMbRtuSlaveCtrl.c ****     .quantity = MDB_BSP_BUF_COUNT,
+  29:App/ProtocolMbRtuSlaveCtrl.c ****     .regNo = MDB_TABLE_BSP_REG_NO,
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccv4NzFi.s 			page 2
 
 
-  30:App/ProtocolMbRtuSlaveCtrl.c **** 
-  31:App/ProtocolMbRtuSlaveCtrl.c **** //--------------------  PROTOCOL END---------------------//
-  32:App/ProtocolMbRtuSlaveCtrl.c **** 
-  33:App/ProtocolMbRtuSlaveCtrl.c **** //--------------------  TABLES ARRAY ---------------------//
-  34:App/ProtocolMbRtuSlaveCtrl.c **** ModbusSS_table_t *modbusTables[] = {
-  35:App/ProtocolMbRtuSlaveCtrl.c ****     &mdb_table_bsp
-  36:App/ProtocolMbRtuSlaveCtrl.c **** };
-  37:App/ProtocolMbRtuSlaveCtrl.c **** //--------------------  TABLES ARRAY END---------------------//
-  38:App/ProtocolMbRtuSlaveCtrl.c **** 
-  39:App/ProtocolMbRtuSlaveCtrl.c **** //--------------------  MODBUS STRUCT ---------------------//
-  40:App/ProtocolMbRtuSlaveCtrl.c **** ModbusSS_t modbusSS_rtu_rs485 = {
-  41:App/ProtocolMbRtuSlaveCtrl.c ****     .cbHoldingUpdate = protocolMbRtuSlaveCtrl_callback_H_WRITE,
-  42:App/ProtocolMbRtuSlaveCtrl.c ****     .cbHoldingRequest = NULL, // protocolMbRtuSlaveCtrl_callback_H_REQ, //modbusHoldingReq,
-  43:App/ProtocolMbRtuSlaveCtrl.c ****     .rtuTcp = MODBUS_SS_RTU,
-  44:App/ProtocolMbRtuSlaveCtrl.c ****     .bufRxTx = modbusBufRxTxRtu485,
-  45:App/ProtocolMbRtuSlaveCtrl.c ****     .slaveId = 1,
-  46:App/ProtocolMbRtuSlaveCtrl.c ****     .tables = modbusTables,
-  47:App/ProtocolMbRtuSlaveCtrl.c ****     .tablesCount = 1
-  48:App/ProtocolMbRtuSlaveCtrl.c **** };
-  49:App/ProtocolMbRtuSlaveCtrl.c **** protocolMbRtuSlaveCtrl_typedef modbusRtu_ctrlStruct; // protocol control struct
-  50:App/ProtocolMbRtuSlaveCtrl.c **** //--------------------  MODBUS STRUCT END---------------------//
-  51:App/ProtocolMbRtuSlaveCtrl.c **** 
-  52:App/ProtocolMbRtuSlaveCtrl.c **** //------------------------ EXTERN ------------------------
-  53:App/ProtocolMbRtuSlaveCtrl.c **** extern App_struct App;
-  54:App/ProtocolMbRtuSlaveCtrl.c **** //---------------------- EXTERN END-----------------------
-  55:App/ProtocolMbRtuSlaveCtrl.c **** 
-  56:App/ProtocolMbRtuSlaveCtrl.c **** //------------------------ REGULAR FCN ------------------------
-  57:App/ProtocolMbRtuSlaveCtrl.c **** void protocolMbRtuSlaveCtrl_init(uint8_t portNo)
-  58:App/ProtocolMbRtuSlaveCtrl.c **** {
-  59:App/ProtocolMbRtuSlaveCtrl.c ****   HAL_Delay(100);
-  60:App/ProtocolMbRtuSlaveCtrl.c ****   bsp_rs485_setPortToModbusRtu(portNo, modbusBufRxTxRtu485, MODBUS_SS_BUF_CNT);
-  61:App/ProtocolMbRtuSlaveCtrl.c **** }
-  62:App/ProtocolMbRtuSlaveCtrl.c **** 
-  63:App/ProtocolMbRtuSlaveCtrl.c **** __INLINE void protocolMbRtuSlaveCtrl_update_tables()
-  64:App/ProtocolMbRtuSlaveCtrl.c **** {
-  65:App/ProtocolMbRtuSlaveCtrl.c ****   // --- BSP -----------------------------//
-  66:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_state_led_rele,    App.Mdb_data_AO.state_led_rele);
-  67:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_control_led_rele,  App.Mdb_data_AO.control_led_rele);
-  68:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_spi_buf_0,         App.Mdb_data_AO.spi_buf_0[0]);
-  69:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_spi_buf_1,         App.Mdb_data_AO.spi_buf_0[1]);
-  70:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_spi_buf_2,         App.Mdb_data_AO.spi_buf_0[2]);
-  71:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_ADC_data,          App.Mdb_data_AO.ADC_data);
-  72:App/ProtocolMbRtuSlaveCtrl.c **** }
-  73:App/ProtocolMbRtuSlaveCtrl.c **** //------------------------ REGULAR FCN END------------------------
-  74:App/ProtocolMbRtuSlaveCtrl.c **** 
-  75:App/ProtocolMbRtuSlaveCtrl.c **** //------------------------------- MODBUS CALLBACKS -------------------------------------------//
-  76:App/ProtocolMbRtuSlaveCtrl.c **** #define PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK (0xAAAA)
-  77:App/ProtocolMbRtuSlaveCtrl.c **** #define PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_FAIL (0xF00F)
-  78:App/ProtocolMbRtuSlaveCtrl.c **** __weak void protocolMbRtuSlaveCtrl_callback_H_WRITE(ModbusSS_table_t *table, uint16_t reg, uint16_t
-  79:App/ProtocolMbRtuSlaveCtrl.c **** {
-  30              		.loc 1 79 1 view -0
+  30:App/ProtocolMbRtuSlaveCtrl.c ****     .type = ModbusSS_Holding};
+  31:App/ProtocolMbRtuSlaveCtrl.c **** 
+  32:App/ProtocolMbRtuSlaveCtrl.c **** //--------------------  PROTOCOL END---------------------//
+  33:App/ProtocolMbRtuSlaveCtrl.c **** 
+  34:App/ProtocolMbRtuSlaveCtrl.c **** //--------------------  TABLES ARRAY ---------------------//
+  35:App/ProtocolMbRtuSlaveCtrl.c **** ModbusSS_table_t *modbusTables[] = {
+  36:App/ProtocolMbRtuSlaveCtrl.c ****     &mdb_table_bsp
+  37:App/ProtocolMbRtuSlaveCtrl.c **** };
+  38:App/ProtocolMbRtuSlaveCtrl.c **** //--------------------  TABLES ARRAY END---------------------//
+  39:App/ProtocolMbRtuSlaveCtrl.c **** 
+  40:App/ProtocolMbRtuSlaveCtrl.c **** //--------------------  MODBUS STRUCT ---------------------//
+  41:App/ProtocolMbRtuSlaveCtrl.c **** ModbusSS_t modbusSS_rtu_rs485 = {
+  42:App/ProtocolMbRtuSlaveCtrl.c ****     .cbHoldingUpdate = protocolMbRtuSlaveCtrl_callback_H_WRITE,
+  43:App/ProtocolMbRtuSlaveCtrl.c ****     .cbHoldingRequest = NULL, // protocolMbRtuSlaveCtrl_callback_H_REQ, //modbusHoldingReq,
+  44:App/ProtocolMbRtuSlaveCtrl.c ****     .rtuTcp = MODBUS_SS_RTU,
+  45:App/ProtocolMbRtuSlaveCtrl.c ****     .bufRxTx = modbusBufRxTxRtu485,
+  46:App/ProtocolMbRtuSlaveCtrl.c ****     .slaveId = 1,
+  47:App/ProtocolMbRtuSlaveCtrl.c ****     .tables = modbusTables,
+  48:App/ProtocolMbRtuSlaveCtrl.c ****     .tablesCount = 1
+  49:App/ProtocolMbRtuSlaveCtrl.c **** };
+  50:App/ProtocolMbRtuSlaveCtrl.c **** protocolMbRtuSlaveCtrl_typedef modbusRtu_ctrlStruct; // protocol control struct
+  51:App/ProtocolMbRtuSlaveCtrl.c **** //--------------------  MODBUS STRUCT END---------------------//
+  52:App/ProtocolMbRtuSlaveCtrl.c **** 
+  53:App/ProtocolMbRtuSlaveCtrl.c **** //------------------------ EXTERN ------------------------
+  54:App/ProtocolMbRtuSlaveCtrl.c **** extern App_struct App;
+  55:App/ProtocolMbRtuSlaveCtrl.c **** //---------------------- EXTERN END-----------------------
+  56:App/ProtocolMbRtuSlaveCtrl.c **** 
+  57:App/ProtocolMbRtuSlaveCtrl.c **** //------------------------ REGULAR FCN ------------------------
+  58:App/ProtocolMbRtuSlaveCtrl.c **** void protocolMbRtuSlaveCtrl_init(uint8_t portNo)
+  59:App/ProtocolMbRtuSlaveCtrl.c **** {
+  60:App/ProtocolMbRtuSlaveCtrl.c ****   HAL_Delay(100);
+  61:App/ProtocolMbRtuSlaveCtrl.c ****   bsp_rs485_setPortToModbusRtu(portNo, modbusBufRxTxRtu485, MODBUS_SS_BUF_CNT);
+  62:App/ProtocolMbRtuSlaveCtrl.c **** }
+  63:App/ProtocolMbRtuSlaveCtrl.c **** 
+  64:App/ProtocolMbRtuSlaveCtrl.c **** __INLINE void protocolMbRtuSlaveCtrl_update_tables()
+  65:App/ProtocolMbRtuSlaveCtrl.c **** {
+  66:App/ProtocolMbRtuSlaveCtrl.c ****   // --- BSP -----------------------------//
+  67:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_state_led_rele,    App.Mdb_data_AO.state_led_rele);
+  68:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_control_led_rele,  App.Mdb_data_AO.control_led_rele);
+  69:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_spi_buf_0,         App.Mdb_data_AO.spi_buf_0[0]);
+  70:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_spi_buf_1,         App.Mdb_data_AO.spi_buf_0[1]);
+  71:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_spi_buf_2,         App.Mdb_data_AO.spi_buf_0[2]);
+  72:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_ADC_data,          App.Mdb_data_AO.ADC_data);
+  73:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_ADC_CPU_data,      App.Mdb_data_AO.ADC_CPU_data);
+  74:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_ADC_T_data,        App.Mdb_data_AO.ADC_T_data);
+  75:App/ProtocolMbRtuSlaveCtrl.c **** }
+  76:App/ProtocolMbRtuSlaveCtrl.c **** //------------------------ REGULAR FCN END------------------------
+  77:App/ProtocolMbRtuSlaveCtrl.c **** 
+  78:App/ProtocolMbRtuSlaveCtrl.c **** //------------------------------- MODBUS CALLBACKS -------------------------------------------//
+  79:App/ProtocolMbRtuSlaveCtrl.c **** #define PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK (0xAAAA)
+  80:App/ProtocolMbRtuSlaveCtrl.c **** #define PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_FAIL (0xF00F)
+  81:App/ProtocolMbRtuSlaveCtrl.c **** __weak void protocolMbRtuSlaveCtrl_callback_H_WRITE(ModbusSS_table_t *table, uint16_t reg, uint16_t
+  82:App/ProtocolMbRtuSlaveCtrl.c **** {
+  30              		.loc 1 82 1 view -0
   31              		.cfi_startproc
   32              		@ args = 0, pretend = 0, frame = 0
   33              		@ frame_needed = 0, uses_anonymous_args = 0
-  80:App/ProtocolMbRtuSlaveCtrl.c ****   // uint16_t response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_FAIL;
-  81:App/ProtocolMbRtuSlaveCtrl.c ****   // uint16_t param = 0;
-  82:App/ProtocolMbRtuSlaveCtrl.c ****   // float analog_kMul = 0.000001;
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s 			page 3
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccv4NzFi.s 			page 3
 
 
-  83:App/ProtocolMbRtuSlaveCtrl.c ****   // float kMul = 0.001f;
-  84:App/ProtocolMbRtuSlaveCtrl.c ****   // float kMulBms = 0.1f;
-  85:App/ProtocolMbRtuSlaveCtrl.c ****   uint16_t value = 0.0f;
-  34              		.loc 1 85 3 view .LVU1
-  86:App/ProtocolMbRtuSlaveCtrl.c ****   // uint8_t idx = 0;
-  87:App/ProtocolMbRtuSlaveCtrl.c ****   // int16_t sign_val = 0;
-  88:App/ProtocolMbRtuSlaveCtrl.c ****   asm("NOP");
-  35              		.loc 1 88 3 view .LVU2
+  83:App/ProtocolMbRtuSlaveCtrl.c ****   // uint16_t response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_FAIL;
+  84:App/ProtocolMbRtuSlaveCtrl.c ****   // uint16_t param = 0;
+  85:App/ProtocolMbRtuSlaveCtrl.c ****   // float analog_kMul = 0.000001;
+  86:App/ProtocolMbRtuSlaveCtrl.c ****   // float kMul = 0.001f;
+  87:App/ProtocolMbRtuSlaveCtrl.c ****   // float kMulBms = 0.1f;
+  88:App/ProtocolMbRtuSlaveCtrl.c ****   uint16_t value = 0.0f;
+  34              		.loc 1 88 3 view .LVU1
+  89:App/ProtocolMbRtuSlaveCtrl.c ****   // uint8_t idx = 0;
+  90:App/ProtocolMbRtuSlaveCtrl.c ****   // int16_t sign_val = 0;
+  91:App/ProtocolMbRtuSlaveCtrl.c ****   asm("NOP");
+  35              		.loc 1 91 3 view .LVU2
   36              		.syntax unified
-  37              	@ 88 "App/ProtocolMbRtuSlaveCtrl.c" 1
+  37              	@ 91 "App/ProtocolMbRtuSlaveCtrl.c" 1
   38 0000 00BF     		NOP
   39              	@ 0 "" 2
-  89:App/ProtocolMbRtuSlaveCtrl.c **** 
-  90:App/ProtocolMbRtuSlaveCtrl.c ****   if (table == &mdb_table_bsp) // Диапазон BSP
-  40              		.loc 1 90 3 view .LVU3
-  41              		.loc 1 90 6 is_stmt 0 view .LVU4
+  92:App/ProtocolMbRtuSlaveCtrl.c **** 
+  93:App/ProtocolMbRtuSlaveCtrl.c ****   if (table == &mdb_table_bsp) // Диапазон BSP
+  40              		.loc 1 93 3 view .LVU3
+  41              		.loc 1 93 6 is_stmt 0 view .LVU4
   42              		.thumb
   43              		.syntax unified
   44 0002 084B     		ldr	r3, .L9
@@ -144,54 +147,54 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s 			page 1
   46 0006 00D0     		beq	.L7
   47 0008 7047     		bx	lr
   48              	.L7:
-  79:App/ProtocolMbRtuSlaveCtrl.c ****   // uint16_t response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_FAIL;
-  49              		.loc 1 79 1 view .LVU5
+  82:App/ProtocolMbRtuSlaveCtrl.c ****   // uint16_t response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_FAIL;
+  49              		.loc 1 82 1 view .LVU5
   50 000a 10B5     		push	{r4, lr}
   51              	.LCFI0:
   52              		.cfi_def_cfa_offset 8
   53              		.cfi_offset 4, -8
   54              		.cfi_offset 14, -4
   55 000c 0C46     		mov	r4, r1
-  91:App/ProtocolMbRtuSlaveCtrl.c ****   {
-  92:App/ProtocolMbRtuSlaveCtrl.c ****     value = ModbusSS_GetWord(&mdb_table_bsp, reg);
-  56              		.loc 1 92 5 is_stmt 1 view .LVU6
-  57              		.loc 1 92 13 is_stmt 0 view .LVU7
+  94:App/ProtocolMbRtuSlaveCtrl.c ****   {
+  95:App/ProtocolMbRtuSlaveCtrl.c ****     value = ModbusSS_GetWord(&mdb_table_bsp, reg);
+  56              		.loc 1 95 5 is_stmt 1 view .LVU6
+  57              		.loc 1 95 13 is_stmt 0 view .LVU7
   58 000e 1846     		mov	r0, r3
   59              	.LVL1:
-  60              		.loc 1 92 13 view .LVU8
+  60              		.loc 1 95 13 view .LVU8
   61 0010 FFF7FEFF 		bl	ModbusSS_GetWord
   62              	.LVL2:
-  93:App/ProtocolMbRtuSlaveCtrl.c ****     switch (reg)
-  63              		.loc 1 93 5 is_stmt 1 view .LVU9
+  96:App/ProtocolMbRtuSlaveCtrl.c ****     switch (reg)
+  63              		.loc 1 96 5 is_stmt 1 view .LVU9
   64 0014 40F2E933 		movw	r3, #1001
   65 0018 9C42     		cmp	r4, r3
   66 001a 00D0     		beq	.L8
   67              	.LVL3:
   68              	.L1:
-  94:App/ProtocolMbRtuSlaveCtrl.c ****     {
-  95:App/ProtocolMbRtuSlaveCtrl.c ****     case tab_bsp_control_led_rele:
-  96:App/ProtocolMbRtuSlaveCtrl.c ****       control_led_rele(value);
-  97:App/ProtocolMbRtuSlaveCtrl.c ****       break;
-  98:App/ProtocolMbRtuSlaveCtrl.c ****     default:
-  99:App/ProtocolMbRtuSlaveCtrl.c ****       break;
- 100:App/ProtocolMbRtuSlaveCtrl.c ****     }
- 101:App/ProtocolMbRtuSlaveCtrl.c ****   }
- 102:App/ProtocolMbRtuSlaveCtrl.c ****   
- 103:App/ProtocolMbRtuSlaveCtrl.c **** }
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s 			page 4
+  97:App/ProtocolMbRtuSlaveCtrl.c ****     {
+  98:App/ProtocolMbRtuSlaveCtrl.c ****     case tab_bsp_control_led_rele:
+  99:App/ProtocolMbRtuSlaveCtrl.c ****       control_led_rele(value);
+ 100:App/ProtocolMbRtuSlaveCtrl.c ****       break;
+ 101:App/ProtocolMbRtuSlaveCtrl.c ****     default:
+ 102:App/ProtocolMbRtuSlaveCtrl.c ****       break;
+ 103:App/ProtocolMbRtuSlaveCtrl.c ****     }
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccv4NzFi.s 			page 4
 
 
-  69              		.loc 1 103 1 is_stmt 0 view .LVU10
+ 104:App/ProtocolMbRtuSlaveCtrl.c ****   }
+ 105:App/ProtocolMbRtuSlaveCtrl.c ****   
+ 106:App/ProtocolMbRtuSlaveCtrl.c **** }
+  69              		.loc 1 106 1 is_stmt 0 view .LVU10
   70 001c 10BD     		pop	{r4, pc}
   71              	.LVL4:
   72              	.L8:
-  96:App/ProtocolMbRtuSlaveCtrl.c ****       break;
-  73              		.loc 1 96 7 is_stmt 1 view .LVU11
+  99:App/ProtocolMbRtuSlaveCtrl.c ****       break;
+  73              		.loc 1 99 7 is_stmt 1 view .LVU11
   74 001e FFF7FEFF 		bl	control_led_rele
   75              	.LVL5:
-  97:App/ProtocolMbRtuSlaveCtrl.c ****     default:
-  76              		.loc 1 97 7 view .LVU12
-  77              		.loc 1 103 1 is_stmt 0 view .LVU13
+ 100:App/ProtocolMbRtuSlaveCtrl.c ****     default:
+  76              		.loc 1 100 7 view .LVU12
+  77              		.loc 1 106 1 is_stmt 0 view .LVU13
   78 0022 FBE7     		b	.L1
   79              	.L10:
   80              		.align	2
@@ -208,39 +211,39 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s 			page 1
   93              	protocolMbRtuSlaveCtrl_init:
   94              	.LVL6:
   95              	.LFB329:
-  58:App/ProtocolMbRtuSlaveCtrl.c ****   HAL_Delay(100);
-  96              		.loc 1 58 1 is_stmt 1 view -0
+  59:App/ProtocolMbRtuSlaveCtrl.c ****   HAL_Delay(100);
+  96              		.loc 1 59 1 is_stmt 1 view -0
   97              		.cfi_startproc
   98              		@ args = 0, pretend = 0, frame = 0
   99              		@ frame_needed = 0, uses_anonymous_args = 0
-  58:App/ProtocolMbRtuSlaveCtrl.c ****   HAL_Delay(100);
- 100              		.loc 1 58 1 is_stmt 0 view .LVU15
+  59:App/ProtocolMbRtuSlaveCtrl.c ****   HAL_Delay(100);
+ 100              		.loc 1 59 1 is_stmt 0 view .LVU15
  101 0000 10B5     		push	{r4, lr}
  102              	.LCFI1:
  103              		.cfi_def_cfa_offset 8
  104              		.cfi_offset 4, -8
  105              		.cfi_offset 14, -4
  106 0002 0446     		mov	r4, r0
-  59:App/ProtocolMbRtuSlaveCtrl.c ****   bsp_rs485_setPortToModbusRtu(portNo, modbusBufRxTxRtu485, MODBUS_SS_BUF_CNT);
- 107              		.loc 1 59 3 is_stmt 1 view .LVU16
+  60:App/ProtocolMbRtuSlaveCtrl.c ****   bsp_rs485_setPortToModbusRtu(portNo, modbusBufRxTxRtu485, MODBUS_SS_BUF_CNT);
+ 107              		.loc 1 60 3 is_stmt 1 view .LVU16
  108 0004 6420     		movs	r0, #100
  109              	.LVL7:
-  59:App/ProtocolMbRtuSlaveCtrl.c ****   bsp_rs485_setPortToModbusRtu(portNo, modbusBufRxTxRtu485, MODBUS_SS_BUF_CNT);
- 110              		.loc 1 59 3 is_stmt 0 view .LVU17
+  60:App/ProtocolMbRtuSlaveCtrl.c ****   bsp_rs485_setPortToModbusRtu(portNo, modbusBufRxTxRtu485, MODBUS_SS_BUF_CNT);
+ 110              		.loc 1 60 3 is_stmt 0 view .LVU17
  111 0006 FFF7FEFF 		bl	HAL_Delay
  112              	.LVL8:
-  60:App/ProtocolMbRtuSlaveCtrl.c **** }
- 113              		.loc 1 60 3 is_stmt 1 view .LVU18
+  61:App/ProtocolMbRtuSlaveCtrl.c **** }
+ 113              		.loc 1 61 3 is_stmt 1 view .LVU18
  114 000a 4FF48272 		mov	r2, #260
  115 000e 0249     		ldr	r1, .L13
  116 0010 2046     		mov	r0, r4
  117 0012 FFF7FEFF 		bl	bsp_rs485_setPortToModbusRtu
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccv4NzFi.s 			page 5
+
+
  118              	.LVL9:
-  61:App/ProtocolMbRtuSlaveCtrl.c **** 
- 119              		.loc 1 61 1 is_stmt 0 view .LVU19
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s 			page 5
-
-
+  62:App/ProtocolMbRtuSlaveCtrl.c **** 
+ 119              		.loc 1 62 1 is_stmt 0 view .LVU19
  120 0016 10BD     		pop	{r4, pc}
  121              	.L14:
  122              		.align	2
@@ -256,8 +259,8 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s 			page 1
  133              		.thumb_func
  135              	protocolMbRtuSlaveCtrl_update_tables:
  136              	.LFB330:
-  64:App/ProtocolMbRtuSlaveCtrl.c ****   // --- BSP -----------------------------//
- 137              		.loc 1 64 1 is_stmt 1 view -0
+  65:App/ProtocolMbRtuSlaveCtrl.c ****   // --- BSP -----------------------------//
+ 137              		.loc 1 65 1 is_stmt 1 view -0
  138              		.cfi_startproc
  139              		@ args = 0, pretend = 0, frame = 0
  140              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -268,324 +271,338 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s 			page 1
  145              		.cfi_offset 4, -12
  146              		.cfi_offset 5, -8
  147              		.cfi_offset 14, -4
-  66:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_control_led_rele,  App.Mdb_data_AO.control_led_rele);
- 148              		.loc 1 66 3 view .LVU21
- 149 0002 134D     		ldr	r5, .L17
- 150 0004 134C     		ldr	r4, .L17+4
+  67:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_control_led_rele,  App.Mdb_data_AO.control_led_rele);
+ 148              		.loc 1 67 3 view .LVU21
+ 149 0002 194D     		ldr	r5, .L17
+ 150 0004 194C     		ldr	r4, .L17+4
  151 0006 2A88     		ldrh	r2, [r5]
  152 0008 4FF47A71 		mov	r1, #1000
  153 000c 2046     		mov	r0, r4
  154 000e FFF7FEFF 		bl	ModbusSS_SetWord
  155              	.LVL10:
-  67:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_spi_buf_0,         App.Mdb_data_AO.spi_buf_0[0]);
- 156              		.loc 1 67 3 view .LVU22
+  68:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_spi_buf_0,         App.Mdb_data_AO.spi_buf_0[0]);
+ 156              		.loc 1 68 3 view .LVU22
  157 0012 6A88     		ldrh	r2, [r5, #2]
  158 0014 40F2E931 		movw	r1, #1001
  159 0018 2046     		mov	r0, r4
  160 001a FFF7FEFF 		bl	ModbusSS_SetWord
  161              	.LVL11:
-  68:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_spi_buf_1,         App.Mdb_data_AO.spi_buf_0[1]);
- 162              		.loc 1 68 3 view .LVU23
+  69:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_spi_buf_1,         App.Mdb_data_AO.spi_buf_0[1]);
+ 162              		.loc 1 69 3 view .LVU23
  163 001e AA88     		ldrh	r2, [r5, #4]
  164 0020 40F2EA31 		movw	r1, #1002
  165 0024 2046     		mov	r0, r4
  166 0026 FFF7FEFF 		bl	ModbusSS_SetWord
  167              	.LVL12:
-  69:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_spi_buf_2,         App.Mdb_data_AO.spi_buf_0[2]);
- 168              		.loc 1 69 3 view .LVU24
+  70:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_spi_buf_2,         App.Mdb_data_AO.spi_buf_0[2]);
+ 168              		.loc 1 70 3 view .LVU24
  169 002a EA88     		ldrh	r2, [r5, #6]
  170 002c 40F2EB31 		movw	r1, #1003
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccv4NzFi.s 			page 6
+
+
  171 0030 2046     		mov	r0, r4
  172 0032 FFF7FEFF 		bl	ModbusSS_SetWord
  173              	.LVL13:
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s 			page 6
-
-
-  70:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_ADC_data,          App.Mdb_data_AO.ADC_data);
- 174              		.loc 1 70 3 view .LVU25
+  71:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_ADC_data,          App.Mdb_data_AO.ADC_data);
+ 174              		.loc 1 71 3 view .LVU25
  175 0036 2A89     		ldrh	r2, [r5, #8]
  176 0038 4FF47B71 		mov	r1, #1004
  177 003c 2046     		mov	r0, r4
  178 003e FFF7FEFF 		bl	ModbusSS_SetWord
  179              	.LVL14:
-  71:App/ProtocolMbRtuSlaveCtrl.c **** }
- 180              		.loc 1 71 3 view .LVU26
+  72:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_ADC_CPU_data,      App.Mdb_data_AO.ADC_CPU_data);
+ 180              		.loc 1 72 3 view .LVU26
  181 0042 6A89     		ldrh	r2, [r5, #10]
  182 0044 40F2ED31 		movw	r1, #1005
  183 0048 2046     		mov	r0, r4
  184 004a FFF7FEFF 		bl	ModbusSS_SetWord
  185              	.LVL15:
-  72:App/ProtocolMbRtuSlaveCtrl.c **** //------------------------ REGULAR FCN END------------------------
- 186              		.loc 1 72 1 is_stmt 0 view .LVU27
- 187 004e 38BD     		pop	{r3, r4, r5, pc}
- 188              	.L18:
- 189              		.align	2
- 190              	.L17:
- 191 0050 00000000 		.word	App
- 192 0054 00000000 		.word	mdb_table_bsp
- 193              		.cfi_endproc
- 194              	.LFE330:
- 196              		.section	.text.protocolMbRtuSlaveCtrl_callback_H_READ,"ax",%progbits
- 197              		.align	1
- 198              		.weak	protocolMbRtuSlaveCtrl_callback_H_READ
- 199              		.syntax unified
- 200              		.thumb
- 201              		.thumb_func
- 203              	protocolMbRtuSlaveCtrl_callback_H_READ:
- 204              	.LVL16:
- 205              	.LFB332:
- 104:App/ProtocolMbRtuSlaveCtrl.c **** 
- 105:App/ProtocolMbRtuSlaveCtrl.c **** __weak void protocolMbRtuSlaveCtrl_callback_H_READ(ModbusSS_table_t *table, uint16_t reg, uint16_t 
- 106:App/ProtocolMbRtuSlaveCtrl.c **** {
- 206              		.loc 1 106 1 is_stmt 1 view -0
- 207              		.cfi_startproc
- 208              		@ args = 0, pretend = 0, frame = 0
- 209              		@ frame_needed = 0, uses_anonymous_args = 0
- 210              		@ link register save eliminated.
+  73:App/ProtocolMbRtuSlaveCtrl.c ****   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_ADC_T_data,        App.Mdb_data_AO.ADC_T_data);
+ 186              		.loc 1 73 3 view .LVU27
+ 187 004e AA89     		ldrh	r2, [r5, #12]
+ 188 0050 40F2EE31 		movw	r1, #1006
+ 189 0054 2046     		mov	r0, r4
+ 190 0056 FFF7FEFF 		bl	ModbusSS_SetWord
+ 191              	.LVL16:
+  74:App/ProtocolMbRtuSlaveCtrl.c **** }
+ 192              		.loc 1 74 3 view .LVU28
+ 193 005a EA89     		ldrh	r2, [r5, #14]
+ 194 005c 40F2EF31 		movw	r1, #1007
+ 195 0060 2046     		mov	r0, r4
+ 196 0062 FFF7FEFF 		bl	ModbusSS_SetWord
+ 197              	.LVL17:
+  75:App/ProtocolMbRtuSlaveCtrl.c **** //------------------------ REGULAR FCN END------------------------
+ 198              		.loc 1 75 1 is_stmt 0 view .LVU29
+ 199 0066 38BD     		pop	{r3, r4, r5, pc}
+ 200              	.L18:
+ 201              		.align	2
+ 202              	.L17:
+ 203 0068 00000000 		.word	App
+ 204 006c 00000000 		.word	mdb_table_bsp
+ 205              		.cfi_endproc
+ 206              	.LFE330:
+ 208              		.section	.text.protocolMbRtuSlaveCtrl_callback_H_READ,"ax",%progbits
+ 209              		.align	1
+ 210              		.weak	protocolMbRtuSlaveCtrl_callback_H_READ
+ 211              		.syntax unified
+ 212              		.thumb
+ 213              		.thumb_func
+ 215              	protocolMbRtuSlaveCtrl_callback_H_READ:
+ 216              	.LVL18:
+ 217              	.LFB332:
  107:App/ProtocolMbRtuSlaveCtrl.c **** 
- 108:App/ProtocolMbRtuSlaveCtrl.c ****   asm("NOP");
- 211              		.loc 1 108 3 view .LVU29
- 212              		.syntax unified
- 213              	@ 108 "App/ProtocolMbRtuSlaveCtrl.c" 1
- 214 0000 00BF     		NOP
- 215              	@ 0 "" 2
- 109:App/ProtocolMbRtuSlaveCtrl.c ****   //             if (table == &modbusTableHolding1)
- 110:App/ProtocolMbRtuSlaveCtrl.c ****   // {
- 111:App/ProtocolMbRtuSlaveCtrl.c ****   //   for (int r = reg; r < reg + quantity; r++)
- 112:App/ProtocolMbRtuSlaveCtrl.c ****   //   {
- 113:App/ProtocolMbRtuSlaveCtrl.c ****   //     asm("NOP");
- 114:App/ProtocolMbRtuSlaveCtrl.c ****   //     switch (r)
- 115:App/ProtocolMbRtuSlaveCtrl.c ****   //     {
- 116:App/ProtocolMbRtuSlaveCtrl.c ****   //     case MBP_AI1_X:
- 117:App/ProtocolMbRtuSlaveCtrl.c ****   //       ModbusSS_SetWord(table, r, bsp_ai_read_cache(BSP_AI1));
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s 			page 7
+ 108:App/ProtocolMbRtuSlaveCtrl.c **** __weak void protocolMbRtuSlaveCtrl_callback_H_READ(ModbusSS_table_t *table, uint16_t reg, uint16_t 
+ 109:App/ProtocolMbRtuSlaveCtrl.c **** {
+ 218              		.loc 1 109 1 is_stmt 1 view -0
+ 219              		.cfi_startproc
+ 220              		@ args = 0, pretend = 0, frame = 0
+ 221              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccv4NzFi.s 			page 7
 
 
- 118:App/ProtocolMbRtuSlaveCtrl.c ****   //       asm("NOP");
- 119:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
- 120:App/ProtocolMbRtuSlaveCtrl.c ****   //     case MBP_AI2_Y:
- 121:App/ProtocolMbRtuSlaveCtrl.c ****   //       ModbusSS_SetWord(table, r, bsp_ai_read_cache(BSP_AI2));
- 122:App/ProtocolMbRtuSlaveCtrl.c ****   //       asm("NOP");
- 123:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
- 124:App/ProtocolMbRtuSlaveCtrl.c ****   //     case MBP_DI_STATE:
- 125:App/ProtocolMbRtuSlaveCtrl.c ****   //       ModbusSS_SetWord(table, r, bsp_di_get_cache_pack16());
- 126:App/ProtocolMbRtuSlaveCtrl.c ****   //       asm("NOP");
- 127:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
- 128:App/ProtocolMbRtuSlaveCtrl.c ****   //     default:
- 129:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
- 130:App/ProtocolMbRtuSlaveCtrl.c ****   //     }
- 131:App/ProtocolMbRtuSlaveCtrl.c ****   //   }
- 132:App/ProtocolMbRtuSlaveCtrl.c ****   // }
- 133:App/ProtocolMbRtuSlaveCtrl.c **** }
- 216              		.loc 1 133 1 is_stmt 0 view .LVU30
- 217              		.thumb
- 218              		.syntax unified
- 219 0002 7047     		bx	lr
- 220              		.cfi_endproc
- 221              	.LFE332:
- 223              		.section	.text.bsp_rs485_callback_rxBlockReady,"ax",%progbits
- 224              		.align	1
- 225              		.global	bsp_rs485_callback_rxBlockReady
- 226              		.syntax unified
- 227              		.thumb
- 228              		.thumb_func
- 230              	bsp_rs485_callback_rxBlockReady:
- 231              	.LVL17:
- 232              	.LFB333:
- 134:App/ProtocolMbRtuSlaveCtrl.c **** //------------------------------- MODBUS CALLBACKS END-------------------------------------------//
- 135:App/ProtocolMbRtuSlaveCtrl.c **** 
- 136:App/ProtocolMbRtuSlaveCtrl.c **** //------------------------------- HW CALLBACK -------------------------------------------//
- 137:App/ProtocolMbRtuSlaveCtrl.c **** void bsp_rs485_callback_rxBlockReady(uint8_t portNo)
- 138:App/ProtocolMbRtuSlaveCtrl.c **** {
- 233              		.loc 1 138 1 is_stmt 1 view -0
- 234              		.cfi_startproc
- 235              		@ args = 0, pretend = 0, frame = 0
- 236              		@ frame_needed = 0, uses_anonymous_args = 0
- 237              		.loc 1 138 1 is_stmt 0 view .LVU32
- 238 0000 10B5     		push	{r4, lr}
- 239              	.LCFI3:
- 240              		.cfi_def_cfa_offset 8
- 241              		.cfi_offset 4, -8
- 242              		.cfi_offset 14, -4
- 243 0002 0446     		mov	r4, r0
- 139:App/ProtocolMbRtuSlaveCtrl.c **** 
- 140:App/ProtocolMbRtuSlaveCtrl.c ****   int32_t blockSizeByte = 0;
- 244              		.loc 1 140 3 is_stmt 1 view .LVU33
- 245              	.LVL18:
- 141:App/ProtocolMbRtuSlaveCtrl.c ****   if ((blockSizeByte = ModbusSS_ParseRxData(&modbusSS_rtu_rs485)) == 0)
- 246              		.loc 1 141 3 view .LVU34
- 247              		.loc 1 141 24 is_stmt 0 view .LVU35
- 248 0004 0848     		ldr	r0, .L24
- 249              	.LVL19:
- 250              		.loc 1 141 24 view .LVU36
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s 			page 8
+ 222              		@ link register save eliminated.
+ 110:App/ProtocolMbRtuSlaveCtrl.c **** 
+ 111:App/ProtocolMbRtuSlaveCtrl.c ****   asm("NOP");
+ 223              		.loc 1 111 3 view .LVU31
+ 224              		.syntax unified
+ 225              	@ 111 "App/ProtocolMbRtuSlaveCtrl.c" 1
+ 226 0000 00BF     		NOP
+ 227              	@ 0 "" 2
+ 112:App/ProtocolMbRtuSlaveCtrl.c ****   //             if (table == &modbusTableHolding1)
+ 113:App/ProtocolMbRtuSlaveCtrl.c ****   // {
+ 114:App/ProtocolMbRtuSlaveCtrl.c ****   //   for (int r = reg; r < reg + quantity; r++)
+ 115:App/ProtocolMbRtuSlaveCtrl.c ****   //   {
+ 116:App/ProtocolMbRtuSlaveCtrl.c ****   //     asm("NOP");
+ 117:App/ProtocolMbRtuSlaveCtrl.c ****   //     switch (r)
+ 118:App/ProtocolMbRtuSlaveCtrl.c ****   //     {
+ 119:App/ProtocolMbRtuSlaveCtrl.c ****   //     case MBP_AI1_X:
+ 120:App/ProtocolMbRtuSlaveCtrl.c ****   //       ModbusSS_SetWord(table, r, bsp_ai_read_cache(BSP_AI1));
+ 121:App/ProtocolMbRtuSlaveCtrl.c ****   //       asm("NOP");
+ 122:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
+ 123:App/ProtocolMbRtuSlaveCtrl.c ****   //     case MBP_AI2_Y:
+ 124:App/ProtocolMbRtuSlaveCtrl.c ****   //       ModbusSS_SetWord(table, r, bsp_ai_read_cache(BSP_AI2));
+ 125:App/ProtocolMbRtuSlaveCtrl.c ****   //       asm("NOP");
+ 126:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
+ 127:App/ProtocolMbRtuSlaveCtrl.c ****   //     case MBP_DI_STATE:
+ 128:App/ProtocolMbRtuSlaveCtrl.c ****   //       ModbusSS_SetWord(table, r, bsp_di_get_cache_pack16());
+ 129:App/ProtocolMbRtuSlaveCtrl.c ****   //       asm("NOP");
+ 130:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
+ 131:App/ProtocolMbRtuSlaveCtrl.c ****   //     default:
+ 132:App/ProtocolMbRtuSlaveCtrl.c ****   //       break;
+ 133:App/ProtocolMbRtuSlaveCtrl.c ****   //     }
+ 134:App/ProtocolMbRtuSlaveCtrl.c ****   //   }
+ 135:App/ProtocolMbRtuSlaveCtrl.c ****   // }
+ 136:App/ProtocolMbRtuSlaveCtrl.c **** }
+ 228              		.loc 1 136 1 is_stmt 0 view .LVU32
+ 229              		.thumb
+ 230              		.syntax unified
+ 231 0002 7047     		bx	lr
+ 232              		.cfi_endproc
+ 233              	.LFE332:
+ 235              		.section	.text.bsp_rs485_callback_rxBlockReady,"ax",%progbits
+ 236              		.align	1
+ 237              		.global	bsp_rs485_callback_rxBlockReady
+ 238              		.syntax unified
+ 239              		.thumb
+ 240              		.thumb_func
+ 242              	bsp_rs485_callback_rxBlockReady:
+ 243              	.LVL19:
+ 244              	.LFB333:
+ 137:App/ProtocolMbRtuSlaveCtrl.c **** //------------------------------- MODBUS CALLBACKS END-------------------------------------------//
+ 138:App/ProtocolMbRtuSlaveCtrl.c **** 
+ 139:App/ProtocolMbRtuSlaveCtrl.c **** //------------------------------- HW CALLBACK -------------------------------------------//
+ 140:App/ProtocolMbRtuSlaveCtrl.c **** void bsp_rs485_callback_rxBlockReady(uint8_t portNo)
+ 141:App/ProtocolMbRtuSlaveCtrl.c **** {
+ 245              		.loc 1 141 1 is_stmt 1 view -0
+ 246              		.cfi_startproc
+ 247              		@ args = 0, pretend = 0, frame = 0
+ 248              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccv4NzFi.s 			page 8
 
 
- 251 0006 FFF7FEFF 		bl	ModbusSS_ParseRxData
- 252              	.LVL20:
- 253              		.loc 1 141 6 view .LVU37
- 254 000a 08B9     		cbnz	r0, .L21
- 142:App/ProtocolMbRtuSlaveCtrl.c ****   {
- 143:App/ProtocolMbRtuSlaveCtrl.c ****     // bug with reset modbus!!!
- 144:App/ProtocolMbRtuSlaveCtrl.c ****     asm("NOP");
- 255              		.loc 1 144 5 is_stmt 1 view .LVU38
- 256              		.syntax unified
- 257              	@ 144 "App/ProtocolMbRtuSlaveCtrl.c" 1
- 258 000c 00BF     		NOP
- 259              	@ 0 "" 2
- 260              	.LVL21:
- 261              		.thumb
- 262              		.syntax unified
- 263              	.L20:
- 145:App/ProtocolMbRtuSlaveCtrl.c ****   }
- 146:App/ProtocolMbRtuSlaveCtrl.c ****   else if (blockSizeByte != -1)
- 147:App/ProtocolMbRtuSlaveCtrl.c ****   {
- 148:App/ProtocolMbRtuSlaveCtrl.c ****     asm("NOP");
- 149:App/ProtocolMbRtuSlaveCtrl.c ****     bsp_rs485_sendBlock(portNo, modbusSS_rtu_rs485.bufRxTx, blockSizeByte);
- 150:App/ProtocolMbRtuSlaveCtrl.c ****     asm("NOP");
- 151:App/ProtocolMbRtuSlaveCtrl.c ****   }
- 152:App/ProtocolMbRtuSlaveCtrl.c **** }
- 264              		.loc 1 152 1 is_stmt 0 view .LVU39
- 265 000e 10BD     		pop	{r4, pc}
- 266              	.LVL22:
- 267              	.L21:
- 146:App/ProtocolMbRtuSlaveCtrl.c ****   {
- 268              		.loc 1 146 8 is_stmt 1 view .LVU40
- 146:App/ProtocolMbRtuSlaveCtrl.c ****   {
- 269              		.loc 1 146 11 is_stmt 0 view .LVU41
- 270 0010 B0F1FF3F 		cmp	r0, #-1
- 271 0014 FBD0     		beq	.L20
- 148:App/ProtocolMbRtuSlaveCtrl.c ****     bsp_rs485_sendBlock(portNo, modbusSS_rtu_rs485.bufRxTx, blockSizeByte);
- 272              		.loc 1 148 5 is_stmt 1 view .LVU42
- 273              		.syntax unified
- 274              	@ 148 "App/ProtocolMbRtuSlaveCtrl.c" 1
- 275 0016 00BF     		NOP
- 276              	@ 0 "" 2
- 149:App/ProtocolMbRtuSlaveCtrl.c ****     asm("NOP");
- 277              		.loc 1 149 5 view .LVU43
- 278              		.thumb
- 279              		.syntax unified
- 280 0018 C2B2     		uxtb	r2, r0
- 281 001a 034B     		ldr	r3, .L24
- 282 001c 1969     		ldr	r1, [r3, #16]
- 283 001e 2046     		mov	r0, r4
- 284              	.LVL23:
- 149:App/ProtocolMbRtuSlaveCtrl.c ****     asm("NOP");
- 285              		.loc 1 149 5 is_stmt 0 view .LVU44
- 286 0020 FFF7FEFF 		bl	bsp_rs485_sendBlock
- 287              	.LVL24:
- 150:App/ProtocolMbRtuSlaveCtrl.c ****   }
- 288              		.loc 1 150 5 is_stmt 1 view .LVU45
- 289              		.syntax unified
- 290              	@ 150 "App/ProtocolMbRtuSlaveCtrl.c" 1
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s 			page 9
+ 249              		.loc 1 141 1 is_stmt 0 view .LVU34
+ 250 0000 10B5     		push	{r4, lr}
+ 251              	.LCFI3:
+ 252              		.cfi_def_cfa_offset 8
+ 253              		.cfi_offset 4, -8
+ 254              		.cfi_offset 14, -4
+ 255 0002 0446     		mov	r4, r0
+ 142:App/ProtocolMbRtuSlaveCtrl.c **** 
+ 143:App/ProtocolMbRtuSlaveCtrl.c ****   int32_t blockSizeByte = 0;
+ 256              		.loc 1 143 3 is_stmt 1 view .LVU35
+ 257              	.LVL20:
+ 144:App/ProtocolMbRtuSlaveCtrl.c ****   if ((blockSizeByte = ModbusSS_ParseRxData(&modbusSS_rtu_rs485)) == 0)
+ 258              		.loc 1 144 3 view .LVU36
+ 259              		.loc 1 144 24 is_stmt 0 view .LVU37
+ 260 0004 0848     		ldr	r0, .L24
+ 261              	.LVL21:
+ 262              		.loc 1 144 24 view .LVU38
+ 263 0006 FFF7FEFF 		bl	ModbusSS_ParseRxData
+ 264              	.LVL22:
+ 265              		.loc 1 144 6 view .LVU39
+ 266 000a 08B9     		cbnz	r0, .L21
+ 145:App/ProtocolMbRtuSlaveCtrl.c ****   {
+ 146:App/ProtocolMbRtuSlaveCtrl.c ****     // bug with reset modbus!!!
+ 147:App/ProtocolMbRtuSlaveCtrl.c ****     asm("NOP");
+ 267              		.loc 1 147 5 is_stmt 1 view .LVU40
+ 268              		.syntax unified
+ 269              	@ 147 "App/ProtocolMbRtuSlaveCtrl.c" 1
+ 270 000c 00BF     		NOP
+ 271              	@ 0 "" 2
+ 272              	.LVL23:
+ 273              		.thumb
+ 274              		.syntax unified
+ 275              	.L20:
+ 148:App/ProtocolMbRtuSlaveCtrl.c ****   }
+ 149:App/ProtocolMbRtuSlaveCtrl.c ****   else if (blockSizeByte != -1)
+ 150:App/ProtocolMbRtuSlaveCtrl.c ****   {
+ 151:App/ProtocolMbRtuSlaveCtrl.c ****     asm("NOP");
+ 152:App/ProtocolMbRtuSlaveCtrl.c ****     bsp_rs485_sendBlock(portNo, modbusSS_rtu_rs485.bufRxTx, blockSizeByte);
+ 153:App/ProtocolMbRtuSlaveCtrl.c ****     asm("NOP");
+ 154:App/ProtocolMbRtuSlaveCtrl.c ****   }
+ 155:App/ProtocolMbRtuSlaveCtrl.c **** }
+ 276              		.loc 1 155 1 is_stmt 0 view .LVU41
+ 277 000e 10BD     		pop	{r4, pc}
+ 278              	.LVL24:
+ 279              	.L21:
+ 149:App/ProtocolMbRtuSlaveCtrl.c ****   {
+ 280              		.loc 1 149 8 is_stmt 1 view .LVU42
+ 149:App/ProtocolMbRtuSlaveCtrl.c ****   {
+ 281              		.loc 1 149 11 is_stmt 0 view .LVU43
+ 282 0010 B0F1FF3F 		cmp	r0, #-1
+ 283 0014 FBD0     		beq	.L20
+ 151:App/ProtocolMbRtuSlaveCtrl.c ****     bsp_rs485_sendBlock(portNo, modbusSS_rtu_rs485.bufRxTx, blockSizeByte);
+ 284              		.loc 1 151 5 is_stmt 1 view .LVU44
+ 285              		.syntax unified
+ 286              	@ 151 "App/ProtocolMbRtuSlaveCtrl.c" 1
+ 287 0016 00BF     		NOP
+ 288              	@ 0 "" 2
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccv4NzFi.s 			page 9
 
 
- 291 0024 00BF     		NOP
- 292              	@ 0 "" 2
- 293              		.loc 1 152 1 is_stmt 0 view .LVU46
- 294              		.thumb
- 295              		.syntax unified
- 296 0026 F2E7     		b	.L20
- 297              	.L25:
- 298              		.align	2
- 299              	.L24:
- 300 0028 00000000 		.word	modbusSS_rtu_rs485
- 301              		.cfi_endproc
- 302              	.LFE333:
- 304              		.global	modbusRtu_ctrlStruct
- 305              		.section	.bss.modbusRtu_ctrlStruct,"aw",%nobits
- 306              		.align	2
- 309              	modbusRtu_ctrlStruct:
- 310 0000 00000000 		.space	4
- 311              		.global	modbusSS_rtu_rs485
- 312              		.section	.data.modbusSS_rtu_rs485,"aw"
- 313              		.align	2
- 316              	modbusSS_rtu_rs485:
- 317 0000 00000000 		.space	4
- 318 0004 00000000 		.word	protocolMbRtuSlaveCtrl_callback_H_WRITE
- 319 0008 00000000 		.word	0
- 320 000c 00       		.byte	0
- 321 000d 000000   		.space	3
- 322 0010 00000000 		.word	modbusBufRxTxRtu485
- 323 0014 00000000 		.word	modbusTables
- 324 0018 01       		.byte	1
- 325 0019 01       		.byte	1
- 326 001a 0000     		.space	2
- 327              		.global	modbusTables
- 328              		.section	.data.modbusTables,"aw"
- 329              		.align	2
- 332              	modbusTables:
- 333 0000 00000000 		.word	mdb_table_bsp
- 334              		.global	mdb_table_bsp
- 335              		.section	.data.mdb_table_bsp,"aw"
- 336              		.align	2
- 339              	mdb_table_bsp:
- 340 0000 E803     		.short	1000
- 341 0002 0700     		.short	7
- 342 0004 00       		.byte	0
- 343 0005 000000   		.space	3
- 344 0008 00000000 		.word	mdb_bsp_buf
- 345              		.global	mdb_bsp_buf
- 346              		.section	.bss.mdb_bsp_buf,"aw",%nobits
- 347              		.align	2
- 350              	mdb_bsp_buf:
- 351 0000 00000000 		.space	14
- 351      00000000 
- 351      00000000 
- 351      0000
- 352              		.global	modbusBufRxTxRtu485
- 353              		.section	.bss.modbusBufRxTxRtu485,"aw",%nobits
- 354              		.align	2
- 357              	modbusBufRxTxRtu485:
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s 			page 10
+ 152:App/ProtocolMbRtuSlaveCtrl.c ****     asm("NOP");
+ 289              		.loc 1 152 5 view .LVU45
+ 290              		.thumb
+ 291              		.syntax unified
+ 292 0018 C2B2     		uxtb	r2, r0
+ 293 001a 034B     		ldr	r3, .L24
+ 294 001c 1969     		ldr	r1, [r3, #16]
+ 295 001e 2046     		mov	r0, r4
+ 296              	.LVL25:
+ 152:App/ProtocolMbRtuSlaveCtrl.c ****     asm("NOP");
+ 297              		.loc 1 152 5 is_stmt 0 view .LVU46
+ 298 0020 FFF7FEFF 		bl	bsp_rs485_sendBlock
+ 299              	.LVL26:
+ 153:App/ProtocolMbRtuSlaveCtrl.c ****   }
+ 300              		.loc 1 153 5 is_stmt 1 view .LVU47
+ 301              		.syntax unified
+ 302              	@ 153 "App/ProtocolMbRtuSlaveCtrl.c" 1
+ 303 0024 00BF     		NOP
+ 304              	@ 0 "" 2
+ 305              		.loc 1 155 1 is_stmt 0 view .LVU48
+ 306              		.thumb
+ 307              		.syntax unified
+ 308 0026 F2E7     		b	.L20
+ 309              	.L25:
+ 310              		.align	2
+ 311              	.L24:
+ 312 0028 00000000 		.word	modbusSS_rtu_rs485
+ 313              		.cfi_endproc
+ 314              	.LFE333:
+ 316              		.global	modbusRtu_ctrlStruct
+ 317              		.section	.bss.modbusRtu_ctrlStruct,"aw",%nobits
+ 318              		.align	2
+ 321              	modbusRtu_ctrlStruct:
+ 322 0000 00000000 		.space	4
+ 323              		.global	modbusSS_rtu_rs485
+ 324              		.section	.data.modbusSS_rtu_rs485,"aw"
+ 325              		.align	2
+ 328              	modbusSS_rtu_rs485:
+ 329 0000 00000000 		.space	4
+ 330 0004 00000000 		.word	protocolMbRtuSlaveCtrl_callback_H_WRITE
+ 331 0008 00000000 		.word	0
+ 332 000c 00       		.byte	0
+ 333 000d 000000   		.space	3
+ 334 0010 00000000 		.word	modbusBufRxTxRtu485
+ 335 0014 00000000 		.word	modbusTables
+ 336 0018 01       		.byte	1
+ 337 0019 01       		.byte	1
+ 338 001a 0000     		.space	2
+ 339              		.global	modbusTables
+ 340              		.section	.data.modbusTables,"aw"
+ 341              		.align	2
+ 344              	modbusTables:
+ 345 0000 00000000 		.word	mdb_table_bsp
+ 346              		.global	mdb_table_bsp
+ 347              		.section	.data.mdb_table_bsp,"aw"
+ 348              		.align	2
+ 351              	mdb_table_bsp:
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccv4NzFi.s 			page 10
 
 
- 358 0000 00000000 		.space	260
- 358      00000000 
- 358      00000000 
- 358      00000000 
- 358      00000000 
- 359              		.text
- 360              	.Letext0:
- 361              		.file 2 "c:\\program files\\vscodestmtools\\arm-none-eabi-gcc\\12.2.1-1.2.1\\.content\\arm-none-ea
- 362              		.file 3 "c:\\program files\\vscodestmtools\\arm-none-eabi-gcc\\12.2.1-1.2.1\\.content\\arm-none-ea
- 363              		.file 4 "BSP/ModbusSS.h"
- 364              		.file 5 "App/ProtocolMbRtuSlaveCtrl.h"
- 365              		.file 6 "App/App.h"
- 366              		.file 7 "BSP/BSP.h"
- 367              		.file 8 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h"
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s 			page 11
+ 352 0000 E803     		.short	1000
+ 353 0002 0800     		.short	8
+ 354 0004 00       		.byte	0
+ 355 0005 000000   		.space	3
+ 356 0008 00000000 		.word	mdb_bsp_buf
+ 357              		.global	mdb_bsp_buf
+ 358              		.section	.bss.mdb_bsp_buf,"aw",%nobits
+ 359              		.align	2
+ 362              	mdb_bsp_buf:
+ 363 0000 00000000 		.space	16
+ 363      00000000 
+ 363      00000000 
+ 363      00000000 
+ 364              		.global	modbusBufRxTxRtu485
+ 365              		.section	.bss.modbusBufRxTxRtu485,"aw",%nobits
+ 366              		.align	2
+ 369              	modbusBufRxTxRtu485:
+ 370 0000 00000000 		.space	260
+ 370      00000000 
+ 370      00000000 
+ 370      00000000 
+ 370      00000000 
+ 371              		.text
+ 372              	.Letext0:
+ 373              		.file 2 "c:\\program files\\vscodestmtools\\arm-none-eabi-gcc\\12.2.1-1.2.1\\.content\\arm-none-ea
+ 374              		.file 3 "c:\\program files\\vscodestmtools\\arm-none-eabi-gcc\\12.2.1-1.2.1\\.content\\arm-none-ea
+ 375              		.file 4 "BSP/ModbusSS.h"
+ 376              		.file 5 "App/ProtocolMbRtuSlaveCtrl.h"
+ 377              		.file 6 "App/App.h"
+ 378              		.file 7 "BSP/BSP.h"
+ 379              		.file 8 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h"
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccv4NzFi.s 			page 11
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 ProtocolMbRtuSlaveCtrl.c
-C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s:21     .text.protocolMbRtuSlaveCtrl_callback_H_WRITE:0000000000000000 $t
-C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s:27     .text.protocolMbRtuSlaveCtrl_callback_H_WRITE:0000000000000000 protocolMbRtuSlaveCtrl_callback_H_WRITE
-C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s:82     .text.protocolMbRtuSlaveCtrl_callback_H_WRITE:0000000000000024 $d
-C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s:339    .data.mdb_table_bsp:0000000000000000 mdb_table_bsp
-C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s:87     .text.protocolMbRtuSlaveCtrl_init:0000000000000000 $t
-C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s:93     .text.protocolMbRtuSlaveCtrl_init:0000000000000000 protocolMbRtuSlaveCtrl_init
-C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s:124    .text.protocolMbRtuSlaveCtrl_init:0000000000000018 $d
-C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s:357    .bss.modbusBufRxTxRtu485:0000000000000000 modbusBufRxTxRtu485
-C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s:129    .text.protocolMbRtuSlaveCtrl_update_tables:0000000000000000 $t
-C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s:135    .text.protocolMbRtuSlaveCtrl_update_tables:0000000000000000 protocolMbRtuSlaveCtrl_update_tables
-C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s:191    .text.protocolMbRtuSlaveCtrl_update_tables:0000000000000050 $d
-C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s:197    .text.protocolMbRtuSlaveCtrl_callback_H_READ:0000000000000000 $t
-C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s:203    .text.protocolMbRtuSlaveCtrl_callback_H_READ:0000000000000000 protocolMbRtuSlaveCtrl_callback_H_READ
-C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s:224    .text.bsp_rs485_callback_rxBlockReady:0000000000000000 $t
-C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s:230    .text.bsp_rs485_callback_rxBlockReady:0000000000000000 bsp_rs485_callback_rxBlockReady
-C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s:300    .text.bsp_rs485_callback_rxBlockReady:0000000000000028 $d
-C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s:316    .data.modbusSS_rtu_rs485:0000000000000000 modbusSS_rtu_rs485
-C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s:309    .bss.modbusRtu_ctrlStruct:0000000000000000 modbusRtu_ctrlStruct
-C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s:306    .bss.modbusRtu_ctrlStruct:0000000000000000 $d
-C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s:313    .data.modbusSS_rtu_rs485:0000000000000000 $d
-C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s:332    .data.modbusTables:0000000000000000 modbusTables
-C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s:329    .data.modbusTables:0000000000000000 $d
-C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s:336    .data.mdb_table_bsp:0000000000000000 $d
-C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s:350    .bss.mdb_bsp_buf:0000000000000000 mdb_bsp_buf
-C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s:347    .bss.mdb_bsp_buf:0000000000000000 $d
-C:\Users\sr1\AppData\Local\Temp\ccGcTowt.s:354    .bss.modbusBufRxTxRtu485:0000000000000000 $d
+C:\Users\sr1\AppData\Local\Temp\ccv4NzFi.s:21     .text.protocolMbRtuSlaveCtrl_callback_H_WRITE:0000000000000000 $t
+C:\Users\sr1\AppData\Local\Temp\ccv4NzFi.s:27     .text.protocolMbRtuSlaveCtrl_callback_H_WRITE:0000000000000000 protocolMbRtuSlaveCtrl_callback_H_WRITE
+C:\Users\sr1\AppData\Local\Temp\ccv4NzFi.s:82     .text.protocolMbRtuSlaveCtrl_callback_H_WRITE:0000000000000024 $d
+C:\Users\sr1\AppData\Local\Temp\ccv4NzFi.s:351    .data.mdb_table_bsp:0000000000000000 mdb_table_bsp
+C:\Users\sr1\AppData\Local\Temp\ccv4NzFi.s:87     .text.protocolMbRtuSlaveCtrl_init:0000000000000000 $t
+C:\Users\sr1\AppData\Local\Temp\ccv4NzFi.s:93     .text.protocolMbRtuSlaveCtrl_init:0000000000000000 protocolMbRtuSlaveCtrl_init
+C:\Users\sr1\AppData\Local\Temp\ccv4NzFi.s:124    .text.protocolMbRtuSlaveCtrl_init:0000000000000018 $d
+C:\Users\sr1\AppData\Local\Temp\ccv4NzFi.s:369    .bss.modbusBufRxTxRtu485:0000000000000000 modbusBufRxTxRtu485
+C:\Users\sr1\AppData\Local\Temp\ccv4NzFi.s:129    .text.protocolMbRtuSlaveCtrl_update_tables:0000000000000000 $t
+C:\Users\sr1\AppData\Local\Temp\ccv4NzFi.s:135    .text.protocolMbRtuSlaveCtrl_update_tables:0000000000000000 protocolMbRtuSlaveCtrl_update_tables
+C:\Users\sr1\AppData\Local\Temp\ccv4NzFi.s:203    .text.protocolMbRtuSlaveCtrl_update_tables:0000000000000068 $d
+C:\Users\sr1\AppData\Local\Temp\ccv4NzFi.s:209    .text.protocolMbRtuSlaveCtrl_callback_H_READ:0000000000000000 $t
+C:\Users\sr1\AppData\Local\Temp\ccv4NzFi.s:215    .text.protocolMbRtuSlaveCtrl_callback_H_READ:0000000000000000 protocolMbRtuSlaveCtrl_callback_H_READ
+C:\Users\sr1\AppData\Local\Temp\ccv4NzFi.s:236    .text.bsp_rs485_callback_rxBlockReady:0000000000000000 $t
+C:\Users\sr1\AppData\Local\Temp\ccv4NzFi.s:242    .text.bsp_rs485_callback_rxBlockReady:0000000000000000 bsp_rs485_callback_rxBlockReady
+C:\Users\sr1\AppData\Local\Temp\ccv4NzFi.s:312    .text.bsp_rs485_callback_rxBlockReady:0000000000000028 $d
+C:\Users\sr1\AppData\Local\Temp\ccv4NzFi.s:328    .data.modbusSS_rtu_rs485:0000000000000000 modbusSS_rtu_rs485
+C:\Users\sr1\AppData\Local\Temp\ccv4NzFi.s:321    .bss.modbusRtu_ctrlStruct:0000000000000000 modbusRtu_ctrlStruct
+C:\Users\sr1\AppData\Local\Temp\ccv4NzFi.s:318    .bss.modbusRtu_ctrlStruct:0000000000000000 $d
+C:\Users\sr1\AppData\Local\Temp\ccv4NzFi.s:325    .data.modbusSS_rtu_rs485:0000000000000000 $d
+C:\Users\sr1\AppData\Local\Temp\ccv4NzFi.s:344    .data.modbusTables:0000000000000000 modbusTables
+C:\Users\sr1\AppData\Local\Temp\ccv4NzFi.s:341    .data.modbusTables:0000000000000000 $d
+C:\Users\sr1\AppData\Local\Temp\ccv4NzFi.s:348    .data.mdb_table_bsp:0000000000000000 $d
+C:\Users\sr1\AppData\Local\Temp\ccv4NzFi.s:362    .bss.mdb_bsp_buf:0000000000000000 mdb_bsp_buf
+C:\Users\sr1\AppData\Local\Temp\ccv4NzFi.s:359    .bss.mdb_bsp_buf:0000000000000000 $d
+C:\Users\sr1\AppData\Local\Temp\ccv4NzFi.s:366    .bss.modbusBufRxTxRtu485:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 ModbusSS_GetWord
