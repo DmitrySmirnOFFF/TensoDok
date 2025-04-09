@@ -4,8 +4,6 @@
 
 App_struct App;
 
-uint16_t ADC_DATA = 0;
-
 extern ADC_HandleTypeDef hadc2;
 
 void app_main(void)
@@ -24,48 +22,58 @@ void app_init()
 
   MX_TIM1_Init();
   
-  app_tim7_1ms_start();
+  bsp_tim7_1ms_start();
 
   protocolMbRtuSlaveCtrl_init(1);
 
-  adc_filter_init();
+  app_adc_filter_init();
+
+  HAL_ADCEx_Calibration_Start(&hadc2, ADC_SINGLE_ENDED);
+
+  bsp_tim6_10ms_start();
+
+  HAL_ADCEx_InjectedStart_IT(&hadc2);
+
 
   return;
 }
 
-void adc_filter_init()
+void app_adc_filter_init()
 {
-  App.adc_filter.value = 0.0f;
-  App.adc_filter.value_last = 0.0f;
-  App.adc_filter.valueRaw = 0.0f;
-  for (uint8_t i = 0; i < PROGRAM_ADC_MAX_FILTER_ORDER; i++)
+  for (uint8_t i = 0; i < 2; i++)
   {
-    App.adc_filter.buf[i] = 0.0f;
+    App.adc_filter[i].value = 0.0f;
+    App.adc_filter[i].value_last = 0.0f;
+    App.adc_filter[i].valueRaw = 0.0f;
+    for (uint8_t j = 0; j < PROGRAM_ADC_MAX_FILTER_ORDER; j++)
+    {
+      App.adc_filter[i].buf[j] = 0.0f;
+    }
+    App.adc_filter[i].bufIdx = 0;
+    App.adc_filter[i].filter_N = 100;
+    App.adc_filter[i].order = 24.0f;
   }
-  App.adc_filter.bufIdx = 0;
-  App.adc_filter.filter_N = 1;
-  App.adc_filter.order = 20.0f;
+
   return;
 }
 
-void app_tim7_1ms_callback()
+void bsp_tim7_1ms_callback()
 {
   static uint8_t i = 0;
+  static uint16_t j = 0;
 
-  if(i == 0)
-  {
-    HAL_ADCEx_InjectedStart(&hadc2);
-  }
 
-  if (i++ >= 25)
+  if (i++ >= 10)
   {
-    App.Mdb_data_AO.ADC_CPU_data = (uint16_t)((float)HAL_ADCEx_InjectedGetValue(&hadc2, ADC_INJECTED_RANK_2) * 3.3f / 4096 * 1000);
-    App.Mdb_data_AO.ADC_T_data   = (uint16_t)HAL_ADCEx_InjectedGetValue(&hadc2, ADC_INJECTED_RANK_1);
-    HAL_ADCEx_InjectedStop(&hadc2);
-    adc_data_filter(get_data_spi());
     app_update_reg();
     protocolMbRtuSlaveCtrl_update_tables();
     i = 0;
+  }
+
+  if (j++ >= 500)
+  {
+    //APP_LED_TOGGLE(APP_LED_3);
+    j = 0;
   }
   return;
 }
@@ -155,45 +163,66 @@ void app_update_reg()
   App.Mdb_data_AO.spi_buf_0[0] = SPI_DATA_RX[0];
   App.Mdb_data_AO.spi_buf_0[1] = SPI_DATA_RX[1];
   App.Mdb_data_AO.spi_buf_0[2] = SPI_DATA_RX[2];
-  App.Mdb_data_AO.ADC_data     = ADC_DATA;
+  App.Mdb_data_AO.ADC_data     = App.adc_filter[ADC_ADS1251].value;
+  App.Mdb_data_AO.ADC_CPU_data = App.adc_filter[ADC_CPU].value;
   return;
 }
 
-#define ADC_MAX_VAL 8388607.0f
-#define ADC_REF_VOLT  3.3f
-void adc_data_filter(uint32_t ADC_Buf_raw)
+
+void bsp_ADC_data_ready()
+{
+  APP_LED_TOGGLE(APP_LED_3);
+  app_adc_data_filter((HAL_ADCEx_InjectedGetValue(&hadc2, ADC_INJECTED_RANK_2)/16), ADC_CPU);
+  app_adc_data_filter(bsp_get_data_spi(), ADC_ADS1251);
+}
+
+#define ADC_ADS1251_MAX_VAL 8388607.0f
+#define ADC_ADS1251_REF_VOLT  3.3f
+
+#define ADC_CPU_MAX_VAL 4096.0f
+#define ADC_CPU_REF_VOLT  3.3f
+
+void app_adc_data_filter(uint32_t ADC_Buf_raw, ADC_enum adc)
 {
   float value = 0.0f;
   float valueLast = 0.0f;
   float kFilter = 0.0f;
   float data = 0.0f;
   float sum = 0.0f;
-
-  data = ((float)ADC_Buf_raw / ADC_MAX_VAL * ADC_REF_VOLT*1000.0f);
-
-  App.adc_filter.buf[App.adc_filter.bufIdx++] = data;
-  if (App.adc_filter.bufIdx == App.adc_filter.order) 
+  if (adc == ADC_ADS1251)
   {
-    App.adc_filter.bufIdx = 0;
+    data = ((float)ADC_Buf_raw / ADC_ADS1251_MAX_VAL * ADC_ADS1251_REF_VOLT * 1000.0f);
   }
-  for(uint8_t idx = 0; idx < App.adc_filter.order; idx++)
+  else if (adc == ADC_CPU)
   {
-      sum += App.adc_filter.buf[idx];
+    data = ((float)ADC_Buf_raw / ADC_CPU_MAX_VAL * ADC_CPU_REF_VOLT * 1000.0f);
   }
-  App.adc_filter.valueRaw = sum / App.adc_filter.order;
+
+  App.adc_filter[adc].buf[App.adc_filter[adc].bufIdx++] = data;
+
+  if (App.adc_filter[adc].bufIdx == App.adc_filter[adc].order) 
+  {
+    App.adc_filter[adc].bufIdx = 0;
+  }
+
+  for(uint8_t idx = 0; idx < App.adc_filter[adc].order; idx++)
+  {
+    sum += App.adc_filter[adc].buf[idx];
+  }
+
+  App.adc_filter[adc].valueRaw = sum / App.adc_filter[adc].order;
+  
   //--------------------//
-  value = App.adc_filter.valueRaw;
-  valueLast = App.adc_filter.value_last;
-  kFilter = 2.0f / ((float)App.adc_filter.filter_N + 1.0f);
+  value = App.adc_filter[adc].valueRaw;
+  valueLast = App.adc_filter[adc].value_last;
+  kFilter = 2.0f / ((float)App.adc_filter[adc].filter_N + 1.0f);
   value = valueLast + kFilter*(value - valueLast);
-  App.adc_filter.value = value;
-  App.adc_filter.value_last = value;
-  ADC_DATA = value;
+  App.adc_filter[adc].value = value;
+  App.adc_filter[adc].value_last = value;
 }
 
-void control_led_rele(uint16_t control_led_rele)
+void app_control_led_rele(uint16_t control_led_rele)
 {
-  App.Mdb_data_AO.control_led_rele = control_led_rele;
     // LED1
     if(APP_GET_BIT(App.Mdb_data_AO.control_led_rele, LED_1))
     {

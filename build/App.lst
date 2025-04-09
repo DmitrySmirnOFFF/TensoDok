@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s 			page 1
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -20,13 +20,13 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s 			page 1
   17              	.Ltext0:
   18              		.cfi_sections	.debug_frame
   19              		.file 1 "App/App.c"
-  20              		.section	.text.adc_filter_init,"ax",%progbits
+  20              		.section	.text.app_adc_filter_init,"ax",%progbits
   21              		.align	1
-  22              		.global	adc_filter_init
+  22              		.global	app_adc_filter_init
   23              		.syntax unified
   24              		.thumb
   25              		.thumb_func
-  27              	adc_filter_init:
+  27              	app_adc_filter_init:
   28              	.LFB331:
    1:App/App.c     **** #include "App.h"
    2:App/App.c     **** #include "BSP.h"
@@ -34,1341 +34,1516 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s 			page 1
    4:App/App.c     **** 
    5:App/App.c     **** App_struct App;
    6:App/App.c     **** 
-   7:App/App.c     **** uint16_t ADC_DATA = 0;
+   7:App/App.c     **** extern ADC_HandleTypeDef hadc2;
    8:App/App.c     **** 
-   9:App/App.c     **** extern ADC_HandleTypeDef hadc2;
-  10:App/App.c     **** 
-  11:App/App.c     **** void app_main(void)
-  12:App/App.c     **** {
-  13:App/App.c     ****   app_init();
-  14:App/App.c     **** 
-  15:App/App.c     ****   while (1) // основной цикл
-  16:App/App.c     ****   {
-  17:App/App.c     ****   asm ("nop");
-  18:App/App.c     ****   }
-  19:App/App.c     **** }
-  20:App/App.c     **** 
-  21:App/App.c     **** void app_init()
-  22:App/App.c     **** {
-  23:App/App.c     ****   MX_TIM7_Init();
-  24:App/App.c     **** 
-  25:App/App.c     ****   MX_TIM1_Init();
-  26:App/App.c     ****   
-  27:App/App.c     ****   app_tim7_1ms_start();
+   9:App/App.c     **** void app_main(void)
+  10:App/App.c     **** {
+  11:App/App.c     ****   app_init();
+  12:App/App.c     **** 
+  13:App/App.c     ****   while (1) // основной цикл
+  14:App/App.c     ****   {
+  15:App/App.c     ****   asm ("nop");
+  16:App/App.c     ****   }
+  17:App/App.c     **** }
+  18:App/App.c     **** 
+  19:App/App.c     **** void app_init()
+  20:App/App.c     **** {
+  21:App/App.c     ****   MX_TIM7_Init();
+  22:App/App.c     **** 
+  23:App/App.c     ****   MX_TIM1_Init();
+  24:App/App.c     ****   
+  25:App/App.c     ****   bsp_tim7_1ms_start();
+  26:App/App.c     **** 
+  27:App/App.c     ****   protocolMbRtuSlaveCtrl_init(1);
   28:App/App.c     **** 
-  29:App/App.c     ****   protocolMbRtuSlaveCtrl_init(1);
+  29:App/App.c     ****   app_adc_filter_init();
   30:App/App.c     **** 
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s 			page 2
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s 			page 2
 
 
-  31:App/App.c     ****   adc_filter_init();
+  31:App/App.c     ****   HAL_ADCEx_Calibration_Start(&hadc2, ADC_SINGLE_ENDED);
   32:App/App.c     **** 
-  33:App/App.c     ****   return;
-  34:App/App.c     **** }
-  35:App/App.c     **** 
-  36:App/App.c     **** void adc_filter_init()
-  37:App/App.c     **** {
-  29              		.loc 1 37 1 view -0
+  33:App/App.c     ****   bsp_tim6_10ms_start();
+  34:App/App.c     **** 
+  35:App/App.c     ****   HAL_ADCEx_InjectedStart_IT(&hadc2);
+  36:App/App.c     **** 
+  37:App/App.c     **** 
+  38:App/App.c     ****   return;
+  39:App/App.c     **** }
+  40:App/App.c     **** 
+  41:App/App.c     **** void app_adc_filter_init()
+  42:App/App.c     **** {
+  29              		.loc 1 42 1 view -0
   30              		.cfi_startproc
   31              		@ args = 0, pretend = 0, frame = 0
   32              		@ frame_needed = 0, uses_anonymous_args = 0
   33              		@ link register save eliminated.
-  38:App/App.c     ****   App.adc_filter.value = 0.0f;
-  34              		.loc 1 38 3 view .LVU1
-  35              		.loc 1 38 24 is_stmt 0 view .LVU2
-  36 0000 0D4B     		ldr	r3, .L4
-  37 0002 0022     		movs	r2, #0
-  38 0004 1A61     		str	r2, [r3, #16]	@ float
-  39:App/App.c     ****   App.adc_filter.value_last = 0.0f;
-  39              		.loc 1 39 3 is_stmt 1 view .LVU3
-  40              		.loc 1 39 29 is_stmt 0 view .LVU4
-  41 0006 5A61     		str	r2, [r3, #20]	@ float
-  40:App/App.c     ****   App.adc_filter.valueRaw = 0.0f;
-  42              		.loc 1 40 3 is_stmt 1 view .LVU5
-  43              		.loc 1 40 27 is_stmt 0 view .LVU6
-  44 0008 9A61     		str	r2, [r3, #24]	@ float
-  41:App/App.c     ****   for (uint8_t i = 0; i < PROGRAM_ADC_MAX_FILTER_ORDER; i++)
-  45              		.loc 1 41 3 is_stmt 1 view .LVU7
-  46              	.LBB2:
-  47              		.loc 1 41 8 view .LVU8
-  48              	.LVL0:
-  49              		.loc 1 41 16 is_stmt 0 view .LVU9
-  50 000a 0023     		movs	r3, #0
-  51              		.loc 1 41 3 view .LVU10
-  52 000c 07E0     		b	.L2
-  53              	.LVL1:
-  54              	.L3:
-  42:App/App.c     ****   {
-  43:App/App.c     ****     App.adc_filter.buf[i] = 0.0f;
-  55              		.loc 1 43 5 is_stmt 1 discriminator 3 view .LVU11
-  56              		.loc 1 43 27 is_stmt 0 discriminator 3 view .LVU12
-  57 000e 991D     		adds	r1, r3, #6
-  58 0010 094A     		ldr	r2, .L4
-  59 0012 02EB8102 		add	r2, r2, r1, lsl #2
-  60 0016 0021     		movs	r1, #0
-  61 0018 5160     		str	r1, [r2, #4]	@ float
-  41:App/App.c     ****   for (uint8_t i = 0; i < PROGRAM_ADC_MAX_FILTER_ORDER; i++)
-  62              		.loc 1 41 58 is_stmt 1 discriminator 3 view .LVU13
-  63 001a 0133     		adds	r3, r3, #1
-  64              	.LVL2:
-  41:App/App.c     ****   for (uint8_t i = 0; i < PROGRAM_ADC_MAX_FILTER_ORDER; i++)
-  65              		.loc 1 41 58 is_stmt 0 discriminator 3 view .LVU14
-  66 001c DBB2     		uxtb	r3, r3
-  67              	.LVL3:
-  68              	.L2:
-  41:App/App.c     ****   for (uint8_t i = 0; i < PROGRAM_ADC_MAX_FILTER_ORDER; i++)
-  69              		.loc 1 41 25 is_stmt 1 discriminator 1 view .LVU15
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s 			page 3
+  43:App/App.c     ****   for (uint8_t i = 0; i < 2; i++)
+  34              		.loc 1 43 3 view .LVU1
+  35              	.LBB2:
+  36              		.loc 1 43 8 view .LVU2
+  37              	.LVL0:
+  38              		.loc 1 43 16 is_stmt 0 view .LVU3
+  39 0000 4FF0000C 		mov	ip, #0
+  40              		.loc 1 43 3 view .LVU4
+  41 0004 1FE0     		b	.L2
+  42              	.LVL1:
+  43              	.L4:
+  44              	.LBB3:
+  44:App/App.c     ****   {
+  45:App/App.c     ****     App.adc_filter[i].value = 0.0f;
+  46:App/App.c     ****     App.adc_filter[i].value_last = 0.0f;
+  47:App/App.c     ****     App.adc_filter[i].valueRaw = 0.0f;
+  48:App/App.c     ****     for (uint8_t j = 0; j < PROGRAM_ADC_MAX_FILTER_ORDER; j++)
+  49:App/App.c     ****     {
+  50:App/App.c     ****       App.adc_filter[i].buf[j] = 0.0f;
+  45              		.loc 1 50 7 is_stmt 1 discriminator 3 view .LVU5
+  46              		.loc 1 50 32 is_stmt 0 discriminator 3 view .LVU6
+  47 0006 C0EBC003 		rsb	r3, r0, r0, lsl #3
+  48 000a 00EB8303 		add	r3, r0, r3, lsl #2
+  49 000e 1344     		add	r3, r3, r2
+  50 0010 0633     		adds	r3, r3, #6
+  51 0012 1449     		ldr	r1, .L7
+  52 0014 01EB8303 		add	r3, r1, r3, lsl #2
+  53 0018 0021     		movs	r1, #0
+  54 001a 5960     		str	r1, [r3, #4]	@ float
+  48:App/App.c     ****     {
+  55              		.loc 1 48 60 is_stmt 1 discriminator 3 view .LVU7
+  56 001c 0132     		adds	r2, r2, #1
+  57              	.LVL2:
+  48:App/App.c     ****     {
+  58              		.loc 1 48 60 is_stmt 0 discriminator 3 view .LVU8
+  59 001e D2B2     		uxtb	r2, r2
+  60              	.LVL3:
+  61              	.L3:
+  48:App/App.c     ****     {
+  62              		.loc 1 48 27 is_stmt 1 discriminator 1 view .LVU9
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s 			page 3
 
 
-  70 001e 172B     		cmp	r3, #23
-  71 0020 F5D9     		bls	.L3
-  72              	.LBE2:
-  44:App/App.c     ****   }
-  45:App/App.c     ****   App.adc_filter.bufIdx = 0;
-  73              		.loc 1 45 3 view .LVU16
-  74              		.loc 1 45 25 is_stmt 0 view .LVU17
-  75 0022 054B     		ldr	r3, .L4
-  76              	.LVL4:
-  77              		.loc 1 45 25 view .LVU18
-  78 0024 0022     		movs	r2, #0
-  79 0026 83F87C20 		strb	r2, [r3, #124]
-  46:App/App.c     ****   App.adc_filter.filter_N = 1;
-  80              		.loc 1 46 3 is_stmt 1 view .LVU19
-  81              		.loc 1 46 27 is_stmt 0 view .LVU20
-  82 002a 0122     		movs	r2, #1
-  83 002c 83F87D20 		strb	r2, [r3, #125]
-  47:App/App.c     ****   App.adc_filter.order = 20.0f;
-  84              		.loc 1 47 3 is_stmt 1 view .LVU21
-  85              		.loc 1 47 24 is_stmt 0 view .LVU22
-  86 0030 024A     		ldr	r2, .L4+4
-  87 0032 C3F88020 		str	r2, [r3, #128]	@ float
-  48:App/App.c     ****   return;
-  88              		.loc 1 48 3 is_stmt 1 view .LVU23
-  49:App/App.c     **** }
-  89              		.loc 1 49 1 is_stmt 0 view .LVU24
-  90 0036 7047     		bx	lr
-  91              	.L5:
-  92              		.align	2
-  93              	.L4:
-  94 0038 00000000 		.word	App
-  95 003c 0000A041 		.word	1101004800
-  96              		.cfi_endproc
-  97              	.LFE331:
-  99              		.section	.text.app_init,"ax",%progbits
- 100              		.align	1
- 101              		.global	app_init
- 102              		.syntax unified
- 103              		.thumb
- 104              		.thumb_func
- 106              	app_init:
- 107              	.LFB330:
-  22:App/App.c     ****   MX_TIM7_Init();
- 108              		.loc 1 22 1 is_stmt 1 view -0
- 109              		.cfi_startproc
- 110              		@ args = 0, pretend = 0, frame = 0
- 111              		@ frame_needed = 0, uses_anonymous_args = 0
- 112 0000 08B5     		push	{r3, lr}
- 113              	.LCFI0:
- 114              		.cfi_def_cfa_offset 8
- 115              		.cfi_offset 3, -8
- 116              		.cfi_offset 14, -4
-  23:App/App.c     **** 
- 117              		.loc 1 23 3 view .LVU26
- 118 0002 FFF7FEFF 		bl	MX_TIM7_Init
- 119              	.LVL5:
-  25:App/App.c     ****   
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s 			page 4
+  63 0020 172A     		cmp	r2, #23
+  64 0022 F0D9     		bls	.L4
+  65              	.LBE3:
+  51:App/App.c     ****     }
+  52:App/App.c     ****     App.adc_filter[i].bufIdx = 0;
+  66              		.loc 1 52 5 discriminator 2 view .LVU10
+  67              		.loc 1 52 30 is_stmt 0 discriminator 2 view .LVU11
+  68 0024 0F4B     		ldr	r3, .L7
+  69 0026 7422     		movs	r2, #116
+  70              	.LVL4:
+  71              		.loc 1 52 30 discriminator 2 view .LVU12
+  72 0028 02FB0033 		mla	r3, r2, r0, r3
+  73 002c 0022     		movs	r2, #0
+  74 002e 83F87C20 		strb	r2, [r3, #124]
+  53:App/App.c     ****     App.adc_filter[i].filter_N = 100;
+  75              		.loc 1 53 5 is_stmt 1 discriminator 2 view .LVU13
+  76              		.loc 1 53 32 is_stmt 0 discriminator 2 view .LVU14
+  77 0032 6422     		movs	r2, #100
+  78 0034 83F87D20 		strb	r2, [r3, #125]
+  54:App/App.c     ****     App.adc_filter[i].order = 24.0f;
+  79              		.loc 1 54 5 is_stmt 1 discriminator 2 view .LVU15
+  80              		.loc 1 54 29 is_stmt 0 discriminator 2 view .LVU16
+  81 0038 0B4A     		ldr	r2, .L7+4
+  82 003a C3F88020 		str	r2, [r3, #128]	@ float
+  43:App/App.c     ****   {
+  83              		.loc 1 43 31 is_stmt 1 discriminator 2 view .LVU17
+  84 003e 0CF1010C 		add	ip, ip, #1
+  85              	.LVL5:
+  43:App/App.c     ****   {
+  86              		.loc 1 43 31 is_stmt 0 discriminator 2 view .LVU18
+  87 0042 5FFA8CFC 		uxtb	ip, ip
+  88              	.LVL6:
+  89              	.L2:
+  43:App/App.c     ****   {
+  90              		.loc 1 43 25 is_stmt 1 discriminator 1 view .LVU19
+  91 0046 BCF1010F 		cmp	ip, #1
+  92 004a 0AD8     		bhi	.L6
+  45:App/App.c     ****     App.adc_filter[i].value_last = 0.0f;
+  93              		.loc 1 45 5 view .LVU20
+  45:App/App.c     ****     App.adc_filter[i].value_last = 0.0f;
+  94              		.loc 1 45 22 is_stmt 0 view .LVU21
+  95 004c 6046     		mov	r0, ip
+  45:App/App.c     ****     App.adc_filter[i].value_last = 0.0f;
+  96              		.loc 1 45 29 view .LVU22
+  97 004e 054B     		ldr	r3, .L7
+  98 0050 7422     		movs	r2, #116
+  99 0052 02FB0C33 		mla	r3, r2, ip, r3
+ 100 0056 0022     		movs	r2, #0
+ 101 0058 1A61     		str	r2, [r3, #16]	@ float
+  46:App/App.c     ****     App.adc_filter[i].valueRaw = 0.0f;
+ 102              		.loc 1 46 5 is_stmt 1 view .LVU23
+  46:App/App.c     ****     App.adc_filter[i].valueRaw = 0.0f;
+ 103              		.loc 1 46 34 is_stmt 0 view .LVU24
+ 104 005a 5A61     		str	r2, [r3, #20]	@ float
+  47:App/App.c     ****     for (uint8_t j = 0; j < PROGRAM_ADC_MAX_FILTER_ORDER; j++)
+ 105              		.loc 1 47 5 is_stmt 1 view .LVU25
+  47:App/App.c     ****     for (uint8_t j = 0; j < PROGRAM_ADC_MAX_FILTER_ORDER; j++)
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s 			page 4
 
 
- 120              		.loc 1 25 3 view .LVU27
- 121 0006 FFF7FEFF 		bl	MX_TIM1_Init
- 122              	.LVL6:
+ 106              		.loc 1 47 32 is_stmt 0 view .LVU26
+ 107 005c 9A61     		str	r2, [r3, #24]	@ float
+  48:App/App.c     ****     {
+ 108              		.loc 1 48 5 is_stmt 1 view .LVU27
+ 109              	.LBB4:
+  48:App/App.c     ****     {
+ 110              		.loc 1 48 10 view .LVU28
+ 111              	.LVL7:
+  48:App/App.c     ****     {
+ 112              		.loc 1 48 18 is_stmt 0 view .LVU29
+ 113 005e 0022     		movs	r2, #0
+  48:App/App.c     ****     {
+ 114              		.loc 1 48 5 view .LVU30
+ 115 0060 DEE7     		b	.L3
+ 116              	.LVL8:
+ 117              	.L6:
+  48:App/App.c     ****     {
+ 118              		.loc 1 48 5 view .LVU31
+ 119              	.LBE4:
+ 120              	.LBE2:
+  55:App/App.c     ****   }
+  56:App/App.c     **** 
+  57:App/App.c     ****   return;
+  58:App/App.c     **** }
+ 121              		.loc 1 58 1 view .LVU32
+ 122 0062 7047     		bx	lr
+ 123              	.L8:
+ 124              		.align	2
+ 125              	.L7:
+ 126 0064 00000000 		.word	App
+ 127 0068 0000C041 		.word	1103101952
+ 128              		.cfi_endproc
+ 129              	.LFE331:
+ 131              		.section	.text.app_init,"ax",%progbits
+ 132              		.align	1
+ 133              		.global	app_init
+ 134              		.syntax unified
+ 135              		.thumb
+ 136              		.thumb_func
+ 138              	app_init:
+ 139              	.LFB330:
+  20:App/App.c     ****   MX_TIM7_Init();
+ 140              		.loc 1 20 1 is_stmt 1 view -0
+ 141              		.cfi_startproc
+ 142              		@ args = 0, pretend = 0, frame = 0
+ 143              		@ frame_needed = 0, uses_anonymous_args = 0
+ 144 0000 10B5     		push	{r4, lr}
+ 145              	.LCFI0:
+ 146              		.cfi_def_cfa_offset 8
+ 147              		.cfi_offset 4, -8
+ 148              		.cfi_offset 14, -4
+  21:App/App.c     **** 
+ 149              		.loc 1 21 3 view .LVU34
+ 150 0002 FFF7FEFF 		bl	MX_TIM7_Init
+ 151              	.LVL9:
+  23:App/App.c     ****   
+ 152              		.loc 1 23 3 view .LVU35
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s 			page 5
+
+
+ 153 0006 FFF7FEFF 		bl	MX_TIM1_Init
+ 154              	.LVL10:
+  25:App/App.c     **** 
+ 155              		.loc 1 25 3 view .LVU36
+ 156 000a FFF7FEFF 		bl	bsp_tim7_1ms_start
+ 157              	.LVL11:
   27:App/App.c     **** 
- 123              		.loc 1 27 3 view .LVU28
- 124 000a FFF7FEFF 		bl	app_tim7_1ms_start
- 125              	.LVL7:
+ 158              		.loc 1 27 3 view .LVU37
+ 159 000e 0120     		movs	r0, #1
+ 160 0010 FFF7FEFF 		bl	protocolMbRtuSlaveCtrl_init
+ 161              	.LVL12:
   29:App/App.c     **** 
- 126              		.loc 1 29 3 view .LVU29
- 127 000e 0120     		movs	r0, #1
- 128 0010 FFF7FEFF 		bl	protocolMbRtuSlaveCtrl_init
- 129              	.LVL8:
+ 162              		.loc 1 29 3 view .LVU38
+ 163 0014 FFF7FEFF 		bl	app_adc_filter_init
+ 164              	.LVL13:
   31:App/App.c     **** 
- 130              		.loc 1 31 3 view .LVU30
- 131 0014 FFF7FEFF 		bl	adc_filter_init
- 132              	.LVL9:
-  33:App/App.c     **** }
- 133              		.loc 1 33 3 view .LVU31
-  34:App/App.c     **** 
- 134              		.loc 1 34 1 is_stmt 0 view .LVU32
- 135 0018 08BD     		pop	{r3, pc}
- 136              		.cfi_endproc
- 137              	.LFE330:
- 139              		.section	.text.app_main,"ax",%progbits
- 140              		.align	1
- 141              		.global	app_main
- 142              		.syntax unified
- 143              		.thumb
- 144              		.thumb_func
- 146              	app_main:
- 147              	.LFB329:
-  12:App/App.c     ****   app_init();
- 148              		.loc 1 12 1 is_stmt 1 view -0
- 149              		.cfi_startproc
- 150              		@ Volatile: function does not return.
- 151              		@ args = 0, pretend = 0, frame = 0
- 152              		@ frame_needed = 0, uses_anonymous_args = 0
- 153 0000 08B5     		push	{r3, lr}
- 154              	.LCFI1:
- 155              		.cfi_def_cfa_offset 8
- 156              		.cfi_offset 3, -8
- 157              		.cfi_offset 14, -4
-  13:App/App.c     **** 
- 158              		.loc 1 13 3 view .LVU34
- 159 0002 FFF7FEFF 		bl	app_init
- 160              	.LVL10:
- 161              	.L9:
-  15:App/App.c     ****   {
- 162              		.loc 1 15 3 discriminator 1 view .LVU35
-  17:App/App.c     ****   }
- 163              		.loc 1 17 3 discriminator 1 view .LVU36
- 164              		.syntax unified
- 165              	@ 17 "App/App.c" 1
- 166 0006 00BF     		nop
- 167              	@ 0 "" 2
-  15:App/App.c     ****   {
- 168              		.loc 1 15 9 discriminator 1 view .LVU37
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s 			page 5
+ 165              		.loc 1 31 3 view .LVU39
+ 166 0018 054C     		ldr	r4, .L11
+ 167 001a 7F21     		movs	r1, #127
+ 168 001c 2046     		mov	r0, r4
+ 169 001e FFF7FEFF 		bl	HAL_ADCEx_Calibration_Start
+ 170              	.LVL14:
+  33:App/App.c     **** 
+ 171              		.loc 1 33 3 view .LVU40
+ 172 0022 FFF7FEFF 		bl	bsp_tim6_10ms_start
+ 173              	.LVL15:
+  35:App/App.c     **** 
+ 174              		.loc 1 35 3 view .LVU41
+ 175 0026 2046     		mov	r0, r4
+ 176 0028 FFF7FEFF 		bl	HAL_ADCEx_InjectedStart_IT
+ 177              	.LVL16:
+  38:App/App.c     **** }
+ 178              		.loc 1 38 3 view .LVU42
+  39:App/App.c     **** 
+ 179              		.loc 1 39 1 is_stmt 0 view .LVU43
+ 180 002c 10BD     		pop	{r4, pc}
+ 181              	.L12:
+ 182 002e 00BF     		.align	2
+ 183              	.L11:
+ 184 0030 00000000 		.word	hadc2
+ 185              		.cfi_endproc
+ 186              	.LFE330:
+ 188              		.section	.text.app_main,"ax",%progbits
+ 189              		.align	1
+ 190              		.global	app_main
+ 191              		.syntax unified
+ 192              		.thumb
+ 193              		.thumb_func
+ 195              	app_main:
+ 196              	.LFB329:
+  10:App/App.c     ****   app_init();
+ 197              		.loc 1 10 1 is_stmt 1 view -0
+ 198              		.cfi_startproc
+ 199              		@ Volatile: function does not return.
+ 200              		@ args = 0, pretend = 0, frame = 0
+ 201              		@ frame_needed = 0, uses_anonymous_args = 0
+ 202 0000 08B5     		push	{r3, lr}
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s 			page 6
 
 
- 169              		.thumb
- 170              		.syntax unified
- 171 0008 FDE7     		b	.L9
- 172              		.cfi_endproc
- 173              	.LFE329:
- 175              		.section	.text.app_update_reg,"ax",%progbits
- 176              		.align	1
- 177              		.global	app_update_reg
- 178              		.syntax unified
- 179              		.thumb
- 180              		.thumb_func
- 182              	app_update_reg:
- 183              	.LFB333:
-  50:App/App.c     **** 
-  51:App/App.c     **** void app_tim7_1ms_callback()
-  52:App/App.c     **** {
-  53:App/App.c     ****   static uint8_t i = 0;
-  54:App/App.c     **** 
-  55:App/App.c     ****   if(i == 0)
-  56:App/App.c     ****   {
-  57:App/App.c     ****     HAL_ADCEx_InjectedStart(&hadc2);
-  58:App/App.c     ****   }
+ 203              	.LCFI1:
+ 204              		.cfi_def_cfa_offset 8
+ 205              		.cfi_offset 3, -8
+ 206              		.cfi_offset 14, -4
+  11:App/App.c     **** 
+ 207              		.loc 1 11 3 view .LVU45
+ 208 0002 FFF7FEFF 		bl	app_init
+ 209              	.LVL17:
+ 210              	.L14:
+  13:App/App.c     ****   {
+ 211              		.loc 1 13 3 discriminator 1 view .LVU46
+  15:App/App.c     ****   }
+ 212              		.loc 1 15 3 discriminator 1 view .LVU47
+ 213              		.syntax unified
+ 214              	@ 15 "App/App.c" 1
+ 215 0006 00BF     		nop
+ 216              	@ 0 "" 2
+  13:App/App.c     ****   {
+ 217              		.loc 1 13 9 discriminator 1 view .LVU48
+ 218              		.thumb
+ 219              		.syntax unified
+ 220 0008 FDE7     		b	.L14
+ 221              		.cfi_endproc
+ 222              	.LFE329:
+ 224              		.section	.text.app_update_reg,"ax",%progbits
+ 225              		.align	1
+ 226              		.global	app_update_reg
+ 227              		.syntax unified
+ 228              		.thumb
+ 229              		.thumb_func
+ 231              	app_update_reg:
+ 232              	.LFB333:
   59:App/App.c     **** 
-  60:App/App.c     ****   if (i++ >= 25)
-  61:App/App.c     ****   {
-  62:App/App.c     ****     App.Mdb_data_AO.ADC_CPU_data = (uint16_t)((float)HAL_ADCEx_InjectedGetValue(&hadc2, ADC_INJECTE
-  63:App/App.c     ****     App.Mdb_data_AO.ADC_T_data   = (uint16_t)HAL_ADCEx_InjectedGetValue(&hadc2, ADC_INJECTED_RANK_1
-  64:App/App.c     ****     HAL_ADCEx_InjectedStop(&hadc2);
-  65:App/App.c     ****     adc_data_filter(get_data_spi());
-  66:App/App.c     ****     app_update_reg();
-  67:App/App.c     ****     protocolMbRtuSlaveCtrl_update_tables();
-  68:App/App.c     ****     i = 0;
-  69:App/App.c     ****   }
-  70:App/App.c     ****   return;
-  71:App/App.c     **** }
+  60:App/App.c     **** void bsp_tim7_1ms_callback()
+  61:App/App.c     **** {
+  62:App/App.c     ****   static uint8_t i = 0;
+  63:App/App.c     ****   static uint16_t j = 0;
+  64:App/App.c     **** 
+  65:App/App.c     **** 
+  66:App/App.c     ****   if (i++ >= 10)
+  67:App/App.c     ****   {
+  68:App/App.c     ****     app_update_reg();
+  69:App/App.c     ****     protocolMbRtuSlaveCtrl_update_tables();
+  70:App/App.c     ****     i = 0;
+  71:App/App.c     ****   }
   72:App/App.c     **** 
-  73:App/App.c     **** void app_update_reg()
-  74:App/App.c     **** {
- 184              		.loc 1 74 1 view -0
- 185              		.cfi_startproc
- 186              		@ args = 0, pretend = 0, frame = 0
- 187              		@ frame_needed = 0, uses_anonymous_args = 0
- 188 0000 08B5     		push	{r3, lr}
- 189              	.LCFI2:
- 190              		.cfi_def_cfa_offset 8
- 191              		.cfi_offset 3, -8
- 192              		.cfi_offset 14, -4
-  75:App/App.c     ****   //LED1
-  76:App/App.c     ****   if (HAL_GPIO_ReadPin(APP_LED_1) == GPIO_PIN_SET)
- 193              		.loc 1 76 3 view .LVU39
- 194              		.loc 1 76 7 is_stmt 0 view .LVU40
- 195 0002 0221     		movs	r1, #2
- 196 0004 4D48     		ldr	r0, .L37
- 197 0006 FFF7FEFF 		bl	HAL_GPIO_ReadPin
- 198              	.LVL11:
- 199              		.loc 1 76 6 view .LVU41
- 200 000a 0128     		cmp	r0, #1
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s 			page 6
+  73:App/App.c     ****   if (j++ >= 500)
+  74:App/App.c     ****   {
+  75:App/App.c     ****     //APP_LED_TOGGLE(APP_LED_3);
+  76:App/App.c     ****     j = 0;
+  77:App/App.c     ****   }
+  78:App/App.c     ****   return;
+  79:App/App.c     **** }
+  80:App/App.c     **** 
+  81:App/App.c     **** void app_update_reg()
+  82:App/App.c     **** {
+ 233              		.loc 1 82 1 view -0
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s 			page 7
 
 
- 201 000c 65D0     		beq	.L29
-  77:App/App.c     ****   {
-  78:App/App.c     ****     APP_SET_BIT(App.Mdb_data_AO.state_led_rele, LED_1);
-  79:App/App.c     ****   }
-  80:App/App.c     ****   else
-  81:App/App.c     ****   {
-  82:App/App.c     ****     APP_RESET_BIT(App.Mdb_data_AO.state_led_rele, LED_1);
- 202              		.loc 1 82 5 is_stmt 1 view .LVU42
- 203 000e 4C4A     		ldr	r2, .L37+4
- 204 0010 1388     		ldrh	r3, [r2]
- 205 0012 23F00103 		bic	r3, r3, #1
- 206 0016 1380     		strh	r3, [r2]	@ movhi
- 207              	.L13:
-  83:App/App.c     ****   }
-  84:App/App.c     **** 
-  85:App/App.c     ****   //LED2
-  86:App/App.c     ****   if (HAL_GPIO_ReadPin(APP_LED_2) == GPIO_PIN_SET)
- 208              		.loc 1 86 3 view .LVU43
- 209              		.loc 1 86 7 is_stmt 0 view .LVU44
- 210 0018 0421     		movs	r1, #4
- 211 001a 4848     		ldr	r0, .L37
- 212 001c FFF7FEFF 		bl	HAL_GPIO_ReadPin
- 213              	.LVL12:
- 214              		.loc 1 86 6 view .LVU45
- 215 0020 0128     		cmp	r0, #1
- 216 0022 60D0     		beq	.L30
-  87:App/App.c     ****   {
-  88:App/App.c     ****     APP_SET_BIT(App.Mdb_data_AO.state_led_rele, LED_2);
-  89:App/App.c     ****   }
-  90:App/App.c     ****   else
-  91:App/App.c     ****   {
-  92:App/App.c     ****     APP_RESET_BIT(App.Mdb_data_AO.state_led_rele, LED_2);
- 217              		.loc 1 92 5 is_stmt 1 view .LVU46
- 218 0024 464A     		ldr	r2, .L37+4
- 219 0026 1388     		ldrh	r3, [r2]
- 220 0028 23F00203 		bic	r3, r3, #2
- 221 002c 1380     		strh	r3, [r2]	@ movhi
- 222              	.L15:
-  93:App/App.c     ****   }
-  94:App/App.c     **** 
-  95:App/App.c     ****   //LED3
-  96:App/App.c     ****   if (HAL_GPIO_ReadPin(APP_LED_3) == GPIO_PIN_SET)
- 223              		.loc 1 96 3 view .LVU47
- 224              		.loc 1 96 7 is_stmt 0 view .LVU48
- 225 002e 4FF48061 		mov	r1, #1024
- 226 0032 4FF09040 		mov	r0, #1207959552
- 227 0036 FFF7FEFF 		bl	HAL_GPIO_ReadPin
- 228              	.LVL13:
- 229              		.loc 1 96 6 view .LVU49
- 230 003a 0128     		cmp	r0, #1
- 231 003c 59D0     		beq	.L31
-  97:App/App.c     ****   {
-  98:App/App.c     ****     APP_SET_BIT(App.Mdb_data_AO.state_led_rele, LED_3);
-  99:App/App.c     ****   }
- 100:App/App.c     ****   else
- 101:App/App.c     ****   {
- 102:App/App.c     ****     APP_RESET_BIT(App.Mdb_data_AO.state_led_rele, LED_3);
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s 			page 7
+ 234              		.cfi_startproc
+ 235              		@ args = 0, pretend = 0, frame = 0
+ 236              		@ frame_needed = 0, uses_anonymous_args = 0
+ 237 0000 08B5     		push	{r3, lr}
+ 238              	.LCFI2:
+ 239              		.cfi_def_cfa_offset 8
+ 240              		.cfi_offset 3, -8
+ 241              		.cfi_offset 14, -4
+  83:App/App.c     ****   //LED1
+  84:App/App.c     ****   if (HAL_GPIO_ReadPin(APP_LED_1) == GPIO_PIN_SET)
+ 242              		.loc 1 84 3 view .LVU50
+ 243              		.loc 1 84 7 is_stmt 0 view .LVU51
+ 244 0002 0221     		movs	r1, #2
+ 245 0004 5248     		ldr	r0, .L42
+ 246 0006 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 247              	.LVL18:
+ 248              		.loc 1 84 6 view .LVU52
+ 249 000a 0128     		cmp	r0, #1
+ 250 000c 70D0     		beq	.L34
+  85:App/App.c     ****   {
+  86:App/App.c     ****     APP_SET_BIT(App.Mdb_data_AO.state_led_rele, LED_1);
+  87:App/App.c     ****   }
+  88:App/App.c     ****   else
+  89:App/App.c     ****   {
+  90:App/App.c     ****     APP_RESET_BIT(App.Mdb_data_AO.state_led_rele, LED_1);
+ 251              		.loc 1 90 5 is_stmt 1 view .LVU53
+ 252 000e 514A     		ldr	r2, .L42+4
+ 253 0010 1388     		ldrh	r3, [r2]
+ 254 0012 23F00103 		bic	r3, r3, #1
+ 255 0016 1380     		strh	r3, [r2]	@ movhi
+ 256              	.L18:
+  91:App/App.c     ****   }
+  92:App/App.c     **** 
+  93:App/App.c     ****   //LED2
+  94:App/App.c     ****   if (HAL_GPIO_ReadPin(APP_LED_2) == GPIO_PIN_SET)
+ 257              		.loc 1 94 3 view .LVU54
+ 258              		.loc 1 94 7 is_stmt 0 view .LVU55
+ 259 0018 0421     		movs	r1, #4
+ 260 001a 4D48     		ldr	r0, .L42
+ 261 001c FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 262              	.LVL19:
+ 263              		.loc 1 94 6 view .LVU56
+ 264 0020 0128     		cmp	r0, #1
+ 265 0022 6BD0     		beq	.L35
+  95:App/App.c     ****   {
+  96:App/App.c     ****     APP_SET_BIT(App.Mdb_data_AO.state_led_rele, LED_2);
+  97:App/App.c     ****   }
+  98:App/App.c     ****   else
+  99:App/App.c     ****   {
+ 100:App/App.c     ****     APP_RESET_BIT(App.Mdb_data_AO.state_led_rele, LED_2);
+ 266              		.loc 1 100 5 is_stmt 1 view .LVU57
+ 267 0024 4B4A     		ldr	r2, .L42+4
+ 268 0026 1388     		ldrh	r3, [r2]
+ 269 0028 23F00203 		bic	r3, r3, #2
+ 270 002c 1380     		strh	r3, [r2]	@ movhi
+ 271              	.L20:
+ 101:App/App.c     ****   }
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s 			page 8
 
 
- 232              		.loc 1 102 5 is_stmt 1 view .LVU50
- 233 003e 404A     		ldr	r2, .L37+4
- 234 0040 1388     		ldrh	r3, [r2]
- 235 0042 23F00403 		bic	r3, r3, #4
- 236 0046 1380     		strh	r3, [r2]	@ movhi
- 237              	.L17:
- 103:App/App.c     ****   }
- 104:App/App.c     **** 
- 105:App/App.c     ****   //LED4
- 106:App/App.c     ****   if (HAL_GPIO_ReadPin(APP_LED_4) == GPIO_PIN_SET)
- 238              		.loc 1 106 3 view .LVU51
- 239              		.loc 1 106 7 is_stmt 0 view .LVU52
- 240 0048 4FF40061 		mov	r1, #2048
- 241 004c 4FF09040 		mov	r0, #1207959552
- 242 0050 FFF7FEFF 		bl	HAL_GPIO_ReadPin
- 243              	.LVL14:
- 244              		.loc 1 106 6 view .LVU53
- 245 0054 0128     		cmp	r0, #1
- 246 0056 52D0     		beq	.L32
- 107:App/App.c     ****   {
- 108:App/App.c     ****     APP_SET_BIT(App.Mdb_data_AO.state_led_rele, LED_4);
- 109:App/App.c     ****   }
- 110:App/App.c     ****   else
- 111:App/App.c     ****   {
- 112:App/App.c     ****     APP_RESET_BIT(App.Mdb_data_AO.state_led_rele, LED_4);
- 247              		.loc 1 112 5 is_stmt 1 view .LVU54
- 248 0058 394A     		ldr	r2, .L37+4
- 249 005a 1388     		ldrh	r3, [r2]
- 250 005c 23F00803 		bic	r3, r3, #8
- 251 0060 1380     		strh	r3, [r2]	@ movhi
- 252              	.L19:
- 113:App/App.c     ****   }
- 114:App/App.c     **** 
- 115:App/App.c     ****   //REL1
- 116:App/App.c     ****   if (HAL_GPIO_ReadPin(APP_REL_1) == GPIO_PIN_SET)
- 253              		.loc 1 116 3 view .LVU55
- 254              		.loc 1 116 7 is_stmt 0 view .LVU56
- 255 0062 0821     		movs	r1, #8
- 256 0064 4FF09040 		mov	r0, #1207959552
- 257 0068 FFF7FEFF 		bl	HAL_GPIO_ReadPin
- 258              	.LVL15:
- 259              		.loc 1 116 6 view .LVU57
- 260 006c 0128     		cmp	r0, #1
- 261 006e 4CD0     		beq	.L33
- 117:App/App.c     ****   {
- 118:App/App.c     ****     APP_SET_BIT(App.Mdb_data_AO.state_led_rele, REL_1);
- 119:App/App.c     ****   }
- 120:App/App.c     ****   else
- 121:App/App.c     ****   {
- 122:App/App.c     ****     APP_RESET_BIT(App.Mdb_data_AO.state_led_rele, REL_1);
- 262              		.loc 1 122 5 is_stmt 1 view .LVU58
- 263 0070 334A     		ldr	r2, .L37+4
- 264 0072 1388     		ldrh	r3, [r2]
- 265 0074 23F01003 		bic	r3, r3, #16
- 266 0078 1380     		strh	r3, [r2]	@ movhi
- 267              	.L21:
- 123:App/App.c     ****   }
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s 			page 8
+ 102:App/App.c     **** 
+ 103:App/App.c     ****   //LED3
+ 104:App/App.c     ****   if (HAL_GPIO_ReadPin(APP_LED_3) == GPIO_PIN_SET)
+ 272              		.loc 1 104 3 view .LVU58
+ 273              		.loc 1 104 7 is_stmt 0 view .LVU59
+ 274 002e 4FF48061 		mov	r1, #1024
+ 275 0032 4FF09040 		mov	r0, #1207959552
+ 276 0036 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 277              	.LVL20:
+ 278              		.loc 1 104 6 view .LVU60
+ 279 003a 0128     		cmp	r0, #1
+ 280 003c 64D0     		beq	.L36
+ 105:App/App.c     ****   {
+ 106:App/App.c     ****     APP_SET_BIT(App.Mdb_data_AO.state_led_rele, LED_3);
+ 107:App/App.c     ****   }
+ 108:App/App.c     ****   else
+ 109:App/App.c     ****   {
+ 110:App/App.c     ****     APP_RESET_BIT(App.Mdb_data_AO.state_led_rele, LED_3);
+ 281              		.loc 1 110 5 is_stmt 1 view .LVU61
+ 282 003e 454A     		ldr	r2, .L42+4
+ 283 0040 1388     		ldrh	r3, [r2]
+ 284 0042 23F00403 		bic	r3, r3, #4
+ 285 0046 1380     		strh	r3, [r2]	@ movhi
+ 286              	.L22:
+ 111:App/App.c     ****   }
+ 112:App/App.c     **** 
+ 113:App/App.c     ****   //LED4
+ 114:App/App.c     ****   if (HAL_GPIO_ReadPin(APP_LED_4) == GPIO_PIN_SET)
+ 287              		.loc 1 114 3 view .LVU62
+ 288              		.loc 1 114 7 is_stmt 0 view .LVU63
+ 289 0048 4FF40061 		mov	r1, #2048
+ 290 004c 4FF09040 		mov	r0, #1207959552
+ 291 0050 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 292              	.LVL21:
+ 293              		.loc 1 114 6 view .LVU64
+ 294 0054 0128     		cmp	r0, #1
+ 295 0056 5DD0     		beq	.L37
+ 115:App/App.c     ****   {
+ 116:App/App.c     ****     APP_SET_BIT(App.Mdb_data_AO.state_led_rele, LED_4);
+ 117:App/App.c     ****   }
+ 118:App/App.c     ****   else
+ 119:App/App.c     ****   {
+ 120:App/App.c     ****     APP_RESET_BIT(App.Mdb_data_AO.state_led_rele, LED_4);
+ 296              		.loc 1 120 5 is_stmt 1 view .LVU65
+ 297 0058 3E4A     		ldr	r2, .L42+4
+ 298 005a 1388     		ldrh	r3, [r2]
+ 299 005c 23F00803 		bic	r3, r3, #8
+ 300 0060 1380     		strh	r3, [r2]	@ movhi
+ 301              	.L24:
+ 121:App/App.c     ****   }
+ 122:App/App.c     **** 
+ 123:App/App.c     ****   //REL1
+ 124:App/App.c     ****   if (HAL_GPIO_ReadPin(APP_REL_1) == GPIO_PIN_SET)
+ 302              		.loc 1 124 3 view .LVU66
+ 303              		.loc 1 124 7 is_stmt 0 view .LVU67
+ 304 0062 0821     		movs	r1, #8
+ 305 0064 4FF09040 		mov	r0, #1207959552
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s 			page 9
 
 
- 124:App/App.c     **** 
- 125:App/App.c     ****   //REL2
- 126:App/App.c     ****   if (HAL_GPIO_ReadPin(APP_REL_2) == GPIO_PIN_SET)
- 268              		.loc 1 126 3 view .LVU59
- 269              		.loc 1 126 7 is_stmt 0 view .LVU60
- 270 007a 1021     		movs	r1, #16
- 271 007c 4FF09040 		mov	r0, #1207959552
- 272 0080 FFF7FEFF 		bl	HAL_GPIO_ReadPin
- 273              	.LVL16:
- 274              		.loc 1 126 6 view .LVU61
- 275 0084 0128     		cmp	r0, #1
- 276 0086 46D0     		beq	.L34
- 127:App/App.c     ****   {
- 128:App/App.c     ****     APP_SET_BIT(App.Mdb_data_AO.state_led_rele, REL_2);
- 129:App/App.c     ****   }
- 130:App/App.c     ****   else
- 131:App/App.c     ****   {
- 132:App/App.c     ****     APP_RESET_BIT(App.Mdb_data_AO.state_led_rele, REL_2);
- 277              		.loc 1 132 5 is_stmt 1 view .LVU62
- 278 0088 2D4A     		ldr	r2, .L37+4
- 279 008a 1388     		ldrh	r3, [r2]
- 280 008c 23F02003 		bic	r3, r3, #32
- 281 0090 1380     		strh	r3, [r2]	@ movhi
- 282              	.L23:
- 133:App/App.c     ****   }
- 134:App/App.c     **** 
- 135:App/App.c     ****   //REL3
- 136:App/App.c     ****   if (HAL_GPIO_ReadPin(APP_REL_3) == GPIO_PIN_SET)
- 283              		.loc 1 136 3 view .LVU63
- 284              		.loc 1 136 7 is_stmt 0 view .LVU64
- 285 0092 2021     		movs	r1, #32
- 286 0094 4FF09040 		mov	r0, #1207959552
- 287 0098 FFF7FEFF 		bl	HAL_GPIO_ReadPin
- 288              	.LVL17:
- 289              		.loc 1 136 6 view .LVU65
- 290 009c 0128     		cmp	r0, #1
- 291 009e 40D0     		beq	.L35
- 137:App/App.c     ****   {
- 138:App/App.c     ****     APP_SET_BIT(App.Mdb_data_AO.state_led_rele, REL_3);
- 139:App/App.c     ****   }
- 140:App/App.c     ****   else
- 141:App/App.c     ****   {
- 142:App/App.c     ****     APP_RESET_BIT(App.Mdb_data_AO.state_led_rele, REL_3);
- 292              		.loc 1 142 5 is_stmt 1 view .LVU66
- 293 00a0 274A     		ldr	r2, .L37+4
- 294 00a2 1388     		ldrh	r3, [r2]
- 295 00a4 23F04003 		bic	r3, r3, #64
- 296 00a8 1380     		strh	r3, [r2]	@ movhi
- 297              	.L25:
- 143:App/App.c     ****   }
- 144:App/App.c     **** 
- 145:App/App.c     ****   //REL4
- 146:App/App.c     ****   if (HAL_GPIO_ReadPin(APP_REL_4) == GPIO_PIN_SET)
- 298              		.loc 1 146 3 view .LVU67
- 299              		.loc 1 146 7 is_stmt 0 view .LVU68
- 300 00aa 4021     		movs	r1, #64
- 301 00ac 4FF09040 		mov	r0, #1207959552
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s 			page 9
+ 306 0068 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 307              	.LVL22:
+ 308              		.loc 1 124 6 view .LVU68
+ 309 006c 0128     		cmp	r0, #1
+ 310 006e 57D0     		beq	.L38
+ 125:App/App.c     ****   {
+ 126:App/App.c     ****     APP_SET_BIT(App.Mdb_data_AO.state_led_rele, REL_1);
+ 127:App/App.c     ****   }
+ 128:App/App.c     ****   else
+ 129:App/App.c     ****   {
+ 130:App/App.c     ****     APP_RESET_BIT(App.Mdb_data_AO.state_led_rele, REL_1);
+ 311              		.loc 1 130 5 is_stmt 1 view .LVU69
+ 312 0070 384A     		ldr	r2, .L42+4
+ 313 0072 1388     		ldrh	r3, [r2]
+ 314 0074 23F01003 		bic	r3, r3, #16
+ 315 0078 1380     		strh	r3, [r2]	@ movhi
+ 316              	.L26:
+ 131:App/App.c     ****   }
+ 132:App/App.c     **** 
+ 133:App/App.c     ****   //REL2
+ 134:App/App.c     ****   if (HAL_GPIO_ReadPin(APP_REL_2) == GPIO_PIN_SET)
+ 317              		.loc 1 134 3 view .LVU70
+ 318              		.loc 1 134 7 is_stmt 0 view .LVU71
+ 319 007a 1021     		movs	r1, #16
+ 320 007c 4FF09040 		mov	r0, #1207959552
+ 321 0080 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 322              	.LVL23:
+ 323              		.loc 1 134 6 view .LVU72
+ 324 0084 0128     		cmp	r0, #1
+ 325 0086 51D0     		beq	.L39
+ 135:App/App.c     ****   {
+ 136:App/App.c     ****     APP_SET_BIT(App.Mdb_data_AO.state_led_rele, REL_2);
+ 137:App/App.c     ****   }
+ 138:App/App.c     ****   else
+ 139:App/App.c     ****   {
+ 140:App/App.c     ****     APP_RESET_BIT(App.Mdb_data_AO.state_led_rele, REL_2);
+ 326              		.loc 1 140 5 is_stmt 1 view .LVU73
+ 327 0088 324A     		ldr	r2, .L42+4
+ 328 008a 1388     		ldrh	r3, [r2]
+ 329 008c 23F02003 		bic	r3, r3, #32
+ 330 0090 1380     		strh	r3, [r2]	@ movhi
+ 331              	.L28:
+ 141:App/App.c     ****   }
+ 142:App/App.c     **** 
+ 143:App/App.c     ****   //REL3
+ 144:App/App.c     ****   if (HAL_GPIO_ReadPin(APP_REL_3) == GPIO_PIN_SET)
+ 332              		.loc 1 144 3 view .LVU74
+ 333              		.loc 1 144 7 is_stmt 0 view .LVU75
+ 334 0092 2021     		movs	r1, #32
+ 335 0094 4FF09040 		mov	r0, #1207959552
+ 336 0098 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 337              	.LVL24:
+ 338              		.loc 1 144 6 view .LVU76
+ 339 009c 0128     		cmp	r0, #1
+ 340 009e 4BD0     		beq	.L40
+ 145:App/App.c     ****   {
+ 146:App/App.c     ****     APP_SET_BIT(App.Mdb_data_AO.state_led_rele, REL_3);
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s 			page 10
 
 
- 302 00b0 FFF7FEFF 		bl	HAL_GPIO_ReadPin
- 303              	.LVL18:
- 304              		.loc 1 146 6 view .LVU69
- 305 00b4 0128     		cmp	r0, #1
- 306 00b6 3AD0     		beq	.L36
- 147:App/App.c     ****   {
- 148:App/App.c     ****     APP_SET_BIT(App.Mdb_data_AO.state_led_rele, REL_4);
- 149:App/App.c     ****   }
- 150:App/App.c     ****   else
- 151:App/App.c     ****   {
- 152:App/App.c     ****     APP_RESET_BIT(App.Mdb_data_AO.state_led_rele, REL_4);
- 307              		.loc 1 152 5 is_stmt 1 view .LVU70
- 308 00b8 214A     		ldr	r2, .L37+4
- 309 00ba 1388     		ldrh	r3, [r2]
- 310 00bc 23F08003 		bic	r3, r3, #128
- 311 00c0 1380     		strh	r3, [r2]	@ movhi
- 312              	.L27:
- 153:App/App.c     ****   }
- 154:App/App.c     ****   
- 155:App/App.c     ****   App.Mdb_data_AO.spi_buf_0[0] = SPI_DATA_RX[0];
- 313              		.loc 1 155 3 view .LVU71
- 314              		.loc 1 155 45 is_stmt 0 view .LVU72
- 315 00c2 204A     		ldr	r2, .L37+8
- 316 00c4 1178     		ldrb	r1, [r2]	@ zero_extendqisi2
- 317              		.loc 1 155 32 view .LVU73
- 318 00c6 1E4B     		ldr	r3, .L37+4
- 319 00c8 9980     		strh	r1, [r3, #4]	@ movhi
- 156:App/App.c     ****   App.Mdb_data_AO.spi_buf_0[1] = SPI_DATA_RX[1];
- 320              		.loc 1 156 3 is_stmt 1 view .LVU74
- 321              		.loc 1 156 45 is_stmt 0 view .LVU75
- 322 00ca 5178     		ldrb	r1, [r2, #1]	@ zero_extendqisi2
- 323              		.loc 1 156 32 view .LVU76
- 324 00cc D980     		strh	r1, [r3, #6]	@ movhi
- 157:App/App.c     ****   App.Mdb_data_AO.spi_buf_0[2] = SPI_DATA_RX[2];
- 325              		.loc 1 157 3 is_stmt 1 view .LVU77
- 326              		.loc 1 157 45 is_stmt 0 view .LVU78
- 327 00ce 9278     		ldrb	r2, [r2, #2]	@ zero_extendqisi2
- 328              		.loc 1 157 32 view .LVU79
- 329 00d0 1A81     		strh	r2, [r3, #8]	@ movhi
- 158:App/App.c     ****   App.Mdb_data_AO.ADC_data     = ADC_DATA;
- 330              		.loc 1 158 3 is_stmt 1 view .LVU80
- 331              		.loc 1 158 32 is_stmt 0 view .LVU81
- 332 00d2 1D4A     		ldr	r2, .L37+12
- 333 00d4 1288     		ldrh	r2, [r2]
- 334 00d6 5A81     		strh	r2, [r3, #10]	@ movhi
- 159:App/App.c     ****   return;
- 335              		.loc 1 159 3 is_stmt 1 view .LVU82
- 160:App/App.c     **** }
- 336              		.loc 1 160 1 is_stmt 0 view .LVU83
- 337 00d8 08BD     		pop	{r3, pc}
- 338              	.L29:
-  78:App/App.c     ****   }
- 339              		.loc 1 78 5 is_stmt 1 view .LVU84
- 340 00da 194A     		ldr	r2, .L37+4
- 341 00dc 1388     		ldrh	r3, [r2]
- 342 00de 43F00103 		orr	r3, r3, #1
- 343 00e2 1380     		strh	r3, [r2]	@ movhi
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s 			page 10
+ 147:App/App.c     ****   }
+ 148:App/App.c     ****   else
+ 149:App/App.c     ****   {
+ 150:App/App.c     ****     APP_RESET_BIT(App.Mdb_data_AO.state_led_rele, REL_3);
+ 341              		.loc 1 150 5 is_stmt 1 view .LVU77
+ 342 00a0 2C4A     		ldr	r2, .L42+4
+ 343 00a2 1388     		ldrh	r3, [r2]
+ 344 00a4 23F04003 		bic	r3, r3, #64
+ 345 00a8 1380     		strh	r3, [r2]	@ movhi
+ 346              	.L30:
+ 151:App/App.c     ****   }
+ 152:App/App.c     **** 
+ 153:App/App.c     ****   //REL4
+ 154:App/App.c     ****   if (HAL_GPIO_ReadPin(APP_REL_4) == GPIO_PIN_SET)
+ 347              		.loc 1 154 3 view .LVU78
+ 348              		.loc 1 154 7 is_stmt 0 view .LVU79
+ 349 00aa 4021     		movs	r1, #64
+ 350 00ac 4FF09040 		mov	r0, #1207959552
+ 351 00b0 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 352              	.LVL25:
+ 353              		.loc 1 154 6 view .LVU80
+ 354 00b4 0128     		cmp	r0, #1
+ 355 00b6 45D0     		beq	.L41
+ 155:App/App.c     ****   {
+ 156:App/App.c     ****     APP_SET_BIT(App.Mdb_data_AO.state_led_rele, REL_4);
+ 157:App/App.c     ****   }
+ 158:App/App.c     ****   else
+ 159:App/App.c     ****   {
+ 160:App/App.c     ****     APP_RESET_BIT(App.Mdb_data_AO.state_led_rele, REL_4);
+ 356              		.loc 1 160 5 is_stmt 1 view .LVU81
+ 357 00b8 264A     		ldr	r2, .L42+4
+ 358 00ba 1388     		ldrh	r3, [r2]
+ 359 00bc 23F08003 		bic	r3, r3, #128
+ 360 00c0 1380     		strh	r3, [r2]	@ movhi
+ 361              	.L32:
+ 161:App/App.c     ****   }
+ 162:App/App.c     ****   
+ 163:App/App.c     ****   App.Mdb_data_AO.spi_buf_0[0] = SPI_DATA_RX[0];
+ 362              		.loc 1 163 3 view .LVU82
+ 363              		.loc 1 163 45 is_stmt 0 view .LVU83
+ 364 00c2 254A     		ldr	r2, .L42+8
+ 365 00c4 1178     		ldrb	r1, [r2]	@ zero_extendqisi2
+ 366              		.loc 1 163 32 view .LVU84
+ 367 00c6 234B     		ldr	r3, .L42+4
+ 368 00c8 9980     		strh	r1, [r3, #4]	@ movhi
+ 164:App/App.c     ****   App.Mdb_data_AO.spi_buf_0[1] = SPI_DATA_RX[1];
+ 369              		.loc 1 164 3 is_stmt 1 view .LVU85
+ 370              		.loc 1 164 45 is_stmt 0 view .LVU86
+ 371 00ca 5178     		ldrb	r1, [r2, #1]	@ zero_extendqisi2
+ 372              		.loc 1 164 32 view .LVU87
+ 373 00cc D980     		strh	r1, [r3, #6]	@ movhi
+ 165:App/App.c     ****   App.Mdb_data_AO.spi_buf_0[2] = SPI_DATA_RX[2];
+ 374              		.loc 1 165 3 is_stmt 1 view .LVU88
+ 375              		.loc 1 165 45 is_stmt 0 view .LVU89
+ 376 00ce 9278     		ldrb	r2, [r2, #2]	@ zero_extendqisi2
+ 377              		.loc 1 165 32 view .LVU90
+ 378 00d0 1A81     		strh	r2, [r3, #8]	@ movhi
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s 			page 11
 
 
- 344 00e4 98E7     		b	.L13
- 345              	.L30:
-  88:App/App.c     ****   }
- 346              		.loc 1 88 5 view .LVU85
- 347 00e6 164A     		ldr	r2, .L37+4
- 348 00e8 1388     		ldrh	r3, [r2]
- 349 00ea 43F00203 		orr	r3, r3, #2
- 350 00ee 1380     		strh	r3, [r2]	@ movhi
- 351 00f0 9DE7     		b	.L15
- 352              	.L31:
-  98:App/App.c     ****   }
- 353              		.loc 1 98 5 view .LVU86
- 354 00f2 134A     		ldr	r2, .L37+4
- 355 00f4 1388     		ldrh	r3, [r2]
- 356 00f6 43F00403 		orr	r3, r3, #4
- 357 00fa 1380     		strh	r3, [r2]	@ movhi
- 358 00fc A4E7     		b	.L17
- 359              	.L32:
- 108:App/App.c     ****   }
- 360              		.loc 1 108 5 view .LVU87
- 361 00fe 104A     		ldr	r2, .L37+4
- 362 0100 1388     		ldrh	r3, [r2]
- 363 0102 43F00803 		orr	r3, r3, #8
- 364 0106 1380     		strh	r3, [r2]	@ movhi
- 365 0108 ABE7     		b	.L19
- 366              	.L33:
- 118:App/App.c     ****   }
- 367              		.loc 1 118 5 view .LVU88
- 368 010a 0D4A     		ldr	r2, .L37+4
- 369 010c 1388     		ldrh	r3, [r2]
- 370 010e 43F01003 		orr	r3, r3, #16
- 371 0112 1380     		strh	r3, [r2]	@ movhi
- 372 0114 B1E7     		b	.L21
- 373              	.L34:
- 128:App/App.c     ****   }
- 374              		.loc 1 128 5 view .LVU89
- 375 0116 0A4A     		ldr	r2, .L37+4
- 376 0118 1388     		ldrh	r3, [r2]
- 377 011a 43F02003 		orr	r3, r3, #32
- 378 011e 1380     		strh	r3, [r2]	@ movhi
- 379 0120 B7E7     		b	.L23
- 380              	.L35:
- 138:App/App.c     ****   }
- 381              		.loc 1 138 5 view .LVU90
- 382 0122 074A     		ldr	r2, .L37+4
- 383 0124 1388     		ldrh	r3, [r2]
- 384 0126 43F04003 		orr	r3, r3, #64
- 385 012a 1380     		strh	r3, [r2]	@ movhi
- 386 012c BDE7     		b	.L25
- 387              	.L36:
- 148:App/App.c     ****   }
- 388              		.loc 1 148 5 view .LVU91
- 389 012e 044A     		ldr	r2, .L37+4
- 390 0130 1388     		ldrh	r3, [r2]
- 391 0132 43F08003 		orr	r3, r3, #128
- 392 0136 1380     		strh	r3, [r2]	@ movhi
- 393 0138 C3E7     		b	.L27
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s 			page 11
+ 166:App/App.c     ****   App.Mdb_data_AO.ADC_data     = App.adc_filter[ADC_ADS1251].value;
+ 379              		.loc 1 166 3 is_stmt 1 view .LVU91
+ 380              		.loc 1 166 61 is_stmt 0 view .LVU92
+ 381 00d2 D3ED047A 		vldr.32	s15, [r3, #16]
+ 382              		.loc 1 166 32 view .LVU93
+ 383 00d6 FCEEE77A 		vcvt.u32.f32	s15, s15
+ 384 00da 17EE902A 		vmov	r2, s15	@ int
+ 385 00de 5A81     		strh	r2, [r3, #10]	@ movhi
+ 167:App/App.c     ****   App.Mdb_data_AO.ADC_CPU_data = App.adc_filter[ADC_CPU].value;
+ 386              		.loc 1 167 3 is_stmt 1 view .LVU94
+ 387              		.loc 1 167 57 is_stmt 0 view .LVU95
+ 388 00e0 D3ED217A 		vldr.32	s15, [r3, #132]
+ 389              		.loc 1 167 32 view .LVU96
+ 390 00e4 FCEEE77A 		vcvt.u32.f32	s15, s15
+ 391 00e8 17EE902A 		vmov	r2, s15	@ int
+ 392 00ec 9A81     		strh	r2, [r3, #12]	@ movhi
+ 168:App/App.c     ****   return;
+ 393              		.loc 1 168 3 is_stmt 1 view .LVU97
+ 169:App/App.c     **** }
+ 394              		.loc 1 169 1 is_stmt 0 view .LVU98
+ 395 00ee 08BD     		pop	{r3, pc}
+ 396              	.L34:
+  86:App/App.c     ****   }
+ 397              		.loc 1 86 5 is_stmt 1 view .LVU99
+ 398 00f0 184A     		ldr	r2, .L42+4
+ 399 00f2 1388     		ldrh	r3, [r2]
+ 400 00f4 43F00103 		orr	r3, r3, #1
+ 401 00f8 1380     		strh	r3, [r2]	@ movhi
+ 402 00fa 8DE7     		b	.L18
+ 403              	.L35:
+  96:App/App.c     ****   }
+ 404              		.loc 1 96 5 view .LVU100
+ 405 00fc 154A     		ldr	r2, .L42+4
+ 406 00fe 1388     		ldrh	r3, [r2]
+ 407 0100 43F00203 		orr	r3, r3, #2
+ 408 0104 1380     		strh	r3, [r2]	@ movhi
+ 409 0106 92E7     		b	.L20
+ 410              	.L36:
+ 106:App/App.c     ****   }
+ 411              		.loc 1 106 5 view .LVU101
+ 412 0108 124A     		ldr	r2, .L42+4
+ 413 010a 1388     		ldrh	r3, [r2]
+ 414 010c 43F00403 		orr	r3, r3, #4
+ 415 0110 1380     		strh	r3, [r2]	@ movhi
+ 416 0112 99E7     		b	.L22
+ 417              	.L37:
+ 116:App/App.c     ****   }
+ 418              		.loc 1 116 5 view .LVU102
+ 419 0114 0F4A     		ldr	r2, .L42+4
+ 420 0116 1388     		ldrh	r3, [r2]
+ 421 0118 43F00803 		orr	r3, r3, #8
+ 422 011c 1380     		strh	r3, [r2]	@ movhi
+ 423 011e A0E7     		b	.L24
+ 424              	.L38:
+ 126:App/App.c     ****   }
+ 425              		.loc 1 126 5 view .LVU103
+ 426 0120 0C4A     		ldr	r2, .L42+4
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s 			page 12
 
 
- 394              	.L38:
- 395 013a 00BF     		.align	2
- 396              	.L37:
- 397 013c 00080048 		.word	1207961600
- 398 0140 00000000 		.word	App
- 399 0144 00000000 		.word	SPI_DATA_RX
- 400 0148 00000000 		.word	ADC_DATA
- 401              		.cfi_endproc
- 402              	.LFE333:
- 404              		.section	.text.adc_data_filter,"ax",%progbits
- 405              		.align	1
- 406              		.global	adc_data_filter
- 407              		.syntax unified
- 408              		.thumb
- 409              		.thumb_func
- 411              	adc_data_filter:
- 412              	.LVL19:
- 413              	.LFB334:
- 161:App/App.c     **** 
- 162:App/App.c     **** #define ADC_MAX_VAL 8388607.0f
- 163:App/App.c     **** #define ADC_REF_VOLT  3.3f
- 164:App/App.c     **** void adc_data_filter(uint32_t ADC_Buf_raw)
- 165:App/App.c     **** {
- 414              		.loc 1 165 1 view -0
- 415              		.cfi_startproc
- 416              		@ args = 0, pretend = 0, frame = 0
- 417              		@ frame_needed = 0, uses_anonymous_args = 0
- 418              		@ link register save eliminated.
- 419              		.loc 1 165 1 is_stmt 0 view .LVU93
- 420 0000 07EE100A 		vmov	s14, r0	@ int
- 166:App/App.c     ****   float value = 0.0f;
- 421              		.loc 1 166 3 is_stmt 1 view .LVU94
- 422              	.LVL20:
- 167:App/App.c     ****   float valueLast = 0.0f;
- 423              		.loc 1 167 3 view .LVU95
- 168:App/App.c     ****   float kFilter = 0.0f;
- 424              		.loc 1 168 3 view .LVU96
- 169:App/App.c     ****   float data = 0.0f;
- 425              		.loc 1 169 3 view .LVU97
- 170:App/App.c     ****   float sum = 0.0f;
- 426              		.loc 1 170 3 view .LVU98
- 171:App/App.c     **** 
- 172:App/App.c     ****   data = ((float)ADC_Buf_raw / ADC_MAX_VAL * ADC_REF_VOLT*1000.0f);
- 427              		.loc 1 172 3 view .LVU99
- 428              		.loc 1 172 11 is_stmt 0 view .LVU100
- 429 0004 B8EE477A 		vcvt.f32.u32	s14, s14
- 430              		.loc 1 172 30 view .LVU101
- 431 0008 DFED316A 		vldr.32	s13, .L43
- 432 000c C7EE267A 		vdiv.f32	s15, s14, s13
- 433              		.loc 1 172 44 view .LVU102
- 434 0010 9FED307A 		vldr.32	s14, .L43+4
- 435 0014 67EE877A 		vmul.f32	s15, s15, s14
- 436              		.loc 1 172 8 view .LVU103
- 437 0018 9FED2F7A 		vldr.32	s14, .L43+8
- 438 001c 67EE877A 		vmul.f32	s15, s15, s14
- 439              	.LVL21:
- 173:App/App.c     **** 
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s 			page 12
+ 427 0122 1388     		ldrh	r3, [r2]
+ 428 0124 43F01003 		orr	r3, r3, #16
+ 429 0128 1380     		strh	r3, [r2]	@ movhi
+ 430 012a A6E7     		b	.L26
+ 431              	.L39:
+ 136:App/App.c     ****   }
+ 432              		.loc 1 136 5 view .LVU104
+ 433 012c 094A     		ldr	r2, .L42+4
+ 434 012e 1388     		ldrh	r3, [r2]
+ 435 0130 43F02003 		orr	r3, r3, #32
+ 436 0134 1380     		strh	r3, [r2]	@ movhi
+ 437 0136 ACE7     		b	.L28
+ 438              	.L40:
+ 146:App/App.c     ****   }
+ 439              		.loc 1 146 5 view .LVU105
+ 440 0138 064A     		ldr	r2, .L42+4
+ 441 013a 1388     		ldrh	r3, [r2]
+ 442 013c 43F04003 		orr	r3, r3, #64
+ 443 0140 1380     		strh	r3, [r2]	@ movhi
+ 444 0142 B2E7     		b	.L30
+ 445              	.L41:
+ 156:App/App.c     ****   }
+ 446              		.loc 1 156 5 view .LVU106
+ 447 0144 034A     		ldr	r2, .L42+4
+ 448 0146 1388     		ldrh	r3, [r2]
+ 449 0148 43F08003 		orr	r3, r3, #128
+ 450 014c 1380     		strh	r3, [r2]	@ movhi
+ 451 014e B8E7     		b	.L32
+ 452              	.L43:
+ 453              		.align	2
+ 454              	.L42:
+ 455 0150 00080048 		.word	1207961600
+ 456 0154 00000000 		.word	App
+ 457 0158 00000000 		.word	SPI_DATA_RX
+ 458              		.cfi_endproc
+ 459              	.LFE333:
+ 461              		.section	.text.bsp_tim7_1ms_callback,"ax",%progbits
+ 462              		.align	1
+ 463              		.global	bsp_tim7_1ms_callback
+ 464              		.syntax unified
+ 465              		.thumb
+ 466              		.thumb_func
+ 468              	bsp_tim7_1ms_callback:
+ 469              	.LFB332:
+  61:App/App.c     ****   static uint8_t i = 0;
+ 470              		.loc 1 61 1 view -0
+ 471              		.cfi_startproc
+ 472              		@ args = 0, pretend = 0, frame = 0
+ 473              		@ frame_needed = 0, uses_anonymous_args = 0
+ 474 0000 08B5     		push	{r3, lr}
+ 475              	.LCFI3:
+ 476              		.cfi_def_cfa_offset 8
+ 477              		.cfi_offset 3, -8
+ 478              		.cfi_offset 14, -4
+  62:App/App.c     ****   static uint16_t j = 0;
+ 479              		.loc 1 62 3 view .LVU108
+  63:App/App.c     **** 
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s 			page 13
 
 
- 174:App/App.c     ****   App.adc_filter.buf[App.adc_filter.bufIdx++] = data;
- 440              		.loc 1 174 3 is_stmt 1 view .LVU104
- 441              		.loc 1 174 36 is_stmt 0 view .LVU105
- 442 0020 2E49     		ldr	r1, .L43+12
- 443 0022 91F87C20 		ldrb	r2, [r1, #124]	@ zero_extendqisi2
- 444              		.loc 1 174 43 view .LVU106
- 445 0026 531C     		adds	r3, r2, #1
- 446 0028 DBB2     		uxtb	r3, r3
- 447 002a 81F87C30 		strb	r3, [r1, #124]
- 448              		.loc 1 174 47 view .LVU107
- 449 002e 0632     		adds	r2, r2, #6
- 450 0030 01EB8202 		add	r2, r1, r2, lsl #2
- 451 0034 C2ED017A 		vstr.32	s15, [r2, #4]
- 175:App/App.c     ****   if (App.adc_filter.bufIdx == App.adc_filter.order) 
- 452              		.loc 1 175 3 is_stmt 1 view .LVU108
- 453              		.loc 1 175 29 is_stmt 0 view .LVU109
- 454 0038 07EE903A 		vmov	s15, r3	@ int
- 455              	.LVL22:
- 456              		.loc 1 175 29 view .LVU110
- 457 003c F8EEE77A 		vcvt.f32.s32	s15, s15
- 458              		.loc 1 175 46 view .LVU111
- 459 0040 D1ED206A 		vldr.32	s13, [r1, #128]
- 460              		.loc 1 175 6 view .LVU112
- 461 0044 F4EE667A 		vcmp.f32	s15, s13
- 462 0048 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 463 004c 02D1     		bne	.L40
- 176:App/App.c     ****   {
- 177:App/App.c     ****     App.adc_filter.bufIdx = 0;
- 464              		.loc 1 177 5 is_stmt 1 view .LVU113
- 465              		.loc 1 177 27 is_stmt 0 view .LVU114
- 466 004e 0022     		movs	r2, #0
- 467              	.LVL23:
- 468              		.loc 1 177 27 view .LVU115
- 469 0050 81F87C20 		strb	r2, [r1, #124]
- 470              	.L40:
- 178:App/App.c     ****   }
- 179:App/App.c     ****   for(uint8_t idx = 0; idx < App.adc_filter.order; idx++)
- 471              		.loc 1 179 3 is_stmt 1 view .LVU116
- 472              	.LBB3:
- 473              		.loc 1 179 7 view .LVU117
- 474              	.LVL24:
- 475              		.loc 1 179 15 is_stmt 0 view .LVU118
- 476 0054 0023     		movs	r3, #0
- 477              	.LBE3:
+ 480              		.loc 1 63 3 view .LVU109
+  66:App/App.c     ****   {
+ 481              		.loc 1 66 3 view .LVU110
+  66:App/App.c     ****   {
+ 482              		.loc 1 66 8 is_stmt 0 view .LVU111
+ 483 0002 0C4A     		ldr	r2, .L49
+ 484 0004 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 485 0006 591C     		adds	r1, r3, #1
+ 486 0008 1170     		strb	r1, [r2]
+  66:App/App.c     ****   {
+ 487              		.loc 1 66 6 view .LVU112
+ 488 000a 092B     		cmp	r3, #9
+ 489 000c 0AD8     		bhi	.L48
+ 490              	.L45:
+  73:App/App.c     ****   {
+ 491              		.loc 1 73 3 is_stmt 1 view .LVU113
+  73:App/App.c     ****   {
+ 492              		.loc 1 73 8 is_stmt 0 view .LVU114
+ 493 000e 0A4A     		ldr	r2, .L49+4
+ 494 0010 1388     		ldrh	r3, [r2]
+ 495 0012 591C     		adds	r1, r3, #1
+ 496 0014 1180     		strh	r1, [r2]	@ movhi
+  73:App/App.c     ****   {
+ 497              		.loc 1 73 6 view .LVU115
+ 498 0016 B3F5FA7F 		cmp	r3, #500
+ 499 001a 02D3     		bcc	.L44
+  76:App/App.c     ****   }
+ 500              		.loc 1 76 5 is_stmt 1 view .LVU116
+  76:App/App.c     ****   }
+ 501              		.loc 1 76 7 is_stmt 0 view .LVU117
+ 502 001c 1346     		mov	r3, r2
+ 503 001e 0022     		movs	r2, #0
+ 504 0020 1A80     		strh	r2, [r3]	@ movhi
+  78:App/App.c     **** }
+ 505              		.loc 1 78 3 is_stmt 1 view .LVU118
+ 506              	.L44:
+  79:App/App.c     **** 
+ 507              		.loc 1 79 1 is_stmt 0 view .LVU119
+ 508 0022 08BD     		pop	{r3, pc}
+ 509              	.L48:
+  68:App/App.c     ****     protocolMbRtuSlaveCtrl_update_tables();
+ 510              		.loc 1 68 5 is_stmt 1 view .LVU120
+ 511 0024 FFF7FEFF 		bl	app_update_reg
+ 512              	.LVL26:
+  69:App/App.c     ****     i = 0;
+ 513              		.loc 1 69 5 view .LVU121
+ 514 0028 FFF7FEFF 		bl	protocolMbRtuSlaveCtrl_update_tables
+ 515              	.LVL27:
+  70:App/App.c     ****   }
+ 516              		.loc 1 70 5 view .LVU122
+  70:App/App.c     ****   }
+ 517              		.loc 1 70 7 is_stmt 0 view .LVU123
+ 518 002c 014B     		ldr	r3, .L49
+ 519 002e 0022     		movs	r2, #0
+ 520 0030 1A70     		strb	r2, [r3]
+ 521 0032 ECE7     		b	.L45
+ 522              	.L50:
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s 			page 14
+
+
+ 523              		.align	2
+ 524              	.L49:
+ 525 0034 00000000 		.word	i.1
+ 526 0038 00000000 		.word	j.0
+ 527              		.cfi_endproc
+ 528              	.LFE332:
+ 530              		.section	.text.app_adc_data_filter,"ax",%progbits
+ 531              		.align	1
+ 532              		.global	app_adc_data_filter
+ 533              		.syntax unified
+ 534              		.thumb
+ 535              		.thumb_func
+ 537              	app_adc_data_filter:
+ 538              	.LVL28:
+ 539              	.LFB335:
  170:App/App.c     **** 
- 478              		.loc 1 170 9 view .LVU119
- 479 0056 DFED227A 		vldr.32	s15, .L43+16
- 480              	.LBB4:
- 481              		.loc 1 179 3 view .LVU120
- 482 005a 09E0     		b	.L41
- 483              	.LVL25:
- 484              	.L42:
- 180:App/App.c     ****   {
- 181:App/App.c     ****       sum += App.adc_filter.buf[idx];
- 485              		.loc 1 181 7 is_stmt 1 discriminator 3 view .LVU121
- 486              		.loc 1 181 32 is_stmt 0 discriminator 3 view .LVU122
- 487 005c 991D     		adds	r1, r3, #6
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s 			page 13
+ 171:App/App.c     **** 
+ 172:App/App.c     **** void bsp_ADC_data_ready()
+ 173:App/App.c     **** {
+ 174:App/App.c     ****   APP_LED_TOGGLE(APP_LED_3);
+ 175:App/App.c     ****   app_adc_data_filter((HAL_ADCEx_InjectedGetValue(&hadc2, ADC_INJECTED_RANK_2)/16), ADC_CPU);
+ 176:App/App.c     ****   app_adc_data_filter(bsp_get_data_spi(), ADC_ADS1251);
+ 177:App/App.c     **** }
+ 178:App/App.c     **** 
+ 179:App/App.c     **** #define ADC_ADS1251_MAX_VAL 8388607.0f
+ 180:App/App.c     **** #define ADC_ADS1251_REF_VOLT  3.3f
+ 181:App/App.c     **** 
+ 182:App/App.c     **** #define ADC_CPU_MAX_VAL 4096.0f
+ 183:App/App.c     **** #define ADC_CPU_REF_VOLT  3.3f
+ 184:App/App.c     **** 
+ 185:App/App.c     **** void app_adc_data_filter(uint32_t ADC_Buf_raw, ADC_enum adc)
+ 186:App/App.c     **** {
+ 540              		.loc 1 186 1 is_stmt 1 view -0
+ 541              		.cfi_startproc
+ 542              		@ args = 0, pretend = 0, frame = 8
+ 543              		@ frame_needed = 0, uses_anonymous_args = 0
+ 544              		@ link register save eliminated.
+ 545              		.loc 1 186 1 is_stmt 0 view .LVU125
+ 546 0000 10B4     		push	{r4}
+ 547              	.LCFI4:
+ 548              		.cfi_def_cfa_offset 4
+ 549              		.cfi_offset 4, -4
+ 550 0002 83B0     		sub	sp, sp, #12
+ 551              	.LCFI5:
+ 552              		.cfi_def_cfa_offset 16
+ 553 0004 0190     		str	r0, [sp, #4]
+ 187:App/App.c     ****   float value = 0.0f;
+ 554              		.loc 1 187 3 is_stmt 1 view .LVU126
+ 555              	.LVL29:
+ 188:App/App.c     ****   float valueLast = 0.0f;
+ 556              		.loc 1 188 3 view .LVU127
+ 189:App/App.c     ****   float kFilter = 0.0f;
+ 557              		.loc 1 189 3 view .LVU128
+ 190:App/App.c     ****   float data = 0.0f;
+ 558              		.loc 1 190 3 view .LVU129
+ 191:App/App.c     ****   float sum = 0.0f;
+ 559              		.loc 1 191 3 view .LVU130
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s 			page 15
 
 
- 488 005e 1F4A     		ldr	r2, .L43+12
- 489 0060 02EB8102 		add	r2, r2, r1, lsl #2
- 490 0064 92ED017A 		vldr.32	s14, [r2, #4]
- 491              		.loc 1 181 11 discriminator 3 view .LVU123
- 492 0068 77EE877A 		vadd.f32	s15, s15, s14
- 493              	.LVL26:
- 179:App/App.c     ****   {
- 494              		.loc 1 179 55 is_stmt 1 discriminator 3 view .LVU124
- 495 006c 0133     		adds	r3, r3, #1
- 496              	.LVL27:
- 179:App/App.c     ****   {
- 497              		.loc 1 179 55 is_stmt 0 discriminator 3 view .LVU125
- 498 006e DBB2     		uxtb	r3, r3
- 499              	.LVL28:
- 500              	.L41:
- 179:App/App.c     ****   {
- 501              		.loc 1 179 28 is_stmt 1 discriminator 1 view .LVU126
- 502 0070 07EE103A 		vmov	s14, r3	@ int
- 503 0074 B8EEC77A 		vcvt.f32.s32	s14, s14
- 504 0078 F4EEC76A 		vcmpe.f32	s13, s14
- 505 007c F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 506 0080 ECDC     		bgt	.L42
- 507              	.LBE4:
- 182:App/App.c     ****   }
- 183:App/App.c     ****   App.adc_filter.valueRaw = sum / App.adc_filter.order;
- 508              		.loc 1 183 3 view .LVU127
- 509              		.loc 1 183 33 is_stmt 0 view .LVU128
- 510 0082 87EEA67A 		vdiv.f32	s14, s15, s13
- 511              		.loc 1 183 27 view .LVU129
- 512 0086 154B     		ldr	r3, .L43+12
- 513              	.LVL29:
- 514              		.loc 1 183 27 view .LVU130
- 515 0088 83ED067A 		vstr.32	s14, [r3, #24]
- 184:App/App.c     ****   //--------------------//
- 185:App/App.c     ****   value = App.adc_filter.valueRaw;
- 516              		.loc 1 185 3 is_stmt 1 view .LVU131
- 517              	.LVL30:
- 186:App/App.c     ****   valueLast = App.adc_filter.value_last;
- 518              		.loc 1 186 3 view .LVU132
- 519              		.loc 1 186 13 is_stmt 0 view .LVU133
- 520 008c D3ED056A 		vldr.32	s13, [r3, #20]
- 521              	.LVL31:
- 187:App/App.c     ****   kFilter = 2.0f / ((float)App.adc_filter.filter_N + 1.0f);
- 522              		.loc 1 187 3 is_stmt 1 view .LVU134
- 523              		.loc 1 187 42 is_stmt 0 view .LVU135
- 524 0090 93F87D20 		ldrb	r2, [r3, #125]	@ zero_extendqisi2
- 525 0094 07EE902A 		vmov	s15, r2	@ int
- 526              	.LVL32:
- 527              		.loc 1 187 21 view .LVU136
- 528 0098 F8EE677A 		vcvt.f32.u32	s15, s15
- 529              		.loc 1 187 52 view .LVU137
- 530 009c B7EE006A 		vmov.f32	s12, #1.0e+0
- 531 00a0 77EE867A 		vadd.f32	s15, s15, s12
- 532              		.loc 1 187 11 view .LVU138
- 533 00a4 F0EE005A 		vmov.f32	s11, #2.0e+0
- 534 00a8 85EEA76A 		vdiv.f32	s12, s11, s15
- 535              	.LVL33:
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s 			page 14
+ 192:App/App.c     ****   if (adc == ADC_ADS1251)
+ 560              		.loc 1 192 3 view .LVU131
+ 561              		.loc 1 192 6 is_stmt 0 view .LVU132
+ 562 0006 0846     		mov	r0, r1
+ 563              	.LVL30:
+ 564              		.loc 1 192 6 view .LVU133
+ 565 0008 B1BB     		cbnz	r1, .L52
+ 193:App/App.c     ****   {
+ 194:App/App.c     ****     data = ((float)ADC_Buf_raw / ADC_ADS1251_MAX_VAL * ADC_ADS1251_REF_VOLT * 1000.0f);
+ 566              		.loc 1 194 5 is_stmt 1 view .LVU134
+ 567              		.loc 1 194 13 is_stmt 0 view .LVU135
+ 568 000a DDED017A 		vldr.32	s15, [sp, #4]	@ int
+ 569 000e F8EE676A 		vcvt.f32.u32	s13, s15
+ 570              		.loc 1 194 32 view .LVU136
+ 571 0012 9FED437A 		vldr.32	s14, .L60
+ 572 0016 C6EE877A 		vdiv.f32	s15, s13, s14
+ 573              		.loc 1 194 54 view .LVU137
+ 574 001a 9FED427A 		vldr.32	s14, .L60+4
+ 575 001e 67EE877A 		vmul.f32	s15, s15, s14
+ 576              		.loc 1 194 10 view .LVU138
+ 577 0022 9FED417A 		vldr.32	s14, .L60+8
+ 578 0026 67EE877A 		vmul.f32	s15, s15, s14
+ 579              	.LVL31:
+ 580              	.L53:
+ 195:App/App.c     ****   }
+ 196:App/App.c     ****   else if (adc == ADC_CPU)
+ 197:App/App.c     ****   {
+ 198:App/App.c     ****     data = ((float)ADC_Buf_raw / ADC_CPU_MAX_VAL * ADC_CPU_REF_VOLT * 1000.0f);
+ 199:App/App.c     ****   }
+ 200:App/App.c     **** 
+ 201:App/App.c     ****   App.adc_filter[adc].buf[App.adc_filter[adc].bufIdx++] = data;
+ 581              		.loc 1 201 3 is_stmt 1 view .LVU139
+ 582              		.loc 1 201 46 is_stmt 0 view .LVU140
+ 583 002a 404C     		ldr	r4, .L60+12
+ 584 002c 7421     		movs	r1, #116
+ 585              	.LVL32:
+ 586              		.loc 1 201 46 view .LVU141
+ 587 002e 01FB0041 		mla	r1, r1, r0, r4
+ 588 0032 91F87CC0 		ldrb	ip, [r1, #124]	@ zero_extendqisi2
+ 589              		.loc 1 201 53 view .LVU142
+ 590 0036 0CF10102 		add	r2, ip, #1
+ 591 003a D2B2     		uxtb	r2, r2
+ 592 003c 81F87C20 		strb	r2, [r1, #124]
+ 593              		.loc 1 201 57 view .LVU143
+ 594 0040 C0EBC003 		rsb	r3, r0, r0, lsl #3
+ 595 0044 00EB8303 		add	r3, r0, r3, lsl #2
+ 596 0048 6344     		add	r3, r3, ip
+ 597 004a 0633     		adds	r3, r3, #6
+ 598 004c 04EB8304 		add	r4, r4, r3, lsl #2
+ 599 0050 C4ED017A 		vstr.32	s15, [r4, #4]
+ 202:App/App.c     **** 
+ 203:App/App.c     ****   if (App.adc_filter[adc].bufIdx == App.adc_filter[adc].order) 
+ 600              		.loc 1 203 3 is_stmt 1 view .LVU144
+ 601              		.loc 1 203 34 is_stmt 0 view .LVU145
+ 602 0054 07EE902A 		vmov	s15, r2	@ int
+ 603              	.LVL33:
+ 604              		.loc 1 203 34 view .LVU146
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s 			page 16
 
 
- 188:App/App.c     ****   value = valueLast + kFilter*(value - valueLast);
- 536              		.loc 1 188 3 is_stmt 1 view .LVU139
- 537              		.loc 1 188 38 is_stmt 0 view .LVU140
- 538 00ac 77EE667A 		vsub.f32	s15, s14, s13
- 539              		.loc 1 188 30 view .LVU141
- 540 00b0 67EE867A 		vmul.f32	s15, s15, s12
- 541              		.loc 1 188 9 view .LVU142
- 542 00b4 77EEA67A 		vadd.f32	s15, s15, s13
- 543              	.LVL34:
- 189:App/App.c     ****   App.adc_filter.value = value;
- 544              		.loc 1 189 3 is_stmt 1 view .LVU143
- 545              		.loc 1 189 24 is_stmt 0 view .LVU144
- 546 00b8 C3ED047A 		vstr.32	s15, [r3, #16]
- 190:App/App.c     ****   App.adc_filter.value_last = value;
- 547              		.loc 1 190 3 is_stmt 1 view .LVU145
- 548              		.loc 1 190 29 is_stmt 0 view .LVU146
- 549 00bc C3ED057A 		vstr.32	s15, [r3, #20]
- 191:App/App.c     ****   ADC_DATA = value;
- 550              		.loc 1 191 3 is_stmt 1 view .LVU147
- 551              		.loc 1 191 12 is_stmt 0 view .LVU148
- 552 00c0 FCEEE77A 		vcvt.u32.f32	s15, s15
- 553              	.LVL35:
- 554              		.loc 1 191 12 view .LVU149
- 555 00c4 074B     		ldr	r3, .L43+20
- 556              		.loc 1 191 12 view .LVU150
- 557 00c6 17EE902A 		vmov	r2, s15	@ int
- 558 00ca 1A80     		strh	r2, [r3]	@ movhi
- 192:App/App.c     **** }
- 559              		.loc 1 192 1 view .LVU151
- 560 00cc 7047     		bx	lr
- 561              	.L44:
- 562 00ce 00BF     		.align	2
- 563              	.L43:
- 564 00d0 FEFFFF4A 		.word	1258291198
- 565 00d4 33335340 		.word	1079194419
- 566 00d8 00007A44 		.word	1148846080
- 567 00dc 00000000 		.word	App
- 568 00e0 00000000 		.word	0
- 569 00e4 00000000 		.word	ADC_DATA
- 570              		.cfi_endproc
- 571              	.LFE334:
- 573              		.section	.text.app_tim7_1ms_callback,"ax",%progbits
- 574              		.align	1
- 575              		.global	app_tim7_1ms_callback
- 576              		.syntax unified
- 577              		.thumb
- 578              		.thumb_func
- 580              	app_tim7_1ms_callback:
- 581              	.LFB332:
-  52:App/App.c     ****   static uint8_t i = 0;
- 582              		.loc 1 52 1 is_stmt 1 view -0
- 583              		.cfi_startproc
- 584              		@ args = 0, pretend = 0, frame = 0
- 585              		@ frame_needed = 0, uses_anonymous_args = 0
- 586 0000 38B5     		push	{r3, r4, r5, lr}
- 587              	.LCFI3:
- 588              		.cfi_def_cfa_offset 16
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s 			page 15
+ 605 0058 F8EEE77A 		vcvt.f32.s32	s15, s15
+ 606              		.loc 1 203 56 view .LVU147
+ 607 005c D1ED206A 		vldr.32	s13, [r1, #128]
+ 608              		.loc 1 203 6 view .LVU148
+ 609 0060 F4EE667A 		vcmp.f32	s15, s13
+ 610 0064 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 611 0068 02D1     		bne	.L54
+ 204:App/App.c     ****   {
+ 205:App/App.c     ****     App.adc_filter[adc].bufIdx = 0;
+ 612              		.loc 1 205 5 is_stmt 1 view .LVU149
+ 613              		.loc 1 205 32 is_stmt 0 view .LVU150
+ 614 006a 0022     		movs	r2, #0
+ 615 006c 81F87C20 		strb	r2, [r1, #124]
+ 616              	.L54:
+ 206:App/App.c     ****   }
+ 207:App/App.c     **** 
+ 208:App/App.c     ****   for(uint8_t idx = 0; idx < App.adc_filter[adc].order; idx++)
+ 617              		.loc 1 208 3 is_stmt 1 view .LVU151
+ 618              	.LBB5:
+ 619              		.loc 1 208 7 view .LVU152
+ 620              	.LVL34:
+ 621              		.loc 1 208 15 is_stmt 0 view .LVU153
+ 622 0070 0022     		movs	r2, #0
+ 623              	.LBE5:
+ 191:App/App.c     ****   if (adc == ADC_ADS1251)
+ 624              		.loc 1 191 9 view .LVU154
+ 625 0072 DFED2F7A 		vldr.32	s15, .L60+16
+ 626              	.LBB6:
+ 627              		.loc 1 208 3 view .LVU155
+ 628 0076 24E0     		b	.L55
+ 629              	.LVL35:
+ 630              	.L52:
+ 631              		.loc 1 208 3 view .LVU156
+ 632              	.LBE6:
+ 196:App/App.c     ****   {
+ 633              		.loc 1 196 8 is_stmt 1 view .LVU157
+ 196:App/App.c     ****   {
+ 634              		.loc 1 196 11 is_stmt 0 view .LVU158
+ 635 0078 0129     		cmp	r1, #1
+ 636 007a 02D0     		beq	.L59
+ 190:App/App.c     ****   float sum = 0.0f;
+ 637              		.loc 1 190 9 view .LVU159
+ 638 007c DFED2C7A 		vldr.32	s15, .L60+16
+ 639 0080 D3E7     		b	.L53
+ 640              	.L59:
+ 198:App/App.c     ****   }
+ 641              		.loc 1 198 5 is_stmt 1 view .LVU160
+ 198:App/App.c     ****   }
+ 642              		.loc 1 198 13 is_stmt 0 view .LVU161
+ 643 0082 DDED017A 		vldr.32	s15, [sp, #4]	@ int
+ 644 0086 F8EE677A 		vcvt.f32.u32	s15, s15
+ 198:App/App.c     ****   }
+ 645              		.loc 1 198 32 view .LVU162
+ 646 008a 9FED2A7A 		vldr.32	s14, .L60+20
+ 647 008e 67EE877A 		vmul.f32	s15, s15, s14
+ 198:App/App.c     ****   }
+ 648              		.loc 1 198 50 view .LVU163
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s 			page 17
 
 
- 589              		.cfi_offset 3, -16
- 590              		.cfi_offset 4, -12
- 591              		.cfi_offset 5, -8
- 592              		.cfi_offset 14, -4
-  53:App/App.c     **** 
- 593              		.loc 1 53 3 view .LVU153
-  55:App/App.c     ****   {
- 594              		.loc 1 55 3 view .LVU154
-  55:App/App.c     ****   {
- 595              		.loc 1 55 8 is_stmt 0 view .LVU155
- 596 0002 1F4B     		ldr	r3, .L51
- 597 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
-  55:App/App.c     ****   {
- 598              		.loc 1 55 5 view .LVU156
- 599 0006 33B1     		cbz	r3, .L49
- 600              	.L46:
-  60:App/App.c     ****   {
- 601              		.loc 1 60 3 is_stmt 1 view .LVU157
-  60:App/App.c     ****   {
- 602              		.loc 1 60 8 is_stmt 0 view .LVU158
- 603 0008 1D4A     		ldr	r2, .L51
- 604 000a 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
- 605 000c 591C     		adds	r1, r3, #1
- 606 000e 1170     		strb	r1, [r2]
-  60:App/App.c     ****   {
- 607              		.loc 1 60 6 view .LVU159
- 608 0010 182B     		cmp	r3, #24
- 609 0012 04D8     		bhi	.L50
- 610              	.L45:
-  71:App/App.c     **** 
- 611              		.loc 1 71 1 view .LVU160
- 612 0014 38BD     		pop	{r3, r4, r5, pc}
- 613              	.L49:
-  57:App/App.c     ****   }
- 614              		.loc 1 57 5 is_stmt 1 view .LVU161
- 615 0016 1B48     		ldr	r0, .L51+4
- 616 0018 FFF7FEFF 		bl	HAL_ADCEx_InjectedStart
- 617              	.LVL36:
- 618 001c F4E7     		b	.L46
- 619              	.L50:
-  62:App/App.c     ****     App.Mdb_data_AO.ADC_T_data   = (uint16_t)HAL_ADCEx_InjectedGetValue(&hadc2, ADC_INJECTED_RANK_1
- 620              		.loc 1 62 5 view .LVU162
-  62:App/App.c     ****     App.Mdb_data_AO.ADC_T_data   = (uint16_t)HAL_ADCEx_InjectedGetValue(&hadc2, ADC_INJECTED_RANK_1
- 621              		.loc 1 62 54 is_stmt 0 view .LVU163
- 622 001e 194C     		ldr	r4, .L51+4
- 623 0020 40F20F11 		movw	r1, #271
- 624 0024 2046     		mov	r0, r4
- 625 0026 FFF7FEFF 		bl	HAL_ADCEx_InjectedGetValue
- 626              	.LVL37:
- 627 002a 07EE900A 		vmov	s15, r0	@ int
-  62:App/App.c     ****     App.Mdb_data_AO.ADC_T_data   = (uint16_t)HAL_ADCEx_InjectedGetValue(&hadc2, ADC_INJECTED_RANK_1
- 628              		.loc 1 62 47 view .LVU164
- 629 002e F8EE677A 		vcvt.f32.u32	s15, s15
-  62:App/App.c     ****     App.Mdb_data_AO.ADC_T_data   = (uint16_t)HAL_ADCEx_InjectedGetValue(&hadc2, ADC_INJECTED_RANK_1
- 630              		.loc 1 62 110 view .LVU165
- 631 0032 9FED157A 		vldr.32	s14, .L51+8
- 632 0036 67EE877A 		vmul.f32	s15, s15, s14
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s 			page 16
+ 649 0092 9FED247A 		vldr.32	s14, .L60+4
+ 650 0096 67EE877A 		vmul.f32	s15, s15, s14
+ 198:App/App.c     ****   }
+ 651              		.loc 1 198 10 view .LVU164
+ 652 009a 9FED237A 		vldr.32	s14, .L60+8
+ 653 009e 67EE877A 		vmul.f32	s15, s15, s14
+ 654              	.LVL36:
+ 198:App/App.c     ****   }
+ 655              		.loc 1 198 10 view .LVU165
+ 656 00a2 C2E7     		b	.L53
+ 657              	.LVL37:
+ 658              	.L56:
+ 659              	.LBB7:
+ 209:App/App.c     ****   {
+ 210:App/App.c     ****     sum += App.adc_filter[adc].buf[idx];
+ 660              		.loc 1 210 5 is_stmt 1 discriminator 3 view .LVU166
+ 661              		.loc 1 210 35 is_stmt 0 discriminator 3 view .LVU167
+ 662 00a4 C0EBC003 		rsb	r3, r0, r0, lsl #3
+ 663 00a8 00EB8303 		add	r3, r0, r3, lsl #2
+ 664 00ac 1344     		add	r3, r3, r2
+ 665 00ae 0633     		adds	r3, r3, #6
+ 666 00b0 1E49     		ldr	r1, .L60+12
+ 667 00b2 01EB8303 		add	r3, r1, r3, lsl #2
+ 668 00b6 93ED017A 		vldr.32	s14, [r3, #4]
+ 669              		.loc 1 210 9 discriminator 3 view .LVU168
+ 670 00ba 77EE877A 		vadd.f32	s15, s15, s14
+ 671              	.LVL38:
+ 208:App/App.c     ****   {
+ 672              		.loc 1 208 60 is_stmt 1 discriminator 3 view .LVU169
+ 673 00be 0132     		adds	r2, r2, #1
+ 674              	.LVL39:
+ 208:App/App.c     ****   {
+ 675              		.loc 1 208 60 is_stmt 0 discriminator 3 view .LVU170
+ 676 00c0 D2B2     		uxtb	r2, r2
+ 677              	.LVL40:
+ 678              	.L55:
+ 208:App/App.c     ****   {
+ 679              		.loc 1 208 28 is_stmt 1 discriminator 1 view .LVU171
+ 680 00c2 07EE102A 		vmov	s14, r2	@ int
+ 681 00c6 B8EEC77A 		vcvt.f32.s32	s14, s14
+ 682 00ca F4EEC76A 		vcmpe.f32	s13, s14
+ 683 00ce F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 684 00d2 E7DC     		bgt	.L56
+ 685              	.LBE7:
+ 211:App/App.c     ****   }
+ 212:App/App.c     **** 
+ 213:App/App.c     ****   App.adc_filter[adc].valueRaw = sum / App.adc_filter[adc].order;
+ 686              		.loc 1 213 3 view .LVU172
+ 687              		.loc 1 213 38 is_stmt 0 view .LVU173
+ 688 00d4 87EEA67A 		vdiv.f32	s14, s15, s13
+ 689              		.loc 1 213 32 view .LVU174
+ 690 00d8 144B     		ldr	r3, .L60+12
+ 691 00da 7422     		movs	r2, #116
+ 692              	.LVL41:
+ 693              		.loc 1 213 32 view .LVU175
+ 694 00dc 02FB0033 		mla	r3, r2, r0, r3
+ 695 00e0 83ED067A 		vstr.32	s14, [r3, #24]
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s 			page 18
 
 
-  62:App/App.c     ****     App.Mdb_data_AO.ADC_T_data   = (uint16_t)HAL_ADCEx_InjectedGetValue(&hadc2, ADC_INJECTED_RANK_1
- 633              		.loc 1 62 117 view .LVU166
- 634 003a 9FED147A 		vldr.32	s14, .L51+12
- 635 003e 67EE877A 		vmul.f32	s15, s15, s14
-  62:App/App.c     ****     App.Mdb_data_AO.ADC_T_data   = (uint16_t)HAL_ADCEx_InjectedGetValue(&hadc2, ADC_INJECTED_RANK_1
- 636              		.loc 1 62 124 view .LVU167
- 637 0042 9FED137A 		vldr.32	s14, .L51+16
- 638 0046 67EE877A 		vmul.f32	s15, s15, s14
-  62:App/App.c     ****     App.Mdb_data_AO.ADC_T_data   = (uint16_t)HAL_ADCEx_InjectedGetValue(&hadc2, ADC_INJECTED_RANK_1
- 639              		.loc 1 62 36 view .LVU168
- 640 004a FCEEE77A 		vcvt.u32.f32	s15, s15
-  62:App/App.c     ****     App.Mdb_data_AO.ADC_T_data   = (uint16_t)HAL_ADCEx_InjectedGetValue(&hadc2, ADC_INJECTED_RANK_1
- 641              		.loc 1 62 34 view .LVU169
- 642 004e 114D     		ldr	r5, .L51+20
- 643 0050 17EE903A 		vmov	r3, s15	@ int
- 644 0054 AB81     		strh	r3, [r5, #12]	@ movhi
-  63:App/App.c     ****     HAL_ADCEx_InjectedStop(&hadc2);
- 645              		.loc 1 63 5 is_stmt 1 view .LVU170
-  63:App/App.c     ****     HAL_ADCEx_InjectedStop(&hadc2);
- 646              		.loc 1 63 46 is_stmt 0 view .LVU171
- 647 0056 0921     		movs	r1, #9
- 648 0058 2046     		mov	r0, r4
- 649 005a FFF7FEFF 		bl	HAL_ADCEx_InjectedGetValue
- 650              	.LVL38:
-  63:App/App.c     ****     HAL_ADCEx_InjectedStop(&hadc2);
- 651              		.loc 1 63 34 view .LVU172
- 652 005e E881     		strh	r0, [r5, #14]	@ movhi
-  64:App/App.c     ****     adc_data_filter(get_data_spi());
- 653              		.loc 1 64 5 is_stmt 1 view .LVU173
- 654 0060 2046     		mov	r0, r4
- 655 0062 FFF7FEFF 		bl	HAL_ADCEx_InjectedStop
- 656              	.LVL39:
-  65:App/App.c     ****     app_update_reg();
- 657              		.loc 1 65 5 view .LVU174
- 658 0066 FFF7FEFF 		bl	get_data_spi
- 659              	.LVL40:
- 660 006a FFF7FEFF 		bl	adc_data_filter
- 661              	.LVL41:
-  66:App/App.c     ****     protocolMbRtuSlaveCtrl_update_tables();
- 662              		.loc 1 66 5 view .LVU175
- 663 006e FFF7FEFF 		bl	app_update_reg
- 664              	.LVL42:
-  67:App/App.c     ****     i = 0;
- 665              		.loc 1 67 5 view .LVU176
- 666 0072 FFF7FEFF 		bl	protocolMbRtuSlaveCtrl_update_tables
- 667              	.LVL43:
-  68:App/App.c     ****   }
- 668              		.loc 1 68 5 view .LVU177
-  68:App/App.c     ****   }
- 669              		.loc 1 68 7 is_stmt 0 view .LVU178
- 670 0076 024B     		ldr	r3, .L51
- 671 0078 0022     		movs	r2, #0
- 672 007a 1A70     		strb	r2, [r3]
-  70:App/App.c     **** }
- 673              		.loc 1 70 3 is_stmt 1 view .LVU179
- 674 007c CAE7     		b	.L45
- 675              	.L52:
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s 			page 17
+ 214:App/App.c     ****   
+ 215:App/App.c     ****   //--------------------//
+ 216:App/App.c     ****   value = App.adc_filter[adc].valueRaw;
+ 696              		.loc 1 216 3 is_stmt 1 view .LVU176
+ 697              	.LVL42:
+ 217:App/App.c     ****   valueLast = App.adc_filter[adc].value_last;
+ 698              		.loc 1 217 3 view .LVU177
+ 699              		.loc 1 217 13 is_stmt 0 view .LVU178
+ 700 00e4 D3ED056A 		vldr.32	s13, [r3, #20]
+ 701              	.LVL43:
+ 218:App/App.c     ****   kFilter = 2.0f / ((float)App.adc_filter[adc].filter_N + 1.0f);
+ 702              		.loc 1 218 3 is_stmt 1 view .LVU179
+ 703              		.loc 1 218 47 is_stmt 0 view .LVU180
+ 704 00e8 93F87D20 		ldrb	r2, [r3, #125]	@ zero_extendqisi2
+ 705 00ec 07EE902A 		vmov	s15, r2	@ int
+ 706              	.LVL44:
+ 707              		.loc 1 218 21 view .LVU181
+ 708 00f0 F8EE677A 		vcvt.f32.u32	s15, s15
+ 709              		.loc 1 218 57 view .LVU182
+ 710 00f4 B7EE006A 		vmov.f32	s12, #1.0e+0
+ 711 00f8 77EE867A 		vadd.f32	s15, s15, s12
+ 712              		.loc 1 218 11 view .LVU183
+ 713 00fc F0EE005A 		vmov.f32	s11, #2.0e+0
+ 714 0100 85EEA76A 		vdiv.f32	s12, s11, s15
+ 715              	.LVL45:
+ 219:App/App.c     ****   value = valueLast + kFilter*(value - valueLast);
+ 716              		.loc 1 219 3 is_stmt 1 view .LVU184
+ 717              		.loc 1 219 38 is_stmt 0 view .LVU185
+ 718 0104 77EE667A 		vsub.f32	s15, s14, s13
+ 719              		.loc 1 219 30 view .LVU186
+ 720 0108 67EE867A 		vmul.f32	s15, s15, s12
+ 721              		.loc 1 219 9 view .LVU187
+ 722 010c 77EEA67A 		vadd.f32	s15, s15, s13
+ 723              	.LVL46:
+ 220:App/App.c     ****   App.adc_filter[adc].value = value;
+ 724              		.loc 1 220 3 is_stmt 1 view .LVU188
+ 725              		.loc 1 220 29 is_stmt 0 view .LVU189
+ 726 0110 C3ED047A 		vstr.32	s15, [r3, #16]
+ 221:App/App.c     ****   App.adc_filter[adc].value_last = value;
+ 727              		.loc 1 221 3 is_stmt 1 view .LVU190
+ 728              		.loc 1 221 34 is_stmt 0 view .LVU191
+ 729 0114 C3ED057A 		vstr.32	s15, [r3, #20]
+ 222:App/App.c     **** }
+ 730              		.loc 1 222 1 view .LVU192
+ 731 0118 03B0     		add	sp, sp, #12
+ 732              	.LCFI6:
+ 733              		.cfi_def_cfa_offset 4
+ 734              		@ sp needed
+ 735 011a 5DF8044B 		ldr	r4, [sp], #4
+ 736              	.LCFI7:
+ 737              		.cfi_restore 4
+ 738              		.cfi_def_cfa_offset 0
+ 739              	.LVL47:
+ 740              		.loc 1 222 1 view .LVU193
+ 741 011e 7047     		bx	lr
+ 742              	.L61:
+ 743              		.align	2
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s 			page 19
 
 
- 676 007e 00BF     		.align	2
- 677              	.L51:
- 678 0080 00000000 		.word	i.0
- 679 0084 00000000 		.word	hadc2
- 680 0088 33335340 		.word	1079194419
- 681 008c 00008039 		.word	964689920
- 682 0090 00007A44 		.word	1148846080
- 683 0094 00000000 		.word	App
- 684              		.cfi_endproc
- 685              	.LFE332:
- 687              		.section	.text.control_led_rele,"ax",%progbits
- 688              		.align	1
- 689              		.global	control_led_rele
- 690              		.syntax unified
- 691              		.thumb
- 692              		.thumb_func
- 694              	control_led_rele:
- 695              	.LVL44:
- 696              	.LFB335:
- 193:App/App.c     **** 
- 194:App/App.c     **** void control_led_rele(uint16_t control_led_rele)
- 195:App/App.c     **** {
- 697              		.loc 1 195 1 view -0
- 698              		.cfi_startproc
- 699              		@ args = 0, pretend = 0, frame = 0
- 700              		@ frame_needed = 0, uses_anonymous_args = 0
- 701              		.loc 1 195 1 is_stmt 0 view .LVU181
- 702 0000 08B5     		push	{r3, lr}
- 703              	.LCFI4:
- 704              		.cfi_def_cfa_offset 8
- 705              		.cfi_offset 3, -8
- 706              		.cfi_offset 14, -4
- 196:App/App.c     ****   App.Mdb_data_AO.control_led_rele = control_led_rele;
- 707              		.loc 1 196 3 is_stmt 1 view .LVU182
- 708              		.loc 1 196 36 is_stmt 0 view .LVU183
- 709 0002 484B     		ldr	r3, .L71
- 710 0004 5880     		strh	r0, [r3, #2]	@ movhi
- 197:App/App.c     ****     // LED1
- 198:App/App.c     ****     if(APP_GET_BIT(App.Mdb_data_AO.control_led_rele, LED_1))
- 711              		.loc 1 198 5 is_stmt 1 view .LVU184
- 712              		.loc 1 198 7 is_stmt 0 view .LVU185
- 713 0006 10F0010F 		tst	r0, #1
- 714 000a 53D0     		beq	.L54
- 199:App/App.c     ****     {
- 200:App/App.c     ****       APP_LED_ON(APP_LED_1);
- 715              		.loc 1 200 7 is_stmt 1 view .LVU186
- 716 000c 0122     		movs	r2, #1
- 717 000e 0221     		movs	r1, #2
- 718 0010 4548     		ldr	r0, .L71+4
- 719              	.LVL45:
- 720              		.loc 1 200 7 is_stmt 0 view .LVU187
- 721 0012 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 722              	.LVL46:
- 723              	.L55:
- 201:App/App.c     ****     }
- 202:App/App.c     ****     else
- 203:App/App.c     ****     {
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s 			page 18
+ 744              	.L60:
+ 745 0120 FEFFFF4A 		.word	1258291198
+ 746 0124 33335340 		.word	1079194419
+ 747 0128 00007A44 		.word	1148846080
+ 748 012c 00000000 		.word	App
+ 749 0130 00000000 		.word	0
+ 750 0134 00008039 		.word	964689920
+ 751              		.cfi_endproc
+ 752              	.LFE335:
+ 754              		.section	.text.bsp_ADC_data_ready,"ax",%progbits
+ 755              		.align	1
+ 756              		.global	bsp_ADC_data_ready
+ 757              		.syntax unified
+ 758              		.thumb
+ 759              		.thumb_func
+ 761              	bsp_ADC_data_ready:
+ 762              	.LFB334:
+ 173:App/App.c     ****   APP_LED_TOGGLE(APP_LED_3);
+ 763              		.loc 1 173 1 is_stmt 1 view -0
+ 764              		.cfi_startproc
+ 765              		@ args = 0, pretend = 0, frame = 0
+ 766              		@ frame_needed = 0, uses_anonymous_args = 0
+ 767 0000 08B5     		push	{r3, lr}
+ 768              	.LCFI8:
+ 769              		.cfi_def_cfa_offset 8
+ 770              		.cfi_offset 3, -8
+ 771              		.cfi_offset 14, -4
+ 174:App/App.c     ****   app_adc_data_filter((HAL_ADCEx_InjectedGetValue(&hadc2, ADC_INJECTED_RANK_2)/16), ADC_CPU);
+ 772              		.loc 1 174 3 view .LVU195
+ 773 0002 4FF48061 		mov	r1, #1024
+ 774 0006 4FF09040 		mov	r0, #1207959552
+ 775 000a FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 776              	.LVL48:
+ 175:App/App.c     ****   app_adc_data_filter(bsp_get_data_spi(), ADC_ADS1251);
+ 777              		.loc 1 175 3 view .LVU196
+ 175:App/App.c     ****   app_adc_data_filter(bsp_get_data_spi(), ADC_ADS1251);
+ 778              		.loc 1 175 24 is_stmt 0 view .LVU197
+ 779 000e 40F20F11 		movw	r1, #271
+ 780 0012 0648     		ldr	r0, .L64
+ 781 0014 FFF7FEFF 		bl	HAL_ADCEx_InjectedGetValue
+ 782              	.LVL49:
+ 175:App/App.c     ****   app_adc_data_filter(bsp_get_data_spi(), ADC_ADS1251);
+ 783              		.loc 1 175 3 view .LVU198
+ 784 0018 0121     		movs	r1, #1
+ 785 001a 0009     		lsrs	r0, r0, #4
+ 786 001c FFF7FEFF 		bl	app_adc_data_filter
+ 787              	.LVL50:
+ 176:App/App.c     **** }
+ 788              		.loc 1 176 3 is_stmt 1 view .LVU199
+ 789 0020 FFF7FEFF 		bl	bsp_get_data_spi
+ 790              	.LVL51:
+ 791 0024 0021     		movs	r1, #0
+ 792 0026 FFF7FEFF 		bl	app_adc_data_filter
+ 793              	.LVL52:
+ 177:App/App.c     **** 
+ 794              		.loc 1 177 1 is_stmt 0 view .LVU200
+ 795 002a 08BD     		pop	{r3, pc}
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s 			page 20
 
 
- 204:App/App.c     ****       APP_LED_OFF(APP_LED_1);
- 205:App/App.c     ****     }
- 206:App/App.c     **** 
- 207:App/App.c     ****     // LED2
- 208:App/App.c     ****     if(APP_GET_BIT(App.Mdb_data_AO.control_led_rele, LED_2))
- 724              		.loc 1 208 5 is_stmt 1 view .LVU188
- 725              		.loc 1 208 8 is_stmt 0 view .LVU189
- 726 0016 434B     		ldr	r3, .L71
- 727 0018 5B88     		ldrh	r3, [r3, #2]
- 728              		.loc 1 208 7 view .LVU190
- 729 001a 13F0020F 		tst	r3, #2
- 730 001e 4FD0     		beq	.L56
- 209:App/App.c     ****     {
- 210:App/App.c     ****       APP_LED_ON(APP_LED_2);
- 731              		.loc 1 210 7 is_stmt 1 view .LVU191
- 732 0020 0122     		movs	r2, #1
- 733 0022 0421     		movs	r1, #4
- 734 0024 4048     		ldr	r0, .L71+4
- 735 0026 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 736              	.LVL47:
- 737              	.L57:
- 211:App/App.c     ****     }
- 212:App/App.c     ****     else
- 213:App/App.c     ****     {
- 214:App/App.c     ****       APP_LED_OFF(APP_LED_2);
- 215:App/App.c     ****     }
- 216:App/App.c     **** 
- 217:App/App.c     ****     // LED3
- 218:App/App.c     ****     if(APP_GET_BIT(App.Mdb_data_AO.control_led_rele, LED_3))
- 738              		.loc 1 218 5 view .LVU192
- 739              		.loc 1 218 8 is_stmt 0 view .LVU193
- 740 002a 3E4B     		ldr	r3, .L71
- 741 002c 5B88     		ldrh	r3, [r3, #2]
- 742              		.loc 1 218 7 view .LVU194
- 743 002e 13F0040F 		tst	r3, #4
- 744 0032 4BD0     		beq	.L58
- 219:App/App.c     ****     {
- 220:App/App.c     ****       APP_LED_ON(APP_LED_3);
- 745              		.loc 1 220 7 is_stmt 1 view .LVU195
- 746 0034 0122     		movs	r2, #1
- 747 0036 4FF48061 		mov	r1, #1024
- 748 003a 4FF09040 		mov	r0, #1207959552
- 749 003e FFF7FEFF 		bl	HAL_GPIO_WritePin
- 750              	.LVL48:
- 751              	.L59:
- 221:App/App.c     ****     }
- 222:App/App.c     ****     else
- 223:App/App.c     ****     {
- 224:App/App.c     ****       APP_LED_OFF(APP_LED_3);
- 225:App/App.c     ****     }
- 226:App/App.c     **** 
- 227:App/App.c     ****     // LED4
- 228:App/App.c     ****     if(APP_GET_BIT(App.Mdb_data_AO.control_led_rele, LED_4))
- 752              		.loc 1 228 5 view .LVU196
- 753              		.loc 1 228 8 is_stmt 0 view .LVU197
- 754 0042 384B     		ldr	r3, .L71
- 755 0044 5B88     		ldrh	r3, [r3, #2]
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s 			page 19
-
-
- 756              		.loc 1 228 7 view .LVU198
- 757 0046 13F0080F 		tst	r3, #8
- 758 004a 47D0     		beq	.L60
- 229:App/App.c     ****     {
- 230:App/App.c     ****       APP_LED_ON(APP_LED_4);
- 759              		.loc 1 230 7 is_stmt 1 view .LVU199
- 760 004c 0122     		movs	r2, #1
- 761 004e 4FF40061 		mov	r1, #2048
- 762 0052 4FF09040 		mov	r0, #1207959552
- 763 0056 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 764              	.LVL49:
- 765              	.L61:
- 231:App/App.c     ****     }
- 232:App/App.c     ****     else
- 233:App/App.c     ****     {
- 234:App/App.c     ****       APP_LED_OFF(APP_LED_4);
- 235:App/App.c     ****     }
- 236:App/App.c     **** 
- 237:App/App.c     ****     // REL_1
- 238:App/App.c     ****     if(APP_GET_BIT(App.Mdb_data_AO.control_led_rele, REL_1))
- 766              		.loc 1 238 5 view .LVU200
- 767              		.loc 1 238 8 is_stmt 0 view .LVU201
- 768 005a 324B     		ldr	r3, .L71
- 769 005c 5B88     		ldrh	r3, [r3, #2]
- 770              		.loc 1 238 7 view .LVU202
- 771 005e 13F0100F 		tst	r3, #16
- 772 0062 43D0     		beq	.L62
- 239:App/App.c     ****     {
- 240:App/App.c     ****       APP_REL_ON(APP_REL_1);
- 773              		.loc 1 240 7 is_stmt 1 view .LVU203
- 774 0064 0122     		movs	r2, #1
- 775 0066 0821     		movs	r1, #8
- 776 0068 4FF09040 		mov	r0, #1207959552
- 777 006c FFF7FEFF 		bl	HAL_GPIO_WritePin
- 778              	.LVL50:
- 779              	.L63:
- 241:App/App.c     ****     }
- 242:App/App.c     ****     else
- 243:App/App.c     ****     {
- 244:App/App.c     ****       APP_REL_OFF(APP_REL_1);
- 245:App/App.c     ****     }
- 246:App/App.c     **** 
- 247:App/App.c     ****     // REL_2
- 248:App/App.c     ****     if(APP_GET_BIT(App.Mdb_data_AO.control_led_rele, REL_2))
- 780              		.loc 1 248 5 view .LVU204
- 781              		.loc 1 248 8 is_stmt 0 view .LVU205
- 782 0070 2C4B     		ldr	r3, .L71
- 783 0072 5B88     		ldrh	r3, [r3, #2]
- 784              		.loc 1 248 7 view .LVU206
- 785 0074 13F0200F 		tst	r3, #32
- 786 0078 3FD0     		beq	.L64
- 249:App/App.c     ****     {
- 250:App/App.c     ****       APP_REL_ON(APP_REL_2);
- 787              		.loc 1 250 7 is_stmt 1 view .LVU207
- 788 007a 0122     		movs	r2, #1
- 789 007c 1021     		movs	r1, #16
- 790 007e 4FF09040 		mov	r0, #1207959552
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s 			page 20
-
-
- 791 0082 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 792              	.LVL51:
- 793              	.L65:
- 251:App/App.c     ****     }
- 252:App/App.c     ****     else
- 253:App/App.c     ****     {
- 254:App/App.c     ****       APP_REL_OFF(APP_REL_2);
- 255:App/App.c     ****     }
- 256:App/App.c     **** 
- 257:App/App.c     ****     // REL_3
- 258:App/App.c     ****     if(APP_GET_BIT(App.Mdb_data_AO.control_led_rele, REL_3))
- 794              		.loc 1 258 5 view .LVU208
- 795              		.loc 1 258 8 is_stmt 0 view .LVU209
- 796 0086 274B     		ldr	r3, .L71
- 797 0088 5B88     		ldrh	r3, [r3, #2]
- 798              		.loc 1 258 7 view .LVU210
- 799 008a 13F0400F 		tst	r3, #64
- 800 008e 3BD0     		beq	.L66
- 259:App/App.c     ****     {
- 260:App/App.c     ****       APP_REL_ON(APP_REL_3);
- 801              		.loc 1 260 7 is_stmt 1 view .LVU211
- 802 0090 0122     		movs	r2, #1
- 803 0092 2021     		movs	r1, #32
- 804 0094 4FF09040 		mov	r0, #1207959552
- 805 0098 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 806              	.LVL52:
- 807              	.L67:
- 261:App/App.c     ****     }
- 262:App/App.c     ****     else
- 263:App/App.c     ****     {
- 264:App/App.c     ****       APP_REL_OFF(APP_REL_3);
- 265:App/App.c     ****     }
- 266:App/App.c     **** 
- 267:App/App.c     ****     // REL_4
- 268:App/App.c     ****     if(APP_GET_BIT(App.Mdb_data_AO.control_led_rele, REL_3))
- 808              		.loc 1 268 5 view .LVU212
- 809              		.loc 1 268 8 is_stmt 0 view .LVU213
- 810 009c 214B     		ldr	r3, .L71
- 811 009e 5B88     		ldrh	r3, [r3, #2]
- 812              		.loc 1 268 7 view .LVU214
- 813 00a0 13F0400F 		tst	r3, #64
- 814 00a4 37D0     		beq	.L68
- 269:App/App.c     ****     {
- 270:App/App.c     ****       APP_REL_ON(APP_REL_4);
- 815              		.loc 1 270 7 is_stmt 1 view .LVU215
- 816 00a6 0122     		movs	r2, #1
- 817 00a8 4021     		movs	r1, #64
- 818 00aa 4FF09040 		mov	r0, #1207959552
- 819 00ae FFF7FEFF 		bl	HAL_GPIO_WritePin
- 820              	.LVL53:
- 821              	.L53:
- 271:App/App.c     ****     }
- 272:App/App.c     ****     else
- 273:App/App.c     ****     {
- 274:App/App.c     ****       APP_REL_OFF(APP_REL_4);
- 275:App/App.c     ****     }
- 276:App/App.c     **** }
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s 			page 21
-
-
- 822              		.loc 1 276 1 is_stmt 0 view .LVU216
- 823 00b2 08BD     		pop	{r3, pc}
- 824              	.LVL54:
- 825              	.L54:
- 204:App/App.c     ****     }
- 826              		.loc 1 204 7 is_stmt 1 view .LVU217
- 827 00b4 0022     		movs	r2, #0
- 828 00b6 0221     		movs	r1, #2
- 829 00b8 1B48     		ldr	r0, .L71+4
- 830              	.LVL55:
- 204:App/App.c     ****     }
- 831              		.loc 1 204 7 is_stmt 0 view .LVU218
- 832 00ba FFF7FEFF 		bl	HAL_GPIO_WritePin
- 833              	.LVL56:
- 204:App/App.c     ****     }
- 834              		.loc 1 204 7 view .LVU219
- 835 00be AAE7     		b	.L55
- 836              	.L56:
- 214:App/App.c     ****     }
- 837              		.loc 1 214 7 is_stmt 1 view .LVU220
- 838 00c0 0022     		movs	r2, #0
- 839 00c2 0421     		movs	r1, #4
- 840 00c4 1848     		ldr	r0, .L71+4
- 841 00c6 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 842              	.LVL57:
- 843 00ca AEE7     		b	.L57
- 844              	.L58:
- 224:App/App.c     ****     }
- 845              		.loc 1 224 7 view .LVU221
- 846 00cc 0022     		movs	r2, #0
- 847 00ce 4FF48061 		mov	r1, #1024
- 848 00d2 4FF09040 		mov	r0, #1207959552
- 849 00d6 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 850              	.LVL58:
- 851 00da B2E7     		b	.L59
- 852              	.L60:
+ 796              	.L65:
+ 797              		.align	2
+ 798              	.L64:
+ 799 002c 00000000 		.word	hadc2
+ 800              		.cfi_endproc
+ 801              	.LFE334:
+ 803              		.section	.text.app_control_led_rele,"ax",%progbits
+ 804              		.align	1
+ 805              		.global	app_control_led_rele
+ 806              		.syntax unified
+ 807              		.thumb
+ 808              		.thumb_func
+ 810              	app_control_led_rele:
+ 811              	.LVL53:
+ 812              	.LFB336:
+ 223:App/App.c     **** 
+ 224:App/App.c     **** void app_control_led_rele(uint16_t control_led_rele)
+ 225:App/App.c     **** {
+ 813              		.loc 1 225 1 is_stmt 1 view -0
+ 814              		.cfi_startproc
+ 815              		@ args = 0, pretend = 0, frame = 0
+ 816              		@ frame_needed = 0, uses_anonymous_args = 0
+ 817              		.loc 1 225 1 is_stmt 0 view .LVU202
+ 818 0000 08B5     		push	{r3, lr}
+ 819              	.LCFI9:
+ 820              		.cfi_def_cfa_offset 8
+ 821              		.cfi_offset 3, -8
+ 822              		.cfi_offset 14, -4
+ 226:App/App.c     ****     // LED1
+ 227:App/App.c     ****     if(APP_GET_BIT(App.Mdb_data_AO.control_led_rele, LED_1))
+ 823              		.loc 1 227 5 is_stmt 1 view .LVU203
+ 824              		.loc 1 227 8 is_stmt 0 view .LVU204
+ 825 0002 484B     		ldr	r3, .L84
+ 826 0004 5B88     		ldrh	r3, [r3, #2]
+ 827              		.loc 1 227 7 view .LVU205
+ 828 0006 13F0010F 		tst	r3, #1
+ 829 000a 53D0     		beq	.L67
+ 228:App/App.c     ****     {
+ 229:App/App.c     ****       APP_LED_ON(APP_LED_1);
+ 830              		.loc 1 229 7 is_stmt 1 view .LVU206
+ 831 000c 0122     		movs	r2, #1
+ 832 000e 0221     		movs	r1, #2
+ 833 0010 4548     		ldr	r0, .L84+4
+ 834              	.LVL54:
+ 835              		.loc 1 229 7 is_stmt 0 view .LVU207
+ 836 0012 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 837              	.LVL55:
+ 838              	.L68:
+ 230:App/App.c     ****     }
+ 231:App/App.c     ****     else
+ 232:App/App.c     ****     {
+ 233:App/App.c     ****       APP_LED_OFF(APP_LED_1);
  234:App/App.c     ****     }
- 853              		.loc 1 234 7 view .LVU222
- 854 00dc 0022     		movs	r2, #0
- 855 00de 4FF40061 		mov	r1, #2048
- 856 00e2 4FF09040 		mov	r0, #1207959552
- 857 00e6 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 858              	.LVL59:
- 859 00ea B6E7     		b	.L61
- 860              	.L62:
+ 235:App/App.c     **** 
+ 236:App/App.c     ****     // LED2
+ 237:App/App.c     ****     if(APP_GET_BIT(App.Mdb_data_AO.control_led_rele, LED_2))
+ 839              		.loc 1 237 5 is_stmt 1 view .LVU208
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s 			page 21
+
+
+ 840              		.loc 1 237 8 is_stmt 0 view .LVU209
+ 841 0016 434B     		ldr	r3, .L84
+ 842 0018 5B88     		ldrh	r3, [r3, #2]
+ 843              		.loc 1 237 7 view .LVU210
+ 844 001a 13F0020F 		tst	r3, #2
+ 845 001e 4FD0     		beq	.L69
+ 238:App/App.c     ****     {
+ 239:App/App.c     ****       APP_LED_ON(APP_LED_2);
+ 846              		.loc 1 239 7 is_stmt 1 view .LVU211
+ 847 0020 0122     		movs	r2, #1
+ 848 0022 0421     		movs	r1, #4
+ 849 0024 4048     		ldr	r0, .L84+4
+ 850 0026 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 851              	.LVL56:
+ 852              	.L70:
+ 240:App/App.c     ****     }
+ 241:App/App.c     ****     else
+ 242:App/App.c     ****     {
+ 243:App/App.c     ****       APP_LED_OFF(APP_LED_2);
  244:App/App.c     ****     }
- 861              		.loc 1 244 7 view .LVU223
- 862 00ec 0022     		movs	r2, #0
- 863 00ee 0821     		movs	r1, #8
- 864 00f0 4FF09040 		mov	r0, #1207959552
- 865 00f4 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 866              	.LVL60:
- 867 00f8 BAE7     		b	.L63
- 868              	.L64:
+ 245:App/App.c     **** 
+ 246:App/App.c     ****     // LED3
+ 247:App/App.c     ****     if(APP_GET_BIT(App.Mdb_data_AO.control_led_rele, LED_3))
+ 853              		.loc 1 247 5 view .LVU212
+ 854              		.loc 1 247 8 is_stmt 0 view .LVU213
+ 855 002a 3E4B     		ldr	r3, .L84
+ 856 002c 5B88     		ldrh	r3, [r3, #2]
+ 857              		.loc 1 247 7 view .LVU214
+ 858 002e 13F0040F 		tst	r3, #4
+ 859 0032 4BD0     		beq	.L71
+ 248:App/App.c     ****     {
+ 249:App/App.c     ****       APP_LED_ON(APP_LED_3);
+ 860              		.loc 1 249 7 is_stmt 1 view .LVU215
+ 861 0034 0122     		movs	r2, #1
+ 862 0036 4FF48061 		mov	r1, #1024
+ 863 003a 4FF09040 		mov	r0, #1207959552
+ 864 003e FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 865              	.LVL57:
+ 866              	.L72:
+ 250:App/App.c     ****     }
+ 251:App/App.c     ****     else
+ 252:App/App.c     ****     {
+ 253:App/App.c     ****       APP_LED_OFF(APP_LED_3);
  254:App/App.c     ****     }
- 869              		.loc 1 254 7 view .LVU224
- 870 00fa 0022     		movs	r2, #0
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s 			page 22
+ 255:App/App.c     **** 
+ 256:App/App.c     ****     // LED4
+ 257:App/App.c     ****     if(APP_GET_BIT(App.Mdb_data_AO.control_led_rele, LED_4))
+ 867              		.loc 1 257 5 view .LVU216
+ 868              		.loc 1 257 8 is_stmt 0 view .LVU217
+ 869 0042 384B     		ldr	r3, .L84
+ 870 0044 5B88     		ldrh	r3, [r3, #2]
+ 871              		.loc 1 257 7 view .LVU218
+ 872 0046 13F0080F 		tst	r3, #8
+ 873 004a 47D0     		beq	.L73
+ 258:App/App.c     ****     {
+ 259:App/App.c     ****       APP_LED_ON(APP_LED_4);
+ 874              		.loc 1 259 7 is_stmt 1 view .LVU219
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s 			page 22
 
 
- 871 00fc 1021     		movs	r1, #16
- 872 00fe 4FF09040 		mov	r0, #1207959552
- 873 0102 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 874              	.LVL61:
- 875 0106 BEE7     		b	.L65
- 876              	.L66:
+ 875 004c 0122     		movs	r2, #1
+ 876 004e 4FF40061 		mov	r1, #2048
+ 877 0052 4FF09040 		mov	r0, #1207959552
+ 878 0056 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 879              	.LVL58:
+ 880              	.L74:
+ 260:App/App.c     ****     }
+ 261:App/App.c     ****     else
+ 262:App/App.c     ****     {
+ 263:App/App.c     ****       APP_LED_OFF(APP_LED_4);
  264:App/App.c     ****     }
- 877              		.loc 1 264 7 view .LVU225
- 878 0108 0022     		movs	r2, #0
- 879 010a 2021     		movs	r1, #32
- 880 010c 4FF09040 		mov	r0, #1207959552
- 881 0110 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 882              	.LVL62:
- 883 0114 C2E7     		b	.L67
- 884              	.L68:
+ 265:App/App.c     **** 
+ 266:App/App.c     ****     // REL_1
+ 267:App/App.c     ****     if(APP_GET_BIT(App.Mdb_data_AO.control_led_rele, REL_1))
+ 881              		.loc 1 267 5 view .LVU220
+ 882              		.loc 1 267 8 is_stmt 0 view .LVU221
+ 883 005a 324B     		ldr	r3, .L84
+ 884 005c 5B88     		ldrh	r3, [r3, #2]
+ 885              		.loc 1 267 7 view .LVU222
+ 886 005e 13F0100F 		tst	r3, #16
+ 887 0062 43D0     		beq	.L75
+ 268:App/App.c     ****     {
+ 269:App/App.c     ****       APP_REL_ON(APP_REL_1);
+ 888              		.loc 1 269 7 is_stmt 1 view .LVU223
+ 889 0064 0122     		movs	r2, #1
+ 890 0066 0821     		movs	r1, #8
+ 891 0068 4FF09040 		mov	r0, #1207959552
+ 892 006c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 893              	.LVL59:
+ 894              	.L76:
+ 270:App/App.c     ****     }
+ 271:App/App.c     ****     else
+ 272:App/App.c     ****     {
+ 273:App/App.c     ****       APP_REL_OFF(APP_REL_1);
  274:App/App.c     ****     }
- 885              		.loc 1 274 7 view .LVU226
- 886 0116 0022     		movs	r2, #0
- 887 0118 4021     		movs	r1, #64
- 888 011a 4FF09040 		mov	r0, #1207959552
- 889 011e FFF7FEFF 		bl	HAL_GPIO_WritePin
- 890              	.LVL63:
- 891              		.loc 1 276 1 is_stmt 0 view .LVU227
- 892 0122 C6E7     		b	.L53
- 893              	.L72:
- 894              		.align	2
- 895              	.L71:
- 896 0124 00000000 		.word	App
- 897 0128 00080048 		.word	1207961600
- 898              		.cfi_endproc
- 899              	.LFE335:
- 901              		.section	.bss.i.0,"aw",%nobits
- 904              	i.0:
- 905 0000 00       		.space	1
- 906              		.global	ADC_DATA
- 907              		.section	.bss.ADC_DATA,"aw",%nobits
- 908              		.align	1
- 911              	ADC_DATA:
- 912 0000 0000     		.space	2
- 913              		.global	App
- 914              		.section	.bss.App,"aw",%nobits
- 915              		.align	2
- 918              	App:
- 919 0000 00000000 		.space	132
- 919      00000000 
- 919      00000000 
- 919      00000000 
- 919      00000000 
- 920              		.text
- 921              	.Letext0:
- 922              		.file 2 "c:\\program files\\vscodestmtools\\arm-none-eabi-gcc\\12.2.1-1.2.1\\.content\\arm-none-ea
- 923              		.file 3 "c:\\program files\\vscodestmtools\\arm-none-eabi-gcc\\12.2.1-1.2.1\\.content\\arm-none-ea
- 924              		.file 4 "Drivers/CMSIS/Device/ST/STM32G4xx/Include/stm32g474xx.h"
- 925              		.file 5 "Drivers/CMSIS/Device/ST/STM32G4xx/Include/stm32g4xx.h"
- 926              		.file 6 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_def.h"
- 927              		.file 7 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_gpio.h"
- 928              		.file 8 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_dma.h"
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s 			page 23
+ 275:App/App.c     **** 
+ 276:App/App.c     ****     // REL_2
+ 277:App/App.c     ****     if(APP_GET_BIT(App.Mdb_data_AO.control_led_rele, REL_2))
+ 895              		.loc 1 277 5 view .LVU224
+ 896              		.loc 1 277 8 is_stmt 0 view .LVU225
+ 897 0070 2C4B     		ldr	r3, .L84
+ 898 0072 5B88     		ldrh	r3, [r3, #2]
+ 899              		.loc 1 277 7 view .LVU226
+ 900 0074 13F0200F 		tst	r3, #32
+ 901 0078 3FD0     		beq	.L77
+ 278:App/App.c     ****     {
+ 279:App/App.c     ****       APP_REL_ON(APP_REL_2);
+ 902              		.loc 1 279 7 is_stmt 1 view .LVU227
+ 903 007a 0122     		movs	r2, #1
+ 904 007c 1021     		movs	r1, #16
+ 905 007e 4FF09040 		mov	r0, #1207959552
+ 906 0082 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 907              	.LVL60:
+ 908              	.L78:
+ 280:App/App.c     ****     }
+ 281:App/App.c     ****     else
+ 282:App/App.c     ****     {
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s 			page 23
 
 
- 929              		.file 9 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_adc.h"
- 930              		.file 10 "App/App.h"
- 931              		.file 11 "BSP/BSP.h"
- 932              		.file 12 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_adc_ex.h"
- 933              		.file 13 "App/ProtocolMbRtuSlaveCtrl.h"
- 934              		.file 14 "Core/Inc/tim.h"
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s 			page 24
+ 283:App/App.c     ****       APP_REL_OFF(APP_REL_2);
+ 284:App/App.c     ****     }
+ 285:App/App.c     **** 
+ 286:App/App.c     ****     // REL_3
+ 287:App/App.c     ****     if(APP_GET_BIT(App.Mdb_data_AO.control_led_rele, REL_3))
+ 909              		.loc 1 287 5 view .LVU228
+ 910              		.loc 1 287 8 is_stmt 0 view .LVU229
+ 911 0086 274B     		ldr	r3, .L84
+ 912 0088 5B88     		ldrh	r3, [r3, #2]
+ 913              		.loc 1 287 7 view .LVU230
+ 914 008a 13F0400F 		tst	r3, #64
+ 915 008e 3BD0     		beq	.L79
+ 288:App/App.c     ****     {
+ 289:App/App.c     ****       APP_REL_ON(APP_REL_3);
+ 916              		.loc 1 289 7 is_stmt 1 view .LVU231
+ 917 0090 0122     		movs	r2, #1
+ 918 0092 2021     		movs	r1, #32
+ 919 0094 4FF09040 		mov	r0, #1207959552
+ 920 0098 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 921              	.LVL61:
+ 922              	.L80:
+ 290:App/App.c     ****     }
+ 291:App/App.c     ****     else
+ 292:App/App.c     ****     {
+ 293:App/App.c     ****       APP_REL_OFF(APP_REL_3);
+ 294:App/App.c     ****     }
+ 295:App/App.c     **** 
+ 296:App/App.c     ****     // REL_4
+ 297:App/App.c     ****     if(APP_GET_BIT(App.Mdb_data_AO.control_led_rele, REL_3))
+ 923              		.loc 1 297 5 view .LVU232
+ 924              		.loc 1 297 8 is_stmt 0 view .LVU233
+ 925 009c 214B     		ldr	r3, .L84
+ 926 009e 5B88     		ldrh	r3, [r3, #2]
+ 927              		.loc 1 297 7 view .LVU234
+ 928 00a0 13F0400F 		tst	r3, #64
+ 929 00a4 37D0     		beq	.L81
+ 298:App/App.c     ****     {
+ 299:App/App.c     ****       APP_REL_ON(APP_REL_4);
+ 930              		.loc 1 299 7 is_stmt 1 view .LVU235
+ 931 00a6 0122     		movs	r2, #1
+ 932 00a8 4021     		movs	r1, #64
+ 933 00aa 4FF09040 		mov	r0, #1207959552
+ 934 00ae FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 935              	.LVL62:
+ 936              	.L66:
+ 300:App/App.c     ****     }
+ 301:App/App.c     ****     else
+ 302:App/App.c     ****     {
+ 303:App/App.c     ****       APP_REL_OFF(APP_REL_4);
+ 304:App/App.c     ****     }
+ 305:App/App.c     **** }
+ 937              		.loc 1 305 1 is_stmt 0 view .LVU236
+ 938 00b2 08BD     		pop	{r3, pc}
+ 939              	.LVL63:
+ 940              	.L67:
+ 233:App/App.c     ****     }
+ 941              		.loc 1 233 7 is_stmt 1 view .LVU237
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s 			page 24
+
+
+ 942 00b4 0022     		movs	r2, #0
+ 943 00b6 0221     		movs	r1, #2
+ 944 00b8 1B48     		ldr	r0, .L84+4
+ 945              	.LVL64:
+ 233:App/App.c     ****     }
+ 946              		.loc 1 233 7 is_stmt 0 view .LVU238
+ 947 00ba FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 948              	.LVL65:
+ 949 00be AAE7     		b	.L68
+ 950              	.L69:
+ 243:App/App.c     ****     }
+ 951              		.loc 1 243 7 is_stmt 1 view .LVU239
+ 952 00c0 0022     		movs	r2, #0
+ 953 00c2 0421     		movs	r1, #4
+ 954 00c4 1848     		ldr	r0, .L84+4
+ 955 00c6 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 956              	.LVL66:
+ 957 00ca AEE7     		b	.L70
+ 958              	.L71:
+ 253:App/App.c     ****     }
+ 959              		.loc 1 253 7 view .LVU240
+ 960 00cc 0022     		movs	r2, #0
+ 961 00ce 4FF48061 		mov	r1, #1024
+ 962 00d2 4FF09040 		mov	r0, #1207959552
+ 963 00d6 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 964              	.LVL67:
+ 965 00da B2E7     		b	.L72
+ 966              	.L73:
+ 263:App/App.c     ****     }
+ 967              		.loc 1 263 7 view .LVU241
+ 968 00dc 0022     		movs	r2, #0
+ 969 00de 4FF40061 		mov	r1, #2048
+ 970 00e2 4FF09040 		mov	r0, #1207959552
+ 971 00e6 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 972              	.LVL68:
+ 973 00ea B6E7     		b	.L74
+ 974              	.L75:
+ 273:App/App.c     ****     }
+ 975              		.loc 1 273 7 view .LVU242
+ 976 00ec 0022     		movs	r2, #0
+ 977 00ee 0821     		movs	r1, #8
+ 978 00f0 4FF09040 		mov	r0, #1207959552
+ 979 00f4 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 980              	.LVL69:
+ 981 00f8 BAE7     		b	.L76
+ 982              	.L77:
+ 283:App/App.c     ****     }
+ 983              		.loc 1 283 7 view .LVU243
+ 984 00fa 0022     		movs	r2, #0
+ 985 00fc 1021     		movs	r1, #16
+ 986 00fe 4FF09040 		mov	r0, #1207959552
+ 987 0102 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 988              	.LVL70:
+ 989 0106 BEE7     		b	.L78
+ 990              	.L79:
+ 293:App/App.c     ****     }
+ 991              		.loc 1 293 7 view .LVU244
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s 			page 25
+
+
+ 992 0108 0022     		movs	r2, #0
+ 993 010a 2021     		movs	r1, #32
+ 994 010c 4FF09040 		mov	r0, #1207959552
+ 995 0110 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 996              	.LVL71:
+ 997 0114 C2E7     		b	.L80
+ 998              	.L81:
+ 303:App/App.c     ****     }
+ 999              		.loc 1 303 7 view .LVU245
+ 1000 0116 0022     		movs	r2, #0
+ 1001 0118 4021     		movs	r1, #64
+ 1002 011a 4FF09040 		mov	r0, #1207959552
+ 1003 011e FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1004              	.LVL72:
+ 1005              		.loc 1 305 1 is_stmt 0 view .LVU246
+ 1006 0122 C6E7     		b	.L66
+ 1007              	.L85:
+ 1008              		.align	2
+ 1009              	.L84:
+ 1010 0124 00000000 		.word	App
+ 1011 0128 00080048 		.word	1207961600
+ 1012              		.cfi_endproc
+ 1013              	.LFE336:
+ 1015              		.section	.bss.j.0,"aw",%nobits
+ 1016              		.align	1
+ 1019              	j.0:
+ 1020 0000 0000     		.space	2
+ 1021              		.section	.bss.i.1,"aw",%nobits
+ 1024              	i.1:
+ 1025 0000 00       		.space	1
+ 1026              		.global	App
+ 1027              		.section	.bss.App,"aw",%nobits
+ 1028              		.align	2
+ 1031              	App:
+ 1032 0000 00000000 		.space	248
+ 1032      00000000 
+ 1032      00000000 
+ 1032      00000000 
+ 1032      00000000 
+ 1033              		.text
+ 1034              	.Letext0:
+ 1035              		.file 2 "c:\\program files\\vscodestmtools\\arm-none-eabi-gcc\\12.2.1-1.2.1\\.content\\arm-none-ea
+ 1036              		.file 3 "c:\\program files\\vscodestmtools\\arm-none-eabi-gcc\\12.2.1-1.2.1\\.content\\arm-none-ea
+ 1037              		.file 4 "Drivers/CMSIS/Device/ST/STM32G4xx/Include/stm32g474xx.h"
+ 1038              		.file 5 "Drivers/CMSIS/Device/ST/STM32G4xx/Include/stm32g4xx.h"
+ 1039              		.file 6 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_def.h"
+ 1040              		.file 7 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_gpio.h"
+ 1041              		.file 8 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_dma.h"
+ 1042              		.file 9 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_adc.h"
+ 1043              		.file 10 "App/App.h"
+ 1044              		.file 11 "BSP/BSP.h"
+ 1045              		.file 12 "Core/Inc/adc.h"
+ 1046              		.file 13 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_adc_ex.h"
+ 1047              		.file 14 "App/ProtocolMbRtuSlaveCtrl.h"
+ 1048              		.file 15 "Core/Inc/tim.h"
+ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s 			page 26
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 App.c
-C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s:21     .text.adc_filter_init:0000000000000000 $t
-C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s:27     .text.adc_filter_init:0000000000000000 adc_filter_init
-C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s:94     .text.adc_filter_init:0000000000000038 $d
-C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s:918    .bss.App:0000000000000000 App
-C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s:100    .text.app_init:0000000000000000 $t
-C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s:106    .text.app_init:0000000000000000 app_init
-C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s:140    .text.app_main:0000000000000000 $t
-C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s:146    .text.app_main:0000000000000000 app_main
-C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s:176    .text.app_update_reg:0000000000000000 $t
-C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s:182    .text.app_update_reg:0000000000000000 app_update_reg
-C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s:397    .text.app_update_reg:000000000000013c $d
-C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s:911    .bss.ADC_DATA:0000000000000000 ADC_DATA
-C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s:405    .text.adc_data_filter:0000000000000000 $t
-C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s:411    .text.adc_data_filter:0000000000000000 adc_data_filter
-C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s:564    .text.adc_data_filter:00000000000000d0 $d
-C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s:574    .text.app_tim7_1ms_callback:0000000000000000 $t
-C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s:580    .text.app_tim7_1ms_callback:0000000000000000 app_tim7_1ms_callback
-C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s:678    .text.app_tim7_1ms_callback:0000000000000080 $d
-C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s:904    .bss.i.0:0000000000000000 i.0
-C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s:688    .text.control_led_rele:0000000000000000 $t
-C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s:694    .text.control_led_rele:0000000000000000 control_led_rele
-C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s:896    .text.control_led_rele:0000000000000124 $d
-C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s:905    .bss.i.0:0000000000000000 $d
-C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s:908    .bss.ADC_DATA:0000000000000000 $d
-C:\Users\sr1\AppData\Local\Temp\ccobjP2T.s:915    .bss.App:0000000000000000 $d
+C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s:21     .text.app_adc_filter_init:0000000000000000 $t
+C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s:27     .text.app_adc_filter_init:0000000000000000 app_adc_filter_init
+C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s:126    .text.app_adc_filter_init:0000000000000064 $d
+C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s:1031   .bss.App:0000000000000000 App
+C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s:132    .text.app_init:0000000000000000 $t
+C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s:138    .text.app_init:0000000000000000 app_init
+C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s:184    .text.app_init:0000000000000030 $d
+C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s:189    .text.app_main:0000000000000000 $t
+C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s:195    .text.app_main:0000000000000000 app_main
+C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s:225    .text.app_update_reg:0000000000000000 $t
+C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s:231    .text.app_update_reg:0000000000000000 app_update_reg
+C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s:455    .text.app_update_reg:0000000000000150 $d
+C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s:462    .text.bsp_tim7_1ms_callback:0000000000000000 $t
+C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s:468    .text.bsp_tim7_1ms_callback:0000000000000000 bsp_tim7_1ms_callback
+C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s:525    .text.bsp_tim7_1ms_callback:0000000000000034 $d
+C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s:1024   .bss.i.1:0000000000000000 i.1
+C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s:1019   .bss.j.0:0000000000000000 j.0
+C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s:531    .text.app_adc_data_filter:0000000000000000 $t
+C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s:537    .text.app_adc_data_filter:0000000000000000 app_adc_data_filter
+C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s:745    .text.app_adc_data_filter:0000000000000120 $d
+C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s:755    .text.bsp_ADC_data_ready:0000000000000000 $t
+C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s:761    .text.bsp_ADC_data_ready:0000000000000000 bsp_ADC_data_ready
+C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s:799    .text.bsp_ADC_data_ready:000000000000002c $d
+C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s:804    .text.app_control_led_rele:0000000000000000 $t
+C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s:810    .text.app_control_led_rele:0000000000000000 app_control_led_rele
+C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s:1010   .text.app_control_led_rele:0000000000000124 $d
+C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s:1016   .bss.j.0:0000000000000000 $d
+C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s:1025   .bss.i.1:0000000000000000 $d
+C:\Users\sr1\AppData\Local\Temp\ccrUChBi.s:1028   .bss.App:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 MX_TIM7_Init
 MX_TIM1_Init
-app_tim7_1ms_start
+bsp_tim7_1ms_start
 protocolMbRtuSlaveCtrl_init
+HAL_ADCEx_Calibration_Start
+bsp_tim6_10ms_start
+HAL_ADCEx_InjectedStart_IT
+hadc2
 HAL_GPIO_ReadPin
 SPI_DATA_RX
-HAL_ADCEx_InjectedStart
-HAL_ADCEx_InjectedGetValue
-HAL_ADCEx_InjectedStop
-get_data_spi
 protocolMbRtuSlaveCtrl_update_tables
-hadc2
+HAL_GPIO_TogglePin
+HAL_ADCEx_InjectedGetValue
+bsp_get_data_spi
 HAL_GPIO_WritePin

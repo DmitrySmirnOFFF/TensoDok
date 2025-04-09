@@ -33,7 +33,8 @@ build/ProtocolMbRtuSlaveCtrl.o: App/ProtocolMbRtuSlaveCtrl.c \
  Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_tim_ex.h \
  Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart.h \
  Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_uart_ex.h App/App.h \
- BSP/BSP.h Core/Inc/tim.h Core/Inc/main.h Core/Inc/spi.h
+ BSP/BSP.h Core/Inc/tim.h Core/Inc/main.h Core/Inc/spi.h Core/Inc/usart.h \
+ Core/Inc/adc.h
 App/ProtocolMbRtuSlaveCtrl.h:
 BSP/ModbusSS.h:
 Core/Inc/main.h:
@@ -77,3 +78,5 @@ BSP/BSP.h:
 Core/Inc/tim.h:
 Core/Inc/main.h:
 Core/Inc/spi.h:
+Core/Inc/usart.h:
+Core/Inc/adc.h:

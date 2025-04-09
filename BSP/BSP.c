@@ -1,9 +1,7 @@
 
 #include "BSP.h"
 
-#include "usart.h"
 
-uint8_t SPI_DATA_RX[8];
 
 // ------------------------------ RS485 ------------------------------
 #define BSP_RS485_1 huart1
@@ -86,6 +84,7 @@ void BSP_RS485_1_IRQ_HANDLER_RTOF(void)
 
     if (BSP_RS485_1.NbRxDataToProcess != BSP_RS485_1.hdmarx->Instance->CNDTR)
     {
+      APP_LED_TOGGLE(APP_LED_4);
       bsp_rs485_callback_rxBlockReady(1);
       // bsp_dInOut_toggleDout(bsp_dInOut_led_rs485_1_g);
       // bsp_dInOut_resetDout(bsp_dInOut_led_rs485_1_y);
@@ -115,7 +114,7 @@ void BSP_RS485_1_IRQ_HANDLER_RTOF(void)
 // ------------------------------ RS485 END ------------------------------
 
 // ------------------------------ TIM ------------------------------------
-void app_tim7_1ms_start()
+void bsp_tim7_1ms_start()
 {
   HAL_TIM_Base_Start_IT(&htim7);
 }
@@ -127,16 +126,38 @@ void TIM7_DAC_IRQHandler(void)
     if (__HAL_TIM_GET_IT_SOURCE(&htim7, TIM_IT_UPDATE) != RESET)
     {
       __HAL_TIM_CLEAR_IT(&htim7, TIM_IT_UPDATE);
-      app_tim7_1ms_callback();
+      bsp_tim7_1ms_callback();
     }
   }
   return;
 }
-__weak void app_tim7_1ms_callback();
+__weak void bsp_tim7_1ms_callback();
+
+void bsp_tim6_10ms_start()
+{
+  HAL_TIM_Base_Start(&htim6);
+}
 // ---------------------------- TIM END ----------------------------------
 
+// ------------------------------ ADC ------------------------------------
+
+void ADC1_2_IRQHandler(void)
+{
+  if (__HAL_ADC_GET_FLAG(&hadc2, ADC_FLAG_JEOS) != 0)
+  {
+    __HAL_ADC_CLEAR_FLAG(&hadc2, ADC_FLAG_JEOS);
+    // ADC = (HAL_ADCEx_InjectedGetValue(&hadc2, ADC_INJECTED_RANK_2)/16);
+    bsp_ADC_data_ready();
+  }
+}
+
+__weak void bsp_ADC_data_ready();
+// ---------------------------- ADC END ----------------------------------
+
+
 // ------------------------------ SPI ------------------------------------
-uint32_t get_data_spi()
+uint8_t SPI_DATA_RX[8];
+uint32_t bsp_get_data_spi()
 {
   uint32_t ADC_DATA_RAW = 0;
   HAL_TIM_OC_Start_IT(&htim1, TIM_CHANNEL_1);
@@ -156,10 +177,7 @@ uint32_t get_data_spi()
   {
     ;
   }
-  for (uint8_t i = 0; i < 30; i++)
-  {
-    ;
-  }
+
   HAL_SPI_Receive(&hspi2, &SPI_DATA_RX[0], 3, 1);
   HAL_TIM_OC_Stop_IT(&htim1, TIM_CHANNEL_1);
 
@@ -167,9 +185,5 @@ uint32_t get_data_spi()
   ADC_DATA_RAW |= ((uint32_t)SPI_DATA_RX[1] << 8);
   ADC_DATA_RAW |= ((uint32_t)SPI_DATA_RX[2] << 0);
   return ADC_DATA_RAW;
-
-  // ADC_DATA_FLOAT = (float)(ADC_DATA_RAW);
-  // ADC_DATA = (uint16_t)((ADC_DATA_FLOAT/ADC_MAX_VALUE)*ADC_REF_VOLT*1000.0f);
-  
 }
 // ---------------------------- SPI END ----------------------------------

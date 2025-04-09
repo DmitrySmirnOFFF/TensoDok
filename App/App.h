@@ -4,8 +4,14 @@
 #include "main.h"
 
 //------------------------------- STRUCT -------------------------------//
-
 #define PROGRAM_ADC_MAX_FILTER_ORDER         (24)
+
+typedef enum
+{
+    ADC_ADS1251 = 0,
+    ADC_CPU = 1
+} ADC_enum;
+
 typedef struct 
 {
     uint16_t state_led_rele;
@@ -29,7 +35,7 @@ typedef struct {
 typedef struct 
 {
     Mdb_data_AO_struct Mdb_data_AO;
-    ADC_filter_typedef adc_filter;
+    ADC_filter_typedef adc_filter[2];
 } App_struct;
 //----------------------------- STRUCT END -----------------------------//
 
@@ -37,12 +43,9 @@ typedef struct
 void app_main();
 void app_init();
 void app_update_reg();
-void adc_data_filter(uint32_t ADC_Buf_raw);
-void adc_filter_init();
-
-void control_led_rele(uint16_t control_led_rele);
-
+void app_adc_data_filter(uint32_t ADC_Buf_raw, ADC_enum ADC);
+void app_adc_filter_init();
+void app_control_led_rele(uint16_t control_led_rele);
 //---------------------------- FUNCTION END ----------------------------//
-
 
 #endif

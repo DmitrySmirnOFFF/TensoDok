@@ -4,6 +4,8 @@
 #include "main.h"
 #include "tim.h"
 #include "spi.h"
+#include "usart.h"
+#include "adc.h"
 
 //------------------------------ DEFINE ------------------------------//
 #define APP_LED_1                 DO_LED_1_GPIO_Port, DO_LED_1_Pin
@@ -59,13 +61,24 @@ void bsp_rs485_callback_rxTimeout(uint8_t portNo);
 
 // ----------------------------- TIM ----------------------------- //
 
-void app_tim7_1ms_start();
-void app_tim7_1ms_callback();
+void bsp_tim7_1ms_start();
+void bsp_tim7_1ms_callback();
+
+void bsp_tim6_10ms_start();
+
 // --------------------------- TIM END --------------------------- //
 
 // ----------------------------- SPI ----------------------------- //
-uint32_t get_data_spi();
+uint32_t bsp_get_data_spi();
 extern uint8_t SPI_DATA_RX[8];
 // --------------------------- SPI END --------------------------- //
+
+// ----------------------------- ADC ----------------------------- //
+
+void bsp_ADC_data_ready();
+
+// --------------------------- ADC END --------------------------- //
+
+
 
 #endif

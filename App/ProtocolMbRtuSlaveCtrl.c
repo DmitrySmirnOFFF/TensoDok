@@ -80,14 +80,8 @@ __INLINE void protocolMbRtuSlaveCtrl_update_tables()
 #define PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_FAIL (0xF00F)
 __weak void protocolMbRtuSlaveCtrl_callback_H_WRITE(ModbusSS_table_t *table, uint16_t reg, uint16_t quantity)
 {
-  // uint16_t response = PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_FAIL;
-  // uint16_t param = 0;
-  // float analog_kMul = 0.000001;
-  // float kMul = 0.001f;
-  // float kMulBms = 0.1f;
+
   uint16_t value = 0.0f;
-  // uint8_t idx = 0;
-  // int16_t sign_val = 0;
   asm("NOP");
 
   if (table == &mdb_table_bsp) // Диапазон BSP
@@ -96,7 +90,8 @@ __weak void protocolMbRtuSlaveCtrl_callback_H_WRITE(ModbusSS_table_t *table, uin
     switch (reg)
     {
     case tab_bsp_control_led_rele:
-      control_led_rele(value);
+      App.Mdb_data_AO.control_led_rele = value;
+      app_control_led_rele(value);
       break;
     default:
       break;
