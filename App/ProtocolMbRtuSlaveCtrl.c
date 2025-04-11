@@ -76,8 +76,6 @@ __INLINE void protocolMbRtuSlaveCtrl_update_tables()
 //------------------------ REGULAR FCN END------------------------
 
 //------------------------------- MODBUS CALLBACKS -------------------------------------------//
-#define PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_OK (0xAAAA)
-#define PROTOCOL_MB_RTU_SLAVE_CTRL_CMD_FAIL (0xF00F)
 __weak void protocolMbRtuSlaveCtrl_callback_H_WRITE(ModbusSS_table_t *table, uint16_t reg, uint16_t quantity)
 {
 

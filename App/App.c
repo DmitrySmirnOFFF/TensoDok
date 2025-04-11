@@ -4,10 +4,9 @@
 
 App_struct App;
 
-extern ADC_HandleTypeDef hadc2;
-
 void app_main(void)
 {
+  bsp_init();
   app_init();
 
   while (1) // основной цикл
@@ -18,43 +17,39 @@ void app_main(void)
 
 void app_init()
 {
-  MX_TIM7_Init();
-
-  MX_TIM1_Init();
-  
-  bsp_tim7_1ms_start();
-
   protocolMbRtuSlaveCtrl_init(1);
-
   app_adc_filter_init();
-
-  HAL_ADCEx_Calibration_Start(&hadc2, ADC_SINGLE_ENDED);
-
-  bsp_tim6_10ms_start();
-
-  HAL_ADCEx_InjectedStart_IT(&hadc2);
-
-
   return;
 }
 
 void app_adc_filter_init()
 {
-  for (uint8_t i = 0; i < 2; i++)
-  {
-    App.adc_filter[i].value = 0.0f;
-    App.adc_filter[i].value_last = 0.0f;
-    App.adc_filter[i].valueRaw = 0.0f;
+// -------------------------- ADC_ADS1251 -------------------------- //
+    App.adc_filter[ADC_ADS1251].value = 0.0f;
+    App.adc_filter[ADC_ADS1251].value_last = 0.0f;
+    App.adc_filter[ADC_ADS1251].valueRaw = 0.0f;
     for (uint8_t j = 0; j < PROGRAM_ADC_MAX_FILTER_ORDER; j++)
     {
-      App.adc_filter[i].buf[j] = 0.0f;
+      App.adc_filter[ADC_ADS1251].buf[j] = 0.0f;
     }
-    App.adc_filter[i].bufIdx = 0;
-    App.adc_filter[i].filter_N = 100;
-    App.adc_filter[i].order = 24.0f;
-  }
+    App.adc_filter[ADC_ADS1251].bufIdx = 0;
+    App.adc_filter[ADC_ADS1251].filter_N = 100;
+    App.adc_filter[ADC_ADS1251].order = 24;
+// ------------------------ ADC_ADS1251 END ------------------------ //
 
-  return;
+// -------------------------- ADC_CPU -------------------------- //
+    App.adc_filter[ADC_CPU].value = 0.0f;
+    App.adc_filter[ADC_CPU].value_last = 0.0f;
+    App.adc_filter[ADC_CPU].valueRaw = 0.0f;
+    for (uint8_t j = 0; j < PROGRAM_ADC_MAX_FILTER_ORDER; j++)
+    {
+      App.adc_filter[ADC_CPU].buf[j] = 0.0f;
+    }
+    App.adc_filter[ADC_CPU].bufIdx = 0;
+    App.adc_filter[ADC_CPU].filter_N = 250;
+    App.adc_filter[ADC_CPU].order = 24;
+// ------------------------ ADC_CPU END ------------------------ //
+
 }
 
 void bsp_tim7_1ms_callback()
@@ -168,7 +163,6 @@ void app_update_reg()
   return;
 }
 
-
 void bsp_ADC_data_ready()
 {
   APP_LED_TOGGLE(APP_LED_3);
@@ -178,10 +172,8 @@ void bsp_ADC_data_ready()
 
 #define ADC_ADS1251_MAX_VAL 8388607.0f
 #define ADC_ADS1251_REF_VOLT  3.3f
-
 #define ADC_CPU_MAX_VAL 4096.0f
 #define ADC_CPU_REF_VOLT  3.3f
-
 void app_adc_data_filter(uint32_t ADC_Buf_raw, ADC_enum adc)
 {
   float value = 0.0f;

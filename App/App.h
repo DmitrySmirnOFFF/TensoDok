@@ -3,7 +3,6 @@
 
 #include "main.h"
 
-//------------------------------- STRUCT -------------------------------//
 #define PROGRAM_ADC_MAX_FILTER_ORDER         (24)
 
 typedef enum
@@ -29,7 +28,7 @@ typedef struct {
     float buf[PROGRAM_ADC_MAX_FILTER_ORDER];
     uint8_t bufIdx;
     uint8_t filter_N;
-    float order;
+    uint8_t order;
 }ADC_filter_typedef;
 
 typedef struct 
@@ -37,7 +36,6 @@ typedef struct
     Mdb_data_AO_struct Mdb_data_AO;
     ADC_filter_typedef adc_filter[2];
 } App_struct;
-//----------------------------- STRUCT END -----------------------------//
 
 //------------------------------ FUNCTION ------------------------------//
 void app_main();

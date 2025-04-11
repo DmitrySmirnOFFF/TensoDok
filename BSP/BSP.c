@@ -1,7 +1,23 @@
 
 #include "BSP.h"
 
+// ------------------------------ INIT ------------------------------
+void bsp_init()
+{
+  MX_TIM7_Init();
 
+  MX_TIM1_Init();
+  
+  bsp_tim7_1ms_start();
+
+  HAL_ADCEx_Calibration_Start(&hadc2, ADC_SINGLE_ENDED);
+
+  bsp_tim6_10ms_start();
+
+  HAL_ADCEx_InjectedStart_IT(&hadc2);
+  return;
+}
+// ---------------------------- INIT END ----------------------------
 
 // ------------------------------ RS485 ------------------------------
 #define BSP_RS485_1 huart1
@@ -140,20 +156,18 @@ void bsp_tim6_10ms_start()
 // ---------------------------- TIM END ----------------------------------
 
 // ------------------------------ ADC ------------------------------------
-
+//АЦП синхронизировано с TIM6
 void ADC1_2_IRQHandler(void)
 {
   if (__HAL_ADC_GET_FLAG(&hadc2, ADC_FLAG_JEOS) != 0)
   {
     __HAL_ADC_CLEAR_FLAG(&hadc2, ADC_FLAG_JEOS);
-    // ADC = (HAL_ADCEx_InjectedGetValue(&hadc2, ADC_INJECTED_RANK_2)/16);
     bsp_ADC_data_ready();
   }
 }
 
 __weak void bsp_ADC_data_ready();
 // ---------------------------- ADC END ----------------------------------
-
 
 // ------------------------------ SPI ------------------------------------
 uint8_t SPI_DATA_RX[8];
