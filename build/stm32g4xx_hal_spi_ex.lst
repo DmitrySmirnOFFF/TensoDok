@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccWe89Iy.s 			page 1
+ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\cc0aIZLc.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccWe89Iy.s 			page 1
   27:Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_spi_ex.c ****   * @{
   28:Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_spi_ex.c ****   */
   29:Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_spi_ex.c **** 
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccWe89Iy.s 			page 2
+ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\cc0aIZLc.s 			page 2
 
 
   30:Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_spi_ex.c **** /** @defgroup SPIEx SPIEx
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccWe89Iy.s 			page 1
   33              		@ frame_needed = 0, uses_anonymous_args = 0
   34              		@ link register save eliminated.
   81:Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_spi_ex.c ****   __IO uint32_t tmpreg;
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccWe89Iy.s 			page 3
+ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\cc0aIZLc.s 			page 3
 
 
   35              		.loc 1 81 3 view .LVU1
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccWe89Iy.s 			page 1
   80 0024 042B     		cmp	r3, #4
   81 0026 F3D1     		bne	.L12
   89:Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_spi_ex.c ****     {
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccWe89Iy.s 			page 4
+ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\cc0aIZLc.s 			page 4
 
 
   90:Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_spi_ex.c ****       return HAL_TIMEOUT;
@@ -222,18 +222,18 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccWe89Iy.s 			page 1
  112              	.LFE329:
  114              		.text
  115              	.Letext0:
- 116              		.file 2 "c:\\program files\\vscodestmtools\\arm-none-eabi-gcc\\12.2.1-1.2.1\\.content\\arm-none-ea
- 117              		.file 3 "c:\\program files\\vscodestmtools\\arm-none-eabi-gcc\\12.2.1-1.2.1\\.content\\arm-none-ea
+ 116              		.file 2 "c:\\vscode\\vscodestmtools\\arm-none-eabi-gcc\\12.2.1-1.2.1\\.content\\arm-none-eabi\\inc
+ 117              		.file 3 "c:\\vscode\\vscodestmtools\\arm-none-eabi-gcc\\12.2.1-1.2.1\\.content\\arm-none-eabi\\inc
  118              		.file 4 "Drivers/CMSIS/Device/ST/STM32G4xx/Include/stm32g474xx.h"
  119              		.file 5 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_def.h"
  120              		.file 6 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_dma.h"
  121              		.file 7 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_spi.h"
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccWe89Iy.s 			page 5
+ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\cc0aIZLc.s 			page 5
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 stm32g4xx_hal_spi_ex.c
-C:\Users\sr1\AppData\Local\Temp\ccWe89Iy.s:21     .text.HAL_SPIEx_FlushRxFifo:0000000000000000 $t
-C:\Users\sr1\AppData\Local\Temp\ccWe89Iy.s:27     .text.HAL_SPIEx_FlushRxFifo:0000000000000000 HAL_SPIEx_FlushRxFifo
+C:\Users\VIDCOM~1\AppData\Local\Temp\cc0aIZLc.s:21     .text.HAL_SPIEx_FlushRxFifo:0000000000000000 $t
+C:\Users\VIDCOM~1\AppData\Local\Temp\cc0aIZLc.s:27     .text.HAL_SPIEx_FlushRxFifo:0000000000000000 HAL_SPIEx_FlushRxFifo
 
 NO UNDEFINED SYMBOLS

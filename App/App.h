@@ -8,7 +8,8 @@
 typedef enum
 {
     ADC_ADS1251 = 0,
-    ADC_CPU = 1
+    ADC_CPU = 1,
+    ADC_T = 2
 } ADC_enum;
 
 typedef struct 
@@ -16,9 +17,10 @@ typedef struct
     uint16_t state_led_rele;
     uint16_t control_led_rele; 
     uint16_t spi_buf_0[3];
-    uint16_t ADC_data;
     uint16_t ADC_CPU_data;
     uint16_t ADC_T_data;
+    uint16_t ADC_ADS1251_data_u16;
+    uint32_t ADC_ADS1251_data_u32;
 } Mdb_data_AO_struct;
 
 typedef struct {
@@ -34,7 +36,7 @@ typedef struct {
 typedef struct 
 {
     Mdb_data_AO_struct Mdb_data_AO;
-    ADC_filter_typedef adc_filter[2];
+    ADC_filter_typedef adc_filter[3];
 } App_struct;
 
 //------------------------------ FUNCTION ------------------------------//

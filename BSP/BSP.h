@@ -8,27 +8,30 @@
 #include "adc.h"
 
 //------------------------------ DEFINE ------------------------------//
-#define APP_LED_1                 DO_LED_1_GPIO_Port, DO_LED_1_Pin
-#define APP_LED_2                 DO_LED_2_GPIO_Port, DO_LED_2_Pin
-#define APP_LED_3                 DO_LED_3_GPIO_Port, DO_LED_3_Pin
-#define APP_LED_4                 DO_LED_4_GPIO_Port, DO_LED_4_Pin
+#define BSP_LED_1                 DO_LED_1_GPIO_Port, DO_LED_1_Pin
+#define BSP_LED_2                 DO_LED_2_GPIO_Port, DO_LED_2_Pin
+#define BSP_LED_3                 DO_LED_3_GPIO_Port, DO_LED_3_Pin
+#define BSP_LED_4                 DO_LED_4_GPIO_Port, DO_LED_4_Pin
 
-#define APP_LED_ON(LED)			  HAL_GPIO_WritePin(LED, GPIO_PIN_SET)
-#define APP_LED_OFF(LED)	      HAL_GPIO_WritePin(LED, GPIO_PIN_RESET)
-#define APP_LED_TOGGLE(LED)		  HAL_GPIO_TogglePin(LED)
+#define BSP_LED_ON(LED)			  HAL_GPIO_WritePin(LED, GPIO_PIN_SET)
+#define BSP_LED_OFF(LED)	      HAL_GPIO_WritePin(LED, GPIO_PIN_RESET)
+#define BSP_LED_TOGGLE(LED)		  HAL_GPIO_TogglePin(LED)
 
-#define APP_REL_1                 DO_REL_1_GPIO_Port, DO_REL_1_Pin
-#define APP_REL_2                 DO_REL_2_GPIO_Port, DO_REL_2_Pin
-#define APP_REL_3                 DO_REL_3_GPIO_Port, DO_REL_3_Pin
-#define APP_REL_4                 DO_REL_4_GPIO_Port, DO_REL_4_Pin
+#define BSP_REL_1                 DO_REL_1_GPIO_Port, DO_REL_1_Pin
+#define BSP_REL_2                 DO_REL_2_GPIO_Port, DO_REL_2_Pin
+#define BSP_REL_3                 DO_REL_3_GPIO_Port, DO_REL_3_Pin
+#define BSP_REL_4                 DO_REL_4_GPIO_Port, DO_REL_4_Pin
 
-#define APP_REL_ON(REL)			  HAL_GPIO_WritePin(REL, GPIO_PIN_SET)
-#define APP_REL_OFF(REL)		  HAL_GPIO_WritePin(REL, GPIO_PIN_RESET)
-#define APP_REL_TOGGLE(REL)		  HAL_GPIO_TogglePin(REL)
+#define BSP_REL_ON(REL)			  HAL_GPIO_WritePin(REL, GPIO_PIN_SET)
+#define BSP_REL_OFF(REL)		  HAL_GPIO_WritePin(REL, GPIO_PIN_RESET)
+#define BSP_REL_TOGGLE(REL)		  HAL_GPIO_TogglePin(REL)
 
-#define APP_GET_BIT(REG, BIT)     (REG & (1 << BIT))
-#define APP_SET_BIT(REG, BIT)     (REG |= (1 << BIT))
-#define APP_RESET_BIT(REG, BIT)   (REG &= ~(1 << BIT))
+#define BSP_GET_BIT(REG, BIT)     (REG & (1 << BIT))
+#define BSP_SET_BIT(REG, BIT)     (REG |= (1 << BIT))
+#define BSP_RESET_BIT(REG, BIT)   (REG &= ~(1 << BIT))
+
+#define BSP_GET_DI(PORT_PIN)      (HAL_GPIO_ReadPin(PORT_PIN))
+
 //---------------------------- DEFINE END ----------------------------//
 
 //------------------------------- ENUM -------------------------------//

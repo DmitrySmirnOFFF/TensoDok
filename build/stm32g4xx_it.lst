@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s 			page 1
+ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\ccq5go3k.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s 			page 1
   28:Core/Src/stm32g4xx_it.c **** /* Private typedef -----------------------------------------------------------*/
   29:Core/Src/stm32g4xx_it.c **** /* USER CODE BEGIN TD */
   30:Core/Src/stm32g4xx_it.c **** 
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s 			page 2
+ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\ccq5go3k.s 			page 2
 
 
   31:Core/Src/stm32g4xx_it.c **** /* USER CODE END TD */
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s 			page 1
   78:Core/Src/stm32g4xx_it.c ****   while (1)
   36              		.loc 1 78 3 discriminator 1 view .LVU1
   79:Core/Src/stm32g4xx_it.c ****   {
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s 			page 3
+ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\ccq5go3k.s 			page 3
 
 
   80:Core/Src/stm32g4xx_it.c ****   }
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s 			page 1
   98:Core/Src/stm32g4xx_it.c **** 
   99:Core/Src/stm32g4xx_it.c **** /**
  100:Core/Src/stm32g4xx_it.c ****   * @brief This function handles Memory management fault.
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s 			page 4
+ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\ccq5go3k.s 			page 4
 
 
  101:Core/Src/stm32g4xx_it.c ****   */
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s 			page 1
  125:Core/Src/stm32g4xx_it.c ****     /* USER CODE END W1_BusFault_IRQn 0 */
  126:Core/Src/stm32g4xx_it.c ****   }
  106              		.loc 1 126 3 discriminator 1 view .LVU14
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s 			page 5
+ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\ccq5go3k.s 			page 5
 
 
  122:Core/Src/stm32g4xx_it.c ****   {
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s 			page 1
  146:Core/Src/stm32g4xx_it.c ****   */
  147:Core/Src/stm32g4xx_it.c **** void SVC_Handler(void)
  148:Core/Src/stm32g4xx_it.c **** {
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s 			page 6
+ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\ccq5go3k.s 			page 6
 
 
  144              		.loc 1 148 1 view -0
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s 			page 1
  169:Core/Src/stm32g4xx_it.c **** 
  170:Core/Src/stm32g4xx_it.c **** /**
  171:Core/Src/stm32g4xx_it.c ****   * @brief This function handles Pendable request for system service.
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s 			page 7
+ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\ccq5go3k.s 			page 7
 
 
  172:Core/Src/stm32g4xx_it.c ****   */
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s 			page 1
  214 0006 08BD     		pop	{r3, pc}
  215              		.cfi_endproc
  216              	.LFE337:
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s 			page 8
+ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\ccq5go3k.s 			page 8
 
 
  218              		.section	.text.DMA1_Channel1_IRQHandler,"ax",%progbits
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s 			page 1
  253              		.thumb
  254              		.thumb_func
  256              	DMA1_Channel2_IRQHandler:
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s 			page 9
+ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\ccq5go3k.s 			page 9
 
 
  257              	.LFB339:
@@ -519,41 +519,41 @@ ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s 			page 1
  278              	.LFE339:
  280              		.text
  281              	.Letext0:
- 282              		.file 2 "c:\\program files\\vscodestmtools\\arm-none-eabi-gcc\\12.2.1-1.2.1\\.content\\arm-none-ea
- 283              		.file 3 "c:\\program files\\vscodestmtools\\arm-none-eabi-gcc\\12.2.1-1.2.1\\.content\\arm-none-ea
+ 282              		.file 2 "c:\\vscode\\vscodestmtools\\arm-none-eabi-gcc\\12.2.1-1.2.1\\.content\\arm-none-eabi\\inc
+ 283              		.file 3 "c:\\vscode\\vscodestmtools\\arm-none-eabi-gcc\\12.2.1-1.2.1\\.content\\arm-none-eabi\\inc
  284              		.file 4 "Drivers/CMSIS/Device/ST/STM32G4xx/Include/stm32g474xx.h"
  285              		.file 5 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_def.h"
  286              		.file 6 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_dma.h"
  287              		.file 7 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal.h"
-ARM GAS  C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s 			page 10
+ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\ccq5go3k.s 			page 10
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 stm32g4xx_it.c
-C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s:21     .text.NMI_Handler:0000000000000000 $t
-C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s:27     .text.NMI_Handler:0000000000000000 NMI_Handler
-C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s:44     .text.HardFault_Handler:0000000000000000 $t
-C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s:50     .text.HardFault_Handler:0000000000000000 HardFault_Handler
-C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s:67     .text.MemManage_Handler:0000000000000000 $t
-C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s:73     .text.MemManage_Handler:0000000000000000 MemManage_Handler
-C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s:90     .text.BusFault_Handler:0000000000000000 $t
-C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s:96     .text.BusFault_Handler:0000000000000000 BusFault_Handler
-C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s:113    .text.UsageFault_Handler:0000000000000000 $t
-C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s:119    .text.UsageFault_Handler:0000000000000000 UsageFault_Handler
-C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s:136    .text.SVC_Handler:0000000000000000 $t
-C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s:142    .text.SVC_Handler:0000000000000000 SVC_Handler
-C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s:155    .text.DebugMon_Handler:0000000000000000 $t
-C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s:161    .text.DebugMon_Handler:0000000000000000 DebugMon_Handler
-C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s:174    .text.PendSV_Handler:0000000000000000 $t
-C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s:180    .text.PendSV_Handler:0000000000000000 PendSV_Handler
-C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s:193    .text.SysTick_Handler:0000000000000000 $t
-C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s:199    .text.SysTick_Handler:0000000000000000 SysTick_Handler
-C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s:219    .text.DMA1_Channel1_IRQHandler:0000000000000000 $t
-C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s:225    .text.DMA1_Channel1_IRQHandler:0000000000000000 DMA1_Channel1_IRQHandler
-C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s:245    .text.DMA1_Channel1_IRQHandler:000000000000000c $d
-C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s:250    .text.DMA1_Channel2_IRQHandler:0000000000000000 $t
-C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s:256    .text.DMA1_Channel2_IRQHandler:0000000000000000 DMA1_Channel2_IRQHandler
-C:\Users\sr1\AppData\Local\Temp\ccSZhAFx.s:276    .text.DMA1_Channel2_IRQHandler:000000000000000c $d
+C:\Users\VIDCOM~1\AppData\Local\Temp\ccq5go3k.s:21     .text.NMI_Handler:0000000000000000 $t
+C:\Users\VIDCOM~1\AppData\Local\Temp\ccq5go3k.s:27     .text.NMI_Handler:0000000000000000 NMI_Handler
+C:\Users\VIDCOM~1\AppData\Local\Temp\ccq5go3k.s:44     .text.HardFault_Handler:0000000000000000 $t
+C:\Users\VIDCOM~1\AppData\Local\Temp\ccq5go3k.s:50     .text.HardFault_Handler:0000000000000000 HardFault_Handler
+C:\Users\VIDCOM~1\AppData\Local\Temp\ccq5go3k.s:67     .text.MemManage_Handler:0000000000000000 $t
+C:\Users\VIDCOM~1\AppData\Local\Temp\ccq5go3k.s:73     .text.MemManage_Handler:0000000000000000 MemManage_Handler
+C:\Users\VIDCOM~1\AppData\Local\Temp\ccq5go3k.s:90     .text.BusFault_Handler:0000000000000000 $t
+C:\Users\VIDCOM~1\AppData\Local\Temp\ccq5go3k.s:96     .text.BusFault_Handler:0000000000000000 BusFault_Handler
+C:\Users\VIDCOM~1\AppData\Local\Temp\ccq5go3k.s:113    .text.UsageFault_Handler:0000000000000000 $t
+C:\Users\VIDCOM~1\AppData\Local\Temp\ccq5go3k.s:119    .text.UsageFault_Handler:0000000000000000 UsageFault_Handler
+C:\Users\VIDCOM~1\AppData\Local\Temp\ccq5go3k.s:136    .text.SVC_Handler:0000000000000000 $t
+C:\Users\VIDCOM~1\AppData\Local\Temp\ccq5go3k.s:142    .text.SVC_Handler:0000000000000000 SVC_Handler
+C:\Users\VIDCOM~1\AppData\Local\Temp\ccq5go3k.s:155    .text.DebugMon_Handler:0000000000000000 $t
+C:\Users\VIDCOM~1\AppData\Local\Temp\ccq5go3k.s:161    .text.DebugMon_Handler:0000000000000000 DebugMon_Handler
+C:\Users\VIDCOM~1\AppData\Local\Temp\ccq5go3k.s:174    .text.PendSV_Handler:0000000000000000 $t
+C:\Users\VIDCOM~1\AppData\Local\Temp\ccq5go3k.s:180    .text.PendSV_Handler:0000000000000000 PendSV_Handler
+C:\Users\VIDCOM~1\AppData\Local\Temp\ccq5go3k.s:193    .text.SysTick_Handler:0000000000000000 $t
+C:\Users\VIDCOM~1\AppData\Local\Temp\ccq5go3k.s:199    .text.SysTick_Handler:0000000000000000 SysTick_Handler
+C:\Users\VIDCOM~1\AppData\Local\Temp\ccq5go3k.s:219    .text.DMA1_Channel1_IRQHandler:0000000000000000 $t
+C:\Users\VIDCOM~1\AppData\Local\Temp\ccq5go3k.s:225    .text.DMA1_Channel1_IRQHandler:0000000000000000 DMA1_Channel1_IRQHandler
+C:\Users\VIDCOM~1\AppData\Local\Temp\ccq5go3k.s:245    .text.DMA1_Channel1_IRQHandler:000000000000000c $d
+C:\Users\VIDCOM~1\AppData\Local\Temp\ccq5go3k.s:250    .text.DMA1_Channel2_IRQHandler:0000000000000000 $t
+C:\Users\VIDCOM~1\AppData\Local\Temp\ccq5go3k.s:256    .text.DMA1_Channel2_IRQHandler:0000000000000000 DMA1_Channel2_IRQHandler
+C:\Users\VIDCOM~1\AppData\Local\Temp\ccq5go3k.s:276    .text.DMA1_Channel2_IRQHandler:000000000000000c $d
 
 UNDEFINED SYMBOLS
 HAL_IncTick

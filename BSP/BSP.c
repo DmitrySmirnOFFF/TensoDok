@@ -100,7 +100,7 @@ void BSP_RS485_1_IRQ_HANDLER_RTOF(void)
 
     if (BSP_RS485_1.NbRxDataToProcess != BSP_RS485_1.hdmarx->Instance->CNDTR)
     {
-      APP_LED_TOGGLE(APP_LED_4);
+      BSP_LED_TOGGLE(BSP_LED_4);
       bsp_rs485_callback_rxBlockReady(1);
       // bsp_dInOut_toggleDout(bsp_dInOut_led_rs485_1_g);
       // bsp_dInOut_resetDout(bsp_dInOut_led_rs485_1_y);
