@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\ccDso0pk.s 			page 1
+ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\ccOMkRoq.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\ccDso0pk.s 			page 1
   28:Core/Src/spi.c **** 
   29:Core/Src/spi.c **** /* SPI2 init function */
   30:Core/Src/spi.c **** void MX_SPI2_Init(void)
-ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\ccDso0pk.s 			page 2
+ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\ccOMkRoq.s 			page 2
 
 
   31:Core/Src/spi.c **** {
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\ccDso0pk.s 			page 1
   66              		.loc 1 47 3 is_stmt 1 view .LVU15
   67              		.loc 1 47 32 is_stmt 0 view .LVU16
   68 0026 2022     		movs	r2, #32
-ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\ccDso0pk.s 			page 3
+ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\ccOMkRoq.s 			page 3
 
 
   69 0028 C261     		str	r2, [r0, #28]
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\ccDso0pk.s 			page 1
  107              	.L5:
  108 0048 00000000 		.word	hspi2
  109 004c 00380040 		.word	1073756160
-ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\ccDso0pk.s 			page 4
+ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\ccOMkRoq.s 			page 4
 
 
  110              		.cfi_endproc
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\ccDso0pk.s 			page 1
   77:Core/Src/spi.c ****     /**SPI2 GPIO Configuration
   78:Core/Src/spi.c ****     PB13     ------> SPI2_SCK
   79:Core/Src/spi.c ****     PB14     ------> SPI2_MISO
-ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\ccDso0pk.s 			page 5
+ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\ccOMkRoq.s 			page 5
 
 
   80:Core/Src/spi.c ****     */
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\ccDso0pk.s 			page 1
  184 0036 42F00202 		orr	r2, r2, #2
  185 003a DA64     		str	r2, [r3, #76]
   76:Core/Src/spi.c ****     /**SPI2 GPIO Configuration
-ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\ccDso0pk.s 			page 6
+ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\ccOMkRoq.s 			page 6
 
 
  186              		.loc 1 76 5 view .LVU52
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\ccDso0pk.s 			page 1
  229              		.thumb
  230              		.thumb_func
  232              	HAL_SPI_MspDeInit:
-ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\ccDso0pk.s 			page 7
+ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\ccOMkRoq.s 			page 7
 
 
  233              	.LVL7:
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\ccDso0pk.s 			page 1
  109:Core/Src/spi.c **** 
  263              		.loc 1 109 5 view .LVU73
  264 0016 4FF4C041 		mov	r1, #24576
-ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\ccDso0pk.s 			page 8
+ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\ccOMkRoq.s 			page 8
 
 
  265 001a 0448     		ldr	r0, .L17+8
@@ -457,22 +457,22 @@ ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\ccDso0pk.s 			page 1
  296              		.file 8 "Drivers/STM32G4xx_HAL_Driver/Inc/stm32g4xx_hal_spi.h"
  297              		.file 9 "Core/Inc/spi.h"
  298              		.file 10 "Core/Inc/main.h"
-ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\ccDso0pk.s 			page 9
+ARM GAS  C:\Users\VIDCOM~1\AppData\Local\Temp\ccOMkRoq.s 			page 9
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 spi.c
-C:\Users\VIDCOM~1\AppData\Local\Temp\ccDso0pk.s:21     .text.MX_SPI2_Init:0000000000000000 $t
-C:\Users\VIDCOM~1\AppData\Local\Temp\ccDso0pk.s:27     .text.MX_SPI2_Init:0000000000000000 MX_SPI2_Init
-C:\Users\VIDCOM~1\AppData\Local\Temp\ccDso0pk.s:108    .text.MX_SPI2_Init:0000000000000048 $d
-C:\Users\VIDCOM~1\AppData\Local\Temp\ccDso0pk.s:286    .bss.hspi2:0000000000000000 hspi2
-C:\Users\VIDCOM~1\AppData\Local\Temp\ccDso0pk.s:114    .text.HAL_SPI_MspInit:0000000000000000 $t
-C:\Users\VIDCOM~1\AppData\Local\Temp\ccDso0pk.s:120    .text.HAL_SPI_MspInit:0000000000000000 HAL_SPI_MspInit
-C:\Users\VIDCOM~1\AppData\Local\Temp\ccDso0pk.s:220    .text.HAL_SPI_MspInit:0000000000000060 $d
-C:\Users\VIDCOM~1\AppData\Local\Temp\ccDso0pk.s:226    .text.HAL_SPI_MspDeInit:0000000000000000 $t
-C:\Users\VIDCOM~1\AppData\Local\Temp\ccDso0pk.s:232    .text.HAL_SPI_MspDeInit:0000000000000000 HAL_SPI_MspDeInit
-C:\Users\VIDCOM~1\AppData\Local\Temp\ccDso0pk.s:275    .text.HAL_SPI_MspDeInit:0000000000000024 $d
-C:\Users\VIDCOM~1\AppData\Local\Temp\ccDso0pk.s:283    .bss.hspi2:0000000000000000 $d
+C:\Users\VIDCOM~1\AppData\Local\Temp\ccOMkRoq.s:21     .text.MX_SPI2_Init:0000000000000000 $t
+C:\Users\VIDCOM~1\AppData\Local\Temp\ccOMkRoq.s:27     .text.MX_SPI2_Init:0000000000000000 MX_SPI2_Init
+C:\Users\VIDCOM~1\AppData\Local\Temp\ccOMkRoq.s:108    .text.MX_SPI2_Init:0000000000000048 $d
+C:\Users\VIDCOM~1\AppData\Local\Temp\ccOMkRoq.s:286    .bss.hspi2:0000000000000000 hspi2
+C:\Users\VIDCOM~1\AppData\Local\Temp\ccOMkRoq.s:114    .text.HAL_SPI_MspInit:0000000000000000 $t
+C:\Users\VIDCOM~1\AppData\Local\Temp\ccOMkRoq.s:120    .text.HAL_SPI_MspInit:0000000000000000 HAL_SPI_MspInit
+C:\Users\VIDCOM~1\AppData\Local\Temp\ccOMkRoq.s:220    .text.HAL_SPI_MspInit:0000000000000060 $d
+C:\Users\VIDCOM~1\AppData\Local\Temp\ccOMkRoq.s:226    .text.HAL_SPI_MspDeInit:0000000000000000 $t
+C:\Users\VIDCOM~1\AppData\Local\Temp\ccOMkRoq.s:232    .text.HAL_SPI_MspDeInit:0000000000000000 HAL_SPI_MspDeInit
+C:\Users\VIDCOM~1\AppData\Local\Temp\ccOMkRoq.s:275    .text.HAL_SPI_MspDeInit:0000000000000024 $d
+C:\Users\VIDCOM~1\AppData\Local\Temp\ccOMkRoq.s:283    .bss.hspi2:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 HAL_SPI_Init

@@ -20,9 +20,11 @@ enum mdb_table_bsp
   tab_bsp_ADC_T_data,
   tab_bsp_ADC_ADS1251_data_u16,
   tab_bsp_ADC_ADS1251_data_u32_1,
-  tab_bsp_ADC_ADS1251_data_u32_2
+  tab_bsp_ADC_ADS1251_data_u32_2,
+  tab_bsp_spi_buf_u32_LW,
+  tab_bsp_spi_buf_u32_HW
 };
-#define MDB_BSP_BUF_COUNT (tab_bsp_ADC_ADS1251_data_u32_2 - MDB_TABLE_BSP_REG_NO + 1)
+#define MDB_BSP_BUF_COUNT (tab_bsp_spi_buf_u32_HW - MDB_TABLE_BSP_REG_NO + 1)
 uint16_t mdb_bsp_buf[MDB_BSP_BUF_COUNT];
 
 ModbusSS_table_t mdb_table_bsp = {
@@ -76,7 +78,10 @@ __INLINE void protocolMbRtuSlaveCtrl_update_tables()
   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_ADC_ADS1251_data_u16,     App.Mdb_data_AO.ADC_ADS1251_data_u16);
 
   ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_ADC_ADS1251_data_u32_1,   (uint16_t)(App.Mdb_data_AO.ADC_ADS1251_data_u32 & 0x0000FFFF));
-  ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_ADC_ADS1251_data_u32_2,   (uint16_t)(App.Mdb_data_AO.ADC_ADS1251_data_u32 & 0XFFFF0000));
+  ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_ADC_ADS1251_data_u32_2,   (uint16_t)((App.Mdb_data_AO.ADC_ADS1251_data_u32 & 0XFFFF0000) >> 16));
+
+  ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_spi_buf_u32_LW,           (uint16_t)(SPI_DATA_U32 & 0X0000FFFF));
+  ModbusSS_SetWord(&mdb_table_bsp, tab_bsp_spi_buf_u32_HW,           (uint16_t)((SPI_DATA_U32 & 0XFFFF0000) >> 16));
 }
 //------------------------ REGULAR FCN END------------------------
 

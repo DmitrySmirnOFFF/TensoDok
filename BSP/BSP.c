@@ -171,6 +171,7 @@ __weak void bsp_ADC_data_ready();
 
 // ------------------------------ SPI ------------------------------------
 uint8_t SPI_DATA_RX[8];
+uint32_t SPI_DATA_U32;
 uint32_t bsp_get_data_spi()
 {
   uint32_t ADC_DATA_RAW = 0;
@@ -198,6 +199,7 @@ uint32_t bsp_get_data_spi()
   ADC_DATA_RAW |= ((uint32_t)SPI_DATA_RX[0] << 16);
   ADC_DATA_RAW |= ((uint32_t)SPI_DATA_RX[1] << 8);
   ADC_DATA_RAW |= ((uint32_t)SPI_DATA_RX[2] << 0);
+  SPI_DATA_U32 = ADC_DATA_RAW;
   return ADC_DATA_RAW;
 }
 // ---------------------------- SPI END ----------------------------------
